@@ -145,10 +145,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\Common.csproj">
-      <Project>{50744FE9-2E5C-4B1D-8B85-8909CBD6BDE5}</Project>
-      <Name>Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\eThanhTra.Common\eThanhTra.Common.csproj">
       <Project>{D6D68749-1C28-4DCC-AAE1-0873E15C59D4}</Project>
       <Name>eThanhTra.Common</Name>
