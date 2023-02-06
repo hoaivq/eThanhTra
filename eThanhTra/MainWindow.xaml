@@ -1,0 +1,35 @@
+﻿<rs:TSDWindow
+        xmlns:rs="clr-namespace:eThanhTra.Resource;assembly=eThanhTra.Resource"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:eThanhTra"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+        x:Class="eThanhTra.MainWindow"
+        mc:Ignorable="d"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxwui="http://schemas.devexpress.com/winfx/2008/xaml/windowsui" 
+        Title="NHẬT KÝ ĐOÀN THANH TRA" Height="800" Width="1000" WindowState="Maximized" WindowStartupLocation="CenterScreen" Padding="0,0,0,0" Margin="0,0,0,0">
+    <Grid>
+        <dxwui:HamburgerMenu x:Name="mnuMain"  AvailableViewStates="Overlay" IsInitiallyCompact="True" ViewState="CompactInline" PreviewItemClick="mnuMain_PreviewItemClick">
+            <dxwui:HamburgerMenu.BottomBarItems>
+                <dxwui:HamburgerMenuBottomBarNavigationButton Content="Settings" GlyphWidth="16" Glyph="{dx:DXImage Office2013/Setup/Properties_16x16.png}" GlyphHeight="16"/>
+                <dxwui:HamburgerMenuBottomBarNavigationButton Content="About" GlyphWidth="16" Glyph="{dx:DXImage Office2013/Support/Info_16x16.png}" GlyphHeight="16"/>
+            </dxwui:HamburgerMenu.BottomBarItems>
+
+            <dxwui:HamburgerMenuNavigationButton Content="TRANG CHỦ" GlyphWidth="16" Glyph="{dx:DXImage  Image=Home_16x16.png}" GlyphHeight="16" SelectOnClick="False" Name="Home"/>
+            <dxwui:HamburgerMenuNavigationButton Content="QUẢN LÝ NHẬT KÝ ĐOÀN" GlyphWidth="16" Glyph="{dx:DXImage Image=Grid_16x16.png}" GlyphHeight="16" SelectOnClick="False" Name="QuanLyNhatKy"/>
+            <dxwui:HamburgerMenuHyperlinkButton Content="Hỗ trợ" NavigateUri="https://ebh.vn/"/>
+
+
+            <dxwui:HamburgerMenu.Content>
+                <Grid>
+
+                    <dx:DXTabControl Grid.Row="1" x:Name="tabMain">
+                    </dx:DXTabControl>
+                </Grid>
+            </dxwui:HamburgerMenu.Content>
+        </dxwui:HamburgerMenu>
+    </Grid>
+</rs:TSDWindow>

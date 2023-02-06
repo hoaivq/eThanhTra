@@ -1,0 +1,66 @@
+﻿<rs:TSDUserControl  xmlns:rs="clr-namespace:eThanhTra.Resource;assembly=eThanhTra.Resource"
+                    x:Class="eThanhTra.ucoQuanLyNhatKy"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             xmlns:local="clr-namespace:eThanhTra" 
+                    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+                    mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="1000" Background="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+        
+        <DockPanel Grid.Row="0" Margin="0,0,0,4" LastChildFill="True">
+            <rs:hDateEdit DockPanel.Dock="Left" _CaptionText="Ngày công bố:" DisplayFormatString="dd/MM/yyyy" Width="100" VerticalAlignment="Bottom" Height="50" Margin="0,0,4,0" />
+            <TextBlock DockPanel.Dock="Left" Text="~" VerticalAlignment="Bottom" Margin="2,0,2,8"/>
+            <rs:hDateEdit DockPanel.Dock="Left" Width="100" VerticalAlignment="Bottom" Height="30" Margin="4,0,8,0" />
+            <rs:hListBoxEdit DockPanel.Dock="Left" _CaptionText="Trạng thái" VerticalAlignment="Bottom" Height="50" Padding="4,4,0,0">
+                <dxe:ListBoxEdit.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </dxe:ListBoxEdit.ItemsPanel>
+                
+                <dxe:ListBoxEdit.StyleSettings >
+                    <dxe:CheckedListBoxEditStyleSettings ShowSelectAllItem="True" SelectAllItemText="Tất cả trạng thái" />
+                </dxe:ListBoxEdit.StyleSettings>
+                <dxe:ListBoxEdit.Items>
+                    <dxe:ListBoxEditItem Content="Chờ công bố" IsSelected="True" Margin="4,0,4,0"/>
+                    <dxe:ListBoxEditItem Content="Đang tiến hành" IsSelected="True" Margin="4,0,4,0"/>
+                    <dxe:ListBoxEditItem Content="Đã hoàn thành"  IsSelected="True" Margin="4,0,8,0"/>
+                </dxe:ListBoxEdit.Items>
+            </rs:hListBoxEdit>
+
+            <rs:hTextEdit DockPanel.Dock="Left" Margin="8,0,0,0" _CaptionText="MST:" Height="50" VerticalAlignment="Bottom" Width="100"></rs:hTextEdit>
+            
+            <dx:SimpleButton DockPanel.Dock="Right" Content="Tìm kiếm" Glyph="{dx:DXImage Image=Filter_16x16.png}" HorizontalAlignment="Right"/>
+            <rs:hTextEdit DockPanel.Dock="Left" Margin="8,0,8,0" _CaptionText="Tên NNT:" Height="50" VerticalAlignment="Bottom"></rs:hTextEdit>
+        </DockPanel>
+        
+        <dxg:GridControl Grid.Row="1" ItemsSource="{Binding _Model.ListNhatKy}">
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn Header="STT" FieldName="STT" Width="50" Fixed="Left" VisibleIndex="0"/>
+                <dxg:GridColumn Header="MST" FieldName="MST" Width="120" Fixed="Left" VisibleIndex="1"/>
+                <dxg:GridColumn Header="Tên NNT" FieldName="TenNNT" Width="300" Fixed="Left" VisibleIndex="2">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:TextEditSettings TextWrapping="WrapWithOverflow"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn Header="CQT thực hiện" FieldName="MaCQT" Width="*"/>
+                <dxg:GridColumn Header="Trạng thái" FieldName="TrangThai" Width="100"/>
+                <dxg:GridColumn Header="Trưởng đoàn" FieldName="TruongDoan" Width="100"/>
+            </dxg:GridControl.Columns>
+        </dxg:GridControl>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <dx:SimpleButton Content="Thêm mới cuộc Thanh tra" Glyph="{dx:DXImage Image=AddItem_16x16.png}" Margin="2,4,2,0" />
+            <dx:SimpleButton Content="Đóng" Glyph="{dx:DXImage Image=Close_16x16.png}" Margin="2,4,0,0" Command="{Binding CloseViewCommand}"/>
+        </StackPanel>
+    </Grid>
+</rs:TSDUserControl>

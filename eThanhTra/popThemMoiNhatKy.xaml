@@ -1,0 +1,22 @@
+﻿<rs:TSDPopUp  xmlns:rs="clr-namespace:eThanhTra.Resource;assembly=eThanhTra.Resource"
+               x:Class="eThanhTra.frmThemMoiNhatKy"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:eThanhTra" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+              mc:Ignorable="d"
+        Title="THÊM MỚI ĐOÀN THANH TRA"  Width="800" >
+    <StackPanel Orientation="Vertical" Margin="8,8,8,8">
+        <dxe:ComboBoxEdit  Height="30" ItemsSource="{Binding SCQT}"/>
+        <rs:hTextEdit _CaptionText="Mã số thuế:" Height="50"/>
+        <rs:hTextEdit _CaptionText="Tên NNT:" Height="50"/>
+        <rs:hTextEdit _CaptionText="Trưởng đoàn:" Height="50"/>
+        <rs:hTextEdit _CaptionText="Phó đoàn (nếu có):" Height="50"/>
+        <rs:hDateEdit _CaptionText="Ngày công bố:" Height="50"/>
+        <rs:hSpinEdit _CaptionText="Thời gian tiến hành:" Height="50"/>
+        <rs:hDateEdit _CaptionText="Ngày kết thúc:" Height="50"/>
+
+        <rs:hListBoxEdit _CaptionText="Danh sách thành viên đoàn"></rs:hListBoxEdit>
+    </StackPanel>
+</rs:TSDPopUp>

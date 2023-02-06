@@ -1,0 +1,30 @@
+﻿<dxe:ListBoxEdit  xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:eThanhTra.Resource"
+             xmlns:Custom="http://schemas.devexpress.com/winfx/2008/xaml/core/internal" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:Custom1="http://schemas.devexpress.com/winfx/2008/xaml/editors/internal"
+                  x:Class="eThanhTra.Resource.hListBoxEdit"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="300" Template="{DynamicResource hListBoxEditTemplate}">
+    <dxe:ListBoxEdit.Resources>
+        <ControlTemplate x:Key="hListBoxEditTemplate" TargetType="{x:Type dxe:ListBoxEdit}">
+            <DockPanel LastChildFill="True">
+                <TextBlock DockPanel.Dock="Top" Height="20" 
+                           Visibility="{Binding _CaptionVisibility, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=dxe:ListBoxEdit}}"  
+                           Text="{Binding _CaptionText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=dxe:ListBoxEdit}}"/>
+                <ContentControl DockPanel.Dock="Bottom" x:Name="PART_Root" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Custom:AppearanceOptions.BorderThickness="{Binding (Custom:AppearanceOptions.BorderThickness), RelativeSource={RelativeSource TemplatedParent}}" Background="{TemplateBinding Background}" Custom:AppearanceOptions.CornerRadius="{Binding (Custom:AppearanceOptions.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" dxe:EditorAppearanceProperties.FocusedBorderBrush="{Binding (dxe:EditorAppearanceProperties.FocusedBorderBrush), RelativeSource={RelativeSource TemplatedParent}}" Focusable="False" dx:FocusHelper2.Focusable="False" Custom:AppearanceOptions.HasBorderThickness="{Binding (Custom:AppearanceOptions.HasBorderThickness), RelativeSource={RelativeSource TemplatedParent}}" Custom:AppearanceOptions.HasCornerRadius="{Binding (Custom:AppearanceOptions.HasCornerRadius), RelativeSource={RelativeSource TemplatedParent}}" HorizontalContentAlignment="Stretch" Custom1:ControlHelper.IsReadOnly="{TemplateBinding IsReadOnly}" dx:BlendHelper2.ThemeInfo="Core\Core\Editors\Themes\Generic\ListBoxEdit.xaml;49;6" Template="{TemplateBinding ActualBorderTemplate}" VerticalContentAlignment="Stretch">
+                    <Grid dx:BlendHelper2.ThemeInfo="Core\Core\Editors\Themes\Generic\ListBoxEdit.xaml;50;8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <dxe:ErrorControl x:Name="PART_ErrorPresenter" dx:BlendHelper2.ThemeInfo="Core\Core\Editors\Themes\Generic\ListBoxEdit.xaml;55;10"/>
+                        <dxe:EditorControl x:Name="PART_Content" Grid.Column="1" Focusable="False" dx:BlendHelper2.ThemeInfo="Core\Core\Editors\Themes\Generic\ListBoxEdit.xaml;56;10" Template="{TemplateBinding ActualEditorControlTemplate}"/>
+                    </Grid>
+                </ContentControl>
+            </DockPanel>
+        </ControlTemplate>
+    </dxe:ListBoxEdit.Resources>
+</dxe:ListBoxEdit>
