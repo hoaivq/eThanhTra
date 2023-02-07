@@ -1,6 +1,8 @@
 ﻿using DevExpress.Xpf.WindowsUI;
 using eThanhTra.Common;
 using eThanhTra.Resource;
+using eThanhTra.View;
+using eThanhTra.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,12 +24,14 @@ namespace eThanhTra
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : TSDWindow
+    public partial class MainWindow : TSDWindow, IMain
     {
         public MainWindow()
         {
             InitializeComponent();
             GlobalResource.MyDXTabControl = tabMain;
+            this.DataContext = new MainViewModel(this);
+            ((MainViewModel)this.DataContext).LoadDanhMucCommand.Execute(null);
         }
 
         private void mnuMain_PreviewItemClick(object sender, HamburgerMenuPreviewItemClickEventArgs e)

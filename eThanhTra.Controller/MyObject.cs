@@ -1,4 +1,5 @@
 ﻿using Common;
+using eThanhTra.Controller.DanhMuc;
 using eThanhTra.Controller.Login;
 using eThanhTra.Network;
 using System;
@@ -23,5 +24,20 @@ namespace eThanhTra.Controller
                 return _ObjLogin;
             }
         }
+
+        private static IDanhMucNetwork _ObjDanhMuc;
+
+        public static IDanhMucNetwork ObjDanhMuc
+        {
+            get
+            {
+                if (_ObjDanhMuc == null)
+                {
+                    _ObjDanhMuc = MyApp.Common.GetObjectController<IDanhMucNetwork, DanhMucOnline, DanhMucOffline>();
+                }
+                return _ObjDanhMuc;
+            }
+        }
+
     }
 }

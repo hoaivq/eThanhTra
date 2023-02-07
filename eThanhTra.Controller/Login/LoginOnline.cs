@@ -11,9 +11,9 @@ namespace eThanhTra.Controller.Login
 {
     public class LoginOnline : ILoginNetwork
     {
-        public async Task<MsgResult<SUser>> PostLogin(dynamic Input)
+        public async Task<MsgResult<SUser>> Login(dynamic Input)
         {
-            return await MyApp.Common.PostWebApiAsync<MsgResult<SUser>>(Input, "Login", "PostLogin");
+            return await MyApp.Common.PostWebApiAsync<MsgResult<SUser>>(Input, "Login", "Login");
         }
     }
 }

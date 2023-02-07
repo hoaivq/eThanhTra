@@ -1,4 +1,5 @@
 ﻿using Common;
+using Common.Core;
 using eThanhTra.Api.Controllers;
 using eThanhTra.Common;
 using eThanhTra.Controller;
@@ -6,6 +7,7 @@ using eThanhTra.Model;
 using eThanhTra.View;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Dynamic;
 using System.Linq;
 using System.Text;
@@ -31,7 +33,7 @@ namespace eThanhTra.ViewModel
                         return;
                     }
 
-                    SUser sUser = msgResult.Value;
+                    AppViewModel.MyUser = msgResult.Value;
                     View.ShowMainWindow();
                 }
                 catch (Exception ex)
@@ -46,7 +48,7 @@ namespace eThanhTra.ViewModel
             dynamic Input = new ExpandoObject();
             Input.UserName = _Model.UserName;
             Input.Password = _Model.Password;
-            return await MyObject.ObjLogin.PostLogin(Input);
+            return await MyObject.ObjLogin.Login(Input);
         }
     }
 }
