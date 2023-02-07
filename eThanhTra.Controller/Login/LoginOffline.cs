@@ -14,9 +14,9 @@ namespace eThanhTra.Controller.Login
     public class LoginOffline : ILoginNetwork
     {
         LoginController loginController = new LoginController();
-        public async Task<MsgResult<SUser>> PostLogin(dynamic Input)
+        public async Task<MsgResult<SUser>> Login(dynamic Input)
         {
-            return await loginController.PostLogin(Input);
+            return await loginController.Login(Input);
         }
     }
 }

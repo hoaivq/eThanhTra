@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\DanhMucController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
@@ -114,6 +115,10 @@
     <ProjectReference Include="..\eThanhTra.Model\eThanhTra.Model.csproj">
       <Project>{63B1CF8D-2D87-436D-AC4D-0FDEA8475029}</Project>
       <Name>eThanhTra.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eThanhTra.Network\eThanhTra.Network.csproj">
+      <Project>{09FC7017-526F-423E-A459-D483C08824C5}</Project>
+      <Name>eThanhTra.Network</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

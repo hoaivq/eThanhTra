@@ -51,7 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DanhMucViewModel.cs" />
+    <Compile Include="BaseViewModel.cs" />
     <Compile Include="LoginViewModel.cs" />
+    <Compile Include="MainViewModel.cs" />
     <Compile Include="QuanLyNhatKyViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThemMoiNhatKyViewModel.cs" />

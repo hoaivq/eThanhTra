@@ -16,11 +16,11 @@ namespace eThanhTra.Api.Controllers
     public class LoginController : ApiController
     {
         [HttpPost]
-        public async Task<MsgResult<SUser>> PostLogin([FromBody] dynamic Input)
+        public async Task<MsgResult<SUser>> Login([FromBody] dynamic Input)
         {
             try
             {
-                using (DataTable dt = await MyApp.Dao.GetTableAsync("EXEC PPostLogin @UserName, @Password", new SqlParameter("UserName", Input.UserName.ToString()), new SqlParameter("Password", Input.Password.ToString())))
+                using (DataTable dt = await MyApp.Dao.GetTableAsync("EXEC PLogin @UserName, @Password", new SqlParameter("UserName", Input.UserName.ToString()), new SqlParameter("Password", Input.Password.ToString())))
                 {
                     if (dt.Rows.Count == 0)
                     {
@@ -33,7 +33,7 @@ namespace eThanhTra.Api.Controllers
             }
             catch (Exception ex)
             {
-                return new MsgResult<SUser>("PostLogin", ex);
+                return new MsgResult<SUser>("Login", ex);
             }
         }
     }

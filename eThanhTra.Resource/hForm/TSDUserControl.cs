@@ -26,9 +26,10 @@ namespace eThanhTra.Resource
             }
         }
 
-        public void CloseView()
+        public async Task CloseView()
         {
             GlobalResource.MyDXTabControl.RemoveTabItem(this.Parent);
+            await Task.CompletedTask;
         }
 
         public void ShowMsg(string Message)

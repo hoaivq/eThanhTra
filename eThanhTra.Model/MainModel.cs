@@ -1,15 +1,13 @@
 ﻿using Common;
-using eThanhTra.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eThanhTra.Network
+namespace eThanhTra.Model
 {
-    public interface ILoginNetwork
+    public class MainModel : BaseModel
     {
-        Task<MsgResult<SUser>> Login(dynamic Input);
     }
 }

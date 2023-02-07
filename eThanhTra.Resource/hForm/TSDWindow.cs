@@ -32,7 +32,7 @@ namespace eThanhTra.Resource
             }
         }
 
-        public void CloseView() { this.Close(); }
+        public async Task CloseView() { this.Close(); await Task.CompletedTask; }
 
         public void ShowMsg(string Message)
         {

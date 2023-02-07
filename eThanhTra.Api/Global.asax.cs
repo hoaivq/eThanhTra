@@ -13,5 +13,6 @@ namespace eThanhTra.Api
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
+
     }
 }
