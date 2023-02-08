@@ -1,5 +1,6 @@
 ﻿using eThanhTra.Resource;
 using eThanhTra.View;
+using eThanhTra.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,11 +20,12 @@ namespace eThanhTra
     /// <summary>
     /// Interaction logic for frmThemMoiNhatKy.xaml
     /// </summary>
-    public partial class frmThemMoiNhatKy : TSDPopUp, IThemMoiNhatKy
+    public partial class popThemMoiNhatKy : TSDPopUp, IThemMoiNhatKy
     {
-        public frmThemMoiNhatKy()
+        public popThemMoiNhatKy()
         {
             InitializeComponent();
+            this.DataContext = new ThemMoiNhatKyViewModel(this);
         }
     }
 }

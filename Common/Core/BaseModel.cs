@@ -16,13 +16,5 @@ namespace Common
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
-
-        private DataTable _SCQT;
-        public DataTable SCQT
-        {
-            get { return _SCQT; }
-            set { _SCQT = value; }
-        }
-
     }
 }

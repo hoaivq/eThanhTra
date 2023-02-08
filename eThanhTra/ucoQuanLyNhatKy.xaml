@@ -59,7 +59,7 @@
         </dxg:GridControl>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
-            <dx:SimpleButton Content="Thêm mới cuộc Thanh tra" Glyph="{dx:DXImage Image=AddItem_16x16.png}" Margin="2,4,2,0" />
+            <dx:SimpleButton Content="Thêm mới cuộc Thanh tra" Glyph="{dx:DXImage Image=AddItem_16x16.png}" Margin="2,4,2,0" Command="{Binding ShowThemMoiNhatKyCommand}" />
             <dx:SimpleButton Content="Đóng" Glyph="{dx:DXImage Image=Close_16x16.png}" Margin="2,4,0,0" Command="{Binding CloseViewCommand}"/>
         </StackPanel>
     </Grid>

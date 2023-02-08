@@ -1,4 +1,5 @@
 ﻿using Common;
+using Common.Core;
 using eThanhTra.Controller;
 using eThanhTra.Model;
 using eThanhTra.View;
@@ -27,7 +28,7 @@ namespace eThanhTra.ViewModel
             {
                 try
                 {
-                    if (dsDanhMucChung != null) { return; }
+                    if (AppViewModel.DsDanhMucChung != null) { return; }
                     bgwLoadDanhMuc.RunWorkerAsync();
                     await Task.CompletedTask;
                 }
@@ -38,8 +39,6 @@ namespace eThanhTra.ViewModel
             });
         }
 
-        public static DataSet dsDanhMucChung { get; set; } = null;
-
         private async void BgwLoadDanhMuc_DoWork(object sender, DoWorkEventArgs e)
         {
             try
@@ -47,7 +46,7 @@ namespace eThanhTra.ViewModel
                 MsgResult<DataSet> msgResult = await MyObject.ObjDanhMuc.GetDanhMucChung();
                 if (msgResult.Success)
                 {
-                    dsDanhMucChung = msgResult.Value;
+                    AppViewModel.DsDanhMucChung = msgResult.Value;
                 }
             }
             catch (Exception ex)

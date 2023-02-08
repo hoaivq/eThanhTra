@@ -28,5 +28,12 @@ namespace eThanhTra
             InitializeComponent();
             this.DataContext = new QuanLyNhatKyViewModel(this);
         }
+
+        public async Task ShowThemMoiNhatKy()
+        {
+            popThemMoiNhatKy objF = new popThemMoiNhatKy();
+            objF.ShowDialog();
+            await Task.CompletedTask;
+        }
     }
 }

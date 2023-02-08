@@ -53,7 +53,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="hComboBoxEdit.xaml.cs">
+    <Compile Include="hControl\hComboBoxEdit.xaml.cs">
       <DependentUpon>hComboBoxEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="hControl\hSpinEdit.xaml.cs">
@@ -84,7 +84,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="Extensions.cs" />
-    <Page Include="hComboBoxEdit.xaml">
+    <Page Include="hControl\hComboBoxEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
