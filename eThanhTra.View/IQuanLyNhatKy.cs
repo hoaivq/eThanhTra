@@ -9,5 +9,6 @@ namespace eThanhTra.View
 {
     public interface IQuanLyNhatKy : IView
     {
+        Task ShowThemMoiNhatKy();
     }
 }
