@@ -12,20 +12,29 @@ namespace eThanhTra.Model
 {
     public class ThemMoiNhatKyModel : BaseModel
     {
-
+        private object _ListCQT = null;
         public object ListCQT
         {
             get
             {
-                return AppViewModel.DanhMucChung.ListCQT;
+                if(_ListCQT == null)
+                {
+                    _ListCQT = AppViewModel.DanhMucChung.ListCQT;
+                }
+                return _ListCQT;
             }
         }
 
+        private object _ListUser = null;
         public object ListUser
         {
             get
             {
-                return AppViewModel.DanhMucChung.ListUser;
+                if (_ListUser == null)
+                {
+                    _ListUser = AppViewModel.DanhMucChung.ListUser;
+                }
+                return _ListUser;
             }
         }
 

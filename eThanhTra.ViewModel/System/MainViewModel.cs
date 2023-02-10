@@ -47,7 +47,6 @@ namespace eThanhTra.ViewModel.System
                 MsgResult<DanhMucChung> msgResult = await MyObject.ObjDanhMuc.GetDanhMucChung();
                 if (msgResult.Success)
                 {
-                    
                     AppViewModel.DanhMucChung = msgResult.Value;
                 }
             }
