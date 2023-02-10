@@ -1,5 +1,7 @@
-﻿using Common;
-using DevExpress.Xpf.Core;
+﻿using DevExpress.Xpf.Core;
+using Common;
+using Common.Class;
+using Common.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;

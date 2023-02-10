@@ -72,6 +72,6 @@ namespace Common.Class
             get { return ConfigurationManager.AppSettings["TimeOut"].ToInt(); }
         }
 
-        public bool IsOnline { get { return true; } }
+        public bool IsOnline { get { return false; } }
     }
 }

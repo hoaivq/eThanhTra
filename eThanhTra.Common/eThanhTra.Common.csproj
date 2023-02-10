@@ -31,6 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Common\bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,21 +46,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class\AppDao.cs" />
-    <Compile Include="Class\AppCommon.cs" />
-    <Compile Include="Class\AppExtensions.cs" />
-    <Compile Include="Class\AppLog.cs" />
-    <Compile Include="Class\AppSetting.cs" />
+    <Compile Include="Core\AppViewModel.cs" />
+    <Compile Include="Core\BaseModel.cs" />
+    <Compile Include="Core\CoreViewModel.cs" />
+    <Compile Include="Core\IView.cs" />
+    <Compile Include="Core\RelayCommand.cs" />
     <Compile Include="MyApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Core\" />
+    <Folder Include="Class\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{50744fe9-2e5c-4b1d-8b85-8909cbd6bde5}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eThanhTra.Data\eThanhTra.Data.csproj">
+      <Project>{ED7CAB70-CF02-4A2D-9855-9A8D21D9D4ED}</Project>
+      <Name>eThanhTra.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,5 +1,5 @@
 ﻿using DevExpress.Xpf.WindowsUI;
-using eThanhTra.Common;
+using Common;
 using eThanhTra.Resource;
 using eThanhTra.View;
 using eThanhTra.ViewModel;
@@ -18,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using eThanhTra.ViewModel.System;
 
 namespace eThanhTra
 {

@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eThanhTra", "eThanhTra\eTha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eThanhTra.Api", "eThanhTra.Api\eThanhTra.Api.csproj", "{D04A6B2A-2A13-4FDA-AC1E-7982D9048402}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eThanhTra.Common", "eThanhTra.Common\eThanhTra.Common.csproj", "{D6D68749-1C28-4DCC-AAE1-0873E15C59D4}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eThanhTra.View", "eThanhTra.View\eThanhTra.View.csproj", "{A0A5B303-13AF-4067-845D-24AC0DF5E9D9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eThanhTra.ViewModel", "eThanhTra.ViewModel\eThanhTra.ViewModel.csproj", "{8408F61D-FC69-4C74-B221-54B33EB0E6D2}"
@@ -39,10 +37,6 @@ Global
 		{D04A6B2A-2A13-4FDA-AC1E-7982D9048402}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D04A6B2A-2A13-4FDA-AC1E-7982D9048402}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D04A6B2A-2A13-4FDA-AC1E-7982D9048402}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D6D68749-1C28-4DCC-AAE1-0873E15C59D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D6D68749-1C28-4DCC-AAE1-0873E15C59D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D6D68749-1C28-4DCC-AAE1-0873E15C59D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D6D68749-1C28-4DCC-AAE1-0873E15C59D4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A0A5B303-13AF-4067-845D-24AC0DF5E9D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A0A5B303-13AF-4067-845D-24AC0DF5E9D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0A5B303-13AF-4067-845D-24AC0DF5E9D9}.Release|Any CPU.ActiveCfg = Release|Any CPU

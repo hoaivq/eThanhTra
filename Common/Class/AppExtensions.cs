@@ -37,6 +37,30 @@ namespace Common
             return JsonConvert.DeserializeObject<T>(inputStr);
         }
 
+        public static T ToObject<T>(this DataRow dr)
+        {
+            Type temp = typeof(T);
+            T obj = Activator.CreateInstance<T>();
+            foreach (DataColumn column in dr.Table.Columns)
+            {
+                foreach (PropertyInfo pro in temp.GetProperties())
+                {
+                    if (pro.Name == column.ColumnName)
+                    {
+                        if (dr[column.ColumnName] == DBNull.Value)
+                        {
+                            pro.SetValue(obj, null, null);
+                        }
+                        else
+                        {
+                            pro.SetValue(obj, dr[column.ColumnName], null);
+                        }
+                    }
+                }
+            }
+            return obj;
+        }
+
         public static string GetHeader(this HttpRequestMessage httpRequestMessage, string headerName)
         {
             try
@@ -49,24 +73,6 @@ namespace Common
             }
 
         }
-
-        public static T ToObject<T>(this DataRow dr)
-        {
-            Type temp = typeof(T);
-            T obj = Activator.CreateInstance<T>();
-            foreach (DataColumn column in dr.Table.Columns)
-            {
-                foreach (PropertyInfo pro in temp.GetProperties())
-                {
-                    if (pro.Name == column.ColumnName)
-                        pro.SetValue(obj, dr[column.ColumnName], null);
-                    else
-                        continue;
-                }
-            }
-            return obj;
-        }
-
         public static List<Exception> GetExceptions(this AggregateException exception, ref string ErrMsg)
         {
             List<Exception> lstException = new List<Exception>();
@@ -77,7 +83,7 @@ namespace Common
                 return lstException;
             }
 
-            if(exception.InnerExceptions.Count == 0)
+            if (exception.InnerExceptions.Count == 0)
             {
                 ErrMsg = exception.Message;
                 lstException.Add(new Exception(exception.Message));
@@ -93,5 +99,7 @@ namespace Common
             ErrMsg = sbMsg.ToString();
             return lstException;
         }
+
+        
     }
 }

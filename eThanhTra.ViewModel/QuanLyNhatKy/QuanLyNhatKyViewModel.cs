@@ -1,4 +1,4 @@
-﻿using Common;
+﻿using Common.Core;
 using eThanhTra.Model;
 using eThanhTra.View;
 using System;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace eThanhTra.ViewModel
+namespace eThanhTra.ViewModel.QuanLyNhatKy
 {
     public class QuanLyNhatKyViewModel : BaseViewModel<IQuanLyNhatKy, QuanLyNhatKyModel>
     {

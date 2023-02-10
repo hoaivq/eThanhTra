@@ -1,8 +1,8 @@
-﻿using Common;
+﻿using eThanhTra.Api.Controllers;
+using Common;
 using Common.Core;
-using eThanhTra.Api.Controllers;
-using eThanhTra.Common;
 using eThanhTra.Controller;
+using eThanhTra.Data;
 using eThanhTra.Model;
 using eThanhTra.View;
 using System;
@@ -14,10 +14,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace eThanhTra.ViewModel
+namespace eThanhTra.ViewModel.System
 {
     public class LoginViewModel : BaseViewModel<ILogin, LoginModel>
     {
+        
         public ICommand LoginCommand { get; set; }
         public LoginViewModel(ILogin View) : base(View)
         {

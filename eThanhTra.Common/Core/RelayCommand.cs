@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Common.Core
+namespace eThanhTra.Common.Core
 {
     public class RelayCommand<T> : ICommand
     {

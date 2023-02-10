@@ -50,13 +50,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DanhMucViewModel.cs" />
+    <Compile Include="System\DanhMucViewModel.cs" />
     <Compile Include="BaseViewModel.cs" />
-    <Compile Include="LoginViewModel.cs" />
-    <Compile Include="MainViewModel.cs" />
-    <Compile Include="QuanLyNhatKyViewModel.cs" />
+    <Compile Include="System\LoginViewModel.cs" />
+    <Compile Include="System\MainViewModel.cs" />
+    <Compile Include="QuanLyNhatKy\QuanLyNhatKyViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ThemMoiNhatKyViewModel.cs" />
+    <Compile Include="QuanLyNhatKy\ThemMoiNhatKyViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
@@ -67,13 +67,13 @@
       <Project>{D04A6B2A-2A13-4FDA-AC1E-7982D9048402}</Project>
       <Name>eThanhTra.Api</Name>
     </ProjectReference>
-    <ProjectReference Include="..\eThanhTra.Common\eThanhTra.Common.csproj">
-      <Project>{D6D68749-1C28-4DCC-AAE1-0873E15C59D4}</Project>
-      <Name>eThanhTra.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\eThanhTra.Controller\eThanhTra.Controller.csproj">
       <Project>{A049813A-2135-4DB6-BB5B-F20DDB961A9D}</Project>
       <Name>eThanhTra.Controller</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eThanhTra.Data\eThanhTra.Data.csproj">
+      <Project>{ED7CAB70-CF02-4A2D-9855-9A8D21D9D4ED}</Project>
+      <Name>eThanhTra.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\eThanhTra.Model\eThanhTra.Model.csproj">
       <Project>{63B1CF8D-2D87-436D-AC4D-0FDEA8475029}</Project>

@@ -1,6 +1,7 @@
 ﻿using eThanhTra.Resource;
 using eThanhTra.View;
 using eThanhTra.ViewModel;
+using eThanhTra.ViewModel.System;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -19,14 +19,14 @@
 
         <dx:SimpleButton DockPanel.Dock="Bottom" Height="30" Content="Lưu" Command="{Binding SaveCommand}"></dx:SimpleButton>
         
-        <rs:hListBoxEdit SelectedItem="{Binding _Model.ListUserSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Bottom" _CaptionText="Danh sách thành viên đoàn" ItemsSource="{Binding _Model.ListUser}" DisplayMember="HoVaTen" ValueMember="UserName"  ScrollViewer.VerticalScrollBarVisibility="Auto">
-            <rs:hListBoxEdit.StyleSettings >
+        <rs:hListBoxEdit DockPanel.Dock="Bottom" _CaptionText="Danh sách thành viên đoàn" ItemsSource="{Binding _Model.ListUser}" DisplayMember="HoVaTen" ValueMember="UserName"  ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <!--<rs:hListBoxEdit.StyleSettings >
                 <dxe:CheckedListBoxEditStyleSettings ShowSelectAllItem="True" SelectAllItemText="Tất cả trạng thái" />
-            </rs:hListBoxEdit.StyleSettings>
+            </rs:hListBoxEdit.StyleSettings>-->
             
             <rs:hListBoxEdit.ItemTemplate>
                 <DataTemplate>
-                    <CheckBox Content="{Binding HoVaTen}" IsChecked="{Binding IsSelected, Mode=TwoWay}" />
+                    <CheckBox Content="{Binding HoVaTen}" IsChecked="{Binding IsChecked, Mode=TwoWay}" />
                 </DataTemplate>
             </rs:hListBoxEdit.ItemTemplate>
         </rs:hListBoxEdit>
