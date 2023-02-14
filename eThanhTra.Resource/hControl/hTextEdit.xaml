@@ -19,13 +19,15 @@
                            Visibility="{Binding _CaptionVisibility, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=dxe:TextEdit}}"  
                            Text="{Binding _CaptionText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=dxe:TextEdit}}"/>
                 <ContentControl DockPanel.Dock="Bottom" x:Name="PART_Root" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Custom:AppearanceOptions.BorderThickness="{Binding (Custom:AppearanceOptions.BorderThickness), RelativeSource={RelativeSource TemplatedParent}}" Background="{TemplateBinding Background}" Custom:AppearanceOptions.CornerRadius="{Binding (Custom:AppearanceOptions.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" dxe:EditorAppearanceProperties.FocusedBorderBrush="{Binding (dxe:EditorAppearanceProperties.FocusedBorderBrush), RelativeSource={RelativeSource TemplatedParent}}" Focusable="False" dx:FocusHelper2.Focusable="False" Custom:AppearanceOptions.HasBorderThickness="{Binding (Custom:AppearanceOptions.HasBorderThickness), RelativeSource={RelativeSource TemplatedParent}}" Custom:AppearanceOptions.HasCornerRadius="{Binding (Custom:AppearanceOptions.HasCornerRadius), RelativeSource={RelativeSource TemplatedParent}}" HorizontalContentAlignment="Stretch" Custom1:ControlHelper.IsReadOnly="{TemplateBinding IsReadOnly}" dxe:EditorAppearanceProperties.ReadOnlyBorderBrush="{Binding (dxe:EditorAppearanceProperties.ReadOnlyBorderBrush), RelativeSource={RelativeSource TemplatedParent}}" dxe:EditorAppearanceProperties.ReadOnlyBackground="{Binding (dxe:EditorAppearanceProperties.ReadOnlyBackground), RelativeSource={RelativeSource TemplatedParent}}" Custom1:ControlHelper.ShowFocusedState="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource TemplatedParent}}" dx:BlendHelper2.ThemeInfo="Core\Core\Editors\Themes\Generic\TextEdit.xaml;65;6" Template="{TemplateBinding ActualBorderTemplate}" VerticalContentAlignment="Stretch">
-                    <Grid DockPanel.Dock="Bottom" SnapsToDevicePixels="True" dx:BlendHelper2.ThemeInfo="Core\Core\Editors\Themes\Generic\TextEdit.xaml;66;8">
+                    <Grid DockPanel.Dock="Bottom" SnapsToDevicePixels="True" dx:BlendHelper2.ThemeInfo="Core\Core\Editors\Themes\Generic\TextEdit.xaml;66;8"
+>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <dxe:ErrorControl x:Name="PART_ErrorPresenter" dx:BlendHelper2.ThemeInfo="Core\Core\Editors\Themes\Generic\TextEdit.xaml;71;10"/>
-                        <dxe:EditorControl x:Name="PART_Content" Grid.Column="1" Focusable="False" dx:BlendHelper2.ThemeInfo="Core\Core\Editors\Themes\Generic\TextEdit.xaml;72;10" Template="{TemplateBinding ActualEditorControlTemplate}"/>
+                        <dxe:EditorControl x:Name="PART_Content" Grid.Column="1" Focusable="False" dx:BlendHelper2.ThemeInfo="Core\Core\Editors\Themes\Generic\TextEdit.xaml;72;10" Template="{TemplateBinding ActualEditorControlTemplate}"
+/>
                     </Grid>
                 </ContentControl>
             </DockPanel>

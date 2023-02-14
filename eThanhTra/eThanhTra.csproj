@@ -83,6 +83,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="QuanLyNhatKy\popBaoCaoCongViec.xaml.cs">
+      <DependentUpon>popBaoCaoCongViec.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyNhatKy\popGiaHanThanhTra.xaml.cs">
+      <DependentUpon>popGiaHanThanhTra.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyNhatKy\popKhoKhanVuongMac.xaml.cs">
+      <DependentUpon>popKhoKhanVuongMac.xaml</DependentUpon>
+    </Compile>
     <Compile Include="System\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -95,6 +104,18 @@
     <Compile Include="QuanLyNhatKy\ucoQuanLyNhatKy.xaml.cs">
       <DependentUpon>ucoQuanLyNhatKy.xaml</DependentUpon>
     </Compile>
+    <Page Include="QuanLyNhatKy\popBaoCaoCongViec.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QuanLyNhatKy\popGiaHanThanhTra.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QuanLyNhatKy\popKhoKhanVuongMac.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="System\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -157,26 +178,6 @@
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{50744fe9-2e5c-4b1d-8b85-8909cbd6bde5}</Project>
       <Name>Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\eThanhTra.Api\eThanhTra.Api.csproj">
-      <Project>{d04a6b2a-2a13-4fda-ac1e-7982d9048402}</Project>
-      <Name>eThanhTra.Api</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\eThanhTra.Controller\eThanhTra.Controller.csproj">
-      <Project>{a049813a-2135-4db6-bb5b-f20ddb961a9d}</Project>
-      <Name>eThanhTra.Controller</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\eThanhTra.Data\eThanhTra.Data.csproj">
-      <Project>{ed7cab70-cf02-4a2d-9855-9a8d21d9d4ed}</Project>
-      <Name>eThanhTra.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\eThanhTra.Model\eThanhTra.Model.csproj">
-      <Project>{63b1cf8d-2d87-436d-ac4d-0fdea8475029}</Project>
-      <Name>eThanhTra.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\eThanhTra.Network\eThanhTra.Network.csproj">
-      <Project>{09fc7017-526f-423e-a459-d483c08824c5}</Project>
-      <Name>eThanhTra.Network</Name>
     </ProjectReference>
     <ProjectReference Include="..\eThanhTra.Resource\eThanhTra.Resource.csproj">
       <Project>{dd8b1c46-0a3e-420c-9c96-8df36628bd80}</Project>

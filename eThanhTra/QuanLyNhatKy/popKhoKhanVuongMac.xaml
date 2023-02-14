@@ -11,7 +11,7 @@
     <Grid>
         <StackPanel Orientation="Vertical">
 
-            <rs:hTextEdit  Margin="10 20 10 10"
+            <rs:hTextEdit  Margin="10 20 5 0"
                 _CaptionText="Nội dung khó khăn vướng mắc" Height="50"
                            AcceptsReturn="True"
                            TextWrapping="Wrap"/>
