@@ -1,5 +1,6 @@
 ﻿using Common;
 using Common.Core;
+using eThanhTra.Data;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,17 +12,37 @@ namespace eThanhTra.Model
 {
     public class ThemMoiNhatKyModel : BaseModel
     {
-
-        public DataTable ListCQT
+        private object _ListCQT = null;
+        public object ListCQT
         {
-            get { return AppViewModel.DsDanhMucChung.Tables["PGetCQTByMaCQT"]; }
+            get
+            {
+                if(_ListCQT == null)
+                {
+                    _ListCQT = AppViewModel.DanhMucChung.ListCQT;
+                }
+                return _ListCQT;
+            }
         }
 
-        public DataTable ListUser
+        private object _ListUser = null;
+        public object ListUser
         {
-            get { return AppViewModel.DsDanhMucChung.Tables["PGetUserByMaCQT"]; }
+            get
+            {
+                if (_ListUser == null)
+                {
+                    _ListUser = AppViewModel.DanhMucChung.ListUser;
+                }
+                return _ListUser;
+            }
         }
 
         public object ListUserSelected { get; set; }
+    }
+
+    public class A : PGetUserByMaCQT_Result
+    {
+        public bool IsChecked { get; set; }
     }
 }

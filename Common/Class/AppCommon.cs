@@ -100,6 +100,7 @@ namespace Common.Class
             return cipherText;
         }
 
+
         public string GetWebApi(dynamic requestBody, params string[] MethodURL)
         {
             HttpWebRequest tRequest = null;

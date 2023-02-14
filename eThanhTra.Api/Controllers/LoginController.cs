@@ -1,5 +1,7 @@
 ﻿using Common;
+using eThanhTra.Data;
 using eThanhTra.Model;
+using eThanhTra.Network;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -13,14 +15,14 @@ using System.Web.Http;
 
 namespace eThanhTra.Api.Controllers
 {
-    public class LoginController : ApiController
+    public class LoginController : ApiController, ILoginNetwork
     {
         [HttpPost]
         public async Task<MsgResult<SUser>> Login([FromBody] dynamic Input)
         {
             try
             {
-                using (DataTable dt = await MyApp.Dao.GetTableAsync("EXEC PLogin @UserName, @Password", new SqlParameter("UserName", Input.UserName.ToString()), new SqlParameter("Password", Input.Password.ToString())))
+                using (DataTable dt = await MyApp.Dao.GetSPAsync("PLogin", new SqlParameter("UserName", Input.UserName.ToString()), new SqlParameter("Password", Input.Password.ToString())))
                 {
                     if (dt.Rows.Count == 0)
                     {

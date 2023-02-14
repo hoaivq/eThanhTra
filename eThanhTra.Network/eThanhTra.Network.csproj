@@ -51,6 +51,10 @@
       <Project>{50744fe9-2e5c-4b1d-8b85-8909cbd6bde5}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\eThanhTra.Data\eThanhTra.Data.csproj">
+      <Project>{ED7CAB70-CF02-4A2D-9855-9A8D21D9D4ED}</Project>
+      <Name>eThanhTra.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\eThanhTra.Model\eThanhTra.Model.csproj">
       <Project>{63B1CF8D-2D87-436D-AC4D-0FDEA8475029}</Project>
       <Name>eThanhTra.Model</Name>

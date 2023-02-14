@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>eThanhTra.Data</RootNamespace>
     <AssemblyName>eThanhTra.Data</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -50,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Struct.cs" />
     <Compile Include="eThanhTraModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -64,6 +66,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>eThanhTraModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="PGetCQTByMaCQT_Result.cs">
+      <DependentUpon>eThanhTraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PGetUserByMaCQT_Result.cs">
       <DependentUpon>eThanhTraModel.tt</DependentUpon>

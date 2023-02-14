@@ -1,4 +1,5 @@
 ﻿using Common;
+using eThanhTra.Data;
 using eThanhTra.Model;
 using System;
 using System.Collections.Generic;

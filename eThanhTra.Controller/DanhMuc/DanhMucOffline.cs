@@ -1,5 +1,6 @@
-﻿using Common;
-using eThanhTra.Api.Controllers;
+﻿using eThanhTra.Api.Controllers;
+using Common;
+using eThanhTra.Data;
 using eThanhTra.Network;
 using System;
 using System.Collections.Generic;
@@ -14,12 +15,12 @@ namespace eThanhTra.Controller.DanhMuc
     {
         DanhMucController controller = new DanhMucController();
 
-        public async Task<MsgResult<DataSet>> GetDanhMucChung()
+        public async Task<MsgResult<DanhMucChung>> GetDanhMucChung()
         {
             return await controller.GetDanhMucChung();
         }
 
-        public async Task<MsgResult<DataTable>> GetCQTByMaCQT()
+        public async Task<MsgResult<List<PGetCQTByMaCQT_Result>>> GetCQTByMaCQT()
         {
             return await controller.GetCQTByMaCQT();
         }
@@ -29,7 +30,7 @@ namespace eThanhTra.Controller.DanhMuc
             return await controller.GetUserByInfo(Info);
         }
 
-        public async Task<MsgResult<DataTable>> GetUserByMaCQT()
+        public async Task<MsgResult<List<PGetUserByMaCQT_Result>>> GetUserByMaCQT()
         {
             return await controller.GetUserByMaCQT();
         }

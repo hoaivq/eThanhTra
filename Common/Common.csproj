@@ -53,17 +53,22 @@
     <Compile Include="Class\AppExtensions.cs" />
     <Compile Include="Class\AppLog.cs" />
     <Compile Include="Core\AppViewModel.cs" />
-    <Compile Include="Core\SUser.cs" />
+    <Compile Include="Core\RelayCommand.cs" />
     <Compile Include="MyApp.cs" />
     <Compile Include="Class\AppSetting.cs" />
     <Compile Include="Core\BaseModel.cs" />
     <Compile Include="Core\CoreViewModel.cs" />
     <Compile Include="Core\IView.cs" />
-    <Compile Include="Core\RelayCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\eThanhTra.Data\eThanhTra.Data.csproj">
+      <Project>{ED7CAB70-CF02-4A2D-9855-9A8D21D9D4ED}</Project>
+      <Name>eThanhTra.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

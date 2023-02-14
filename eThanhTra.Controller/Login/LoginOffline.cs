@@ -1,5 +1,6 @@
 ﻿using Common;
 using eThanhTra.Api.Controllers;
+using eThanhTra.Data;
 using eThanhTra.Model;
 using eThanhTra.Network;
 using System;

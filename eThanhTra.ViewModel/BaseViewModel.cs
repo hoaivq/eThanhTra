@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Common.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Common
+namespace eThanhTra.ViewModel
 {
     public class BaseViewModel<T, TModel> : CoreViewModel where T : IView where TModel : BaseModel, new()
     {
