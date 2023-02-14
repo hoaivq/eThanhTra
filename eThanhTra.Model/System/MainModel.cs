@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eThanhTra.View
+namespace eThanhTra.Model.System
 {
-    public interface ILogin : IView
+    public class MainModel : BaseModel
     {
-        void ShowMainWindow();
     }
 }

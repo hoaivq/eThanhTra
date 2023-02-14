@@ -42,10 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ILogin.cs" />
-    <Compile Include="IMain.cs" />
-    <Compile Include="IQuanLyNhatKy.cs" />
-    <Compile Include="IThemMoiNhatKy.cs" />
+    <Compile Include="System\ILogin.cs" />
+    <Compile Include="System\IMain.cs" />
+    <Compile Include="NhatKy\IQuanLyNhatKy.cs" />
+    <Compile Include="NhatKy\IThemMoiNhatKy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

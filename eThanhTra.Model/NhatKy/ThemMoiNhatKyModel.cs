@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eThanhTra.Model
+namespace eThanhTra.Model.NhatKy
 {
     public class ThemMoiNhatKyModel : BaseModel
     {
@@ -17,13 +17,19 @@ namespace eThanhTra.Model
         {
             get
             {
-                if(_ListCQT == null)
+                if (_ListCQT == null)
                 {
                     _ListCQT = AppViewModel.DanhMucChung.ListCQT;
                 }
                 return _ListCQT;
             }
+            set
+            {
+                _ListCQT = value;
+                OnPropertyChanged();
+            }
         }
+
 
         private object _ListUser = null;
         public object ListUser
@@ -36,13 +42,24 @@ namespace eThanhTra.Model
                 }
                 return _ListUser;
             }
+            set
+            {
+                _ListUser = value;
+                OnPropertyChanged();
+            }
         }
 
-        public object ListUserSelected { get; set; }
-    }
 
-    public class A : PGetUserByMaCQT_Result
-    {
-        public bool IsChecked { get; set; }
+        private DThanhTra _ObjThanhTra;
+        public DThanhTra ObjThanhTra
+        {
+            get { return _ObjThanhTra; }
+            set
+            {
+                _ObjThanhTra = value;
+                OnPropertyChanged();
+            }
+        }
+
     }
 }

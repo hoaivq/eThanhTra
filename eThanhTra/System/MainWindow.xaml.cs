@@ -19,6 +19,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using eThanhTra.ViewModel.System;
+using eThanhTra.View.System;
 
 namespace eThanhTra
 {
@@ -30,6 +31,7 @@ namespace eThanhTra
         public MainWindow()
         {
             InitializeComponent();
+            GlobalResource.MainWindow = this;
             GlobalResource.MyDXTabControl = tabMain;
             this.DataContext = new MainViewModel(this);
             ((MainViewModel)this.DataContext).LoadDanhMucCommand.Execute(null);
@@ -40,7 +42,7 @@ namespace eThanhTra
             if (e.HamburgerItem is HamburgerMenuNavigationButton)
             {
                 HamburgerMenuNavigationButton menu = (HamburgerMenuNavigationButton)e.HamburgerItem;
-                tabMain.ShowTabPage(menu);
+                tabMain.ShowTabPage(menu, this);
             }
         }
     }

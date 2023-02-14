@@ -5,9 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eThanhTra.View
+namespace eThanhTra.View.System
 {
-    public interface IThemMoiNhatKy : IView
+    public interface ILogin : IView
     {
+        void ShowMainWindow();
     }
 }

@@ -42,8 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IDanhMucNetwork.cs" />
-    <Compile Include="ILoginNetwork.cs" />
+    <Compile Include="System\IDanhMucNetwork.cs" />
+    <Compile Include="NhatKy\INhatKyNetwork.cs" />
+    <Compile Include="System\ILoginNetwork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

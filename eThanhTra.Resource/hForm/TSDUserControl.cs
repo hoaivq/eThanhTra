@@ -5,12 +5,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace eThanhTra.Resource
 {
     public class TSDUserControl : UserControl, IView
     {
+        public Window Owner { get; set; }
+        public TSDUserControl(Window _Owner)
+        {
+            Owner = _Owner;
+            this.Loaded += TSDUserControl_Loaded;
+        }
         public TSDUserControl()
         {
             this.Loaded += TSDUserControl_Loaded;

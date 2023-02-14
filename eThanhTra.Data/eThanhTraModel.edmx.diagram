@@ -8,6 +8,11 @@
         <EntityTypeShape EntityType="eThanhTraModel.SCQT" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="eThanhTraModel.SUser" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="eThanhTraModel.SUserCQT" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="eThanhTraModel.DThanhTra" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="eThanhTraModel.DThanhTraCongViec" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="eThanhTraModel.DThanhTraThanhVien" Width="1.5" PointX="4.75" PointY="4.75" />
+        <EntityTypeShape EntityType="eThanhTraModel.DThanhTraThanhVienCongViec" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="eThanhTraModel.DThanhTraThanhVienCongViecChiTiet" Width="1.5" PointX="6.75" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -42,11 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LoginModel.cs" />
-    <Compile Include="MainModel.cs" />
-    <Compile Include="QuanLyNhatKyModel.cs" />
+    <Compile Include="System\LoginModel.cs" />
+    <Compile Include="System\MainModel.cs" />
+    <Compile Include="NhatKy\QuanLyNhatKyModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ThemMoiNhatKyModel.cs" />
+    <Compile Include="NhatKy\ThemMoiNhatKyModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

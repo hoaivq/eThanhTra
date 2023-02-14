@@ -92,5 +92,30 @@ namespace eThanhTra.Resource
             DependencyProperty.Register("ItemsSource", typeof(object), typeof(hComboBoxEdit), new PropertyMetadata(null));
 
 
+
+
+        public object SelectedItem
+        {
+            get { return (object)GetValue(SelectedItemProperty); }
+            set { SetValue(SelectedItemProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for SelectedItem.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SelectedItemProperty =
+            DependencyProperty.Register("SelectedItem", typeof(object), typeof(hComboBoxEdit), new PropertyMetadata(null));
+
+
+
+        public object EditValue
+        {
+            get { return (object)GetValue(EditValueProperty); }
+            set { SetValue(EditValueProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for EditValue.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty EditValueProperty =
+            DependencyProperty.Register("EditValue", typeof(object), typeof(hComboBoxEdit), new PropertyMetadata(null));
+
+
     }
 }

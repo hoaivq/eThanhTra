@@ -51,6 +51,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DThanhTra.cs">
+      <DependentUpon>eThanhTraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DThanhTraCongViec.cs">
+      <DependentUpon>eThanhTraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DThanhTraThanhVien.cs">
+      <DependentUpon>eThanhTraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DThanhTraThanhVienCongViec.cs">
+      <DependentUpon>eThanhTraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DThanhTraThanhVienCongViecChiTiet.cs">
+      <DependentUpon>eThanhTraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="eThanhTraDB.cs" />
     <Compile Include="Struct.cs" />
     <Compile Include="eThanhTraModel.Context.cs">
       <AutoGen>True</AutoGen>

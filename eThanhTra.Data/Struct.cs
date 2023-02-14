@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,10 +31,36 @@ namespace eThanhTra.Data
             }
             return await database.SqlQuery<T>(SPName + sbParam.ToString(), parameters).ToListAsync();
         }
+
+        public static T GetData<T>(this T Destination, T Source)
+        {
+            foreach (PropertyInfo p in Source.GetType().GetProperties())
+            {
+                Destination.GetType().GetProperty(p.Name).SetValue(Destination, p.GetValue(Source));
+            }
+            return Destination;
+        }
     }
 
     public class ExtProp
     {
         public bool IsChecked { get; set; }
+    }
+
+    public class BaseDto : INotifyPropertyChanged
+    {
+        public void UpdateChange()
+        {
+            foreach (PropertyInfo pi in this.GetType().GetProperties())
+            {
+                OnPropertyChanged(pi.Name);
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged([CallerMemberName] string propName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+        }
     }
 }
