@@ -1,13 +1,12 @@
-﻿using Common.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eThanhTra.Model
+namespace eThanhTra.Common.Core
 {
-    public class MainModel : BaseModel
+    public class CoreViewModel : global::Common.Core.CoreViewModel
     {
     }
 }

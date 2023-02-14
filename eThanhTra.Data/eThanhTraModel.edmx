@@ -36,6 +36,9 @@
           <Property Name="MaCQT" Type="varchar" MaxLength="5" />
           <Property Name="NgayHieuLuc" Type="datetime" />
         </EntityType>
+        <Function Name="PGetCQTByMaCQT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaCQTCha" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="PGetUserByMaCQT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MaCQT" Type="varchar" Mode="In" />
         </Function>
@@ -84,7 +87,10 @@
           <EntitySet Name="SUsers" EntityType="Self.SUser" />
           <EntitySet Name="SUserCQTs" EntityType="Self.SUserCQT" />
           <FunctionImport Name="PGetUserByMaCQT" ReturnType="Collection(eThanhTraModel.PGetUserByMaCQT_Result)">
-            <Parameter Name="MaCQT" Mode="In" Type="String" />
+          <Parameter Name="MaCQT" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PGetCQTByMaCQT" ReturnType="Collection(eThanhTraModel.PGetCQTByMaCQT_Result)">
+            <Parameter Name="MaCQTCha" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="PGetUserByMaCQT_Result">
@@ -94,6 +100,12 @@
           <Property Type="String" Name="Email" Nullable="true" MaxLength="200" />
           <Property Type="String" Name="SoDienThoai" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="MaCQT" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="MaCha" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Ten" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="Loai" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PGetCQTByMaCQT_Result">
+          <Property Type="String" Name="Ma" Nullable="false" MaxLength="5" />
           <Property Type="String" Name="MaCha" Nullable="true" MaxLength="5" />
           <Property Type="String" Name="Ten" Nullable="true" MaxLength="500" />
           <Property Type="Int32" Name="Loai" Nullable="true" />
@@ -147,6 +159,16 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
                 <ScalarProperty Name="MaCQT" ColumnName="MaCQT" />
+                <ScalarProperty Name="MaCha" ColumnName="MaCha" />
+                <ScalarProperty Name="Ten" ColumnName="Ten" />
+                <ScalarProperty Name="Loai" ColumnName="Loai" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PGetCQTByMaCQT" FunctionName="eThanhTraModel.Store.PGetCQTByMaCQT">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eThanhTraModel.PGetCQTByMaCQT_Result">
+                <ScalarProperty Name="Ma" ColumnName="Ma" />
                 <ScalarProperty Name="MaCha" ColumnName="MaCha" />
                 <ScalarProperty Name="Ten" ColumnName="Ten" />
                 <ScalarProperty Name="Loai" ColumnName="Loai" />

@@ -1,6 +1,7 @@
 ﻿using Common;
 using Common.Core;
 using eThanhTra.Controller;
+using eThanhTra.Data;
 using eThanhTra.Model;
 using eThanhTra.View;
 using System;
@@ -12,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace eThanhTra.ViewModel
+namespace eThanhTra.ViewModel.System
 {
     public class MainViewModel : BaseViewModel<IMain, MainModel>
     {
@@ -28,7 +29,7 @@ namespace eThanhTra.ViewModel
             {
                 try
                 {
-                    if (AppViewModel.DsDanhMucChung != null) { return; }
+                    if (AppViewModel.DanhMucChung != null) { return; }
                     bgwLoadDanhMuc.RunWorkerAsync();
                     await Task.CompletedTask;
                 }
@@ -43,10 +44,10 @@ namespace eThanhTra.ViewModel
         {
             try
             {
-                MsgResult<DataSet> msgResult = await MyObject.ObjDanhMuc.GetDanhMucChung();
+                MsgResult<DanhMucChung> msgResult = await MyObject.ObjDanhMuc.GetDanhMucChung();
                 if (msgResult.Success)
                 {
-                    AppViewModel.DsDanhMucChung = msgResult.Value;
+                    AppViewModel.DanhMucChung = msgResult.Value;
                 }
             }
             catch (Exception ex)

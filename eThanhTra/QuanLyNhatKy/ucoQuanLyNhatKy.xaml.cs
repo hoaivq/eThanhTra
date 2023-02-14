@@ -1,7 +1,7 @@
 ﻿using eThanhTra.Resource;
 using eThanhTra.View;
 using eThanhTra.ViewModel;
-using eThanhTra.ViewModel.System;
+using eThanhTra.ViewModel.QuanLyNhatKy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,26 +14,27 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace eThanhTra
 {
     /// <summary>
-    /// Interaction logic for LoginWindow.xaml
+    /// Interaction logic for ucoQuanLyNhatKy.xaml
     /// </summary>
-    public partial class LoginWindow : TSDPopUp, ILogin
+    public partial class ucoQuanLyNhatKy : TSDUserControl, IQuanLyNhatKy
     {
-        public LoginWindow()
+        public ucoQuanLyNhatKy()
         {
             InitializeComponent();
-            this.DataContext = new LoginViewModel(this);
+            this.DataContext = new QuanLyNhatKyViewModel(this);
         }
 
-        public void ShowMainWindow()
+        public async Task ShowThemMoiNhatKy()
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            this.Close();
+            popThemMoiNhatKy objF = new popThemMoiNhatKy();
+            objF.ShowDialog();
+            await Task.CompletedTask;
         }
     }
 }

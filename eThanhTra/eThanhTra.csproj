@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -14,7 +15,8 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -45,6 +47,12 @@
     <Reference Include="DevExpress.Xpf.Core.v21.1, Version=21.1.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.Grid.v21.1, Version=21.1.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.Grid.v21.1.Core, Version=21.1.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -75,27 +83,48 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="QuanLyNhatKy\popBaoCaoCongViec.xaml.cs">
+      <DependentUpon>popBaoCaoCongViec.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyNhatKy\popGiaHanThanhTra.xaml.cs">
+      <DependentUpon>popGiaHanThanhTra.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyNhatKy\popKhoKhanVuongMac.xaml.cs">
+      <DependentUpon>popKhoKhanVuongMac.xaml</DependentUpon>
+    </Compile>
     <Compile Include="System\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="popThemMoiNhatKy.xaml.cs">
+    <Compile Include="QuanLyNhatKy\popThemMoiNhatKy.xaml.cs">
       <DependentUpon>popThemMoiNhatKy.xaml</DependentUpon>
     </Compile>
     <Compile Include="ucoHome.xaml.cs">
       <DependentUpon>ucoHome.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ucoQuanLyNhatKy.xaml.cs">
+    <Compile Include="QuanLyNhatKy\ucoQuanLyNhatKy.xaml.cs">
       <DependentUpon>ucoQuanLyNhatKy.xaml</DependentUpon>
     </Compile>
+    <Page Include="QuanLyNhatKy\popBaoCaoCongViec.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QuanLyNhatKy\popGiaHanThanhTra.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QuanLyNhatKy\popKhoKhanVuongMac.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="System\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="popThemMoiNhatKy.xaml">
+    <Page Include="QuanLyNhatKy\popThemMoiNhatKy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="System\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -104,7 +133,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Extensions.cs" />
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="System\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -112,7 +141,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ucoQuanLyNhatKy.xaml">
+    <Page Include="QuanLyNhatKy\ucoQuanLyNhatKy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -150,14 +179,6 @@
       <Project>{50744fe9-2e5c-4b1d-8b85-8909cbd6bde5}</Project>
       <Name>Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\eThanhTra.Common\eThanhTra.Common.csproj">
-      <Project>{D6D68749-1C28-4DCC-AAE1-0873E15C59D4}</Project>
-      <Name>eThanhTra.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\eThanhTra.Model\eThanhTra.Model.csproj">
-      <Project>{63b1cf8d-2d87-436d-ac4d-0fdea8475029}</Project>
-      <Name>eThanhTra.Model</Name>
-    </ProjectReference>
     <ProjectReference Include="..\eThanhTra.Resource\eThanhTra.Resource.csproj">
       <Project>{dd8b1c46-0a3e-420c-9c96-8df36628bd80}</Project>
       <Name>eThanhTra.Resource</Name>
@@ -173,4 +194,12 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>

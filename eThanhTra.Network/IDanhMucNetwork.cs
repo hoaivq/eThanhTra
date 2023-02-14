@@ -1,4 +1,5 @@
 ﻿using Common;
+using eThanhTra.Data;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,9 +11,9 @@ namespace eThanhTra.Network
 {
     public interface IDanhMucNetwork
     {
-        Task<MsgResult<DataSet>> GetDanhMucChung();
-        Task<MsgResult<DataTable>> GetCQTByMaCQT();
-        Task<MsgResult<DataTable>> GetUserByMaCQT();
+        Task<MsgResult<DanhMucChung>> GetDanhMucChung();
+        Task<MsgResult<List<PGetCQTByMaCQT_Result>>> GetCQTByMaCQT();
+        Task<MsgResult<List<PGetUserByMaCQT_Result>>> GetUserByMaCQT();
         Task<MsgResult<DataTable>> GetUserByInfo(string Info);
     }
 }
