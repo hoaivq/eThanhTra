@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eThanhTra.Model
+namespace eThanhTra.View.System
 {
-    public class MainModel : BaseModel
+    public interface IMain : IView
     {
     }
 }

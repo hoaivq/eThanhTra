@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eThanhTra.Resource;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace eThanhTra
     /// <summary>
     /// Interaction logic for ucoHome.xaml
     /// </summary>
-    public partial class ucoHome : UserControl
+    public partial class ucoHome : TSDUserControl
     {
         public ucoHome()
         {

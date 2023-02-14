@@ -100,6 +100,10 @@ namespace Common
             return lstException;
         }
 
-        
+        public static bool HasValue(this long Value)
+        {
+            if(Value == 0 || Value == -1) { return false; }
+            return true;
+        }
     }
 }

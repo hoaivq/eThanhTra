@@ -13,6 +13,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using eThanhTra.View.System;
+using eThanhTra.Model.System;
 
 namespace eThanhTra.ViewModel.System
 {

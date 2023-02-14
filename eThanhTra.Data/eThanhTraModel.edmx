@@ -5,6 +5,67 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="eThanhTraModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DThanhTra">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MST" Type="varchar" MaxLength="14" />
+          <Property Name="TenNNT" Type="nvarchar" MaxLength="500" />
+          <Property Name="MaCQT" Type="varchar" MaxLength="5" />
+          <Property Name="UserNameTDTT" Type="varchar" MaxLength="50" />
+          <Property Name="NgayCongBo" Type="datetime" />
+          <Property Name="ThoiGian" Type="int" />
+          <Property Name="HanKetThuc" Type="datetime" />
+          <Property Name="NgayKetThuc" Type="datetime" />
+          <Property Name="GhiChu" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DThanhTraCongViec">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdThanhTra" Type="bigint" />
+          <Property Name="TenCongViec" Type="nvarchar" MaxLength="1000" />
+          <Property Name="NgayBatDau" Type="datetime" />
+          <Property Name="NgayKetThuc" Type="datetime" />
+          <Property Name="GhiChu" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DThanhTraThanhVien">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdThanhTra" Type="bigint" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="UserNameOld" Type="varchar" MaxLength="50" />
+          <Property Name="VaiTro" Type="int" />
+          <Property Name="IsEnable" Type="bit" />
+          <Property Name="GhiChu" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DThanhTraThanhVienCongViec">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdThanhTra" Type="bigint" />
+          <Property Name="IdThanhTraThanhVien" Type="bigint" />
+          <Property Name="IdThanhTraCongViec" Type="bigint" />
+          <Property Name="IsEnable" Type="bit" />
+        </EntityType>
+        <EntityType Name="DThanhTraThanhVienCongViecChiTiet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdThanhTra" Type="bigint" />
+          <Property Name="IdThanhTraThanhVien" Type="bigint" />
+          <Property Name="IdThanhTraCongViec" Type="bigint" />
+          <Property Name="IdThanhTraThanhVienCongViec" Type="bigint" />
+          <Property Name="NgayNhap" Type="datetime" />
+          <Property Name="NoiDung" Type="nvarchar(max)" />
+          <Property Name="GhiChu" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="SCQT">
           <Key>
             <PropertyRef Name="Ma" />
@@ -43,6 +104,11 @@
           <Parameter Name="MaCQT" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="eThanhTraModelStoreContainer">
+          <EntitySet Name="DThanhTra" EntityType="Self.DThanhTra" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DThanhTraCongViec" EntityType="Self.DThanhTraCongViec" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DThanhTraThanhVien" EntityType="Self.DThanhTraThanhVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DThanhTraThanhVienCongViec" EntityType="Self.DThanhTraThanhVienCongViec" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DThanhTraThanhVienCongViecChiTiet" EntityType="Self.DThanhTraThanhVienCongViecChiTiet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SCQT" EntityType="Self.SCQT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SUser" EntityType="Self.SUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SUserCQT" EntityType="Self.SUserCQT" Schema="dbo" store:Type="Tables" />
@@ -90,8 +156,13 @@
           <Parameter Name="MaCQT" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="PGetCQTByMaCQT" ReturnType="Collection(eThanhTraModel.PGetCQTByMaCQT_Result)">
-            <Parameter Name="MaCQTCha" Mode="In" Type="String" />
+          <Parameter Name="MaCQTCha" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="DThanhTras" EntityType="eThanhTraModel.DThanhTra" />
+          <EntitySet Name="DThanhTraCongViecs" EntityType="eThanhTraModel.DThanhTraCongViec" />
+          <EntitySet Name="DThanhTraThanhViens" EntityType="eThanhTraModel.DThanhTraThanhVien" />
+          <EntitySet Name="DThanhTraThanhVienCongViecs" EntityType="eThanhTraModel.DThanhTraThanhVienCongViec" />
+          <EntitySet Name="DThanhTraThanhVienCongViecChiTiets" EntityType="eThanhTraModel.DThanhTraThanhVienCongViecChiTiet" />
         </EntityContainer>
         <ComplexType Name="PGetUserByMaCQT_Result">
           <Property Type="String" Name="UserName" Nullable="false" MaxLength="100" />
@@ -110,6 +181,67 @@
           <Property Type="String" Name="Ten" Nullable="true" MaxLength="500" />
           <Property Type="Int32" Name="Loai" Nullable="true" />
         </ComplexType>
+        <EntityType Name="DThanhTra">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MST" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="TenNNT" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MaCQT" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="UserNameTDTT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NgayCongBo" Type="DateTime" Precision="3" />
+          <Property Name="ThoiGian" Type="Int32" />
+          <Property Name="HanKetThuc" Type="DateTime" Precision="3" />
+          <Property Name="NgayKetThuc" Type="DateTime" Precision="3" />
+          <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DThanhTraCongViec">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdThanhTra" Type="Int64" />
+          <Property Name="TenCongViec" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="NgayBatDau" Type="DateTime" Precision="3" />
+          <Property Name="NgayKetThuc" Type="DateTime" Precision="3" />
+          <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DThanhTraThanhVien">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdThanhTra" Type="Int64" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserNameOld" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VaiTro" Type="Int32" />
+          <Property Name="IsEnable" Type="Boolean" />
+          <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DThanhTraThanhVienCongViec">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdThanhTra" Type="Int64" />
+          <Property Name="IdThanhTraThanhVien" Type="Int64" />
+          <Property Name="IdThanhTraCongViec" Type="Int64" />
+          <Property Name="IsEnable" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="DThanhTraThanhVienCongViecChiTiet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdThanhTra" Type="Int64" />
+          <Property Name="IdThanhTraThanhVien" Type="Int64" />
+          <Property Name="IdThanhTraCongViec" Type="Int64" />
+          <Property Name="IdThanhTraThanhVienCongViec" Type="Int64" />
+          <Property Name="NgayNhap" Type="DateTime" Precision="3" />
+          <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -175,6 +307,72 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="DThanhTras">
+            <EntityTypeMapping TypeName="eThanhTraModel.DThanhTra">
+              <MappingFragment StoreEntitySet="DThanhTra">
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="NgayKetThuc" ColumnName="NgayKetThuc" />
+                <ScalarProperty Name="HanKetThuc" ColumnName="HanKetThuc" />
+                <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+                <ScalarProperty Name="NgayCongBo" ColumnName="NgayCongBo" />
+                <ScalarProperty Name="UserNameTDTT" ColumnName="UserNameTDTT" />
+                <ScalarProperty Name="MaCQT" ColumnName="MaCQT" />
+                <ScalarProperty Name="TenNNT" ColumnName="TenNNT" />
+                <ScalarProperty Name="MST" ColumnName="MST" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DThanhTraCongViecs">
+            <EntityTypeMapping TypeName="eThanhTraModel.DThanhTraCongViec">
+              <MappingFragment StoreEntitySet="DThanhTraCongViec">
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="NgayKetThuc" ColumnName="NgayKetThuc" />
+                <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
+                <ScalarProperty Name="TenCongViec" ColumnName="TenCongViec" />
+                <ScalarProperty Name="IdThanhTra" ColumnName="IdThanhTra" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DThanhTraThanhViens">
+            <EntityTypeMapping TypeName="eThanhTraModel.DThanhTraThanhVien">
+              <MappingFragment StoreEntitySet="DThanhTraThanhVien">
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="VaiTro" ColumnName="VaiTro" />
+                <ScalarProperty Name="UserNameOld" ColumnName="UserNameOld" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="IdThanhTra" ColumnName="IdThanhTra" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DThanhTraThanhVienCongViecs">
+            <EntityTypeMapping TypeName="eThanhTraModel.DThanhTraThanhVienCongViec">
+              <MappingFragment StoreEntitySet="DThanhTraThanhVienCongViec">
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="IdThanhTraCongViec" ColumnName="IdThanhTraCongViec" />
+                <ScalarProperty Name="IdThanhTraThanhVien" ColumnName="IdThanhTraThanhVien" />
+                <ScalarProperty Name="IdThanhTra" ColumnName="IdThanhTra" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DThanhTraThanhVienCongViecChiTiets">
+            <EntityTypeMapping TypeName="eThanhTraModel.DThanhTraThanhVienCongViecChiTiet">
+              <MappingFragment StoreEntitySet="DThanhTraThanhVienCongViecChiTiet">
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
+                <ScalarProperty Name="IdThanhTraThanhVienCongViec" ColumnName="IdThanhTraThanhVienCongViec" />
+                <ScalarProperty Name="IdThanhTraCongViec" ColumnName="IdThanhTraCongViec" />
+                <ScalarProperty Name="IdThanhTraThanhVien" ColumnName="IdThanhTraThanhVien" />
+                <ScalarProperty Name="IdThanhTra" ColumnName="IdThanhTra" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

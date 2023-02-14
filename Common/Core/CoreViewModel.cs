@@ -13,6 +13,11 @@ namespace Common.Core
 {
     public class CoreViewModel : INotifyPropertyChanged
     {
+        public CoreViewModel()
+        {
+
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propName = null)
         {
@@ -21,10 +26,7 @@ namespace Common.Core
 
         public ICommand LoadViewCommand { get; set; }
         public ICommand CloseViewCommand { get; set; }
-
-        public CoreViewModel()
-        {
-           
-        }
+        public ICommand SaveViewCommand { get; set; }
+        
     }
 }

@@ -1,14 +1,14 @@
-﻿using Common.Core;
+﻿
+using Common.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eThanhTra.View
+namespace eThanhTra.Model.NhatKy
 {
-    public interface IQuanLyNhatKy : IView
+    public class QuanLyNhatKyModel : BaseModel
     {
-        Task ShowThemMoiNhatKy();
     }
 }

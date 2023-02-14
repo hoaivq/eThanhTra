@@ -11,7 +11,7 @@ namespace eThanhTra.Data
 {
     using System;
     
-    public partial class PGetUserByMaCQT_Result
+    public partial class PGetUserByMaCQT_Result : ExtProp
     {
         public string UserName { get; set; }
         public int UserType { get; set; }

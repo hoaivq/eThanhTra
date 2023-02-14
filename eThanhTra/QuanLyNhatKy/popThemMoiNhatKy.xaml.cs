@@ -1,7 +1,8 @@
 ﻿using eThanhTra.Resource;
 using eThanhTra.View;
+using eThanhTra.View.NhatKy;
 using eThanhTra.ViewModel;
-using eThanhTra.ViewModel.QuanLyNhatKy;
+using eThanhTra.ViewModel.NhatKy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,11 @@ namespace eThanhTra
         {
             InitializeComponent();
             this.DataContext = new ThemMoiNhatKyViewModel(this);
+        }
+
+        private void SimpleButton_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

@@ -26,8 +26,19 @@ namespace eThanhTra.ViewModel
             {
                 await LoadView();
             });
+
+            SaveViewCommand = new RelayCommand<object>((p) => { return true; }, async (p) =>
+            {
+                await SaveView();
+            });
         }
+
         public virtual async Task LoadView()
+        {
+            await Task.CompletedTask;
+        }
+
+        public virtual async Task SaveView()
         {
             await Task.CompletedTask;
         }

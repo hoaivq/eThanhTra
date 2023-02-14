@@ -1,31 +1,40 @@
 ﻿using DevExpress.Xpf.Core;
 using DevExpress.Xpf.WindowsUI;
+using eThanhTra.Resource;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace eThanhTra
 {
     public static class Extensions
     {
-        public static void ShowTabPage(this DXTabControl tabMain, HamburgerMenuNavigationButton menu)
+        public static void ShowTabPage(this DXTabControl tabMain, HamburgerMenuNavigationButton menu, Window Owner)
         {
             DXTabItem hasItem = tabMain.Items.GetItemByName(menu.Name);
             if (hasItem == null)
             {
                 hasItem = new DXTabItem() { Name = menu.Name, Header = menu.Content };
+                TSDUserControl Content = null;
                 if (hasItem.Name == "Home")
                 {
-                    hasItem.Content = new ucoHome();
+                    Content = new ucoHome();
                 }
                 else if (hasItem.Name == "QuanLyNhatKy")
                 {
-                    hasItem.Content = new ucoQuanLyNhatKy();
+                    Content = new ucoQuanLyNhatKy();
                 }
-                tabMain.Items.Add(hasItem);
+
+                if (Content != null)
+                {
+                    Content.Owner = Owner;
+                    hasItem.Content = Content;
+                    tabMain.Items.Add(hasItem);
+                }
             }
             tabMain.SelectedValue = hasItem;
         }
@@ -42,6 +51,17 @@ namespace eThanhTra
                 }
             }
             return retVal;
+        }
+
+
+        public static bool? ShowPopUp(this TSDPopUp pop, Window Owner = null)
+        {
+            if(Owner == null)
+            {
+                Owner = GlobalResource.MainWindow;
+            }
+            pop.Owner = Owner;
+            return pop.ShowDialog();
         }
     }
 }

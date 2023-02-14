@@ -15,7 +15,16 @@ namespace eThanhTra.Resource
         public TSDWindow()
         {
             this.Loaded += TSDWindow_Loaded;
+            this.Closed += TSDWindow_Closed;
             this.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+        }
+
+        private void TSDWindow_Closed(object sender, EventArgs e)
+        {
+            if (this.Owner != null)
+            {
+                this.Owner.Opacity = 1;
+            }
         }
 
         private void TSDWindow_Loaded(object sender, System.Windows.RoutedEventArgs e)
@@ -34,7 +43,11 @@ namespace eThanhTra.Resource
             }
         }
 
-        public async Task CloseView() { this.Close(); await Task.CompletedTask; }
+        public async Task CloseView()
+        {
+            this.Close();
+            await Task.CompletedTask;
+        }
 
         public void ShowMsg(string Message)
         {
@@ -67,7 +80,7 @@ namespace eThanhTra.Resource
                 }));
 
                 Task<MsgResult<T>> ketQua = MyFunction.Invoke();
-                if(ketQua.Exception != null)
+                if (ketQua.Exception != null)
                 {
                     string ErrMsg = string.Empty;
                     List<Exception> exceptions = ketQua.Exception.GetExceptions(ref ErrMsg);

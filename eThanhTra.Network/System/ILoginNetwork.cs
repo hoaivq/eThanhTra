@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eThanhTra.Network
+namespace eThanhTra.Network.System
 {
     public interface ILoginNetwork
     {

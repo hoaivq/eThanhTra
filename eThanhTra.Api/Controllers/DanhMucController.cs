@@ -1,6 +1,7 @@
 ﻿using Common;
 using eThanhTra.Data;
 using eThanhTra.Network;
+using eThanhTra.Network.System;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -50,9 +51,9 @@ namespace eThanhTra.Api.Controllers
         {
             try
             {
-                using (eThanhTraEntities eThanhTraEntities = new eThanhTraEntities())
+                using (eThanhTraDB eThanhTraDB  = new eThanhTraDB())
                 {
-                    List<PGetCQTByMaCQT_Result> ketQua = await eThanhTraEntities.PGetCQTByMaCQT(MyUser.MaCQT);
+                    List<PGetCQTByMaCQT_Result> ketQua = await eThanhTraDB.PGetCQTByMaCQT(MyUser.MaCQT);
                     return new MsgResult<List<PGetCQTByMaCQT_Result>>(true, ketQua);
                 }
                 //using (DataTable dt = await MyApp.Dao.GetSPAsync("PGetCQTByMaCQT", new SqlParameter("MaCQTCha", MyUser.MaCQT)))
@@ -71,9 +72,9 @@ namespace eThanhTra.Api.Controllers
         {
             try
             {
-                using (eThanhTraEntities eThanhTraEntities = new eThanhTraEntities())
+                using (eThanhTraDB eThanhTraDB = new eThanhTraDB())
                 {
-                    List<PGetUserByMaCQT_Result> ketQua = await eThanhTraEntities.PGetUserByMaCQT(MyUser.MaCQT);
+                    List<PGetUserByMaCQT_Result> ketQua = await eThanhTraDB.PGetUserByMaCQT(MyUser.MaCQT);
                     return new MsgResult<List<PGetUserByMaCQT_Result>>(true, ketQua.ToList());
                 }
 

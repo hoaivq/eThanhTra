@@ -1,7 +1,8 @@
 ﻿using eThanhTra.Resource;
 using eThanhTra.View;
+using eThanhTra.View.NhatKy;
 using eThanhTra.ViewModel;
-using eThanhTra.ViewModel.QuanLyNhatKy;
+using eThanhTra.ViewModel.NhatKy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,7 @@ namespace eThanhTra
         public async Task ShowThemMoiNhatKy()
         {
             popThemMoiNhatKy objF = new popThemMoiNhatKy();
-            objF.ShowDialog();
+            objF.ShowPopUp();
             await Task.CompletedTask;
         }
     }
