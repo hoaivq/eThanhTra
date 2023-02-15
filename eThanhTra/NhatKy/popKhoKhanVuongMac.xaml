@@ -1,11 +1,12 @@
 ﻿<rs:TSDPopUp  xmlns:rs="clr-namespace:eThanhTra.Resource;assembly=eThanhTra.Resource"
-               x:Class="eThanhTra.popKhoKhanVuongMac"
+               x:Class="eThanhTra.NhatKy.popKhoKhanVuongMac"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:eThanhTra"
              mc:Ignorable="d" 
+              xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
              d:DesignHeight="450" d:DesignWidth="800"
               Title="Khó khăn vướng mắc">
     <Grid>
@@ -35,9 +36,9 @@
                         HorizontalAlignment="Center"
                         Margin="30">
                 
-                <d:Button Content="Ghi"
+                <dx:SimpleButton Content="Ghi"
                           Margin ="10 0 10 0" />
-                <d:Button Content="Thoát"
+                <dx:SimpleButton Content="Thoát"
                           Margin ="10 0 10 0" />
             </StackPanel>
 

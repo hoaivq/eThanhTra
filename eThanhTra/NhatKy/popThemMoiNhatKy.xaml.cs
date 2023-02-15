@@ -1,4 +1,8 @@
 ﻿using eThanhTra.Resource;
+using eThanhTra.View;
+using eThanhTra.View.NhatKy;
+using eThanhTra.ViewModel;
+using eThanhTra.ViewModel.NhatKy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,19 +15,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace eThanhTra.QuanLyNhatKy
+namespace eThanhTra.NhatKy
 {
     /// <summary>
-    /// Interaction logic for popKhoKhanVuowngMac.xaml
+    /// Interaction logic for frmThemMoiNhatKy.xaml
     /// </summary>
-    public partial class popKhoKhanVuowngMac : TSDUserControl
+    public partial class popThemMoiNhatKy : TSDPopUp, IThemMoiNhatKy
     {
-        public popKhoKhanVuowngMac()
+        public popThemMoiNhatKy()
         {
             InitializeComponent();
+            this.DataContext = new ThemMoiNhatKyViewModel(this);
+        }
+
+        private void SimpleButton_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
