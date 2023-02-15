@@ -51,6 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NhatKy\BaoCaoCongViecViewModel.cs" />
+    <Compile Include="NhatKy\GiaHanThanhTraViewModel.cs" />
+    <Compile Include="NhatKy\KhoKhanVuongMacViewModel.cs" />
     <Compile Include="System\DanhMucViewModel.cs" />
     <Compile Include="BaseViewModel.cs" />
     <Compile Include="System\LoginViewModel.cs" />
