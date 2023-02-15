@@ -1,4 +1,5 @@
-﻿using eThanhTra.Resource;
+﻿using eThanhTra.NhatKy;
+using eThanhTra.Resource;
 using eThanhTra.View;
 using eThanhTra.View.NhatKy;
 using eThanhTra.ViewModel;

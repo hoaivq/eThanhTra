@@ -38,5 +38,6 @@
     <Style TargetType="{x:Type dx:SimpleButton}">
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="CornerRadius" Value="5"/>
+        <Setter Property="Background" Value="#d4faf6" />
     </Style>
 </ResourceDictionary>

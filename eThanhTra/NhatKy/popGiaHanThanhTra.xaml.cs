@@ -14,14 +14,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace eThanhTra.QuanLyNhatKy
+namespace eThanhTra.NhatKy
 {
     /// <summary>
-    /// Interaction logic for popBaoCaoCongViec.xaml
+    /// Interaction logic for popGiaHanThanhTra.xaml
     /// </summary>
-    public partial class popBaoCaoCongViec : TSDUserControl
+    public partial class popGiaHanThanhTra : TSDPopUp
     {
-        public popBaoCaoCongViec()
+        public popGiaHanThanhTra()
         {
             InitializeComponent();
         }
