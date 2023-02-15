@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>eThanhTra</RootNamespace>
     <AssemblyName>eThanhTra</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -83,6 +83,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="QuanLyNhatKy\popBaoCaoCongViec.xaml.cs">
+      <DependentUpon>popBaoCaoCongViec.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyNhatKy\popGiaHanThanhTra.xaml.cs">
+      <DependentUpon>popGiaHanThanhTra.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyNhatKy\popKhoKhanVuongMac.xaml.cs">
+      <DependentUpon>popKhoKhanVuongMac.xaml</DependentUpon>
+    </Compile>
     <Compile Include="System\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -95,6 +104,18 @@
     <Compile Include="QuanLyNhatKy\ucoQuanLyNhatKy.xaml.cs">
       <DependentUpon>ucoQuanLyNhatKy.xaml</DependentUpon>
     </Compile>
+    <Page Include="QuanLyNhatKy\popBaoCaoCongViec.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QuanLyNhatKy\popGiaHanThanhTra.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QuanLyNhatKy\popKhoKhanVuongMac.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="System\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -155,7 +176,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{50744FE9-2E5C-4B1D-8B85-8909CBD6BDE5}</Project>
+      <Project>{50744fe9-2e5c-4b1d-8b85-8909cbd6bde5}</Project>
       <Name>Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\eThanhTra.Resource\eThanhTra.Resource.csproj">
