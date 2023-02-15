@@ -17,7 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace eThanhTra
+namespace eThanhTra.NhatKy
 {
     /// <summary>
     /// Interaction logic for frmThemMoiNhatKy.xaml

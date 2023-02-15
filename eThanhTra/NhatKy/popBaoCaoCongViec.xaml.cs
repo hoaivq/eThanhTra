@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eThanhTra.Resource;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,12 +14,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace eThanhTra.QuanLyNhatKy
+namespace eThanhTra.NhatKy
 {
     /// <summary>
     /// Interaction logic for popBaoCaoCongViec.xaml
     /// </summary>
-    public partial class popBaoCaoCongViec : UserControl
+    public partial class popBaoCaoCongViec : TSDPopUp
     {
         public popBaoCaoCongViec()
         {

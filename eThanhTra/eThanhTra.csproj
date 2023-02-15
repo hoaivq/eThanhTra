@@ -86,36 +86,36 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="QuanLyNhatKy\popBaoCaoCongViec.xaml.cs">
+    <Compile Include="NhatKy\popBaoCaoCongViec.xaml.cs">
       <DependentUpon>popBaoCaoCongViec.xaml</DependentUpon>
     </Compile>
-    <Compile Include="QuanLyNhatKy\popGiaHanThanhTra.xaml.cs">
+    <Compile Include="NhatKy\popGiaHanThanhTra.xaml.cs">
       <DependentUpon>popGiaHanThanhTra.xaml</DependentUpon>
     </Compile>
-    <Compile Include="QuanLyNhatKy\popKhoKhanVuongMac.xaml.cs">
+    <Compile Include="NhatKy\popKhoKhanVuongMac.xaml.cs">
       <DependentUpon>popKhoKhanVuongMac.xaml</DependentUpon>
     </Compile>
     <Compile Include="System\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="QuanLyNhatKy\popThemMoiNhatKy.xaml.cs">
+    <Compile Include="NhatKy\popThemMoiNhatKy.xaml.cs">
       <DependentUpon>popThemMoiNhatKy.xaml</DependentUpon>
     </Compile>
     <Compile Include="ucoHome.xaml.cs">
       <DependentUpon>ucoHome.xaml</DependentUpon>
     </Compile>
-    <Compile Include="QuanLyNhatKy\ucoQuanLyNhatKy.xaml.cs">
+    <Compile Include="NhatKy\ucoQuanLyNhatKy.xaml.cs">
       <DependentUpon>ucoQuanLyNhatKy.xaml</DependentUpon>
     </Compile>
-    <Page Include="QuanLyNhatKy\popBaoCaoCongViec.xaml">
+    <Page Include="NhatKy\popBaoCaoCongViec.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="QuanLyNhatKy\popGiaHanThanhTra.xaml">
+    <Page Include="NhatKy\popGiaHanThanhTra.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="QuanLyNhatKy\popKhoKhanVuongMac.xaml">
+    <Page Include="NhatKy\popKhoKhanVuongMac.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -123,7 +123,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="QuanLyNhatKy\popThemMoiNhatKy.xaml">
+    <Page Include="NhatKy\popThemMoiNhatKy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -144,7 +144,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="QuanLyNhatKy\ucoQuanLyNhatKy.xaml">
+    <Page Include="NhatKy\ucoQuanLyNhatKy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
