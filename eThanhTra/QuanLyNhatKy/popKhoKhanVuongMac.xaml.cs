@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eThanhTra.Resource;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace eThanhTra.QuanLyNhatKy
     /// <summary>
     /// Interaction logic for popKhoKhanVuowngMac.xaml
     /// </summary>
-    public partial class popKhoKhanVuowngMac : UserControl
+    public partial class popKhoKhanVuowngMac : TSDUserControl
     {
         public popKhoKhanVuowngMac()
         {

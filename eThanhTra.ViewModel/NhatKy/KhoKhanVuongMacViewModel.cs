@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace eThanhTra.ViewModel.NhatKy
 {
-    internal class KhoKhanVuongMac
+    internal class KhoKhanVuongMacViewModel
     {
     }
 }
