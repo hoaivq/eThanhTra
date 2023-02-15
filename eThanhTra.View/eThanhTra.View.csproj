@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>eThanhTra.View</RootNamespace>
     <AssemblyName>eThanhTra.View</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,8 +50,20 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{50744FE9-2E5C-4B1D-8B85-8909CBD6BDE5}</Project>
+      <Project>{50744fe9-2e5c-4b1d-8b85-8909cbd6bde5}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eThanhTra.Common\eThanhTra.Common.csproj">
+      <Project>{d6d68749-1c28-4dcc-aae1-0873e15c59d4}</Project>
+      <Name>eThanhTra.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eThanhTra.Model\eThanhTra.Model.csproj">
+      <Project>{63b1cf8d-2d87-436d-ac4d-0fdea8475029}</Project>
+      <Name>eThanhTra.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eThanhTra.Resource\eThanhTra.Resource.csproj">
+      <Project>{dd8b1c46-0a3e-420c-9c96-8df36628bd80}</Project>
+      <Name>eThanhTra.Resource</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
