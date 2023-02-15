@@ -24,10 +24,10 @@ namespace eThanhTra.ViewModel.NhatKy
 
         public override Task LoadView()
         {
-            _Model.ObjThanhTra = new DThanhTra();
+            _Model.ObjThanhTra = new DThanhTraDto();
             _Model.ObjThanhTra.MaCQT = AppViewModel.MyUser.MaCQT;
-            _Model.ObjThanhTra.NgayCongBo = DateTime.Now;
-            _Model.ObjThanhTra.ThoiGian = 10;
+            _Model.ObjThanhTra._NgayCongBo = DateTime.Now;
+            _Model.ObjThanhTra._ThoiGian = 10;
 
             _Model.ObjThanhTra.UpdateChange();
             return base.LoadView();
@@ -35,7 +35,7 @@ namespace eThanhTra.ViewModel.NhatKy
 
         public async override Task SaveView()
         {
-            MsgResult<DThanhTra> msgResult = await MyObject.ObjNhatKy.Save(_Model.ObjThanhTra);
+            MsgResult<DThanhTraDto> msgResult = await MyObject.ObjNhatKy.Save(_Model.ObjThanhTra);
             _Model.ObjThanhTra = msgResult.Value;
         }
     }

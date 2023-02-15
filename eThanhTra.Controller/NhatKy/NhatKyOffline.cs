@@ -13,7 +13,7 @@ namespace eThanhTra.Controller.NhatKy
     public class NhatKyOffline : INhatKyNetwork
     {
         NhatKyController controller = new NhatKyController();
-        public async Task<MsgResult<DThanhTra>> Save(DThanhTra dto)
+        public async Task<MsgResult<DThanhTraDto>> Save(DThanhTraDto dto)
         {
             return await controller.Save(dto);
         }

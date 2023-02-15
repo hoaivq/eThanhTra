@@ -66,6 +66,7 @@
       <DependentUpon>eThanhTraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="eThanhTraDB.cs" />
+    <Compile Include="MyDto.cs" />
     <Compile Include="Struct.cs" />
     <Compile Include="eThanhTraModel.Context.cs">
       <AutoGen>True</AutoGen>

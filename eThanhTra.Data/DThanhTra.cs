@@ -19,9 +19,13 @@ namespace eThanhTra.Data
         public string TenNNT { get; set; }
         public string MaCQT { get; set; }
         public string UserNameTDTT { get; set; }
+
+        private Nullable<System.DateTime> _NgayCongBo;
         public Nullable<System.DateTime> NgayCongBo { get; set; }
         public Nullable<int> ThoiGian { get; set; }
+
         public Nullable<System.DateTime> HanKetThuc { get; set; }
+
         public Nullable<System.DateTime> NgayKetThuc { get; set; }
         public string GhiChu { get; set; }
     }

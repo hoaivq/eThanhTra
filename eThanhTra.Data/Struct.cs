@@ -36,7 +36,17 @@ namespace eThanhTra.Data
         {
             foreach (PropertyInfo p in Source.GetType().GetProperties())
             {
-                Destination.GetType().GetProperty(p.Name).SetValue(Destination, p.GetValue(Source));
+                Destination.GetType().GetProperty(p.Name)?.SetValue(Destination, p.GetValue(Source));
+            }
+            return Destination;
+        }
+
+        public static T Cast<T>(this object Source) where T : new()
+        {
+            T Destination = new T();
+            foreach (PropertyInfo p in Source.GetType().GetProperties())
+            {
+                Destination.GetType().GetProperty(p.Name)?.SetValue(Destination, p.GetValue(Source));
             }
             return Destination;
         }

@@ -11,9 +11,9 @@ namespace eThanhTra.Controller.NhatKy
 {
     public class NhatKyOnline : INhatKyNetwork
     {
-        public async Task<MsgResult<DThanhTra>> Save(DThanhTra dto)
+        public async Task<MsgResult<DThanhTraDto>> Save(DThanhTraDto dto)
         {
-            return await MyApp.Common.PostWebApiAsync<MsgResult<DThanhTra>>(dto, "NhatKy", "Save");
+            return await MyApp.Common.PostWebApiAsync<MsgResult<DThanhTraDto>>(dto, "NhatKy", "Save");
         }
     }
 }

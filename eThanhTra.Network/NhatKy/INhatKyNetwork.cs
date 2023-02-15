@@ -10,6 +10,6 @@ namespace eThanhTra.Network.NhatKy
 {
     public interface INhatKyNetwork
     {
-        Task<MsgResult<DThanhTra>> Save(DThanhTra dto);
+        Task<MsgResult<DThanhTraDto>> Save(DThanhTraDto dto);
     }
 }

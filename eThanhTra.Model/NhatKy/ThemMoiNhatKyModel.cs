@@ -50,8 +50,8 @@ namespace eThanhTra.Model.NhatKy
         }
 
 
-        private DThanhTra _ObjThanhTra;
-        public DThanhTra ObjThanhTra
+        private DThanhTraDto _ObjThanhTra;
+        public DThanhTraDto ObjThanhTra
         {
             get { return _ObjThanhTra; }
             set

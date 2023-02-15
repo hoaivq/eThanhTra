@@ -13,13 +13,13 @@ namespace eThanhTra.Api.Controllers
 {
     public class NhatKyController : AppController, INhatKyNetwork
     {
-        public async Task<MsgResult<DThanhTra>> Save(DThanhTra input)
+        public async Task<MsgResult<DThanhTraDto>> Save(DThanhTraDto input)
         {
             try
             {
                 using (eThanhTraDB db = new eThanhTraDB())
                 {
-                    DThanhTra output = input;
+                    DThanhTra output = input.Cast<DThanhTra>();
                     if (input.Id.HasValue())
                     {
                         output = db.DThanhTras.FirstOrDefault(c => c.Id == input.Id);
@@ -31,12 +31,12 @@ namespace eThanhTra.Api.Controllers
                     }
                     await db.SaveChangesAsync();
 
-                    return new MsgResult<DThanhTra>(true, output);
+                    return new MsgResult<DThanhTraDto>(true, output.Cast<DThanhTraDto>());
                 }
             }
             catch (Exception ex)
             {
-                return new MsgResult<DThanhTra>("NhatKyController.Save", ex);
+                return new MsgResult<DThanhTraDto>("NhatKyController.Save", ex);
             }
         }
     }
