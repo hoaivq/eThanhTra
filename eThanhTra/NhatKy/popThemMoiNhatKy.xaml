@@ -12,9 +12,9 @@
         <rs:hTextEdit Text="{Binding _Model.ObjThanhTra.MST}" DockPanel.Dock="Top" _CaptionText="Mã số thuế:" Height="50"/>
         <rs:hTextEdit Text="{Binding _Model.ObjThanhTra.TenNNT}" DockPanel.Dock="Top" _CaptionText="Tên NNT:" Height="50"/>
         <rs:hComboBoxEdit EditValue="{Binding _Model.ObjThanhTra.UserNameTDTT, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" _CaptionText="Trưởng đoàn:"  ItemsSource="{Binding _Model.ListUser}" DisplayMember="HoVaTen" ValueMember="UserName" Height="50"/>
-        <rs:hDateEdit DateTime="{Binding _Model.ObjThanhTra.NgayCongBo, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" _CaptionText="Ngày công bố:" Height="50"/>
-        <rs:hSpinEdit Value="{Binding _Model.ObjThanhTra.ThoiGian, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" _CaptionText="Thời gian tiến hành:" Height="50"/>
-        <rs:hDateEdit DateTime="{Binding _Model.ObjThanhTra.HanKetThuc, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" _CaptionText="Hạn kết thúc:" Height="50"/>
+        <rs:hDateEdit DateTime="{Binding _Model.ObjThanhTra._NgayCongBo, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" _CaptionText="Ngày công bố:" Height="50"/>
+        <rs:hSpinEdit Value="{Binding _Model.ObjThanhTra._ThoiGian, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" _CaptionText="Thời gian tiến hành:" Height="50"/>
+        <rs:hDateEdit DateTime="{Binding _Model.ObjThanhTra._HanKetThuc, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" _CaptionText="Hạn kết thúc:" Height="50"/>
 
         <dx:SimpleButton Click="SimpleButton_Click"  DockPanel.Dock="Bottom" Height="30" Content="Lưu" Command="{Binding SaveViewCommand}"></dx:SimpleButton>
         
