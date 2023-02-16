@@ -104,6 +104,7 @@
     <Compile Include="NhatKy\popKhoKhanVuongMac.xaml.cs">
       <DependentUpon>popKhoKhanVuongMac.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="System\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
