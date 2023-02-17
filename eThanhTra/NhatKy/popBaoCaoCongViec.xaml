@@ -4,6 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
              xmlns:local="clr-namespace:eThanhTra"
              
              mc:Ignorable="d" 
@@ -56,12 +57,12 @@
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"
                         Margin="30">
-                <d:Button Content="File đính kèm"
+                <dx:SimpleButton Content="File đính kèm"
                           Margin ="10 0 10 0" 
                           />
-                <d:Button Content="Ghi"
+                <dx:SimpleButton Content="Ghi"
                           Margin ="10 0 10 0" />
-                <d:Button Content="Thoát"
+                <dx:SimpleButton Content="Thoát"
                           Margin ="10 0 10 0" />
             </StackPanel>
 
