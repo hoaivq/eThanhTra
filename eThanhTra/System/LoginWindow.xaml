@@ -9,9 +9,19 @@
               mc:Ignorable="d"
         Title="ĐĂNG NHẬP" Height="450" Width="400" >
 
-    <StackPanel Margin="40,80,40,80" FocusManager.FocusedElement="{Binding ElementName=txtUserName}">
-        <rs:hTextEdit x:Name="txtUserName" CharacterCasing="Upper" Text="{Binding _Model.UserName}" _CaptionText="Tài khoản:" Margin="0,0,0,4"/>
-        <rs:hPasswordBoxEdit Text="{Binding _Model.Password}" _CaptionText="Mật khẩu:" Margin="0,0,0,30"/>
-        <dx:SimpleButton Glyph="{dx:DXImage Image=CheckBox_16x16.png}" Content="Đăng nhập" Height="50" Command="{Binding LoginCommand}"/>
+    <StackPanel Margin="40,80,40,80" 
+                FocusManager.FocusedElement="{Binding ElementName=txtUserName}">
+        <rs:hTextEdit x:Name="txtUserName" 
+                      CharacterCasing="Upper" 
+                      Text="{Binding _Model.UserName}" 
+                      _CaptionText="Tài khoản:" 
+                      Margin="0,0,0,4"/>
+        <rs:hPasswordBoxEdit Text="{Binding _Model.Password}" 
+                             _CaptionText="Mật khẩu:" 
+                             Margin="0,0,0,30"/>
+        <dx:SimpleButton Glyph="{dx:DXImage Image=CheckBox_16x16.png}" 
+                         Content="Đăng nhập" 
+                         Height="50" 
+                         Command="{Binding LoginCommand}"/>
     </StackPanel>
 </rs:TSDPopUp>

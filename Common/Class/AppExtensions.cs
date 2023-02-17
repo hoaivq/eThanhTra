@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
@@ -104,6 +105,36 @@ namespace Common
         {
             if(Value == 0 || Value == -1) { return false; }
             return true;
+        }
+
+        public static SqlParameter[] GetSqlParameter(this CallSPDto callSPDto)
+        {
+            if(callSPDto.Params == null )
+            {
+                return null;
+            }
+
+            if (callSPDto.Params.Length == 0)
+            {
+                return null;
+            }
+
+            List<SqlParameter> lstParam = new List<SqlParameter>();
+            foreach (SqlParam item in callSPDto.Params)
+            {
+                SqlParameter p = new SqlParameter(item.Name, item.Value);
+                if (item.Type.HasValue)
+                {
+                    p.SqlDbType = item.Type.Value;
+                }
+
+                if (item.Size.HasValue)
+                {
+                    p.Size = item.Size.Value;
+                }
+                lstParam.Add(p);
+            }
+            return lstParam.ToArray();
         }
     }
 }

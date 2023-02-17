@@ -20,7 +20,7 @@ namespace eThanhTra.ViewModel.System
 {
     public class LoginViewModel : BaseViewModel<ILogin, LoginModel>
     {
-        
+
         public ICommand LoginCommand { get; set; }
         public LoginViewModel(ILogin View) : base(View)
         {
@@ -51,6 +51,8 @@ namespace eThanhTra.ViewModel.System
             dynamic Input = new ExpandoObject();
             Input.UserName = _Model.UserName;
             Input.Password = _Model.Password;
+            MsgResult<DataTable> msgResult = await MyObject.ObjApp.CallSP(CallSPDto.Create("PLogin", new SqlParam("UserName", _Model.UserName), new SqlParam("Password", _Model.Password)));
+            
             return await MyObject.ObjLogin.Login(Input);
         }
     }

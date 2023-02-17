@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,9 +37,9 @@ namespace Common
             Value = _Value;
         }
 
-        public MsgResult(string Title, Exception ex)
+        public MsgResult(string Title, Exception ex, params string[] MoreInfos)
         {
-            MyApp.Log.GhiLog(Title, ex);
+            MyApp.Log.GhiLog(Title, ex, MoreInfos);
             Success = false;
             Message = ex.Message + ex.InnerException;
             Value = default(T);
@@ -52,5 +53,39 @@ namespace Common
         {
             return JsonConvert.SerializeObject(this);
         }
+    }
+
+    public class CallSPDto
+    {
+        public static CallSPDto Create(string _SPName, params SqlParam[] _Params)
+        {
+            return new CallSPDto(_SPName, _Params);
+        }
+
+        public CallSPDto()
+        {
+
+        }
+
+        public CallSPDto(string _SPName, params SqlParam[] _Params)
+        {
+            SPName = _SPName;
+            Params = _Params;    
+        }
+        public string SPName { get; set; }
+        public SqlParam[] Params { get; set; }
+    }
+
+    public class SqlParam
+    {
+        public SqlParam(string _Name, object _Value)
+        {
+            Name = _Name;
+            Value = _Value;
+        }
+        public string Name { get; set; }
+        public object Value { get; set; }
+        public SqlDbType? Type { get; set; }
+        public int? Size { get; set; }
     }
 }

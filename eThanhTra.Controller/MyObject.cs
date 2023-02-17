@@ -1,4 +1,5 @@
 ﻿using Common;
+using eThanhTra.Controller.App;
 using eThanhTra.Controller.DanhMuc;
 using eThanhTra.Controller.Login;
 using eThanhTra.Controller.NhatKy;
@@ -28,6 +29,7 @@ namespace eThanhTra.Controller
             }
         }
 
+
         private static IDanhMucNetwork _ObjDanhMuc;
         public static IDanhMucNetwork ObjDanhMuc
         {
@@ -41,6 +43,7 @@ namespace eThanhTra.Controller
             }
         }
 
+
         private static INhatKyNetwork _ObjNhatKy;
         public static INhatKyNetwork ObjNhatKy
         {
@@ -51,6 +54,19 @@ namespace eThanhTra.Controller
                     _ObjNhatKy = MyApp.Common.GetObjectController<INhatKyNetwork, NhatKyOnline, NhatKyOffline>();
                 }
                 return _ObjNhatKy;
+            }
+        }
+
+        private static IAppNetwork _ObjApp;
+        public static IAppNetwork ObjApp
+        {
+            get
+            {
+                if (_ObjApp == null)
+                {
+                    _ObjApp = MyApp.Common.GetObjectController<IAppNetwork, AppOnline, AppOffline>();
+                }
+                return _ObjApp;
             }
         }
     }
