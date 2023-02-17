@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,8 @@ namespace eThanhTra.ViewModel.System
             {
                 try
                 {
+                    MsgResult<DataTable> msgResult = await MyObject.ObjApp.CallSP(new CallSPDto("PGetLichLamViec", new SqlParam("Nam", 2000)));
+
                     if (AppViewModel.DanhMucChung != null) { return; }
                     bgwLoadDanhMuc.RunWorkerAsync();
                     await Task.CompletedTask;

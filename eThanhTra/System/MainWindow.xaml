@@ -12,15 +12,34 @@
         xmlns:dxwui="http://schemas.devexpress.com/winfx/2008/xaml/windowsui" 
         Title="NHẬT KÝ ĐOÀN THANH TRA" Height="800" Width="1000" WindowState="Maximized" WindowStartupLocation="CenterScreen" Padding="0,0,0,0" Margin="0,0,0,0">
     <Grid>
-        <dxwui:HamburgerMenu x:Name="mnuMain"  AvailableViewStates="Overlay" IsInitiallyCompact="True" ViewState="CompactInline" PreviewItemClick="mnuMain_PreviewItemClick">
+        <dxwui:HamburgerMenu x:Name="mnuMain"  
+                             AvailableViewStates="Overlay" 
+                             IsInitiallyCompact="True" 
+                             ViewState="CompactInline" 
+                             PreviewItemClick="mnuMain_PreviewItemClick">
             <dxwui:HamburgerMenu.BottomBarItems>
-                <dxwui:HamburgerMenuBottomBarNavigationButton Content="Settings" GlyphWidth="16" Glyph="{dx:DXImage Office2013/Setup/Properties_16x16.png}" GlyphHeight="16"/>
-                <dxwui:HamburgerMenuBottomBarNavigationButton Content="About" GlyphWidth="16" Glyph="{dx:DXImage Office2013/Support/Info_16x16.png}" GlyphHeight="16"/>
+                <dxwui:HamburgerMenuBottomBarNavigationButton Content="Settings" 
+                                                              GlyphWidth="16" 
+                                                              Glyph="{dx:DXImage Office2013/Setup/Properties_16x16.png}" 
+                                                              GlyphHeight="16"/>
+                <dxwui:HamburgerMenuBottomBarNavigationButton Content="About" 
+                                                              GlyphWidth="16" 
+                                                              Glyph="{dx:DXImage Office2013/Support/Info_16x16.png}" 
+                                                              GlyphHeight="16"/>
             </dxwui:HamburgerMenu.BottomBarItems>
 
-            <dxwui:HamburgerMenuNavigationButton Content="TRANG CHỦ" GlyphWidth="16" Glyph="{dx:DXImage  Image=Home_16x16.png}" GlyphHeight="16" SelectOnClick="False" Name="Home"/>
-            <dxwui:HamburgerMenuNavigationButton Content="QUẢN LÝ NHẬT KÝ ĐOÀN" GlyphWidth="16" Glyph="{dx:DXImage Image=Grid_16x16.png}" GlyphHeight="16" SelectOnClick="False" Name="QuanLyNhatKy"/>
-            <dxwui:HamburgerMenuHyperlinkButton Content="Hỗ trợ" NavigateUri="https://ebh.vn/"/>
+            <dxwui:HamburgerMenuNavigationButton Content="TRANG CHỦ" GlyphWidth="16" 
+                                                 Glyph="{dx:DXImage  Image=Home_16x16.png}" 
+                                                 GlyphHeight="16" 
+                                                 SelectOnClick="False" Name="Home"/>
+            <dxwui:HamburgerMenuNavigationButton Content="QUẢN LÝ NHẬT KÝ ĐOÀN" 
+                                                 GlyphWidth="16" 
+                                                 Glyph="{dx:DXImage Image=Grid_16x16.png}" 
+                                                 GlyphHeight="16" 
+                                                 SelectOnClick="False" 
+                                                 Name="QuanLyNhatKy"/>
+            <dxwui:HamburgerMenuHyperlinkButton Content="Hỗ trợ" 
+                                                NavigateUri="https://ebh.vn/"/>
 
 
             <dxwui:HamburgerMenu.Content>
