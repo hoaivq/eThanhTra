@@ -111,7 +111,7 @@ namespace Common.Class
             }
         }
 
-        public async Task<DataTable> GetSPAsync(string SPName, params SqlParameter[] myParamArr)
+        public async Task<DataTable> GetTableSPAsync(string SPName, params SqlParameter[] myParamArr)
         {
             try
             {
@@ -140,6 +140,41 @@ namespace Common.Class
             catch (Exception ex)
             {
                 MyApp.Log.GhiLog("GetSPAsync", ex, SPName, myParamArr);
+                throw ex;
+            }
+        }
+
+        public async Task<DataSet> GetDataSetSPAsync(string SPName, params SqlParameter[] myParamArr)
+        {
+            try
+            {
+                using (SqlConnection myConn = new SqlConnection(MyApp.Setting.DBConnStr))
+                {
+                    if (myConn.State != ConnectionState.Open) { myConn.Open(); }
+
+                    using (SqlCommand cmd = new SqlCommand(SPName, myConn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandTimeout = MyApp.Setting.TimeOut;
+                        if (myParamArr != null && myParamArr.Length > 0)
+                        {
+                            cmd.Parameters.AddRange(myParamArr);
+                        }
+
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            using (DataSet ds = new DataSet(SPName))
+                            {
+                                da.Fill(ds);
+                                return await Task.FromResult(ds);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MyApp.Log.GhiLog("GetDataSetSPAsync", ex, SPName, myParamArr);
                 throw ex;
             }
         }

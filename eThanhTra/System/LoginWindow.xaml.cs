@@ -32,9 +32,16 @@ namespace eThanhTra
 
         public void ShowMainWindow()
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            this.Close();
+            try
+            {
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                ShowMsg(ex, "ShowMainWindow");
+            }
         }
     }
 }

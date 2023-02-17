@@ -14,26 +14,26 @@ namespace eThanhTra.Controller.DanhMuc
 {
     public class DanhMucOffline : IDanhMucNetwork
     {
-        DanhMucController controller = new DanhMucController();
+        //DanhMucController controller = new DanhMucController();
 
-        public async Task<MsgResult<DanhMucChung>> GetDanhMucChung()
-        {
-            return await controller.GetDanhMucChung();
-        }
+        //public async Task<MsgResult<DanhMucChung>> GetDanhMucChung()
+        //{
+        //    return await controller.GetDanhMucChung();
+        //}
 
-        public async Task<MsgResult<List<PGetCQTByMaCQT_Result>>> GetCQTByMaCQT()
-        {
-            return await controller.GetCQTByMaCQT();
-        }
+        //public async Task<MsgResult<List<PGetCQTByMaCQT_Result>>> GetCQTByMaCQT()
+        //{
+        //    return await controller.GetCQTByMaCQT();
+        //}
 
-        public async Task<MsgResult<DataTable>> GetUserByInfo(string Info)
-        {
-            return await controller.GetUserByInfo(Info);
-        }
+        //public async Task<MsgResult<DataTable>> GetUserByInfo(string Info)
+        //{
+        //    return await controller.GetUserByInfo(Info);
+        //}
 
-        public async Task<MsgResult<List<PGetUserByMaCQT_Result>>> GetUserByMaCQT()
-        {
-            return await controller.GetUserByMaCQT();
-        }
+        //public async Task<MsgResult<List<PGetUserByMaCQT_Result>>> GetUserByMaCQT()
+        //{
+        //    return await controller.GetUserByMaCQT();
+        //}
     }
 }

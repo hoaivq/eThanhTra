@@ -76,6 +76,7 @@
     </Compile>
     <Compile Include="ResourceEvent.cs" />
     <Compile Include="hForm\TSDWindow.cs" />
+    <Compile Include="TSDConverter.cs" />
     <Compile Include="TSDWaitWindow.xaml.cs">
       <DependentUpon>TSDWaitWindow.xaml</DependentUpon>
     </Compile>

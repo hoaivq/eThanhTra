@@ -34,9 +34,16 @@ namespace eThanhTra
 
         public async Task ShowThemMoiNhatKy()
         {
-            popThemMoiNhatKy objF = new popThemMoiNhatKy();
-            objF.ShowPopUp();
-            await Task.CompletedTask;
+            try
+            {
+                popThemMoiNhatKy objF = new popThemMoiNhatKy();
+                await Task.FromResult(objF.ShowPopUp());
+            }
+            catch (Exception ex)
+            {
+                ShowMsg(ex, "ShowThemMoiNhatKy");
+            }
         }
+
     }
 }

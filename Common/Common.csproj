@@ -65,9 +65,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\eThanhTra.Data\eThanhTra.Data.csproj">
-      <Project>{ED7CAB70-CF02-4A2D-9855-9A8D21D9D4ED}</Project>
-      <Name>eThanhTra.Data</Name>
+    <ProjectReference Include="..\eThanhTra.Dto\eThanhTra.Dto.csproj">
+      <Project>{03e62e5a-80de-40b3-bd32-07f98bf6d645}</Project>
+      <Name>eThanhTra.Dto</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

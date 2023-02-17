@@ -51,5 +51,16 @@ namespace eThanhTra.Resource
         // Using a DependencyProperty as the backing store for _CaptionVisibility.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty _CaptionVisibilityProperty =
             DependencyProperty.Register("_CaptionVisibility", typeof(Visibility), typeof(hListBoxEdit), new PropertyMetadata(Visibility.Collapsed));
+
+
+        public ICommand EditValueChangedCommand
+        {
+            get { return (ICommand)GetValue(EditValueChangedCommandProperty); }
+            set { SetValue(EditValueChangedCommandProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for EditValueChangedCommand.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty EditValueChangedCommandProperty =
+            DependencyProperty.Register("EditValueChangedCommand", typeof(ICommand), typeof(hListBoxEdit), new PropertyMetadata(null));
     }
 }

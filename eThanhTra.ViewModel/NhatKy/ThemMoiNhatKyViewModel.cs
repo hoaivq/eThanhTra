@@ -35,8 +35,8 @@ namespace eThanhTra.ViewModel.NhatKy
 
         public async override Task SaveView()
         {
-            MsgResult<DThanhTraDto> msgResult = await MyObject.ObjNhatKy.Save(_Model.ObjThanhTra);
-            _Model.ObjThanhTra = msgResult.Value;
+            //MsgResult<DThanhTraDto> msgResult = await MyObject.ObjNhatKy.Save(_Model.ObjThanhTra);
+            //_Model.ObjThanhTra = msgResult.Value;
         }
     }
 }

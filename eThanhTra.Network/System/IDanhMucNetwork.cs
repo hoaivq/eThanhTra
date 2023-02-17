@@ -11,9 +11,9 @@ namespace eThanhTra.Network.System
 {
     public interface IDanhMucNetwork
     {
-        Task<MsgResult<DanhMucChung>> GetDanhMucChung();
-        Task<MsgResult<List<PGetCQTByMaCQT_Result>>> GetCQTByMaCQT();
-        Task<MsgResult<List<PGetUserByMaCQT_Result>>> GetUserByMaCQT();
-        Task<MsgResult<DataTable>> GetUserByInfo(string Info);
+        //Task<MsgResult<DanhMucChung>> GetDanhMucChung();
+        //Task<MsgResult<List<PGetCQTByMaCQT_Result>>> GetCQTByMaCQT();
+        //Task<MsgResult<List<PGetUserByMaCQT_Result>>> GetUserByMaCQT();
+        //Task<MsgResult<DataTable>> GetUserByInfo(string Info);
     }
 }

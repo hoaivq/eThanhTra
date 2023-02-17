@@ -103,13 +103,13 @@ namespace Common
 
         public static bool HasValue(this long Value)
         {
-            if(Value == 0 || Value == -1) { return false; }
+            if (Value == 0 || Value == -1) { return false; }
             return true;
         }
 
         public static SqlParameter[] GetSqlParameter(this CallSPDto callSPDto)
         {
-            if(callSPDto.Params == null )
+            if (callSPDto.Params == null)
             {
                 return null;
             }
@@ -135,6 +135,62 @@ namespace Common
                 lstParam.Add(p);
             }
             return lstParam.ToArray();
+        }
+
+
+        public static string GenClass(this DataTable dt)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("namespace eThanhTra.Dto");
+            sb.AppendLine("{");
+            sb.AppendLine("    using System;");
+            sb.AppendLine("    using System.Collections.Generic;");
+            sb.AppendLine("");
+            sb.AppendLine("    public partial class " + dt.TableName + " : BaseDto");
+            sb.AppendLine("    {");
+
+            foreach (DataColumn col in dt.Columns)
+            {
+                sb.AppendLine("        private " + col.DataType.GetColType() + " _" + col.ColumnName + ";");
+                sb.AppendLine("        public " + col.DataType.GetColType() + " " + col.ColumnName + " { get { return _" + col.ColumnName + "; } set { _" + col.ColumnName + " = value; OnPropertyChanged(); } }");
+                sb.AppendLine();
+            }
+
+            //sb.AppendLine("");
+            sb.AppendLine("    }");
+            sb.AppendLine("}");
+            return sb.ToString();
+        }
+
+        public static string GetColType(this Type type)
+        {
+            if(type == typeof(string))
+            {
+                return "string";
+            }
+            else if (type == typeof(int))
+            {
+                return "int";
+            }
+            else if (type == typeof(DateTime))
+            {
+                return "DateTime";
+            }
+            else if (type == typeof(bool))
+            {
+                return "bool";
+            }
+            else
+            {
+                return type.Name;
+            }
+        }
+
+
+        public static object ToDateStrSQL(this DateTime? dateTime) 
+        { 
+            if(dateTime.HasValue == false) { return DBNull.Value; }
+            return dateTime.Value.ToString("yyyyMMdd");
         }
     }
 }

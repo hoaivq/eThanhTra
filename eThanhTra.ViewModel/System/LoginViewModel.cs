@@ -2,7 +2,6 @@
 using Common;
 using Common.Core;
 using eThanhTra.Controller;
-using eThanhTra.Data;
 using eThanhTra.Model;
 using eThanhTra.View;
 using System;
@@ -15,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using eThanhTra.View.System;
 using eThanhTra.Model.System;
+using eThanhTra.Dto;
 
 namespace eThanhTra.ViewModel.System
 {
@@ -28,7 +28,7 @@ namespace eThanhTra.ViewModel.System
             {
                 try
                 {
-                    MsgResult<SUser> msgResult = await View.ShowWait("Login", () => Login());
+                    msgResult = await View.ShowWait("Login", () => Login());
 
                     if (msgResult.Success == false)
                     {
@@ -36,7 +36,7 @@ namespace eThanhTra.ViewModel.System
                         return;
                     }
 
-                    AppViewModel.MyUser = msgResult.Value;
+                    AppViewModel.MyUser = msgResult.Value.Rows[0].ToObject<SUser>();
                     View.ShowMainWindow();
                 }
                 catch (Exception ex)
@@ -46,14 +46,11 @@ namespace eThanhTra.ViewModel.System
             });
         }
 
-        public async Task<MsgResult<SUser>> Login()
+        public async Task<MsgResult<DataTable>> Login()
         {
-            dynamic Input = new ExpandoObject();
-            Input.UserName = _Model.UserName;
-            Input.Password = _Model.Password;
-            MsgResult<DataTable> msgResult = await MyObject.ObjApp.CallSP(CallSPDto.Create("PLogin", new SqlParam("UserName", _Model.UserName), new SqlParam("Password", _Model.Password)));
-            
-            return await MyObject.ObjLogin.Login(Input);
+            return await MyObject.ObjApp.GetTable(CallSPDto.Create("PLogin",
+               new SqlParam("UserName", _Model.UserName, SqlDbType.VarChar, 100),
+               new SqlParam("Password", _Model.Password, SqlDbType.VarChar, 100)));
         }
     }
 }

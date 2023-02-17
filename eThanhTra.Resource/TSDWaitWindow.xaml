@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:eThanhTra.Resource"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d"
-        Title="TSDWaitWindow" Height="450" Width="800" WindowStyle="None" AllowsTransparency="True" Background="Transparent" Topmost="True" ShowInTaskbar="False" WindowState="Maximized">
+        Title="TSDWaitWindow" Height="450" Width="800" WindowStyle="None" AllowsTransparency="True" Background="Transparent" Topmost="True" ShowInTaskbar="False" WindowState="Maximized" Loaded="Window_Loaded" Closed="Window_Closed">
     <Grid>
         <Image gif:ImageBehavior.AnimatedSource="{StaticResource ImgLoading}" gif:ImageBehavior.AnimationSpeedRatio="5" Stretch="Uniform" Height="100"/>
     </Grid>

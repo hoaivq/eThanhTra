@@ -56,10 +56,29 @@ namespace eThanhTra.Resource
 
 
 
+
+        public DateTime? EditValue
+        {
+            get { return (DateTime?)GetValue(EditValueProperty); }
+            set { SetValue(EditValueProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for EditValue.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty EditValueProperty =
+            DependencyProperty.Register("EditValue", typeof(DateTime?), typeof(hDateEdit), new PropertyMetadata(null));
+
+
+
         public DateTime? DateTime
         {
-            get { return (DateTime?)GetValue(DateTimeProperty); }
-            set { SetValue(DateTimeProperty, value); }
+            get
+            {
+                return (DateTime?)GetValue(DateTimeProperty);
+            }
+            set
+            {
+                SetValue(DateTimeProperty, value);
+            }
         }
 
         // Using a DependencyProperty as the backing store for DateTime.  This enables animation, styling, binding, etc...
@@ -78,6 +97,19 @@ namespace eThanhTra.Resource
         public static readonly DependencyProperty DisplayFormatStringProperty =
             DependencyProperty.Register("DisplayFormatString", typeof(string), typeof(hDateEdit), new PropertyMetadata("dd/MM/yyyy"));
 
+
+
+
+
+        public ICommand EditValueChangedCommand
+        {
+            get { return (ICommand)GetValue(EditValueChangedCommandProperty); }
+            set { SetValue(EditValueChangedCommandProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for EditValueChangedCommand.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty EditValueChangedCommandProperty =
+            DependencyProperty.Register("EditValueChangedCommand", typeof(ICommand), typeof(hDateEdit), new PropertyMetadata(null));
 
 
     }

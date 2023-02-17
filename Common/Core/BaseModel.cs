@@ -12,7 +12,6 @@ namespace Common.Core
 {
     public class BaseModel : INotifyPropertyChanged
     {
-       
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propName = null)
         {

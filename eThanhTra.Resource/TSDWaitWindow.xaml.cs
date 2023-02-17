@@ -23,5 +23,21 @@ namespace eThanhTra.Resource
         {
             InitializeComponent();
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            if (this.Owner != null)
+            {
+                this.Owner.Opacity = 1;
+            }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (this.Owner != null)
+            {
+                this.Owner.Opacity = 0.5;
+            }
+        }
     }
 }

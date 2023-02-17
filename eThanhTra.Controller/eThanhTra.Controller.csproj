@@ -51,12 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App\AppOffline.cs" />
-    <Compile Include="App\AppOnline.cs" />
-    <Compile Include="DanhMuc\DanhMucOffline.cs" />
-    <Compile Include="DanhMuc\DanhMucOnline.cs" />
-    <Compile Include="Login\LoginOffline.cs" />
-    <Compile Include="Login\LoginOnline.cs" />
+    <Compile Include="App\DAOOffline.cs" />
+    <Compile Include="App\DAOOnline.cs" />
     <Compile Include="MyObject.cs" />
     <Compile Include="NhatKy\NhatKyOffline.cs" />
     <Compile Include="NhatKy\NhatKyOnline.cs" />

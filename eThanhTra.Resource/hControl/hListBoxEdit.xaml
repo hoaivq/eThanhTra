@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:eThanhTra.Resource"
-             xmlns:Custom="http://schemas.devexpress.com/winfx/2008/xaml/core/internal" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:Custom1="http://schemas.devexpress.com/winfx/2008/xaml/editors/internal"
+             xmlns:Custom="http://schemas.devexpress.com/winfx/2008/xaml/core/internal" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:Custom1="http://schemas.devexpress.com/winfx/2008/xaml/editors/internal" xmlns:dxemvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
                   x:Class="eThanhTra.Resource.hListBoxEdit"
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="300" Template="{DynamicResource hListBoxEditTemplate}">
