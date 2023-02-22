@@ -3,10 +3,12 @@
                     xmlns:PropertiesExtensions="clr-namespace:eThanhTra.Resource.PropertiesExtensions"
                     xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
                     xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+                    xmlns:rs="clr-namespace:eThanhTra.Resource"
                     x:Class="eThanhTra.Resource.ResourceEvent"
                     x:ClassModifier="public"
                     >
 
+    <rs:STTConverter x:Key="STTConverter"/>
 
     <BitmapImage x:Key="ImgLoading" UriSource="pack://application:,,,/eThanhTra.Resource;Component/Images/Loading.gif"/>
     

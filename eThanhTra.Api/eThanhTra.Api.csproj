@@ -92,9 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AppController.cs" />
-    <Compile Include="Controllers\DanhMucController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\DAOController.cs" />
     <Compile Include="Controllers\NhatKyController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -122,6 +120,10 @@
     <ProjectReference Include="..\eThanhTra.Data\eThanhTra.Data.csproj">
       <Project>{ed7cab70-cf02-4a2d-9855-9a8d21d9d4ed}</Project>
       <Name>eThanhTra.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eThanhTra.Dto\eThanhTra.Dto.csproj">
+      <Project>{03E62E5A-80DE-40B3-BD32-07F98BF6D645}</Project>
+      <Name>eThanhTra.Dto</Name>
     </ProjectReference>
     <ProjectReference Include="..\eThanhTra.Model\eThanhTra.Model.csproj">
       <Project>{63B1CF8D-2D87-436D-AC4D-0FDEA8475029}</Project>

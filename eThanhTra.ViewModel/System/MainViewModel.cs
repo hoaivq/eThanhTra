@@ -32,9 +32,9 @@ namespace eThanhTra.ViewModel.System
             {
                 try
                 {
-                    MsgResult<DataTable> msgResult = await MyObject.ObjApp.CallSP(new CallSPDto("PGetLichLamViec", new SqlParam("Nam", 2000)));
+                    //msgResult = await MyObject.ObjApp.GetTable(new CallSPDto("PGetLichLamViec", new SqlParam("Nam", 2000)));
 
-                    if (AppViewModel.DanhMucChung != null) { return; }
+                    if (AppViewModel.DanhMucChung != null && AppViewModel.DanhMucChung.Tables.Count > 0) { return; }
                     bgwLoadDanhMuc.RunWorkerAsync();
                     await Task.CompletedTask;
                 }
@@ -49,10 +49,17 @@ namespace eThanhTra.ViewModel.System
         {
             try
             {
-                MsgResult<DanhMucChung> msgResult = await MyObject.ObjDanhMuc.GetDanhMucChung();
+                AppViewModel.DanhMucChung = new DataSet("DanhMucChung");
+                msgResult = await MyObject.ObjApp.GetTable(CallSPDto.Create("PGetCQTByMaCQT", new SqlParam("MaCQT", AppViewModel.MyUser.MaCQT, SqlDbType.VarChar, 5)));
                 if (msgResult.Success)
                 {
-                    AppViewModel.DanhMucChung = msgResult.Value;
+                    AppViewModel.DanhMucChung.Tables.Add(msgResult.Value);
+                }
+
+                msgResult = await MyObject.ObjApp.GetTable(CallSPDto.Create("PGetUserByMaCQT", new SqlParam("MaCQT", AppViewModel.MyUser.MaCQT, SqlDbType.VarChar, 5)));
+                if (msgResult.Success)
+                {
+                    AppViewModel.DanhMucChung.Tables.Add(msgResult.Value);
                 }
             }
             catch (Exception ex)

@@ -54,7 +54,6 @@
     <Compile Include="NhatKy\BaoCaoCongViecViewModel.cs" />
     <Compile Include="NhatKy\GiaHanThanhTraViewModel.cs" />
     <Compile Include="NhatKy\KhoKhanVuongMacViewModel.cs" />
-    <Compile Include="System\DanhMucViewModel.cs" />
     <Compile Include="BaseViewModel.cs" />
     <Compile Include="System\LoginViewModel.cs" />
     <Compile Include="System\MainViewModel.cs" />
@@ -78,6 +77,10 @@
     <ProjectReference Include="..\eThanhTra.Data\eThanhTra.Data.csproj">
       <Project>{ED7CAB70-CF02-4A2D-9855-9A8D21D9D4ED}</Project>
       <Name>eThanhTra.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eThanhTra.Dto\eThanhTra.Dto.csproj">
+      <Project>{03e62e5a-80de-40b3-bd32-07f98bf6d645}</Project>
+      <Name>eThanhTra.Dto</Name>
     </ProjectReference>
     <ProjectReference Include="..\eThanhTra.Model\eThanhTra.Model.csproj">
       <Project>{63B1CF8D-2D87-436D-AC4D-0FDEA8475029}</Project>

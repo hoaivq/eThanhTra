@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace eThanhTra.Api.Controllers
 {
-    public class NhatKyController : AppController, INhatKyNetwork
+    public class NhatKyController : DAOController, INhatKyNetwork
     {
         public async Task<MsgResult<DThanhTraDto>> Save(DThanhTraDto input)
         {

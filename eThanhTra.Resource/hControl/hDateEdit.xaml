@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:eThanhTra.Resource" 
-             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+             xmlns:dxemvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="100">
     <DockPanel LastChildFill="True">
@@ -14,6 +15,13 @@
         <dxe:DateEdit DockPanel.Dock="Bottom" 
                       Mask="dd/MM/yyyy"
                       MaskUseAsDisplayFormat="True"
-                      DateTime="{Binding DateTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:hDateEdit}}"/>
+                      EditValue="{Binding EditValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:hDateEdit}}"
+                      AllowNullInput="True"
+                      DateTime="{Binding DateTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:hDateEdit}}"                      
+                      >
+            <dxemvvm:Interaction.Behaviors>
+                <dxemvvm:EventToCommand EventName="EditValueChanged" Command="{Binding EditValueChangedCommand, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:hDateEdit}}" />
+            </dxemvvm:Interaction.Behaviors>
+        </dxe:DateEdit>
     </DockPanel>
 </UserControl>

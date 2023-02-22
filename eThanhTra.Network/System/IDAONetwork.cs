@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace eThanhTra.Network.System
 {
-    public interface IAppNetwork
+    public interface IDAONetwork
     {
-        Task<MsgResult<DataTable>> CallSP(CallSPDto callSPDto);
+        Task<MsgResult<DataTable>> GetTable(CallSPDto callSPDto);
     }
 }

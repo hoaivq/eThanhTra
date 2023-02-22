@@ -8,9 +8,11 @@ namespace Common.Core
 {
     public interface IView
     {
+        bool IsFirstLoad { get; set; } 
         Task CloseView();
         void ShowMsg(string Message);
         void ShowMsg(Exception ex, string Title = "");
         Task<MsgResult<T>> ShowWait<T>(string MethodName, Func<Task<MsgResult<T>>> MyFunction);
+        Task ShowWait(string MethodName, Func<Task> MyFunction);
     }
 }

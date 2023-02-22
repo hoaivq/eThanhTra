@@ -48,7 +48,7 @@
                     </Grid>
                 </ContentControl>
             </DockPanel>
-            <ControlTemplate.Triggers>
+            <!--<ControlTemplate.Triggers>
                 <MultiDataTrigger>
                     <MultiDataTrigger.Conditions>
                         <Condition Binding="{Binding (dxe:BaseEdit.OwnerEdit).(dxe:ActualPropertyProvider.Properties).IsTextEditable, RelativeSource={RelativeSource Self}}" Value="true"/>
@@ -66,7 +66,7 @@
                 <DataTrigger Binding="{Binding ShowBorder, RelativeSource={RelativeSource Self}}" Value="true">
                     <Setter Property="dx:WpfSvgPalette.Palette" TargetName="PART_ErrorPresenter" Value="{DynamicResource {Custom2:InplaceBaseEditThemeKey ResourceKey=ValidationErrorSvgPalette, ThemeName=Office2019Colorful}}"/>
                 </DataTrigger>
-            </ControlTemplate.Triggers>
+            </ControlTemplate.Triggers>-->
         </ControlTemplate>
     </dxe:SpinEdit.Resources>
 </dxe:SpinEdit>

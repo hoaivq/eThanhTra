@@ -24,9 +24,19 @@ namespace Common.Core
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
 
+        public ICommand FirstLoadViewCommand { get; set; }
         public ICommand LoadViewCommand { get; set; }
         public ICommand CloseViewCommand { get; set; }
         public ICommand SaveViewCommand { get; set; }
-        
+
+        public virtual async Task LoadView()
+        {
+            await Task.CompletedTask;
+        }
+
+        public virtual async Task SaveView()
+        {
+            await Task.CompletedTask;
+        }
     }
 }

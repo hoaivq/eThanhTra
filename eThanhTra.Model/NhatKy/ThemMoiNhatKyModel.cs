@@ -12,14 +12,14 @@ namespace eThanhTra.Model.NhatKy
 {
     public class ThemMoiNhatKyModel : BaseModel
     {
-        private object _ListCQT = null;
-        public object ListCQT
+        private DataTable _ListCQT = null;
+        public DataTable ListCQT
         {
             get
             {
                 if (_ListCQT == null)
                 {
-                    _ListCQT = AppViewModel.DanhMucChung.ListCQT;
+                    _ListCQT = AppViewModel.DanhMucChung.Tables[0];
                 }
                 return _ListCQT;
             }
@@ -31,14 +31,14 @@ namespace eThanhTra.Model.NhatKy
         }
 
 
-        private object _ListUser = null;
-        public object ListUser
+        private DataTable _ListUser = null;
+        public DataTable ListUser
         {
             get
             {
                 if (_ListUser == null)
                 {
-                    _ListUser = AppViewModel.DanhMucChung.ListUser;
+                    _ListUser = AppViewModel.DanhMucChung.Tables[1];
                 }
                 return _ListUser;
             }

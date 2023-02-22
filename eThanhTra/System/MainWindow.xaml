@@ -44,7 +44,6 @@
 
             <dxwui:HamburgerMenu.Content>
                 <Grid>
-
                     <dx:DXTabControl Grid.Row="1" x:Name="tabMain">
                     </dx:DXTabControl>
                 </Grid>

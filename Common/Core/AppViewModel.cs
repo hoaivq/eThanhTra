@@ -1,4 +1,4 @@
-﻿using eThanhTra.Data;
+﻿using eThanhTra.Dto;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,7 +12,7 @@ namespace Common.Core
     {
         public static SUser MyUser { get; set; } = null;
 
-        public static DanhMucChung DanhMucChung { get; set; } = null;
+        public static DataSet DanhMucChung { get; set; } = null;
     }
 
     

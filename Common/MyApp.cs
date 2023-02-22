@@ -70,7 +70,7 @@ namespace Common
         public CallSPDto(string _SPName, params SqlParam[] _Params)
         {
             SPName = _SPName;
-            Params = _Params;    
+            Params = _Params;
         }
         public string SPName { get; set; }
         public SqlParam[] Params { get; set; }
@@ -78,10 +78,12 @@ namespace Common
 
     public class SqlParam
     {
-        public SqlParam(string _Name, object _Value)
+        public SqlParam(string _Name, object _Value, SqlDbType? _Type = null, int? _Size = null)
         {
             Name = _Name;
             Value = _Value;
+            Type = _Type;
+            Size = _Size;
         }
         public string Name { get; set; }
         public object Value { get; set; }
