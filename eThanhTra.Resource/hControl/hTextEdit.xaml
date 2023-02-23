@@ -10,7 +10,8 @@
                xmlns:Custom2="http://schemas.devexpress.com/winfx/2008/xaml/editors/themekeys"
                x:Class="eThanhTra.Resource.hTextEdit"
              mc:Ignorable="d" 
-             d:DesignHeight="50" d:DesignWidth="200" Template="{DynamicResource hTextEditTemplate}" InvalidValueBehavior="AllowLeaveEditor"  Validate="TextEdit_Validate">
+             d:DesignHeight="50" d:DesignWidth="200" Template="{DynamicResource hTextEditTemplate}" InvalidValueBehavior="AllowLeaveEditor"  Validate="TextEdit_Validate"
+               >
 
     <dxe:TextEdit.Resources>
         <ControlTemplate x:Key="hTextEditTemplate" TargetType="{x:Type dxe:TextEdit}">

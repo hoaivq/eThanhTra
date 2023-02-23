@@ -33,7 +33,7 @@ namespace eThanhTra
             this.DataContext = new QuanLyNhatKyViewModel(this);
         }
 
-        public async Task ShowDetail(DThanhTraDto dThanhTraDto)
+        public async Task<bool> ShowDetail(DThanhTraDto dThanhTraDto)
         {
             try
             {
@@ -41,10 +41,12 @@ namespace eThanhTra
                 ((ThemMoiNhatKyViewModel)objF.DataContext)._Model.ObjThanhTra = dThanhTraDto;
                 objF.ShowPopUp();
                 await Task.CompletedTask;
+                return objF.IsReload;
             }
             catch (Exception ex)
             {
                 ShowMsg(ex, "ShowThemMoiNhatKy");
+                return false;
             }
         }
     }

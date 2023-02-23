@@ -40,9 +40,10 @@ namespace Common.Core
             await Task.CompletedTask;
         }
 
-        public virtual async Task AddNewView(object p = null)
+        public virtual async Task<bool> AddNewView(object p = null)
         {
-            await Task.CompletedTask;
+            return await Task.FromResult(false);
+            //await Task.CompletedTask;
         }
     }
 }

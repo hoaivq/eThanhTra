@@ -27,10 +27,35 @@ namespace eThanhTra.Dto
         public int? TrangThai { get { return _TrangThai; } set { _TrangThai = value; OnPropertyChanged(); } }
 
         private DateTime? _NgayCongBo;
-        public DateTime? NgayCongBo { get { return _NgayCongBo; } set { _NgayCongBo = value; OnPropertyChanged(); } }
+        public DateTime? NgayCongBo
+        {
+            get { return _NgayCongBo; }
+            set
+            {
+                _NgayCongBo = value;
+                if (NgayCongBo.HasValue && ThoiGian.HasValue)
+                {
+                    HanKetThuc = NgayCongBo.Value.AddDays(ThoiGian.Value);
+                }
+
+                OnPropertyChanged();
+            }
+        }
 
         private int? _ThoiGian;
-        public int? ThoiGian { get { return _ThoiGian; } set { _ThoiGian = value; OnPropertyChanged(); } }
+        public int? ThoiGian
+        {
+            get { return _ThoiGian; }
+            set
+            {
+                _ThoiGian = value;
+                if (NgayCongBo.HasValue && ThoiGian.HasValue)
+                {
+                    HanKetThuc = NgayCongBo.Value.AddDays(ThoiGian.Value);
+                }
+                OnPropertyChanged();
+            }
+        }
 
         private DateTime? _HanKetThuc;
         public DateTime? HanKetThuc { get { return _HanKetThuc; } set { _HanKetThuc = value; OnPropertyChanged(); } }

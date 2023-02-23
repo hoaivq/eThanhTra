@@ -10,7 +10,7 @@
                xmlns:Custom2="http://schemas.devexpress.com/winfx/2008/xaml/editors/themekeys"
                x:Class="eThanhTra.Resource.hSpinEdit"
              mc:Ignorable="d" 
-             d:DesignHeight="50" d:DesignWidth="200" Template="{DynamicResource hSpinEditTemplate}" DisplayFormatString="n0">
+             d:DesignHeight="50" d:DesignWidth="200" Template="{DynamicResource hSpinEditTemplate}" DisplayFormatString="n0" InvalidValueBehavior="AllowLeaveEditor" Validate="SpinEdit_Validate">
     <dxe:SpinEdit.Resources>
         <ControlTemplate x:Key="hSpinEditTemplate" TargetType="{x:Type dxe:ButtonEdit}">
             <DockPanel LastChildFill="True">

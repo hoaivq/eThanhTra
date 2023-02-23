@@ -23,6 +23,7 @@ namespace Common.Core
         void ShowFlashMsg(string Message = "Ghi dữ liệu thành công");
         Task<MsgResult<T>> ShowWait<T>(string MethodName, Func<Task<MsgResult<T>>> MyFunction);
         Task ShowWait(string MethodName, Func<Task> MyFunction);
+        Task<T> ShowWait<T>(string MethodName, Func<Task<T>> MyFunction);
 
 
         void WaitCursor();

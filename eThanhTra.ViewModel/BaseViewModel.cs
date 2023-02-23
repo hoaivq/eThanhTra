@@ -18,7 +18,6 @@ namespace eThanhTra.ViewModel
         public MsgResult<DataTable> msgResult { get; set; }
 
 
-
         public BaseViewModel(T View)
         {
             _View = View;
@@ -60,7 +59,7 @@ namespace eThanhTra.ViewModel
             {
                 try
                 {
-                    if (_View.IsValid == false) 
+                    if (_View.IsValid == false)
                     {
                         _View.ShowMsg("Trường dữ liệu nhập chưa chính xác, vui lòng kiểm tra lại!");
                         return;
@@ -68,6 +67,7 @@ namespace eThanhTra.ViewModel
                     await _View.ShowWait("SaveView", () => SaveView(p));
                     _View.ShowFlashMsg();
                     _View.IsReload = true;
+                    _View.IsDataChanged = false;
                 }
                 catch (Exception ex)
                 {
@@ -80,7 +80,11 @@ namespace eThanhTra.ViewModel
             {
                 try
                 {
-                    await _View.ShowWait("AddNewView", () => AddNewView(p));
+                    bool IsReload = await _View.ShowWait("AddNewView", () => AddNewView(p));
+                    if (IsReload)
+                    {
+                        await LoadView();
+                    }
                 }
                 catch (Exception ex)
                 {

@@ -38,17 +38,16 @@ namespace eThanhTra.ViewModel.NhatKy
 
             if (msgResult.Success == false)
             {
-                _View.ShowMsg(msgResult.Message);
-                return;
+                throw new Exception(msgResult.Message);
             }
 
             _Model.ListThanhTra = msgResult.Value;
         }
 
-        public override async Task AddNewView(object p = null)
+        public override async Task<bool> AddNewView(object p = null)
         {
             DThanhTraDto dThanhTraDto = ((DataRowView)p)?.Row.ToObject<DThanhTraDto>();
-            await _View.ShowDetail(dThanhTraDto);
+            return await _View.ShowDetail(dThanhTraDto);
         }
     }
 }

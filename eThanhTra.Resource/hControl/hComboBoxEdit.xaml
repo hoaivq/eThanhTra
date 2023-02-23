@@ -11,13 +11,18 @@
         <TextBlock DockPanel.Dock="Top" Height="20" 
                     Visibility="{Binding _CaptionVisibility, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:hComboBoxEdit}}"  
                     Text="{Binding _CaptionText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:hComboBoxEdit}}"/>
-        <dxe:ComboBoxEdit   DockPanel.Dock="Bottom"
+        <dxe:ComboBoxEdit   
+            x:Name="hControl"
+                            DockPanel.Dock="Bottom"
                             AutoComplete="False"
                             EditValue="{Binding EditValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:hComboBoxEdit}}"
                             SelectedItem="{Binding SelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:hComboBoxEdit}}"
                             DisplayMember="{Binding DisplayMember, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:hComboBoxEdit}}"
                             ValueMember="{Binding ValueMember, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:hComboBoxEdit}}"
                             ItemsSource="{Binding ItemsSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:hComboBoxEdit}}"
+                            SelectedIndexChanged="ComboBoxEdit_SelectedIndexChanged"
+                            Validate="ComboBoxEdit_Validate"
+                            InvalidValueBehavior="AllowLeaveEditor"
                             />
     </DockPanel>
 </UserControl>

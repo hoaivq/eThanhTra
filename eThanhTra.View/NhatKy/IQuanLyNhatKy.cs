@@ -10,6 +10,6 @@ namespace eThanhTra.View.NhatKy
 {
     public interface IQuanLyNhatKy : IView
     {
-        Task ShowDetail(DThanhTraDto dThanhTraDto = null);
+        Task<bool> ShowDetail(DThanhTraDto dThanhTraDto = null);
     }
 }

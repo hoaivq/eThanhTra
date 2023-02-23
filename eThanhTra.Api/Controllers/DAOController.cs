@@ -9,8 +9,10 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
+using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
@@ -96,13 +98,13 @@ namespace eThanhTra.Api.Controllers
             string ObjectType = string.Empty;
             try
             {
-                ObjectType = Request.GetHeader("ObjectType");
+                ObjectType = (Request == null) ? Object.GetType().Name : Request.GetHeader("ObjectType");
                 using (eThanhTraEntities db = new eThanhTraEntities())
                 {
-                    
                     if (ObjectType.Equals("DThanhTraDto"))
                     {
-                        DThanhTraDto input = JsonConvert.DeserializeObject<DThanhTraDto>(Object.ToString());
+
+                        DThanhTraDto input = (Request == null) ? Object as DThanhTraDto : JsonConvert.DeserializeObject<DThanhTraDto>(Object.ToString());
                         DThanhTra output = input.Cast<DThanhTra>();
                         if (input.Id.HasValue())
                         {
@@ -123,7 +125,26 @@ namespace eThanhTra.Api.Controllers
             }
             catch (Exception ex)
             {
-                return new MsgResult<object>("SaveObject", ex, ObjectType);
+                StringBuilder sbErr = new StringBuilder();
+                if (ex is DbEntityValidationException)
+                {
+                    DbEntityValidationException validationException = (DbEntityValidationException)ex;
+                    foreach (DbEntityValidationResult validationResult in validationException.EntityValidationErrors)
+                    {
+                        foreach (DbValidationError validationError in validationResult.ValidationErrors)
+                        {
+                            sbErr.AppendLine(validationError.ErrorMessage);
+                        }
+                    }
+                }
+
+                MsgResult<object> rs = new MsgResult<object>("SaveObject", ex, ObjectType) { Value = Object };
+                rs.Value = Object;
+                if (sbErr.Length > 0)
+                {
+                    rs.Message = rs.Message + Environment.NewLine + sbErr.ToString();
+                }
+                return rs;
             }
         }
     }

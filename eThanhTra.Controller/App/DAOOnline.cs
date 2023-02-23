@@ -33,7 +33,7 @@ namespace eThanhTra.Controller.App
         public async Task<MsgResult<T>> SaveObject<T>(T Object)
         {
             MsgResult<object> msgResult = await SaveObject((object)Object);
-            return new MsgResult<T>() { Success = msgResult.Success, Message = msgResult.Message, Value = JsonConvert.DeserializeObject<T>(msgResult.Value.ToString()) };
+            return new MsgResult<T>() { Success = msgResult.Success, Message = msgResult.Message, Value = (msgResult.Success ? JsonConvert.DeserializeObject<T>(msgResult.Value.ToString()) : default(T)) };
         }
     }
 }

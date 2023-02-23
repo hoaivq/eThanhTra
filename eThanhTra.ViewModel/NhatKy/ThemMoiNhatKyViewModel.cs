@@ -37,6 +37,10 @@ namespace eThanhTra.ViewModel.NhatKy
         public async override Task SaveView(object p = null)
         {
             MsgResult<DThanhTraDto> msgResult = await MyObject.ObjApp.SaveObject(_Model.ObjThanhTra);
+            if(msgResult.Success == false)
+            {
+                throw new Exception(msgResult.Message);
+            }
             _Model.ObjThanhTra = msgResult.Value;
         }
     }

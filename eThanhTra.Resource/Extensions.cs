@@ -61,8 +61,8 @@ namespace eThanhTra.Resource.PropertiesExtensions
 
         public static FrameworkElement GetRootOwner(this FrameworkElement frameworkElement)
         {
-            if(frameworkElement == null) { return null; }
-            if(frameworkElement.Parent is TSDWindow || frameworkElement.Parent is TSDUserControl)
+            if (frameworkElement == null) { return null; }
+            if (frameworkElement.Parent is TSDWindow || frameworkElement.Parent is TSDUserControl)
             {
                 return (FrameworkElement)frameworkElement.Parent;
             }
@@ -72,11 +72,16 @@ namespace eThanhTra.Resource.PropertiesExtensions
             }
         }
 
-        public static List<FrameworkElement> GetAllChild(this DependencyObject current) 
+        public static List<FrameworkElement> GetAllChild(this DependencyObject current)
         {
             List<FrameworkElement> lstChild = new List<FrameworkElement>();
             FindAllChild(current, ref lstChild);
             return lstChild;
+        }
+
+        private static Type[] ControlTypeArr
+        {
+            get { return new Type[] { typeof(hTextEdit), typeof(hDateEdit), typeof(hComboBoxEdit), typeof(hSpinEdit) }; }
         }
 
         private static void FindAllChild(DependencyObject current, ref List<FrameworkElement> lstChild)
@@ -89,7 +94,7 @@ namespace eThanhTra.Resource.PropertiesExtensions
                     return;
                 }
 
-                if (children is hTextEdit)
+                if (ControlTypeArr.Any(c => children.GetType() == c))
                 {
                     lstChild.Add((FrameworkElement)children);
                 }
@@ -98,6 +103,61 @@ namespace eThanhTra.Resource.PropertiesExtensions
                     FindAllChild(children, ref lstChild);
                 }
             }
+        }
+
+
+        public static bool Valid(this DependencyObject frm)
+        {
+            bool _IsValid = true;
+            List<FrameworkElement> lstChild = frm.GetAllChild();
+            if (lstChild != null)
+            {
+                foreach (FrameworkElement element in lstChild)
+                {
+                    if (element is hTextEdit)
+                    {
+                        hTextEdit c = (hTextEdit)element;
+                        if (c.HasValidationError)
+                        {
+                            c.Focus();
+                            _IsValid = false;
+                            break;
+                        }
+                    }
+                    else if (element is hDateEdit)
+                    {
+                        hDateEdit c = (hDateEdit)element;
+                        if (c.hControl.HasValidationError)
+                        {
+                            c.Focus();
+                            _IsValid = false;
+                            break;
+                        }
+                    }
+                    else if (element is hComboBoxEdit)
+                    {
+                        hComboBoxEdit c = (hComboBoxEdit)element;
+                        if (c.hControl.HasValidationError)
+                        {
+                            c.Focus();
+                            _IsValid = false;
+                            break;
+                        }
+                    }
+                    else if (element is hSpinEdit)
+                    {
+                        hSpinEdit c = (hSpinEdit)element;
+                        if (c.HasValidationError)
+                        {
+                            c.Focus();
+                            _IsValid = false;
+                            break;
+                        }
+                    }
+
+                }
+            }
+            return _IsValid;
         }
     }
 }

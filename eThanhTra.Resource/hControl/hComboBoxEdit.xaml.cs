@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Common.Core;
+using eThanhTra.Resource.PropertiesExtensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +22,19 @@ namespace eThanhTra.Resource
     /// </summary>
     public partial class hComboBoxEdit : UserControl
     {
+        private FrameworkElement _Owner;
+        public FrameworkElement Owner
+        {
+            get
+            {
+                if (_Owner == null)
+                {
+                    _Owner = this.GetRootOwner();
+                }
+                return _Owner;
+            }
+        }
+
         public hComboBoxEdit()
         {
             InitializeComponent();
@@ -116,6 +131,43 @@ namespace eThanhTra.Resource
         public static readonly DependencyProperty EditValueProperty =
             DependencyProperty.Register("EditValue", typeof(object), typeof(hComboBoxEdit), new PropertyMetadata(null));
 
+        private void ComboBoxEdit_Validate(object sender, DevExpress.Xpf.Editors.ValidationEventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            if (IsValidEmpty)
+            {
+                if (string.IsNullOrWhiteSpace((string)e.Value))
+                {
+                    e.IsValid = false;
+                    sb.AppendLine("Trường dữ liệu không được để trống");
+                }
+            }
 
+            if (sb.Length > 0)
+            {
+                e.ErrorContent = sb.ToString();
+            }
+        }
+
+
+
+
+        public bool IsValidEmpty
+        {
+            get { return (bool)GetValue(IsValidEmptyProperty); }
+            set { SetValue(IsValidEmptyProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsValidEmpty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsValidEmptyProperty =
+            DependencyProperty.Register("IsValidEmpty", typeof(bool), typeof(hComboBoxEdit), new PropertyMetadata(false));
+
+        private void ComboBoxEdit_SelectedIndexChanged(object sender, RoutedEventArgs e)
+        {
+            if (Owner == null) { return; }
+            IView v = (IView)Owner;
+            if (v.IsFirstLoad) { return; }
+            v.IsDataChanged = true;
+        }
     }
 }

@@ -37,25 +37,7 @@ namespace eThanhTra.Resource
         {
             get
             {
-                bool _IsValid = true;
-                List<FrameworkElement> lstChild = this.GetAllChild();
-                if (lstChild != null)
-                {
-                    foreach (FrameworkElement element in lstChild)
-                    {
-                        if (element is hTextEdit)
-                        {
-                            hTextEdit hText = (hTextEdit)element;
-                            if (hText.HasValidationError)
-                            {
-                                hText.Focus();
-                                _IsValid = false;
-                                break;
-                            }
-                        }
-                    }
-                }
-                return _IsValid;
+                return this.Valid();
             }
         }
 
@@ -143,6 +125,7 @@ namespace eThanhTra.Resource
             MyApp.Log.GhiLog(Title, ex);
             ShowMsg(ex.Message);
         }
+
 
         public Task<MsgResult<T>> ShowWait<T>(string MethodName, Func<Task<MsgResult<T>>> MyFunction)
         {
@@ -282,6 +265,24 @@ namespace eThanhTra.Resource
                 objF.ShowDialog();
             }
             catch { }
+        }
+
+        public Task<T> ShowWait<T>(string MethodName, Func<Task<T>> MyFunction)
+        {
+            try
+            {
+                WaitCursor();
+                return MyFunction.Invoke();
+            }
+            catch (Exception ex)
+            {
+                MyApp.Log.GhiLog(MethodName, ex);
+                throw ex;
+            }
+            finally
+            {
+                ArrowCursor();
+            }
         }
     }
 }
