@@ -35,6 +35,8 @@ namespace eThanhTra.Data
         public virtual DbSet<DThanhTraThanhVien> DThanhTraThanhViens { get; set; }
         public virtual DbSet<DThanhTraThanhVienCongViec> DThanhTraThanhVienCongViecs { get; set; }
         public virtual DbSet<DThanhTraThanhVienCongViecChiTiet> DThanhTraThanhVienCongViecChiTiets { get; set; }
+        public virtual DbSet<DThanhTraQuyetDinh> DThanhTraQuyetDinhs { get; set; }
+        public virtual DbSet<SLichLamViec> SLichLamViecs { get; set; }
     
         public virtual ObjectResult<PGetUserByMaCQT_Result> PGetUserByMaCQT(string maCQT)
         {
@@ -45,13 +47,13 @@ namespace eThanhTra.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PGetUserByMaCQT_Result>("PGetUserByMaCQT", maCQTParameter);
         }
     
-        public virtual ObjectResult<PGetCQTByMaCQT_Result> PGetCQTByMaCQT(string maCQTCha)
+        public virtual ObjectResult<PGetCQTByMaCQT_Result> PGetCQTByMaCQT(string maCQT)
         {
-            var maCQTChaParameter = maCQTCha != null ?
-                new ObjectParameter("MaCQTCha", maCQTCha) :
-                new ObjectParameter("MaCQTCha", typeof(string));
+            var maCQTParameter = maCQT != null ?
+                new ObjectParameter("MaCQT", maCQT) :
+                new ObjectParameter("MaCQT", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PGetCQTByMaCQT_Result>("PGetCQTByMaCQT", maCQTChaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PGetCQTByMaCQT_Result>("PGetCQTByMaCQT", maCQTParameter);
         }
     }
 }

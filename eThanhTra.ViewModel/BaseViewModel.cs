@@ -2,6 +2,7 @@
 using Common.Core;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -16,46 +17,75 @@ namespace eThanhTra.ViewModel
         public TModel _Model { get; set; } = new TModel();
         public MsgResult<DataTable> msgResult { get; set; }
 
-        public bool IsFirstLoad { get; set; } = true;
+
+
         public BaseViewModel(T View)
         {
             _View = View;
 
-            CloseViewCommand = new RelayCommand<object>((p) => { return true; }, async (p) =>
+            CloseCommand = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
                 await _View.CloseView();
             });
 
-            FirstLoadViewCommand = new RelayCommand<object>((p) => { return true; }, async (p) =>
+            FirstLoadCommand = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
                 try
                 {
-                    await View.ShowWait("LoadView", () => LoadView());
-                    IsFirstLoad = false;
+                    _View.IsFirstLoad = true;
+                    await View.ShowWait("LoadView", () => LoadView(p));
+                    _View.IsFirstLoad = false;
                 }
                 catch (Exception ex)
                 {
-                    _View.ShowMsg(ex, "FirstLoadViewCommand");
+                    _View.ShowMsg(ex, "FirstLoadCommand");
                 }
             });
 
-            LoadViewCommand = new RelayCommand<object>((p) => { return true; }, async (p) =>
+            LoadCommand = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
                 if (_View.IsFirstLoad) { return; }
 
                 try
                 {
-                    await View.ShowWait("LoadView", () => LoadView());
+                    await _View.ShowWait("LoadView", () => LoadView(p));
                 }
                 catch (Exception ex)
                 {
-                    _View.ShowMsg(ex, "FirstLoadViewCommand");
+                    _View.ShowMsg(ex, "LoadCommand");
                 }
             });
 
-            SaveViewCommand = new RelayCommand<object>((p) => { return true; }, async (p) =>
+            SaveCommand = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
-                await SaveView();
+                try
+                {
+                    if (_View.IsValid == false) 
+                    {
+                        _View.ShowMsg("Trường dữ liệu nhập chưa chính xác, vui lòng kiểm tra lại!");
+                        return;
+                    }
+                    await _View.ShowWait("SaveView", () => SaveView(p));
+                    _View.ShowFlashMsg();
+                    _View.IsReload = true;
+                }
+                catch (Exception ex)
+                {
+                    _View.ShowMsg(ex, "SaveCommand");
+                }
+            });
+
+
+            AddNewCommand = new RelayCommand<object>((p) => { return true; }, async (p) =>
+            {
+                try
+                {
+                    await _View.ShowWait("AddNewView", () => AddNewView(p));
+                }
+                catch (Exception ex)
+                {
+                    _View.ShowMsg(ex, "AddNewCommand");
+                }
             });
         }
 

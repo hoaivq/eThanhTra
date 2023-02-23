@@ -1,7 +1,7 @@
 ﻿using Common;
 using Common.Core;
 using eThanhTra.Controller;
-using eThanhTra.Data;
+using eThanhTra.Dto;
 using eThanhTra.Model;
 using eThanhTra.Model.NhatKy;
 using eThanhTra.View;
@@ -22,21 +22,22 @@ namespace eThanhTra.ViewModel.NhatKy
         {
         }
 
-        public override Task LoadView()
+        public override async Task LoadView(object p = null)
         {
-            _Model.ObjThanhTra = new DThanhTraDto();
-            _Model.ObjThanhTra.MaCQT = AppViewModel.MyUser.MaCQT;
-            _Model.ObjThanhTra._NgayCongBo = DateTime.Now;
-            _Model.ObjThanhTra._ThoiGian = 10;
-
-            _Model.ObjThanhTra.UpdateChange();
-            return base.LoadView();
+            if (_Model.ObjThanhTra == null)
+            {
+                _Model.ObjThanhTra = new DThanhTraDto();
+                _Model.ObjThanhTra.MaCQT = AppViewModel.MyUser.MaCQT;
+                _Model.ObjThanhTra.NgayCongBo = DateTime.Now;
+                _Model.ObjThanhTra.ThoiGian = 10;
+            }
+            await base.LoadView();
         }
 
-        public async override Task SaveView()
+        public async override Task SaveView(object p = null)
         {
-            //MsgResult<DThanhTraDto> msgResult = await MyObject.ObjNhatKy.Save(_Model.ObjThanhTra);
-            //_Model.ObjThanhTra = msgResult.Value;
+            MsgResult<DThanhTraDto> msgResult = await MyObject.ObjApp.SaveObject(_Model.ObjThanhTra);
+            _Model.ObjThanhTra = msgResult.Value;
         }
     }
 }

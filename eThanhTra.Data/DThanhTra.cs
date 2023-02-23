@@ -12,21 +12,19 @@ namespace eThanhTra.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class DThanhTra : BaseDto
+    public partial class DThanhTra
     {
         public long Id { get; set; }
         public string MST { get; set; }
         public string TenNNT { get; set; }
         public string MaCQT { get; set; }
         public string UserNameTDTT { get; set; }
-
-        private Nullable<System.DateTime> _NgayCongBo;
         public Nullable<System.DateTime> NgayCongBo { get; set; }
         public Nullable<int> ThoiGian { get; set; }
-
         public Nullable<System.DateTime> HanKetThuc { get; set; }
-
         public Nullable<System.DateTime> NgayKetThuc { get; set; }
         public string GhiChu { get; set; }
+        public Nullable<int> TrangThai { get; set; }
+        public Nullable<System.DateTime> NgayNhap { get; set; }
     }
 }

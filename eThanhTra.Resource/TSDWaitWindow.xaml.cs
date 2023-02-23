@@ -26,6 +26,7 @@ namespace eThanhTra.Resource
 
         private void Window_Closed(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.Arrow;
             if (this.Owner != null)
             {
                 this.Owner.Opacity = 1;
@@ -34,6 +35,7 @@ namespace eThanhTra.Resource
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            this.Cursor = Cursors.Wait;
             if (this.Owner != null)
             {
                 this.Owner.Opacity = 0.5;

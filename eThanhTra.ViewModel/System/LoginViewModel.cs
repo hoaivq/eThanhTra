@@ -36,7 +36,7 @@ namespace eThanhTra.ViewModel.System
                         return;
                     }
 
-                    AppViewModel.MyUser = msgResult.Value.Rows[0].ToObject<SUser>();
+                    AppViewModel.MyUser = msgResult.Value.Rows[0].ToObject<SUserDto>();
                     View.ShowMainWindow();
                 }
                 catch (Exception ex)

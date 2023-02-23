@@ -1,10 +1,13 @@
 ﻿using Common;
 using Common.Core;
+using eThanhTra.Data;
 using eThanhTra.Dto;
 using eThanhTra.Network.System;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -14,15 +17,15 @@ using System.Web.Http;
 
 namespace eThanhTra.Api.Controllers
 {
-    public partial class DAOController : ApiController, IDAONetwork
+    public partial class DAOController : ApiController, IDAOApiNetwork
     {
-        public SUser MyUser
+        public SUserDto MyUser
         {
             get
             {
                 if (Request == null)
                 {
-                    return new SUser
+                    return new SUserDto
                     {
                         UserName = AppViewModel.MyUser.UserName,// Request.GetHeader("UserName"),
                         MaCQT = AppViewModel.MyUser.MaCQT,
@@ -31,15 +34,16 @@ namespace eThanhTra.Api.Controllers
                 }
                 else
                 {
-                    return new SUser
+                    return new SUserDto
                     {
                         UserName = Request.GetHeader("UserName"),
                         MaCQT = Request.GetHeader("MaCQT"),
-                        UserType = Request.GetHeader("UserType").ToInt(),
+                        UserType = Request.GetHeader("UserType").ToInt().Value,
                     };
                 }
             }
         }
+
 
         [HttpPost]
         public async Task<MsgResult<DataTable>> GetTable([FromBody] CallSPDto callSPDto)
@@ -55,11 +59,71 @@ namespace eThanhTra.Api.Controllers
             }
             catch (Exception ex)
             {
-                return new MsgResult<DataTable>("CallSP", ex, JSON);
+                return new MsgResult<DataTable>("GetTable", ex, JSON);
             }
             finally
             {
-                MyApp.Log.GhiLog("CallSP", JSON);
+                MyApp.Log.GhiLog("GetTable", JSON);
+            }
+        }
+
+
+        [HttpPost]
+        public async Task<MsgResult<ObservableCollection<object>>> GetListObject([FromBody] CallSPDto callSPDto)
+        {
+            string JSON = string.Empty;
+            try
+            {
+                JSON = JsonConvert.SerializeObject(callSPDto);
+                using (DataTable dt = await MyApp.Dao.GetTableSPAsync(callSPDto.SPName, callSPDto.GetSqlParameter()))
+                {
+                    return new MsgResult<ObservableCollection<object>>(true, dt.ToListObject<object>());
+                }
+            }
+            catch (Exception ex)
+            {
+                return new MsgResult<ObservableCollection<object>>("GetListObject", ex, JSON);
+            }
+            finally
+            {
+                MyApp.Log.GhiLog("GetListObject", JSON);
+            }
+        }
+
+        [HttpPost]
+        public async Task<MsgResult<object>> SaveObject([FromBody] object Object)
+        {
+            string ObjectType = string.Empty;
+            try
+            {
+                ObjectType = Request.GetHeader("ObjectType");
+                using (eThanhTraEntities db = new eThanhTraEntities())
+                {
+                    
+                    if (ObjectType.Equals("DThanhTraDto"))
+                    {
+                        DThanhTraDto input = JsonConvert.DeserializeObject<DThanhTraDto>(Object.ToString());
+                        DThanhTra output = input.Cast<DThanhTra>();
+                        if (input.Id.HasValue())
+                        {
+                            output = db.DThanhTras.FirstOrDefault(c => c.Id == output.Id);
+                            output.GetDataFrom<DThanhTra, DThanhTraDto>(input);
+                        }
+                        else
+                        {
+                            output.TrangThai = 0;
+                            db.DThanhTras.Add(output);
+                        }
+                        await db.SaveChangesAsync();
+                        Object = output.Cast<DThanhTraDto>();
+                    }
+
+                    return new MsgResult<object>(true, Object);
+                }
+            }
+            catch (Exception ex)
+            {
+                return new MsgResult<object>("SaveObject", ex, ObjectType);
             }
         }
     }

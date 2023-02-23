@@ -57,6 +57,9 @@
     <Compile Include="DThanhTraCongViec.cs">
       <DependentUpon>eThanhTraModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DThanhTraQuyetDinh.cs">
+      <DependentUpon>eThanhTraModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DThanhTraThanhVien.cs">
       <DependentUpon>eThanhTraModel.tt</DependentUpon>
     </Compile>
@@ -66,8 +69,9 @@
     <Compile Include="DThanhTraThanhVienCongViecChiTiet.cs">
       <DependentUpon>eThanhTraModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="eThanhTraDB.cs" />
-    <Compile Include="MyDto.cs" />
+    <Compile Include="SLichLamViec.cs">
+      <DependentUpon>eThanhTraModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Struct.cs" />
     <Compile Include="eThanhTraModel.Context.cs">
       <AutoGen>True</AutoGen>

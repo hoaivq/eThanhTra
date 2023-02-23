@@ -1,4 +1,5 @@
-﻿using eThanhTra.NhatKy;
+﻿using eThanhTra.Dto;
+using eThanhTra.NhatKy;
 using eThanhTra.Resource;
 using eThanhTra.View;
 using eThanhTra.View.NhatKy;
@@ -32,18 +33,19 @@ namespace eThanhTra
             this.DataContext = new QuanLyNhatKyViewModel(this);
         }
 
-        public async Task ShowThemMoiNhatKy()
+        public async Task ShowDetail(DThanhTraDto dThanhTraDto)
         {
             try
             {
                 popThemMoiNhatKy objF = new popThemMoiNhatKy();
-                await Task.FromResult(objF.ShowPopUp());
+                ((ThemMoiNhatKyViewModel)objF.DataContext)._Model.ObjThanhTra = dThanhTraDto;
+                objF.ShowPopUp();
+                await Task.CompletedTask;
             }
             catch (Exception ex)
             {
                 ShowMsg(ex, "ShowThemMoiNhatKy");
             }
         }
-
     }
 }

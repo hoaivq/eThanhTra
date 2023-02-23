@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace eThanhTra.Resource.PropertiesExtensions
 {
@@ -56,5 +58,46 @@ namespace eThanhTra.Resource.PropertiesExtensions
             sender.SetValue(WindowMaxHeightProperty, SystemParameters.MaximizedPrimaryScreenHeight);
         }
 
+
+        public static FrameworkElement GetRootOwner(this FrameworkElement frameworkElement)
+        {
+            if(frameworkElement == null) { return null; }
+            if(frameworkElement.Parent is TSDWindow || frameworkElement.Parent is TSDUserControl)
+            {
+                return (FrameworkElement)frameworkElement.Parent;
+            }
+            else
+            {
+                return GetRootOwner((FrameworkElement)frameworkElement.Parent);
+            }
+        }
+
+        public static List<FrameworkElement> GetAllChild(this DependencyObject current) 
+        {
+            List<FrameworkElement> lstChild = new List<FrameworkElement>();
+            FindAllChild(current, ref lstChild);
+            return lstChild;
+        }
+
+        private static void FindAllChild(DependencyObject current, ref List<FrameworkElement> lstChild)
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(current); i++)
+            {
+                DependencyObject children = VisualTreeHelper.GetChild(current, i);
+                if (children == null)
+                {
+                    return;
+                }
+
+                if (children is hTextEdit)
+                {
+                    lstChild.Add((FrameworkElement)children);
+                }
+                else
+                {
+                    FindAllChild(children, ref lstChild);
+                }
+            }
+        }
     }
 }

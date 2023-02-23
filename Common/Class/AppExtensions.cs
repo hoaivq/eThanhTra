@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -13,29 +14,50 @@ namespace Common
 {
     public static class AppExtensions
     {
-        public static int ToInt(this object obj)
+        public static int? ToInt(this object obj)
         {
-            if (obj == null) { return 0; }
+            if (obj == null) { return null; }
             try
             {
                 return int.Parse(obj.ToString());
             }
-            catch { return 0; }
+            catch { return null; }
         }
 
-        public static long ToLong(this object obj)
+        public static long? ToLong(this object obj)
         {
-            if (obj == null) { return 0; }
+            if (obj == null) { return null; }
             try
             {
                 return long.Parse(obj.ToString());
             }
-            catch { return 0; }
+            catch { return null; }
+        }
+
+        public static DateTime? ToDateTime(this object obj)
+        {
+            if (obj == null) { return null; }
+            try
+            {
+                return DateTime.Parse(obj.ToString());
+            }
+            catch { return null; }
         }
 
         public static T ToObject<T>(this string inputStr)
         {
             return JsonConvert.DeserializeObject<T>(inputStr);
+        }
+
+        public static ObservableCollection<T> ToListObject<T>(this DataTable dt)
+        {
+            ObservableCollection<T> lstObject = new ObservableCollection<T>();
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                lstObject.Add(ToObject<T>(dr));
+            }
+            return lstObject;
         }
 
         public static T ToObject<T>(this DataRow dr)
@@ -48,13 +70,35 @@ namespace Common
                 {
                     if (pro.Name == column.ColumnName)
                     {
-                        if (dr[column.ColumnName] == DBNull.Value)
+                        try
                         {
-                            pro.SetValue(obj, null, null);
+                            if (dr[column.ColumnName] == DBNull.Value)
+                            {
+                                pro.SetValue(obj, null, null);
+                            }
+                            else
+                            {
+                                if (pro.PropertyType == typeof(int) || pro.PropertyType == typeof(int?))
+                                {
+                                    pro.SetValue(obj, dr[column.ColumnName].ToInt(), null);
+                                }
+                                else if (pro.PropertyType == typeof(long) || pro.PropertyType == typeof(long?))
+                                {
+                                    pro.SetValue(obj, dr[column.ColumnName].ToLong(), null);
+                                }
+                                else if (pro.PropertyType == typeof(DateTime) || pro.PropertyType == typeof(DateTime?))
+                                {
+                                    pro.SetValue(obj, dr[column.ColumnName].ToDateTime(), null);
+                                }
+                                else
+                                {
+                                    pro.SetValue(obj, dr[column.ColumnName], null);
+                                }
+                            }
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            pro.SetValue(obj, dr[column.ColumnName], null);
+                            throw new Exception(pro.Name + ": " + ex.Message);
                         }
                     }
                 }
@@ -101,9 +145,10 @@ namespace Common
             return lstException;
         }
 
-        public static bool HasValue(this long Value)
+        public static bool HasValue(this long? val)
         {
-            if (Value == 0 || Value == -1) { return false; }
+            if(val.HasValue == false) { return false; }
+            if (val.Value == 0 || val.Value == -1) { return false; }
             return true;
         }
 
@@ -122,17 +167,25 @@ namespace Common
             List<SqlParameter> lstParam = new List<SqlParameter>();
             foreach (SqlParam item in callSPDto.Params)
             {
-                SqlParameter p = new SqlParameter(item.Name, item.Value);
-                if (item.Type.HasValue)
+                try
                 {
-                    p.SqlDbType = item.Type.Value;
-                }
+                    SqlParameter p = new SqlParameter(item.Name, item.Value);
+                    if (item.Type.HasValue)
+                    {
+                        p.SqlDbType = item.Type.Value;
+                    }
 
-                if (item.Size.HasValue)
-                {
-                    p.Size = item.Size.Value;
+                    if (item.Size.HasValue)
+                    {
+                        p.Size = item.Size.Value;
+                    }
+                    lstParam.Add(p);
                 }
-                lstParam.Add(p);
+                catch (Exception ex)
+                {
+                    MyApp.Log.GhiLog("GetSqlParameter", ex, item.Name);
+                    throw ex;
+                }
             }
             return lstParam.ToArray();
         }
@@ -164,7 +217,7 @@ namespace Common
 
         public static string GetColType(this Type type)
         {
-            if(type == typeof(string))
+            if (type == typeof(string))
             {
                 return "string";
             }
@@ -187,10 +240,29 @@ namespace Common
         }
 
 
-        public static object ToDateStrSQL(this DateTime? dateTime) 
-        { 
-            if(dateTime.HasValue == false) { return DBNull.Value; }
+        public static object ToDateStrSQL(this DateTime? dateTime)
+        {
+            if (dateTime.HasValue == false) { return DBNull.Value; }
             return dateTime.Value.ToString("yyyyMMdd");
+        }
+
+        public static TDes GetDataFrom<TDes, TSource>(this TDes Destination, TSource Source)
+        {
+            foreach (PropertyInfo p in Source.GetType().GetProperties())
+            {
+                Destination.GetType().GetProperty(p.Name)?.SetValue(Destination, p.GetValue(Source));
+            }
+            return Destination;
+        }
+
+        public static T Cast<T>(this object Source) where T : new()
+        {
+            T Destination = new T();
+            foreach (PropertyInfo p in Source.GetType().GetProperties())
+            {
+                Destination.GetType().GetProperty(p.Name)?.SetValue(Destination, p.GetValue(Source));
+            }
+            return Destination;
         }
     }
 }
