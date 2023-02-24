@@ -6,11 +6,11 @@
              xmlns:local="clr-namespace:eThanhTra.NhatKy" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
               Title="Tạm dừng thanh tra"
               mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="380" d:DesignWidth="800">
     <Grid>
         <StackPanel Orientation="Vertical">
 
-            <rs:hTextEdit  Margin="10 20 5 0"
+            <rs:hTextEdit  Margin="10 20 10 0"
                 _CaptionText="Quyết định tạm dừng thanh tra" Height="50"/>
             <rs:hTextEdit Margin="10 10"
                 _CaptionText="Lý do tạm dừng" Height="50"/>
@@ -45,15 +45,17 @@
             <rs:hTextEdit Margin="10,5"
                 _CaptionText="Người duyệt" Height="50"/>
             <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Center"
-                        Margin="30">
+                        HorizontalAlignment="Right"
+                        Margin="0 40 0 0">
                 <dx:SimpleButton Content="File đính kèm"
-                          Margin ="10 0 10 0" 
+                          Margin ="0 0 5 0" 
                           />
                 <dx:SimpleButton Content="Ghi"
-                          Margin ="10 0 10 0" />
+                          Margin ="0 0 5 0"
+                                 Style="{StaticResource SaveButton}"/>
                 <dx:SimpleButton Content="Thoát"
-                          Margin ="10 0 10 0" />
+                          Margin ="0 0 10 0" 
+                                 Style="{StaticResource CloseButton}"/>
             </StackPanel>
 
         </StackPanel>

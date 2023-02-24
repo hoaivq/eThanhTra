@@ -11,12 +11,6 @@ using System.Threading.Tasks;
 
 namespace eThanhTra.Data
 {
-    public class DanhMucChung
-    {
-        public List<PGetCQTByMaCQT_Result> ListCQT { get; set; }
-        public List<PGetUserByMaCQT_Result> ListUser { get; set; }
-    }
-
     public static class Extensions
     {
         public static async Task<List<T>> SpQueryAsync<T>(this Database database, string SPName, params SqlParameter[] parameters)
@@ -32,24 +26,7 @@ namespace eThanhTra.Data
             return await database.SqlQuery<T>(SPName + sbParam.ToString(), parameters).ToListAsync();
         }
 
-        public static T GetData<T>(this T Destination, T Source)
-        {
-            foreach (PropertyInfo p in Source.GetType().GetProperties())
-            {
-                Destination.GetType().GetProperty(p.Name)?.SetValue(Destination, p.GetValue(Source));
-            }
-            return Destination;
-        }
-
-        public static T Cast<T>(this object Source) where T : new()
-        {
-            T Destination = new T();
-            foreach (PropertyInfo p in Source.GetType().GetProperties())
-            {
-                Destination.GetType().GetProperty(p.Name)?.SetValue(Destination, p.GetValue(Source));
-            }
-            return Destination;
-        }
+       
     }
 
     public class ExtProp

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace eThanhTra.Resource.PropertiesExtensions
 {
@@ -56,5 +58,106 @@ namespace eThanhTra.Resource.PropertiesExtensions
             sender.SetValue(WindowMaxHeightProperty, SystemParameters.MaximizedPrimaryScreenHeight);
         }
 
+
+        public static FrameworkElement GetRootOwner(this FrameworkElement frameworkElement)
+        {
+            if (frameworkElement == null) { return null; }
+            if (frameworkElement.Parent is TSDWindow || frameworkElement.Parent is TSDUserControl)
+            {
+                return (FrameworkElement)frameworkElement.Parent;
+            }
+            else
+            {
+                return GetRootOwner((FrameworkElement)frameworkElement.Parent);
+            }
+        }
+
+        public static List<FrameworkElement> GetAllChild(this DependencyObject current)
+        {
+            List<FrameworkElement> lstChild = new List<FrameworkElement>();
+            FindAllChild(current, ref lstChild);
+            return lstChild;
+        }
+
+        private static Type[] ControlTypeArr
+        {
+            get { return new Type[] { typeof(hTextEdit), typeof(hDateEdit), typeof(hComboBoxEdit), typeof(hSpinEdit) }; }
+        }
+
+        private static void FindAllChild(DependencyObject current, ref List<FrameworkElement> lstChild)
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(current); i++)
+            {
+                DependencyObject children = VisualTreeHelper.GetChild(current, i);
+                if (children == null)
+                {
+                    return;
+                }
+
+                if (ControlTypeArr.Any(c => children.GetType() == c))
+                {
+                    lstChild.Add((FrameworkElement)children);
+                }
+                else
+                {
+                    FindAllChild(children, ref lstChild);
+                }
+            }
+        }
+
+
+        public static bool Valid(this DependencyObject frm)
+        {
+            bool _IsValid = true;
+            List<FrameworkElement> lstChild = frm.GetAllChild();
+            if (lstChild != null)
+            {
+                foreach (FrameworkElement element in lstChild)
+                {
+                    if (element is hTextEdit)
+                    {
+                        hTextEdit c = (hTextEdit)element;
+                        if (c.HasValidationError)
+                        {
+                            c.Focus();
+                            _IsValid = false;
+                            break;
+                        }
+                    }
+                    else if (element is hDateEdit)
+                    {
+                        hDateEdit c = (hDateEdit)element;
+                        if (c.hControl.HasValidationError)
+                        {
+                            c.Focus();
+                            _IsValid = false;
+                            break;
+                        }
+                    }
+                    else if (element is hComboBoxEdit)
+                    {
+                        hComboBoxEdit c = (hComboBoxEdit)element;
+                        if (c.hControl.HasValidationError)
+                        {
+                            c.Focus();
+                            _IsValid = false;
+                            break;
+                        }
+                    }
+                    else if (element is hSpinEdit)
+                    {
+                        hSpinEdit c = (hSpinEdit)element;
+                        if (c.HasValidationError)
+                        {
+                            c.Focus();
+                            _IsValid = false;
+                            break;
+                        }
+                    }
+
+                }
+            }
+            return _IsValid;
+        }
     }
 }

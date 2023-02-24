@@ -1,7 +1,9 @@
 ﻿using Common.Core;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -243,7 +245,7 @@ namespace Common.Class
                 throw ex;
             }
         }
-        public async Task<T> PostWebApiAsync<T>(dynamic requestBody, params string[] MethodURL)
+        public async Task<T> PostWebApiAsync<T>(object requestBody, params string[] MethodURL)
         {
             HttpWebRequest tRequest = null;
             string json = string.Empty;
@@ -256,6 +258,7 @@ namespace Common.Class
                 tRequest.Method = "post";
                 tRequest.ContentType = "application/json";
 
+                tRequest.Headers.Add("ObjectType", requestBody.GetType().Name);
                 if (AppViewModel.MyUser != null)
                 {
                     tRequest.Headers.Add("UserName", AppViewModel.MyUser.UserName);
@@ -278,9 +281,15 @@ namespace Common.Class
                             using (StreamReader tReader = new StreamReader(dataStreamResponse))
                             {
                                 string sResponseFromServer = await tReader.ReadToEndAsync();
-                                //return sResponseFromServer;
-                                return JsonConvert.DeserializeObject<T>(sResponseFromServer);
-                                //return JObject.Parse(sResponseFromServer);
+                                if (typeof(T) == typeof(MsgResult<DataTable>))
+                                {
+                                    var settings = new JsonSerializerSettings { Converters = new[] { new TypeInferringDataTableConverter() } };
+                                    return JsonConvert.DeserializeObject<T>(sResponseFromServer, settings);
+                                }
+                                else
+                                {
+                                    return JsonConvert.DeserializeObject<T>(sResponseFromServer);
+                                }
                             }
                         }
                     }

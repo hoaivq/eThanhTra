@@ -69,9 +69,9 @@ namespace Common.Class
 
         public int TimeOut
         {
-            get { return ConfigurationManager.AppSettings["TimeOut"].ToInt(); }
+            get { return ConfigurationManager.AppSettings["TimeOut"].ToInt().Value; }
         }
 
-        public bool IsOnline { get { return true; } }
+        public bool IsOnline { get { return false; } }
     }
 }

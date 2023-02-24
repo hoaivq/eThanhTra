@@ -1,5 +1,7 @@
 ﻿using DevExpress.Xpf.Core;
 using DevExpress.Xpf.WindowsUI;
+using eThanhTra.Core;
+using eThanhTra.NhatKy;
 using eThanhTra.Resource;
 using System;
 using System.Collections.Generic;
@@ -8,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace eThanhTra
 {
@@ -23,6 +26,10 @@ namespace eThanhTra
                 if (hasItem.Name == "Home")
                 {
                     Content = new ucoHome();
+                }
+                else if (hasItem.Name == "QuanLyUser")
+                {
+                    Content = new ucoUser();
                 }
                 else if (hasItem.Name == "QuanLyNhatKy")
                 {
@@ -56,7 +63,7 @@ namespace eThanhTra
 
         public static bool? ShowPopUp(this TSDPopUp pop, Window Owner = null)
         {
-            if(Owner == null)
+            if (Owner == null)
             {
                 Owner = GlobalResource.MainWindow;
             }

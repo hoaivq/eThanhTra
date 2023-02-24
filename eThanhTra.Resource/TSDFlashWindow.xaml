@@ -1,0 +1,12 @@
+﻿<Window x:Class="eThanhTra.Resource.TSDFlashWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:eThanhTra.Resource"
+        mc:Ignorable="d"
+        Title="TSDFlashWindow" Height="100" Width="250" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Normal" Background="#fcfcc7" Loaded="Window_Loaded">
+    <Grid>
+        <TextBlock x:Name="txtMsg" FontSize="15" Foreground="#5a56d1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+    </Grid>
+</Window>

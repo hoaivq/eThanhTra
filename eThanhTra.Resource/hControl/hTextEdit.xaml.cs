@@ -1,4 +1,6 @@
-﻿using DevExpress.Xpf.Editors;
+﻿using Common.Core;
+using DevExpress.Xpf.Editors;
+using eThanhTra.Resource.PropertiesExtensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +23,19 @@ namespace eThanhTra.Resource
     /// </summary>
     public partial class hTextEdit : TextEdit
     {
+        private FrameworkElement _Owner;
+        public FrameworkElement Owner
+        {
+            get
+            {
+                if (_Owner == null)
+                {
+                    _Owner = this.GetRootOwner();
+                }
+                return _Owner;
+            }
+        }
+
         public hTextEdit()
         {
             InitializeComponent();
@@ -51,5 +66,53 @@ namespace eThanhTra.Resource
         // Using a DependencyProperty as the backing store for _CaptionVisibility.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty _CaptionVisibilityProperty =
             DependencyProperty.Register("_CaptionVisibility", typeof(Visibility), typeof(hTextEdit), new PropertyMetadata(Visibility.Collapsed));
+
+
+
+
+
+
+
+        public bool IsValidEmpty
+        {
+            get { return (bool)GetValue(IsValidEmptyProperty); }
+            set { SetValue(IsValidEmptyProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsValidEmpty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsValidEmptyProperty =
+            DependencyProperty.Register("IsValidEmpty", typeof(bool), typeof(hTextEdit), new PropertyMetadata(false));
+
+
+
+        protected override void OnTextChanged(string oldText, string text)
+        {
+            base.OnTextChanged(oldText, text);
+            if (Owner == null) { return; }
+            IView v = (IView)Owner;
+            if (v.IsFirstLoad) { return; }
+            v.IsDataChanged = true;
+        }
+
+
+
+
+        private void TextEdit_Validate(object sender, ValidationEventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            if (IsValidEmpty)
+            {
+                if (string.IsNullOrWhiteSpace((string)e.Value))
+                {
+                    e.IsValid = false;
+                    sb.AppendLine("Trường dữ liệu không được để trống");
+                }
+            }
+
+            if (sb.Length > 0)
+            {
+                e.ErrorContent = sb.ToString();
+            }
+        }
     }
 }

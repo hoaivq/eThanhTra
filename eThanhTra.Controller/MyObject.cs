@@ -1,8 +1,6 @@
 ﻿using Common;
 using eThanhTra.Controller.App;
-using eThanhTra.Controller.NhatKy;
 using eThanhTra.Network;
-using eThanhTra.Network.NhatKy;
 using eThanhTra.Network.System;
 using System;
 using System.Collections.Generic;

@@ -12,7 +12,8 @@
               Title="Báo cáo tiến độ và kết quả hoàn thành nhiệm vụ"
               ScrollViewer.CanContentScroll="True">
     <Grid>
-        <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Vertical"
+                    Margin="0 30 10 0">
 
             <rs:hTextEdit  Margin="10 20 10 10"
                 _CaptionText="Hạng mục công việc" Height="50"/>
@@ -54,17 +55,26 @@
 
             <rs:hTextEdit Margin="10,10"
                 _CaptionText="Đánh giá tiến độ" Height="50"/>
-            <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Center"
-                        Margin="30">
-                <dx:SimpleButton Content="File đính kèm"
-                          Margin ="10 0 10 0" 
+
+
+
+            <StackPanel HorizontalAlignment="Right">
+                <StackPanel Margin="0 20 0 0"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Left"
+                        >
+                    <dx:SimpleButton Content="File đính kèm"
+                          Margin ="5 0 5 0" 
                           />
-                <dx:SimpleButton Content="Ghi"
-                          Margin ="10 0 10 0" />
-                <dx:SimpleButton Content="Thoát"
-                          Margin ="10 0 10 0" />
+                    <dx:SimpleButton Content="Ghi"
+                          Margin ="5 0 5 0" 
+                                     Style="{StaticResource SaveButton}"/>
+                    <dx:SimpleButton Content="Thoát"
+                                 Style="{StaticResource CloseButton}"
+                          Margin ="5 0 10 0" />
+                </StackPanel>
             </StackPanel>
+
 
         </StackPanel>
     </Grid>

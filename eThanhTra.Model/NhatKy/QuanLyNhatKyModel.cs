@@ -1,4 +1,5 @@
 ﻿
+using Common;
 using Common.Core;
 using eThanhTra.Dto;
 using System;
@@ -20,7 +21,7 @@ namespace eThanhTra.Model.NhatKy
         {
             get
             {
-                if(_ListTrangThai == null)
+                if (_ListTrangThai == null)
                 {
                     _ListTrangThai = new ObservableCollection<CheckBoxDto>();
                     _ListTrangThai.Add(new CheckBoxDto() { Ma = "ChoCongBo", Ten = "Chờ công bố", IsChecked = true });
@@ -32,14 +33,18 @@ namespace eThanhTra.Model.NhatKy
             set { _ListTrangThai = value; OnPropertyChanged(); }
         }
 
-
         private DataTable _ListThanhTra;
         public DataTable ListThanhTra
         {
-            get { return _ListThanhTra; }
-            set { _ListThanhTra = value; OnPropertyChanged(); }
+            get
+            {
+                return _ListThanhTra;
+            }
+            set
+            {
+                _ListThanhTra = value; OnPropertyChanged();
+            }
         }
-
 
         private DateTime? _NgayCongBoTu = DateTime.Now.AddMonths(-6);
         public DateTime? NgayCongBoTu

@@ -29,10 +29,5 @@ namespace eThanhTra.NhatKy
             InitializeComponent();
             this.DataContext = new ThemMoiNhatKyViewModel(this);
         }
-
-        private void SimpleButton_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
     }
 }

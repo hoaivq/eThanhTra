@@ -1,6 +1,6 @@
 ﻿using Common;
 using Common.Core;
-using eThanhTra.Data;
+using eThanhTra.Dto;
 using System;
 using System.Collections.Generic;
 using System.Data;

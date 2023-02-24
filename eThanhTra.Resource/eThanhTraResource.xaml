@@ -4,7 +4,7 @@
                     xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
                     xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
                     xmlns:rs="clr-namespace:eThanhTra.Resource"
-                    x:Class="eThanhTra.Resource.ResourceEvent"
+                    x:Class="eThanhTra.Resource.eThanhTraResource"
                     x:ClassModifier="public"
                     >
 
@@ -38,8 +38,60 @@
     </Style>
 
     <Style TargetType="{x:Type dx:SimpleButton}">
-        <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="CornerRadius" Value="5"/>
-        <Setter Property="Background" Value="#d4faf6" />
+        <!--<Setter Property="Cursor" Value="Hand"/>-->
+        <!--<Setter Property="CornerRadius" Value="5"/>-->
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="#6166ad" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontSize" Value="15" />
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#797db5"/>
+                <Setter Property="Cursor" Value="Hand"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="BaseSimpleButton" TargetType="{x:Type dx:SimpleButton}">
+        <!--<Setter Property="Cursor" Value="Hand"/>-->
+        <!--<Setter Property="CornerRadius" Value="5"/>-->
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="#6166ad" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontSize" Value="15" />
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#797db5"/>
+                <Setter Property="Cursor" Value="Hand"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <Style TargetType="{x:Type dx:SimpleButton}" x:Key="SaveButton" BasedOn="{StaticResource BaseSimpleButton}">
+        <Setter Property="Content" Value="Lưu dữ liệu"/>
+        <EventSetter Event="Click" Handler="SaveButton_Click"/>
+    </Style>
+
+    <Style TargetType="{x:Type dx:SimpleButton}" x:Key="SearchButton" BasedOn="{StaticResource BaseSimpleButton}">
+        <Setter Property="Content" Value="Tìm kiếm"/>
+        <EventSetter Event="Click" Handler="SearchButton_Click"/>
+    </Style>
+
+    <Style TargetType="{x:Type dx:SimpleButton}" x:Key="AddNewButton" BasedOn="{StaticResource BaseSimpleButton}">
+        <Setter Property="Content" Value="Thêm mới"/>
+        <EventSetter Event="Click" Handler="AddNewButton_Click"/>
+    </Style>
+
+    <Style TargetType="{x:Type dx:SimpleButton}" x:Key="CloseButton" BasedOn="{StaticResource BaseSimpleButton}">
+        <Setter Property="Content" Value="Đóng"/>
+        <EventSetter Event="Click" Handler="CloseButton_Click"/>
+        <Setter Property="Background" Value="#a15757" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#ba6161"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>
