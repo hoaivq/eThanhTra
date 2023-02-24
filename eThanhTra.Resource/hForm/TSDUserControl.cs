@@ -14,9 +14,6 @@ namespace eThanhTra.Resource
 {
     public class TSDUserControl : UserControl, IView
     {
-
-
-
         public bool IsSaveView
         {
             get { return (bool)GetValue(IsSaveViewProperty); }

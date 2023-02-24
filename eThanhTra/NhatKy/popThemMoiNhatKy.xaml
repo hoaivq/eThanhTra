@@ -37,7 +37,7 @@
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" >
             <dx:SimpleButton Style="{StaticResource SaveButton}" />
-            <dx:SimpleButton Style="{StaticResource CloseButton}" Margin="4,0,0,0"/>
+            <dx:SimpleButton Style="{StaticResource CloseButton}" Margin="5,0,0,0"/>
         </StackPanel>
     </Grid>
 </rs:TSDPopUp>

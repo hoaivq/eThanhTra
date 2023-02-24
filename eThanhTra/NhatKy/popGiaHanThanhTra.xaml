@@ -7,12 +7,12 @@
              xmlns:local="clr-namespace:eThanhTra"
               xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+             d:DesignHeight="430" d:DesignWidth="600"
               Title="Gia hạn thanh tra">
     <Grid>
         <StackPanel Orientation="Vertical">
 
-            <rs:hTextEdit  Margin="10 20 5 0"
+            <rs:hTextEdit  Margin="10 20 10 0"
                 _CaptionText="Quyết định gia hạn thanh tra" Height="50"/>
             <rs:hTextEdit Margin="10 10"
                 _CaptionText="Lý do gia hạn" Height="50"/>

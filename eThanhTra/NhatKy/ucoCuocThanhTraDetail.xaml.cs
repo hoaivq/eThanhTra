@@ -1,7 +1,4 @@
-﻿using Common.Core;
-using eThanhTra.Resource;
-using eThanhTra.View.System;
-using eThanhTra.ViewModel.System;
+﻿using eThanhTra.Resource;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,19 +11,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace eThanhTra.Core
+namespace eThanhTra.NhatKy
 {
     /// <summary>
-    /// Interaction logic for popUserAdd.xaml
+    /// Interaction logic for ucoCuocThanhTraDetail.xaml
     /// </summary>
-    public partial class popUserAdd : TSDPopUp, IUser 
+    public partial class ucoCuocThanhTraDetail : TSDUserControl
     {
-        public popUserAdd()
+        public ucoCuocThanhTraDetail()
         {
             InitializeComponent();
-            this.DataContext = new UserViewModel(this);
         }
     }
 }

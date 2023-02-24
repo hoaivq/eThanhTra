@@ -7,7 +7,7 @@
              xmlns:local="clr-namespace:eThanhTra"
              mc:Ignorable="d" 
               xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
-             d:DesignHeight="400" d:DesignWidth="800"
+             d:DesignHeight="360" d:DesignWidth="600"
               Title="Khó khăn vướng mắc">
     <Grid>
         <StackPanel Orientation="Vertical">

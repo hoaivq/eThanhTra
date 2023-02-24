@@ -8,11 +8,16 @@
              xmlns:local="clr-namespace:eThanhTra"
              
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="800"
+             d:DesignHeight="610" d:DesignWidth="600"
               Title="Báo cáo tiến độ và kết quả hoàn thành nhiệm vụ"
               ScrollViewer.CanContentScroll="True">
-    <Grid>
-        <StackPanel Orientation="Vertical"
+    <Grid  VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0"
+                    Orientation="Vertical"
                     Margin="0 30 10 0">
 
             <rs:hTextEdit  Margin="10 20 10 10"
@@ -58,16 +63,17 @@
 
 
 
-            <StackPanel HorizontalAlignment="Right">
-                <StackPanel Margin="0 20 0 0"
+            
+                <StackPanel Grid.Row="1"
+                            Margin="0 20 0 0"
                             Orientation="Horizontal"
-                            HorizontalAlignment="Left"
+                            HorizontalAlignment="Right"
                         >
                     <dx:SimpleButton Content="File đính kèm"
-                          Margin ="5 0 5 0" 
+                          Margin ="5 0 0 0" 
                           />
                     <dx:SimpleButton Content="Ghi"
-                          Margin ="5 0 5 0" 
+                          Margin ="5 0 0 0" 
                                      Style="{StaticResource SaveButton}"/>
                     <dx:SimpleButton Content="Thoát"
                                  Style="{StaticResource CloseButton}"
@@ -75,7 +81,5 @@
                 </StackPanel>
             </StackPanel>
 
-
-        </StackPanel>
     </Grid>
 </rs:TSDPopUp>
