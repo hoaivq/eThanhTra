@@ -17,8 +17,17 @@
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         
-        <DockPanel Grid.Row="0" Margin="0,0,0,4" LastChildFill="True">
-            <rs:hDateEdit EditValue="{Binding _Model.NgayCongBoTu, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Left" _CaptionText="Ngày công bố:" DisplayFormatString="dd/MM/yyyy" Width="100" VerticalAlignment="Bottom" Height="50" Margin="0,0,4,0" EditValueChangedCommand="{Binding LoadCommand}"/>
+        <DockPanel Grid.Row="0" 
+                   Margin="0,0,0,4" 
+                   LastChildFill="True">
+            <rs:hDateEdit EditValue="{Binding _Model.NgayCongBoTu, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                          DockPanel.Dock="Left" 
+                          _CaptionText="Ngày công bố:" 
+                          DisplayFormatString="dd/MM/yyyy" 
+                          Width="100" 
+                          VerticalAlignment="Bottom" 
+                          Height="50" Margin="0,0,4,0" 
+                          EditValueChangedCommand="{Binding LoadCommand}"/>
             <TextBlock DockPanel.Dock="Left" Text="~" VerticalAlignment="Bottom" Margin="2,0,2,8"/>
             <rs:hDateEdit EditValue="{Binding _Model.NgayCongBoDen, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Left" Width="100" VerticalAlignment="Bottom" Height="30" Margin="4,0,8,0" EditValueChangedCommand="{Binding LoadCommand}"/>
             
@@ -65,16 +74,24 @@
         </DockPanel>
 
 
-        <dxg:GridControl x:Name="grdData" Grid.Row="1" ItemsSource="{Binding _Model.ListThanhTra, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" AutoExpandAllGroups="True">
+        <dxg:GridControl x:Name="grdData" Grid.Row="1" 
+                         ItemsSource="{Binding _Model.ListThanhTra, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                         AutoExpandAllGroups="True">
             <dxg:GridControl.View>
                 <dxg:TableView AllowEditing="False"/>
             </dxg:GridControl.View>
             <dxemvvm:Interaction.Behaviors>
-                <dxemvvm:EventToCommand EventName="MouseDoubleClick" CommandParameter="{Binding ElementName=grdData, Path=CurrentItem}" Command="{Binding DataContext.AddNewCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDUserControl}}" />
+                <dxemvvm:EventToCommand EventName="MouseDoubleClick" 
+                                        CommandParameter="{Binding ElementName=grdData, Path=CurrentItem}"
+                                        Command="{Binding DataContext.AddNewCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDUserControl}}" />
             </dxemvvm:Interaction.Behaviors>
 
             <dxg:GridControl.Columns>
-                <dxg:GridColumn  Header="STT" FieldName="STT"  Width="50" Fixed="Left" VisibleIndex="0">
+                <dxg:GridColumn  Header="STT" 
+                                 FieldName="STT"  
+                                 Width="50" 
+                                 Fixed="Left" 
+                                 VisibleIndex="0">
                     <dxg:GridColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding RowData.RowHandle.Value, Converter={StaticResource STTConverter}}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
@@ -82,25 +99,49 @@
                     </dxg:GridColumn.CellTemplate>
                 </dxg:GridColumn>
                 
-                <dxg:GridColumn Header="MST" FieldName="MST" Width="120" Fixed="Left" VisibleIndex="1"/>
-                <dxg:GridColumn Header="Tên NNT" FieldName="TenNNT" Width="400" Fixed="Left" VisibleIndex="2">
+                <dxg:GridColumn Header="MST" 
+                                FieldName="MST" 
+                                Width="120" 
+                                Fixed="Left" 
+                                VisibleIndex="1"/>
+                <dxg:GridColumn Header="Tên NNT" 
+                                FieldName="TenNNT" 
+                                Width="400" 
+                                Fixed="Left" VisibleIndex="2">
                     <dxg:GridColumn.EditSettings>
                         <dxe:TextEditSettings TextWrapping="WrapWithOverflow"/>
                     </dxg:GridColumn.EditSettings>
                 </dxg:GridColumn>
-                <dxg:GridColumn Header="Mã CQT" FieldName="MaCQT" Width="100" GroupIndex="1"/>
-                <dxg:GridColumn Header="Tên CQT" FieldName="TenCQT" Width="300"/>
-                <dxg:GridColumn Header="Trạng thái" FieldName="TrangThaiText" Width="100"/>
-                <dxg:GridColumn Header="Mã Trưởng đoàn" FieldName="UserNameTDTT" Width="100"/>
-                <dxg:GridColumn Header="Trưởng đoàn" FieldName="TenTruongDoan" Width="150"/>
-                <dxg:GridColumn Header="Ngày công bố" FieldName="NgayCongBo" Width="100">
+                <dxg:GridColumn Header="Mã CQT" 
+                                FieldName="MaCQT" 
+                                Width="100" 
+                                GroupIndex="1"/>
+                <dxg:GridColumn Header="Tên CQT" 
+                                FieldName="TenCQT" 
+                                Width="300"/>
+                <dxg:GridColumn Header="Trạng thái" 
+                                FieldName="TrangThaiText" 
+                                Width="100"/>
+                <dxg:GridColumn Header="Mã Trưởng đoàn" 
+                                FieldName="UserNameTDTT" 
+                                Width="100"/>
+                <dxg:GridColumn Header="Trưởng đoàn" 
+                                FieldName="TenTruongDoan" 
+                                Width="150"/>
+                <dxg:GridColumn Header="Ngày công bố" 
+                                FieldName="NgayCongBo" 
+                                Width="100">
                     <dxg:GridColumn.EditSettings>
                         <dxe:TextEditSettings DisplayFormat="dd/MM/yyyy"/>
                     </dxg:GridColumn.EditSettings>
                 </dxg:GridColumn>
-                <dxg:GridColumn Header="Thời gian" FieldName="ThoiGian" Width="60"/>
+                <dxg:GridColumn Header="Thời gian" 
+                                FieldName="ThoiGian" 
+                                Width="60"/>
                 
-                <dxg:GridColumn Header="Hạn kết thúc" FieldName="HanKetThuc" Width="100">
+                <dxg:GridColumn Header="Hạn kết thúc" 
+                                FieldName="HanKetThuc" 
+                                Width="100">
                     <dxg:GridColumn.EditSettings>
                         <dxe:TextEditSettings DisplayFormat="dd/MM/yyyy"/>
                     </dxg:GridColumn.EditSettings>
@@ -108,9 +149,12 @@
             </dxg:GridControl.Columns>
         </dxg:GridControl>
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,4,0,0">
+        <StackPanel Grid.Row="2" Orientation="Horizontal" 
+                    HorizontalAlignment="Right" 
+                    Margin="0,4,0,0">
             <dx:SimpleButton Style="{StaticResource AddNewButton}"/>
-            <dx:SimpleButton Style="{StaticResource CloseButton}"  Margin="4,0,0,0"/>
+            <dx:SimpleButton Style="{StaticResource CloseButton}" 
+                             Margin="4,0,0,0"/>
         </StackPanel>
     </Grid>
 </rs:TSDUserControl>

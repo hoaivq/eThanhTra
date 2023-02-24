@@ -28,14 +28,25 @@
                                                               GlyphHeight="16"/>
             </dxwui:HamburgerMenu.BottomBarItems>
 
-            <dxwui:HamburgerMenuNavigationButton Content="TRANG CHỦ" GlyphWidth="16" 
+            <dxwui:HamburgerMenuNavigationButton Content="TRANG CHỦ" 
+                                                 GlyphWidth="16" 
                                                  Glyph="{dx:DXImage  Image=Home_16x16.png}" 
                                                  GlyphHeight="16" 
                                                  SelectOnClick="False" Name="Home"/>
             
-            <dxwui:HamburgerMenuNavigationButton Content="Quản lý tài khoản" GlyphWidth="16" Glyph="{dx:DXImage Image=UserGroup_16x16.png}" GlyphHeight="16" SelectOnClick="False" Name="QuanLyUser"/>
-            <dxwui:HamburgerMenuNavigationButton Content="Quản lý nhật ký đoàn" GlyphWidth="16" Glyph="{dx:DXImage Image=Grid_16x16.png}" GlyphHeight="16" SelectOnClick="False" Name="QuanLyNhatKy"/>
-            <dxwui:HamburgerMenuHyperlinkButton Content="Hỗ trợ" NavigateUri="https://ebh.vn/"/>
+            <dxwui:HamburgerMenuNavigationButton Content="Quản lý tài khoản" GlyphWidth="16" 
+                                                 Glyph="{dx:DXImage Image=UserGroup_16x16.png}" 
+                                                 GlyphHeight="16" 
+                                                 SelectOnClick="False" 
+                                                 Name="QuanLyUser"/>
+            <dxwui:HamburgerMenuNavigationButton Content="Quản lý nhật ký đoàn" 
+                                                 GlyphWidth="16" 
+                                                 Glyph="{dx:DXImage Image=Grid_16x16.png}" 
+                                                 GlyphHeight="16" 
+                                                 SelectOnClick="False" 
+                                                 Name="QuanLyNhatKy"/>
+            <dxwui:HamburgerMenuHyperlinkButton Content="Hỗ trợ" 
+                                                NavigateUri="https://ebh.vn/"/>
 
 
             <dxwui:HamburgerMenu.Content>
