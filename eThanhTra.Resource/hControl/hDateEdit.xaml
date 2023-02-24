@@ -12,12 +12,15 @@
         <TextBlock DockPanel.Dock="Top" Height="20" 
                     Visibility="{Binding _CaptionVisibility, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:hDateEdit}}"  
                     Text="{Binding _CaptionText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:hDateEdit}}"/>
-        <dxe:DateEdit DockPanel.Dock="Bottom" 
+        <dxe:DateEdit
+            x:Name="hControl"
+                        DockPanel.Dock="Bottom" 
                       Mask="dd/MM/yyyy"
                       MaskUseAsDisplayFormat="True"
                       EditValue="{Binding EditValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:hDateEdit}}"
                       AllowNullInput="True"
                       DateTime="{Binding DateTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:hDateEdit}}"                      
+                      EditValueChanged="DateEdit_EditValueChanged" Validate="DateEdit_Validate" InvalidValueBehavior="AllowLeaveEditor"
                       >
             <dxemvvm:Interaction.Behaviors>
                 <dxemvvm:EventToCommand EventName="EditValueChanged" Command="{Binding EditValueChangedCommand, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:hDateEdit}}" />

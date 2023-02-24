@@ -1,7 +1,6 @@
 ﻿using Common;
 using Common.Core;
 using eThanhTra.Controller;
-using eThanhTra.Data;
 using eThanhTra.Model;
 using eThanhTra.Model.System;
 using eThanhTra.View;

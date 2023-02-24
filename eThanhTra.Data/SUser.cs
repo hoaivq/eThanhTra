@@ -22,5 +22,6 @@ namespace eThanhTra.Data
         public string SoDienThoai { get; set; }
         public string MaCQT { get; set; }
         public bool IsEnable { get; set; }
+        public string GhiChu { get; set; }
     }
 }

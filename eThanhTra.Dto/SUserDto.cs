@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
 
-    public partial class SUser : BaseDto
+    public partial class SUserDto : BaseDto
     {
         private string _UserName;
         public string UserName { get { return _UserName; } set { _UserName = value; OnPropertyChanged(); } }

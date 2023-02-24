@@ -54,8 +54,6 @@
     <Compile Include="App\DAOOffline.cs" />
     <Compile Include="App\DAOOnline.cs" />
     <Compile Include="MyObject.cs" />
-    <Compile Include="NhatKy\NhatKyOffline.cs" />
-    <Compile Include="NhatKy\NhatKyOnline.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -70,6 +68,10 @@
     <ProjectReference Include="..\eThanhTra.Data\eThanhTra.Data.csproj">
       <Project>{ED7CAB70-CF02-4A2D-9855-9A8D21D9D4ED}</Project>
       <Name>eThanhTra.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eThanhTra.Dto\eThanhTra.Dto.csproj">
+      <Project>{03E62E5A-80DE-40B3-BD32-07F98BF6D645}</Project>
+      <Name>eThanhTra.Dto</Name>
     </ProjectReference>
     <ProjectReference Include="..\eThanhTra.Model\eThanhTra.Model.csproj">
       <Project>{63B1CF8D-2D87-436D-AC4D-0FDEA8475029}</Project>

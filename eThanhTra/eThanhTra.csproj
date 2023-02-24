@@ -38,6 +38,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ThanhTra.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Data.Desktop.v21.1, Version=21.1.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpress.Data.Desktop.21.1.11\lib\net452\DevExpress.Data.Desktop.v21.1.dll</HintPath>
@@ -116,6 +119,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Core\popUserAdd.xaml.cs">
+      <DependentUpon>popUserAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Core\ucoUser.xaml.cs">
+      <DependentUpon>ucoUser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NhatKy\popBaoCaoCongViec.xaml.cs">
       <DependentUpon>popBaoCaoCongViec.xaml</DependentUpon>
     </Compile>
@@ -125,15 +134,18 @@
     <Compile Include="NhatKy\popKhoKhanVuongMac.xaml.cs">
       <DependentUpon>popKhoKhanVuongMac.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NhatKy\popTamDungThanhTra.xaml.cs">
-      <DependentUpon>popTamDungThanhTra.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Settings.cs" />
-    <Compile Include="System\LoginWindow.xaml.cs">
-      <DependentUpon>LoginWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="NhatKy\popThemMoiNhatKy.xaml.cs">
       <DependentUpon>popThemMoiNhatKy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NhatKy\ucoDanhSachThanhVien.xaml.cs">
+      <DependentUpon>ucoDanhSachThanhVien.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Core\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Core\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="ucoHome.xaml.cs">
       <DependentUpon>ucoHome.xaml</DependentUpon>
@@ -141,6 +153,14 @@
     <Compile Include="NhatKy\ucoQuanLyNhatKy.xaml.cs">
       <DependentUpon>ucoQuanLyNhatKy.xaml</DependentUpon>
     </Compile>
+    <Page Include="Core\popUserAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Core\ucoUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
     <Page Include="NhatKy\popBaoCaoCongViec.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -153,31 +173,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NhatKy\popTamDungThanhTra.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="System\LoginWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="NhatKy\popThemMoiNhatKy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="System\MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Extensions.cs" />
-    <Compile Include="System\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Page Include="NhatKy\ucoDanhSachThanhVien.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Core\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Core\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
     <Page Include="ucoHome.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -228,9 +244,9 @@
       <Project>{a049813a-2135-4db6-bb5b-f20ddb961a9d}</Project>
       <Name>eThanhTra.Controller</Name>
     </ProjectReference>
-    <ProjectReference Include="..\eThanhTra.Data\eThanhTra.Data.csproj">
-      <Project>{ed7cab70-cf02-4a2d-9855-9a8d21d9d4ed}</Project>
-      <Name>eThanhTra.Data</Name>
+    <ProjectReference Include="..\eThanhTra.Dto\eThanhTra.Dto.csproj">
+      <Project>{03E62E5A-80DE-40B3-BD32-07F98BF6D645}</Project>
+      <Name>eThanhTra.Dto</Name>
     </ProjectReference>
     <ProjectReference Include="..\eThanhTra.Model\eThanhTra.Model.csproj">
       <Project>{63b1cf8d-2d87-436d-ac4d-0fdea8475029}</Project>
@@ -264,6 +280,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ThanhTra.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -14,13 +14,13 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="35"/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         
         <DockPanel Grid.Row="0" Margin="0,0,0,4" LastChildFill="True">
-            <rs:hDateEdit EditValue="{Binding _Model.NgayCongBoTu, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Left" _CaptionText="Ngày công bố:" DisplayFormatString="dd/MM/yyyy" Width="100" VerticalAlignment="Bottom" Height="50" Margin="0,0,4,0" EditValueChangedCommand="{Binding LoadViewCommand}"/>
+            <rs:hDateEdit EditValue="{Binding _Model.NgayCongBoTu, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Left" _CaptionText="Ngày công bố:" DisplayFormatString="dd/MM/yyyy" Width="100" VerticalAlignment="Bottom" Height="50" Margin="0,0,4,0" EditValueChangedCommand="{Binding LoadCommand}"/>
             <TextBlock DockPanel.Dock="Left" Text="~" VerticalAlignment="Bottom" Margin="2,0,2,8"/>
-            <rs:hDateEdit EditValue="{Binding _Model.NgayCongBoDen, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Left" Width="100" VerticalAlignment="Bottom" Height="30" Margin="4,0,8,0" EditValueChangedCommand="{Binding LoadViewCommand}"/>
+            <rs:hDateEdit EditValue="{Binding _Model.NgayCongBoDen, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Left" Width="100" VerticalAlignment="Bottom" Height="30" Margin="4,0,8,0" EditValueChangedCommand="{Binding LoadCommand}"/>
             
             <!--<rs:hListBoxEdit DockPanel.Dock="Left" _CaptionText="Trạng thái" VerticalAlignment="Bottom" Height="50" Padding="4,4,0,0">
                 <dxe:ListBoxEdit.ItemsPanel>
@@ -51,7 +51,7 @@
                     <DataTemplate>
                         <dxe:CheckEdit Content="{Binding Ten}" IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="4,0,4,0">
                             <dxemvvm:Interaction.Behaviors>
-                                <dxemvvm:EventToCommand EventName="EditValueChanged" Command="{Binding DataContext.LoadViewCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDUserControl}}" />
+                                <dxemvvm:EventToCommand EventName="EditValueChanged" Command="{Binding DataContext.LoadCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDUserControl}}" />
                             </dxemvvm:Interaction.Behaviors>
                         </dxe:CheckEdit>
                     </DataTemplate>
@@ -60,15 +60,19 @@
 
             <rs:hTextEdit Text="{Binding _Model.MST, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Left" Margin="8,0,0,0" _CaptionText="MST:" Height="50" VerticalAlignment="Bottom" Width="100"></rs:hTextEdit>
             
-            <dx:SimpleButton DockPanel.Dock="Right" Content="Tìm kiếm" Glyph="{dx:DXImage Image=Filter_16x16.png}" HorizontalAlignment="Right" Command="{Binding LoadViewCommand}"/>
+            <dx:SimpleButton DockPanel.Dock="Right" Style="{StaticResource SearchButton}" HorizontalAlignment="Right" />
             <rs:hTextEdit Text="{Binding _Model.TenNNT, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Left" Margin="8,0,8,0" _CaptionText="Tên NNT:" Height="50" VerticalAlignment="Bottom"></rs:hTextEdit>
         </DockPanel>
 
 
-        <dxg:GridControl Grid.Row="1" ItemsSource="{Binding _Model.ListThanhTra, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+        <dxg:GridControl x:Name="grdData" Grid.Row="1" ItemsSource="{Binding _Model.ListThanhTra, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" AutoExpandAllGroups="True">
             <dxg:GridControl.View>
                 <dxg:TableView AllowEditing="False"/>
             </dxg:GridControl.View>
+            <dxemvvm:Interaction.Behaviors>
+                <dxemvvm:EventToCommand EventName="MouseDoubleClick" CommandParameter="{Binding ElementName=grdData, Path=CurrentItem}" Command="{Binding DataContext.AddNewCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDUserControl}}" />
+            </dxemvvm:Interaction.Behaviors>
+
             <dxg:GridControl.Columns>
                 <dxg:GridColumn  Header="STT" FieldName="STT"  Width="50" Fixed="Left" VisibleIndex="0">
                     <dxg:GridColumn.CellTemplate>
@@ -84,17 +88,29 @@
                         <dxe:TextEditSettings TextWrapping="WrapWithOverflow"/>
                     </dxg:GridColumn.EditSettings>
                 </dxg:GridColumn>
-                <dxg:GridColumn Header="Mã CQT" FieldName="MaCQT" Width="100"/>
+                <dxg:GridColumn Header="Mã CQT" FieldName="MaCQT" Width="100" GroupIndex="1"/>
                 <dxg:GridColumn Header="Tên CQT" FieldName="TenCQT" Width="300"/>
                 <dxg:GridColumn Header="Trạng thái" FieldName="TrangThaiText" Width="100"/>
                 <dxg:GridColumn Header="Mã Trưởng đoàn" FieldName="UserNameTDTT" Width="100"/>
                 <dxg:GridColumn Header="Trưởng đoàn" FieldName="TenTruongDoan" Width="150"/>
+                <dxg:GridColumn Header="Ngày công bố" FieldName="NgayCongBo" Width="100">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:TextEditSettings DisplayFormat="dd/MM/yyyy"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn Header="Thời gian" FieldName="ThoiGian" Width="60"/>
+                
+                <dxg:GridColumn Header="Hạn kết thúc" FieldName="HanKetThuc" Width="100">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:TextEditSettings DisplayFormat="dd/MM/yyyy"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
             </dxg:GridControl.Columns>
         </dxg:GridControl>
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
-            <dx:SimpleButton Content="Thêm mới cuộc Thanh tra" Glyph="{dx:DXImage Image=AddItem_16x16.png}" Margin="2,4,2,0" Command="{Binding ShowThemMoiNhatKyCommand}" />
-            <dx:SimpleButton Content="Đóng" Glyph="{dx:DXImage Image=Close_16x16.png}" Margin="2,4,0,0" Command="{Binding CloseViewCommand}"/>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,4,0,0">
+            <dx:SimpleButton Style="{StaticResource AddNewButton}"/>
+            <dx:SimpleButton Style="{StaticResource CloseButton}"  Margin="4,0,0,0"/>
         </StackPanel>
     </Grid>
 </rs:TSDUserControl>

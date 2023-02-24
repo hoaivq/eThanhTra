@@ -4,7 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:eThanhTra" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+        xmlns:local="clr-namespace:eThanhTra" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" IsSaveView="False"
               
               mc:Ignorable="d"
         Title="ĐĂNG NHẬP" Height="450" Width="400" >
@@ -19,7 +19,7 @@
         <rs:hPasswordBoxEdit Text="{Binding _Model.Password}" 
                              _CaptionText="Mật khẩu:" 
                              Margin="0,0,0,30"/>
-        <dx:SimpleButton Glyph="{dx:DXImage Image=CheckBox_16x16.png}" 
+        <dx:SimpleButton 
                          Content="Đăng nhập" 
                          Height="50" 
                          Command="{Binding LoginCommand}"/>

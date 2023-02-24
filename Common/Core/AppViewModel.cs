@@ -10,7 +10,7 @@ namespace Common.Core
 {
     public class AppViewModel
     {
-        public static SUser MyUser { get; set; } = null;
+        public static SUserDto MyUser { get; set; } = null;
 
         public static DataSet DanhMucChung { get; set; } = null;
     }
