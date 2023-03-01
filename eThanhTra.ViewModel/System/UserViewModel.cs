@@ -6,15 +6,17 @@ using eThanhTra.View.System;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace eThanhTra.ViewModel.System
 {
-    public class UserViewModel : BaseViewModel<IUser, UserModel>
+    public class UserViewModel : BaseViewModel<IUser, UserModel> 
     {
         public ICommand AddUserCommand { get; set; }
+        
         public UserViewModel(IUser View) : base(View)
         {
             AddUserCommand = new RelayCommand<object>((p) => { return true; }, async (p) =>
@@ -26,6 +28,19 @@ namespace eThanhTra.ViewModel.System
                 catch (Exception ex)
                 {
                     _View.ShowMsg(ex, "AddUserCommand");
+                }
+            });
+
+            AddNewCommand = new RelayCommand<object>((p) => { return true; }, async (p) =>
+            {
+                try
+                {
+                    
+                }
+                catch (Exception)
+                {
+
+                    throw;
                 }
             });
         }

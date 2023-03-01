@@ -72,6 +72,7 @@
     <Compile Include="NhatKy\IQuanLyNhatKy.cs" />
     <Compile Include="NhatKy\IThemMoiNhatKy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\IPop.cs" />
     <Compile Include="System\IUser.cs" />
     <Compile Include="System\IUserAdd.cs" />
   </ItemGroup>

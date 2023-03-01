@@ -1,4 +1,6 @@
-﻿using eThanhTra.Resource;
+﻿using eThanhTra.Core;
+using eThanhTra.Dto;
+using eThanhTra.Resource;
 using eThanhTra.View.NhatKy;
 using eThanhTra.ViewModel.NhatKy;
 using System;
@@ -27,6 +29,15 @@ namespace eThanhTra.NhatKy
         {
             InitializeComponent();
             this.DataContext = new ChonThanhVienViewModel(this);
+        }
+
+        public async Task<bool> ShowDeTail(SUserDto sUserDto)
+        {
+            //popUserAdd popUserAdd = new popUserAdd();
+            //((popUserAdd)popUserAdd.DataContext)._Model.listUser = sUserDto;
+            //popUserAdd.ShowPopUp();
+            //await Task.CompletedTask;
+            //return popUserAdd.IsReload;
         }
     }
 }

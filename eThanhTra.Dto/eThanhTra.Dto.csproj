@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DGiaHanThanhTraDTO.cs" />
     <Compile Include="DThanhTraDto.cs" />
     <Compile Include="SUserDto.cs" />
     <Compile Include="BaseDto.cs" />
