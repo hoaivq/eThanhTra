@@ -1,10 +1,12 @@
 ﻿using Common;
 using Common.Core;
 using eThanhTra.Controller;
+using eThanhTra.Dto;
 using eThanhTra.Model.System;
 using eThanhTra.View.System;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -24,6 +26,8 @@ namespace eThanhTra.ViewModel.System
                 try
                 {
                     //await _View.ShowChiTiet(((DataRowView)p)?.Row.ToObject<DThanhTraDto>());
+
+
                 }
                 catch (Exception ex)
                 {
@@ -31,18 +35,18 @@ namespace eThanhTra.ViewModel.System
                 }
             });
 
-            AddNewCommand = new RelayCommand<object>((p) => { return true; }, async (p) =>
-            {
-                try
-                {
+            //AddNewCommand = new RelayCommand<object>((p) => { return true; }, async (p) =>
+            //{
+            //    try
+            //    {
                     
-                }
-                catch (Exception)
-                {
+            //    }
+            //    catch (Exception)
+            //    {
 
-                    throw;
-                }
-            });
+            //        throw;
+            //    }
+            //});
         }
 
         public override async Task LoadView(object p = null)
@@ -56,6 +60,13 @@ namespace eThanhTra.ViewModel.System
             }
 
             _Model.ListUser = msgResult.Value;
+            //string GenClass =  _Model.ListUser.GenClass();
+        }
+
+        public override async Task<bool> AddNewView(object p = null)
+        {
+            SUserDto sUserDto = ((DataRowView)p)?.Row.ToObject<SUserDto>();
+            return await _View.ShowDetail(sUserDto);
         }
     }
 }

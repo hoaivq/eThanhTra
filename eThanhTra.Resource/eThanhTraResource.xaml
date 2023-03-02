@@ -46,8 +46,8 @@
     </Style>
 
     <Style TargetType="{x:Type dx:SimpleButton}">
-        <!--<Setter Property="Cursor" Value="Hand"/>-->
-        <!--<Setter Property="CornerRadius" Value="5"/>-->
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="CornerRadius" Value="5"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="#6166ad" />
         <Setter Property="FontWeight" Value="Bold" />
@@ -62,8 +62,8 @@
     </Style>
 
     <Style x:Key="BaseSimpleButton" TargetType="{x:Type dx:SimpleButton}">
-        <!--<Setter Property="Cursor" Value="Hand"/>-->
-        <!--<Setter Property="CornerRadius" Value="5"/>-->
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="CornerRadius" Value="5"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="#6166ad" />
         <Setter Property="FontWeight" Value="Bold" />

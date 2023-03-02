@@ -51,7 +51,7 @@ namespace eThanhTra.Dto
                 _ThoiGian = value;
                 if (NgayCongBo.HasValue && ThoiGian.HasValue)
                 {
-                    HanKetThuc = NgayCongBo.Value.AddDays(ThoiGian.Value);
+                   HanKetThuc = NgayCongBo.Value.AddDays(ThoiGian.Value);
                 }
                 OnPropertyChanged();
             }

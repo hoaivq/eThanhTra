@@ -12,30 +12,77 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
-        <DockPanel Grid.Row="0"  LastChildFill="True" Margin="20,20,20,20">
-            <rs:hComboBoxEdit IsValidEmpty="True" x:Name="cmbCQT" EditValue="{Binding _Model.ObjThanhTra.MaCQT, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" _CaptionText="Cơ quan thuế thực hiện:" ItemsSource="{Binding _Model.ListCQT}" DisplayMember="Ten" ValueMember="Ma" Height="50"/>
-            <rs:hTextEdit Text="{Binding _Model.ObjThanhTra.MST}" DockPanel.Dock="Top" _CaptionText="Mã số thuế:" Height="50" IsValidEmpty="True"/>
-            <rs:hTextEdit Text="{Binding _Model.ObjThanhTra.TenNNT}" DockPanel.Dock="Top" _CaptionText="Tên NNT:" Height="50" IsValidEmpty="True"/>
-            <rs:hComboBoxEdit IsValidEmpty="True" EditValue="{Binding _Model.ObjThanhTra.UserNameTDTT, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" _CaptionText="Trưởng đoàn:"  ItemsSource="{Binding _Model.ListUser}" DisplayMember="HoVaTen" ValueMember="UserName" Height="50"/>
-            <rs:hDateEdit IsValidEmpty="True" EditValue="{Binding _Model.ObjThanhTra.NgayCongBo, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" _CaptionText="Ngày công bố:" Height="50"/>
-            <rs:hSpinEdit IsValidEmpty="True" Value="{Binding _Model.ObjThanhTra.ThoiGian, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" _CaptionText="Thời gian tiến hành:" Height="50"/>
-            <rs:hDateEdit IsValidEmpty="True" EditValue="{Binding _Model.ObjThanhTra.HanKetThuc, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" _CaptionText="Hạn kết thúc:" Height="50"/>
+        <DockPanel Grid.Row="0"  
+                   LastChildFill="True" 
+                   Margin="20,20,20,20">
+            <rs:hComboBoxEdit IsValidEmpty="True" 
+                              x:Name="cmbCQT" 
+                              EditValue="{Binding _Model.ObjThanhTra.MaCQT, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                              DockPanel.Dock="Top" 
+                              _CaptionText="Cơ quan thuế thực hiện:" 
+                              ItemsSource="{Binding _Model.ListCQT}" 
+                              DisplayMember="Ten" 
+                              ValueMember="Ma" 
+                              Height="50"/>
+            <rs:hTextEdit Text="{Binding _Model.ObjThanhTra.MST}" 
+                          DockPanel.Dock="Top" 
+                          _CaptionText="Mã số thuế:" 
+                          Height="50" 
+                          IsValidEmpty="True"/>
+            <rs:hTextEdit Text="{Binding _Model.ObjThanhTra.TenNNT}" 
+                          DockPanel.Dock="Top" 
+                          _CaptionText="Tên NNT:" 
+                          Height="50" 
+                          IsValidEmpty="True"/>
+            <rs:hComboBoxEdit IsValidEmpty="True" 
+                              EditValue="{Binding _Model.ObjThanhTra.UserNameTDTT, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                              DockPanel.Dock="Top" 
+                              _CaptionText="Trưởng đoàn:"  
+                              ItemsSource="{Binding _Model.ListUser}" 
+                              DisplayMember="HoVaTen" 
+                              ValueMember="UserName" 
+                              Height="50"/>
+            <rs:hDateEdit IsValidEmpty="True" 
+                          EditValue="{Binding _Model.ObjThanhTra.NgayCongBo, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                          DockPanel.Dock="Top" 
+                          _CaptionText="Ngày công bố:" 
+                          Height="50"/>
+            <rs:hSpinEdit IsValidEmpty="True" 
+                          Value="{Binding _Model.ObjThanhTra.ThoiGian, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                          DockPanel.Dock="Top" 
+                          _CaptionText="Thời gian tiến hành:" 
+                          Height="50"/>
+            <rs:hDateEdit IsValidEmpty="True" 
+                          EditValue="{Binding _Model.ObjThanhTra.HanKetThuc, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                          DockPanel.Dock="Top" 
+                          _CaptionText="Hạn kết thúc:" 
+                          Height="50"/>
 
 
-            <rs:hListBoxEdit DockPanel.Dock="Bottom" _CaptionText="Danh sách thành viên đoàn" ItemsSource="{Binding _Model.ListUser}" DisplayMember="HoVaTen" ValueMember="UserName"  ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0,0,0,4">
-                <!--<rs:hListBoxEdit.StyleSettings >
-                <dxe:CheckedListBoxEditStyleSettings ShowSelectAllItem="True" SelectAllItemText="Tất cả trạng thái" />
-            </rs:hListBoxEdit.StyleSettings>-->
+            <rs:hListBoxEdit DockPanel.Dock="Bottom" 
+                             _CaptionText="Danh sách thành viên đoàn" 
+                             ItemsSource="{Binding _Model.ListUser}" 
+                             DisplayMember="HoVaTen" 
+                             ValueMember="UserName"  
+                             ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                             Margin="0,0,0,4">
+                <rs:hListBoxEdit.StyleSettings >
+                <dxe:CheckedListBoxEditStyleSettings ShowSelectAllItem="True" 
+                                                     SelectAllItemText="Tất cả trạng thái" />
+            </rs:hListBoxEdit.StyleSettings>
 
                 <rs:hListBoxEdit.ItemTemplate>
                     <DataTemplate>
-                        <CheckBox Content="{Binding HoVaTen}" IsChecked="{Binding IsChecked, Mode=TwoWay}" />
+                        <CheckBox Content="{Binding HoVaTen}" 
+                                  IsChecked="{Binding IsChecked, Mode=TwoWay}" />
                     </DataTemplate>
                 </rs:hListBoxEdit.ItemTemplate>
             </rs:hListBoxEdit>
         </DockPanel>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" >
+        <StackPanel Grid.Row="1" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Right" >
             <dx:SimpleButton Style="{StaticResource SaveButton}" />
             <dx:SimpleButton Style="{StaticResource CloseButton}" Margin="5,0,0,0"/>
         </StackPanel>

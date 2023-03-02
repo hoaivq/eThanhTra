@@ -78,8 +78,8 @@
                     Orientation="Horizontal" 
                     HorizontalAlignment="Right" 
                     Margin="0,4,0,0">
-            <dx:SimpleButton Style="{StaticResource AddNewButton}" 
-                             Command="{Binding AddNewCommand}"/>
+            <dx:SimpleButton Style="{StaticResource AddNewButton}"/>
+            <!--Command="{Binding AddNewCommand}"-->
             <dx:SimpleButton Style="{StaticResource CloseButton}" 
                              Margin="4,0,0,0"/>
         </StackPanel>

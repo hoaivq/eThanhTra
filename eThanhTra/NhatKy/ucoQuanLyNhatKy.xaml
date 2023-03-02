@@ -31,7 +31,7 @@
             <TextBlock DockPanel.Dock="Left" Text="~" VerticalAlignment="Bottom" Margin="2,0,2,8"/>
             <rs:hDateEdit EditValue="{Binding _Model.NgayCongBoDen, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Left" Width="100" VerticalAlignment="Bottom" Height="30" Margin="4,0,8,0" EditValueChangedCommand="{Binding LoadCommand}"/>
             
-            <!--<rs:hListBoxEdit DockPanel.Dock="Left" _CaptionText="Trạng thái" VerticalAlignment="Bottom" Height="50" Padding="4,4,0,0">
+            <rs:hListBoxEdit DockPanel.Dock="Left" _CaptionText="Trạng thái" VerticalAlignment="Bottom" Height="50" Padding="4,4,0,0">
                 <dxe:ListBoxEdit.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal"/>
@@ -46,7 +46,7 @@
                     <dxe:ListBoxEditItem Content="Đang tiến hành" IsSelected="{Binding _Model.IsDangTienHanh, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="4,0,4,0"/>
                     <dxe:ListBoxEditItem Content="Đã kết thúc"  IsSelected="{Binding _Model.IsDaKetThuc, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="4,0,8,0"/>
                 </dxe:ListBoxEdit.Items>
-            </rs:hListBoxEdit>-->
+            </rs:hListBoxEdit>
 
             <rs:hListBoxEdit DockPanel.Dock="Left" _CaptionText="Trạng thái" ItemsSource="{Binding _Model.ListTrangThai}" DisplayMember="Ma" ValueMember="Ten"  VerticalAlignment="Bottom" Height="50" Padding="4,2,4,0" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                 

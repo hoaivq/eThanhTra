@@ -21,12 +21,12 @@ namespace eThanhTra.Core
     /// <summary>
     /// Interaction logic for popUserAdd.xaml
     /// </summary>
-    public partial class popUserAdd : TSDPopUp, IUser 
+    public partial class popUserAdd : TSDPopUp , IUserAdd
     {
         public popUserAdd()
         {
             InitializeComponent();
-            this.DataContext = new UserViewModel(this);
+            this.DataContext = new UserAddViewModel(this);
         }
     }
 }
