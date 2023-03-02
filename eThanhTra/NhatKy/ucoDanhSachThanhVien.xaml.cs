@@ -31,13 +31,13 @@ namespace eThanhTra.NhatKy
             this.DataContext = new ChonThanhVienViewModel(this);
         }
 
-        public async Task<bool> ShowDeTail(SUserDto sUserDto)
-        {
-            //popUserAdd popUserAdd = new popUserAdd();
-            //((popUserAdd)popUserAdd.DataContext)._Model.listUser = sUserDto;
-            //popUserAdd.ShowPopUp();
-            //await Task.CompletedTask;
-            //return popUserAdd.IsReload;
-        }
+        //public async Task<bool> ShowDeTail(SUserDto sUserDto)
+        //{
+        //    //popUserAdd popUserAdd = new popUserAdd();
+        //    //((popUserAdd)popUserAdd.DataContext)._Model.listUser = sUserDto;
+        //    //popUserAdd.ShowPopUp();
+        //    //await Task.CompletedTask;
+        //    //return popUserAdd.IsReload;
+        //}
     }
 }
