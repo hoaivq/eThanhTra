@@ -62,9 +62,19 @@ namespace Common
             return new CallSPDto(_SPName, _Params);
         }
 
+        public static CallSPDto Create(string _SPName)
+        {
+            return new CallSPDto(_SPName);
+        }
+
         public CallSPDto()
         {
 
+        }
+
+        public CallSPDto(string _SPName)
+        {
+            SPName = _SPName;
         }
 
         public CallSPDto(string _SPName, params SqlParam[] _Params)

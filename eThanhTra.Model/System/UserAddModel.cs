@@ -2,6 +2,7 @@
 using eThanhTra.Dto;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,5 +27,40 @@ namespace eThanhTra.Model.System
                 }
             }
         }
+
+        private DataTable _ListCQT = null;
+        public DataTable ListCQT
+        {
+            get
+            {
+                if (_ListCQT == null)
+                {
+                    _ListCQT = AppViewModel.DanhMucChung.Tables[0];
+                }
+                return _ListCQT;
+            }
+            set
+            {
+                _ListCQT = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private DataTable _listUserType;
+
+        public DataTable ListUserType
+        {
+            get
+            {
+                if(_listUserType == null)
+                {
+                    return AppViewModel.DanhMucChung.Tables[2];
+                }
+                return _listUserType; 
+            }
+            set { _listUserType = value; }
+        }
+
+
     }
 }
