@@ -1,4 +1,5 @@
 ﻿using Common.Core;
+using eThanhTra.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace eThanhTra.View.System
 {
     public interface IUserAdd : IView
     {
+        
     }
 }

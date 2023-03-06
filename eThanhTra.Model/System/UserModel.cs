@@ -1,4 +1,5 @@
 ﻿using Common.Core;
+using eThanhTra.Dto;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,6 +11,15 @@ namespace eThanhTra.Model.System
 {
     public class UserModel : BaseModel
     {
+        private List<SUserDto> _listUserDto;
+
+        public List<SUserDto> ListUserDto
+        {
+            get { return _listUserDto; }
+            set { _listUserDto = value; }
+        }
+
+
         private DataTable _ListUser;
 
         public DataTable ListUser
@@ -17,6 +27,8 @@ namespace eThanhTra.Model.System
             get { return _ListUser; }
             set { _ListUser = value;  OnPropertyChanged(); }
         }
+
+
 
 
     }

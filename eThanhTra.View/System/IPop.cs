@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eThanhTra.ViewModel.NhatKy
+namespace eThanhTra.View.System
 {
-    internal class KhoKhanVuongMacViewModel 
+    public interface IPop
     {
+
     }
-} 
+}

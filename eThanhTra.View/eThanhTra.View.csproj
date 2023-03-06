@@ -32,6 +32,30 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Data.Desktop.v21.1, Version=21.1.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Data.Desktop.21.1.11\lib\net452\DevExpress.Data.Desktop.v21.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v21.1, Version=21.1.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Data.21.1.11\lib\net452\DevExpress.Data.v21.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Mvvm.v21.1, Version=21.1.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Mvvm.21.1.11\lib\net452\DevExpress.Mvvm.v21.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Pdf.v21.1.Core, Version=21.1.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Pdf.Core.21.1.11\lib\net452\DevExpress.Pdf.v21.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Pdf.v21.1.Drawing, Version=21.1.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Pdf.Drawing.21.1.11\lib\net452\DevExpress.Pdf.v21.1.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v21.1.Core, Version=21.1.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Printing.Core.21.1.11\lib\net452\DevExpress.Printing.v21.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Core.v21.1, Version=21.1.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Wpf.Core.21.1.11\lib\net452\DevExpress.Xpf.Core.v21.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Themes.Office2019Colorful.v21.1, Version=21.1.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpress.Wpf.Themes.Office2019Colorful.21.1.11\lib\net452\DevExpress.Xpf.Themes.Office2019Colorful.v21.1.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -50,6 +74,7 @@
     <Compile Include="NhatKy\IQuanLyNhatKy.cs" />
     <Compile Include="NhatKy\IThemMoiNhatKy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\IPop.cs" />
     <Compile Include="System\IUser.cs" />
     <Compile Include="System\IUserAdd.cs" />
   </ItemGroup>
@@ -74,6 +99,9 @@
       <Project>{dd8b1c46-0a3e-420c-9c96-8df36628bd80}</Project>
       <Name>eThanhTra.Resource</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

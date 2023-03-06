@@ -5,6 +5,7 @@
 
     public partial class SUserDto : BaseDto
     {
+
         private string _UserName;
         public string UserName { get { return _UserName; } set { _UserName = value; OnPropertyChanged(); } }
 
@@ -23,8 +24,21 @@
         private string _MaCQT;
         public string MaCQT { get { return _MaCQT; } set { _MaCQT = value; OnPropertyChanged(); } }
 
+        private string _GhiChu;
+        public string GhiChu
+        {
+            get { return _GhiChu; }
+            set 
+            {
+                _GhiChu = value;
+                  OnPropertyChanged();    
+            }
+        }
+
+
         private bool _IsEnable;
         public bool IsEnable { get { return _IsEnable; } set { _IsEnable = value; OnPropertyChanged(); } }
 
     }
+
 }

@@ -31,6 +31,7 @@ namespace eThanhTra
         {
             InitializeComponent();
             this.DataContext = new QuanLyNhatKyViewModel(this);
+            
         }
 
         public async Task<bool> ShowDetail(DThanhTraDto dThanhTraDto)

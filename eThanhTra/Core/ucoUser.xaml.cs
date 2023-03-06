@@ -1,4 +1,6 @@
-﻿using eThanhTra.Resource;
+﻿using DevExpress.ClipboardSource.SpreadsheetML;
+using eThanhTra.Dto;
+using eThanhTra.Resource;
 using eThanhTra.View.System;
 using eThanhTra.ViewModel.System;
 using System;
@@ -27,5 +29,24 @@ namespace eThanhTra.Core
             InitializeComponent();
             this.DataContext = new UserViewModel(this);
         }
+
+        public async Task<bool> ShowDetail(SUserDto sUserDto = null)
+        {
+            try
+            {
+                popUserAdd popUserAdd = new popUserAdd();
+                ((UserAddViewModel)popUserAdd.DataContext)._Model.User = sUserDto;
+                popUserAdd.ShowPopUp();
+                await Task.CompletedTask;
+                return popUserAdd.IsReload;
+            }
+            catch (Exception ex)
+            {
+                ShowMsg(ex, "Them moi thanh vien");
+                return false;
+            }
+           
+        }
+
     }
 }

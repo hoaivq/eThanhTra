@@ -60,6 +60,12 @@ namespace eThanhTra.ViewModel.System
                 {
                     AppViewModel.DanhMucChung.Tables.Add(msgResult.Value);
                 }
+
+                msgResult = await MyObject.ObjApp.GetTable(CallSPDto.Create("PGetUserTypeList"));
+                if (msgResult.Success)
+                {
+                    AppViewModel.DanhMucChung.Tables.Add(msgResult.Value);
+                }
             }
             catch (Exception ex)
             {

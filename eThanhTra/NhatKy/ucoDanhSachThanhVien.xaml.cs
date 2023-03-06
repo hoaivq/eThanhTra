@@ -1,6 +1,9 @@
-﻿using eThanhTra.Resource;
+﻿using eThanhTra.Core;
+using eThanhTra.Dto;
+using eThanhTra.Resource;
 using eThanhTra.View.NhatKy;
 using eThanhTra.ViewModel.NhatKy;
+using eThanhTra.ViewModel.System;
 using System;
 using System.Collections.Generic;
 using System.Linq;

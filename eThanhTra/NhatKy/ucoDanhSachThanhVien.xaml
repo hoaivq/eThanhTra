@@ -15,32 +15,56 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
-        <dxg:GridControl x:Name="grdData" Grid.Row="0" ItemsSource="{Binding _Model.ListThanhVien, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+        <dxg:GridControl x:Name="grdData" Grid.Row="0" 
+                         ItemsSource="{Binding _Model.ListThanhVien, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
             <dxg:GridControl.View>
                 <dxg:TableView AllowEditing="False"/>
             </dxg:GridControl.View>
             <dxemvvm:Interaction.Behaviors>
-                <dxemvvm:EventToCommand EventName="MouseDoubleClick" CommandParameter="{Binding ElementName=grdData, Path=CurrentItem}" Command="{Binding DataContext.ShowChiTietCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDUserControl}}" />
+                <dxemvvm:EventToCommand EventName="MouseDoubleClick" 
+                                        CommandParameter="{Binding ElementName=grdData, Path=CurrentItem}" 
+                                        Command="{Binding DataContext.ShowChiTietCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDUserControl}}" />
             </dxemvvm:Interaction.Behaviors>
 
             <dxg:GridControl.Columns>
-                <dxg:GridColumn  Header="STT" FieldName="STT"  Width="30" Fixed="Left" VisibleIndex="0">
+                <dxg:GridColumn  Header="STT" 
+                                 FieldName="STT"  
+                                 Width="30" 
+                                 Fixed="Left" 
+                                 VisibleIndex="0">
                     <dxg:GridColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding RowData.RowHandle.Value, Converter={StaticResource STTConverter}}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding RowData.RowHandle.Value, Converter={StaticResource STTConverter}}" 
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Center"/>
                         </DataTemplate>
                     </dxg:GridColumn.CellTemplate>
                 </dxg:GridColumn>
 
-                <dxg:GridColumn Header="Mã cán bộ" FieldName="UserName" Width="150"/>
-                <dxg:GridColumn Header="Tên cán bộ" FieldName="HoVaTen" Width="*"/>
-                <dxg:GridColumn Header="Vai trò" FieldName="VaiTroText" Width="100" GroupIndex="0"/>
+                <dxg:GridColumn Header="Mã cán bộ" 
+                                FieldName="UserName" 
+                                Width="150"/>
+                <dxg:GridColumn Header="Tên cán bộ" 
+                                FieldName="HoVaTen" 
+                                Width="*"/>
+                <dxg:GridColumn Header="Vai trò" 
+                                FieldName="VaiTroText" 
+                                Width="100" 
+                                GroupIndex="0"/>
             </dxg:GridControl.Columns>
         </dxg:GridControl>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,4,0,4">
-            <dx:SimpleButton Glyph="{dx:DXImage Image=UserGroup_16x16.png}" Content="Chọn thành viên đoàn" Margin="0,0,4,0" Command="{Binding ChonThanhVienCommand}"/>
-            <dx:SimpleButton Glyph="{dx:DXImage Image=User_16x16.png}" Content="Chọn trưởng đoàn" Command="{Binding ChonTruongDoanCommand}"/>
+        <StackPanel Grid.Row="1" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Right" 
+                    Margin="0,4,0,4">
+            <dx:SimpleButton Glyph="{dx:DXImage Image=UserGroup_16x16.png}" 
+                             Content="Chọn thành viên đoàn" 
+                             Margin="0,0,4,0" 
+                             Command="{Binding ChonThanhVienCommand}"/>
+            <dx:SimpleButton Glyph="{dx:DXImage Image=User_16x16.png}" 
+                             Content="Chọn trưởng đoàn" 
+                             Command="{Binding ChonTruongDoanCommand}"/>
         </StackPanel>
     </Grid>
 </rs:TSDUserControl>

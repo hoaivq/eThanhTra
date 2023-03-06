@@ -191,41 +191,21 @@
                                         </dxg:GridColumn.CellTemplate>
                                     </dxg:GridColumn>
 
-                                    <dxg:GridColumn Header="Tên công việc" FieldName="TenCongViec" Width="200"  VisibleIndex="1"/>
-                                    <dxg:GridColumn Header="Ngày bắt đầu" FieldName="NgayBatDau" Width="100" VisibleIndex="2">
-                                        <dxg:GridColumn.EditSettings>
-                                            <dxe:TextEditSettings DisplayFormat="dd/MM/yyyy"/>
-                                        </dxg:GridColumn.EditSettings>
-                                    </dxg:GridColumn>
-                                    <dxg:GridColumn Header="Ghi chú" FieldName="GhiChu" Width="*" VisibleIndex="3"/>
-                                    <dxg:GridColumn Width="40">
-                                        <dxg:GridColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <dx:SimpleButton Command="{Binding DataContext.EditRowCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDPopUp}}"  CommandParameter="{Binding RowData.Row}"  Glyph="{dx:DXImage Image=Edit_16x16.png}" />
-                                                    <dx:SimpleButton Command="{Binding DataContext.DeleteRowCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDPopUp}}"  CommandParameter="{Binding RowData.Row}"  Glyph="{dx:DXImage Image=Delete_16x16.png}" />
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </dxg:GridColumn.CellTemplate>
-                                    </dxg:GridColumn>
-                                </dxg:GridControl.Columns>
-                            </dxg:GridControl>
-                        </DockPanel>
+            <rs:hListBoxEdit DockPanel.Dock="Bottom" _CaptionText="Danh sách thành viên đoàn" ItemsSource="{Binding _Model.ListUser}" DisplayMember="HoVaTen" ValueMember="UserName"  ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0,0,0,4">
+                <!--<rs:hListBoxEdit.StyleSettings >
+                <dxe:CheckedListBoxEditStyleSettings ShowSelectAllItem="True" SelectAllItemText="Tất cả trạng thái" />
+            </rs:hListBoxEdit.StyleSettings>-->
 
-                        <rs:hListBoxEdit Grid.Column="1" _CaptionText="Danh sách thành viên đảm nhận công việc"  ItemsSource="{Binding _Model.ListThanhVienCongViec}" DisplayMember="HoVaTen" ValueMember="UserName"  ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="4,0,0,0">
-                            <rs:hListBoxEdit.ItemTemplate>
-                                <DataTemplate>
-                                    <CheckBox CommandParameter="{Binding}" Command="{Binding DataContext.UpdateThanhVienCongViecCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDPopUp}}" Content="{Binding HoVaTen}" IsChecked="{Binding IsEnable, Mode=TwoWay}" />
-                                </DataTemplate>
-                            </rs:hListBoxEdit.ItemTemplate>
-                        </rs:hListBoxEdit>
-                    </Grid>
-                </DockPanel>
-            </Grid>
+                <rs:hListBoxEdit.ItemTemplate>
+                    <DataTemplate>
+                        <CheckBox Content="{Binding HoVaTen}" IsChecked="{Binding IsChecked, Mode=TwoWay}" />
+                    </DataTemplate>
+                </rs:hListBoxEdit.ItemTemplate>
+            </rs:hListBoxEdit>
         </DockPanel>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" >
-            <dx:SimpleButton Content="Công bố" Command="{Binding CongBoCommand}" IsEnabled="{Binding _Model.IsEnableCongBo, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+            <dx:SimpleButton Style="{StaticResource SaveButton}" />
             <dx:SimpleButton Style="{StaticResource CloseButton}" Margin="4,0,0,0"/>
         </StackPanel>
     </Grid>

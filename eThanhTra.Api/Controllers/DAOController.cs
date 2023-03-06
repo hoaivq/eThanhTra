@@ -92,15 +92,18 @@ namespace eThanhTra.Api.Controllers
             }
         }
 
+        //Hàm lưu các đối tượng lên Database dựa vào ObjectType
         [HttpPost]
         public async Task<MsgResult<object>> SaveObject([FromBody] object Object)
         {
             string ObjectType = string.Empty;
             try
             {
+                //lấy giá trị ObjectType từ loại của Object hoặc từ header của HttpRequest
                 ObjectType = (Request == null) ? Object.GetType().Name : Request.GetHeader("ObjectType");
                 using (eThanhTraEntities db = new eThanhTraEntities())
                 {
+                    //nếu kiểu dữ liệu là DThanhTraDto 
                     if (ObjectType.Equals("DThanhTraDto"))
                     {
 
@@ -116,6 +119,22 @@ namespace eThanhTra.Api.Controllers
                             output.TrangThai = 0;
                             db.DThanhTras.Add(output);
                         }
+                        await db.SaveChangesAsync();
+                        Object = output.Cast<DThanhTraDto>();
+                    }
+                    //Nếu kiểu dữ kiểu là SUserDto
+                    if (ObjectType.Equals("SUserDTo"))
+                    {
+
+                        SUserDto input = (Request == null) ? Object as SUserDto : JsonConvert.DeserializeObject<SUserDto>(Object.ToString());
+                        SUser output = input.Cast<SUser>();
+
+                        output = db.SUsers.FirstOrDefault(c => c.UserName == output.UserName);
+                        output.GetDataFrom<SUser, SUserDto>(input);
+
+                        //output.TrangThai = 0;
+                        db.SUsers.Add(output);
+
                         await db.SaveChangesAsync();
                         Object = output.Cast<DThanhTraDto>();
                     }

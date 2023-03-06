@@ -35,6 +35,7 @@ namespace eThanhTra
             GlobalResource.MyDXTabControl = tabMain;
             this.DataContext = new MainViewModel(this);
             ((MainViewModel)this.DataContext).LoadDanhMucCommand.Execute(null);
+            
         }
 
         private void mnuMain_PreviewItemClick(object sender, HamburgerMenuPreviewItemClickEventArgs e)

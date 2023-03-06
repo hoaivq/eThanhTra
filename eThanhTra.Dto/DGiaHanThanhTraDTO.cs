@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eThanhTra.ViewModel.NhatKy
+namespace eThanhTra.Dto
 {
-    internal class KhoKhanVuongMacViewModel 
+    public class DGiaHanThanhTraDTO : BaseDto
     {
+
     }
-} 
+}

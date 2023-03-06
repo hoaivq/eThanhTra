@@ -12,20 +12,56 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
-        <DockPanel Grid.Row="0" LastChildFill="True" Margin="20,20,20,20">
-            <rs:hComboBoxEdit EditValue="{Binding _Model.User.MaCQT, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding _Model.ListCQT}" _CaptionText="Cơ quan thuế:" DockPanel.Dock="Top" Height="50"/>
-            <rs:hComboBoxEdit EditValue="{Binding _Model.User.UserType, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding _Model.ListUserType}" _CaptionText="Chức vụ:" DockPanel.Dock="Top" Height="50"/>
-            <rs:hTextEdit Text="{Binding _Model.User.UserName}" _CaptionText="Tài khoàn:" DockPanel.Dock="Top"  Height="50"/>
-            <rs:hTextEdit Text="{Binding _Model.User.HoVaTen}"  _CaptionText="Họ và tên:" DockPanel.Dock="Top"   Height="50"/>
-            <rs:hTextEdit Text="{Binding _Model.User.Email}"  _CaptionText="Email:" DockPanel.Dock="Top"   Height="50"/>
-            <rs:hTextEdit Text="{Binding _Model.User.SoDienThoai}"  _CaptionText="Số điện thoại:" DockPanel.Dock="Top"   Height="50"/>
+        <DockPanel Grid.Row="0" 
+                   LastChildFill="True" 
+                   Margin="20,20,20,20">
+            <rs:hComboBoxEdit EditValue="{Binding _Model.User.MaCQT, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                              ItemsSource="{Binding _Model.ListCQT}" 
+                              _CaptionText="Cơ quan thuế:" 
+                              DockPanel.Dock="Top" 
+                              IsValidEmpty="True" 
+                              x:Name="cmbCQT" 
+                              DisplayMember="Ten" 
+                              ValueMember="Ma" 
+                              Height="50"/>
+            <rs:hComboBoxEdit EditValue="{Binding _Model.User.UserType, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                              ItemsSource="{Binding _Model.ListUserType}" 
+                              IsValidEmpty="True" 
+                              _CaptionText="Loại tài khoản"  
+                              DisplayMember="ten" 
+                              ValueMember="ma" 
+                              Height="50"
+                              DockPanel.Dock="Top"/>
+            <rs:hTextEdit Text="{Binding _Model.User.UserName}" 
+                          _CaptionText="Tài khoàn:" 
+                          DockPanel.Dock="Top"  
+                          Height="50"/>
+            <rs:hTextEdit Text="{Binding _Model.User.HoVaTen}"  
+                          _CaptionText="Họ và tên:" 
+                          DockPanel.Dock="Top"   
+                          Height="50"/>
+            <rs:hTextEdit Text="{Binding _Model.User.Email}"  
+                          _CaptionText="Email:" 
+                          DockPanel.Dock="Top"   
+                          Height="50"/>
+            <rs:hTextEdit Text="{Binding _Model.User.SoDienThoai}"  
+                          _CaptionText="Số điện thoại:" 
+                          DockPanel.Dock="Top"   
+                          Height="50"/>
 
-            <rs:hTextEdit Text="{Binding _Model.User.GhiChu}"  _CaptionText="Ghi chú:" DockPanel.Dock="Bottom"/>
+            <rs:hTextEdit Text="{Binding _Model.User.GhiChu}" 
+                          _CaptionText="Ghi chú:" 
+                          DockPanel.Dock="Bottom"/>
 
         </DockPanel>
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" >
-            <dx:SimpleButton Style="{StaticResource SaveButton}" Command="{Binding SaveCommand}"/>
-            <dx:SimpleButton Style="{StaticResource CloseButton}" Command="{Binding CloseCommand}" Margin="4,0,0,0"/>
+        <StackPanel Grid.Row="1" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Right" >
+            <dx:SimpleButton Style="{StaticResource SaveButton}" 
+                             Command="{Binding SaveCommand}"/>
+            <dx:SimpleButton Style="{StaticResource CloseButton}" 
+                             Command="{Binding CloseCommand}" 
+                             Margin="4,0,0,0"/>
         </StackPanel>
     </Grid>
 </rs:TSDPopUp>

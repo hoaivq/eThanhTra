@@ -302,6 +302,7 @@ namespace Common.Class
             }
         }
 
+        //Hàm trả về kiểu controller là Online hay OffLine
         public T GetObjectController<T, TOnline, TOffline>() where TOffline : T, new() where TOnline : T, new()
         {
             if (MyApp.Setting.IsOnline) { return new TOnline(); }
