@@ -16,7 +16,7 @@
                              AvailableViewStates="Overlay" 
                              IsInitiallyCompact="True" 
                              ViewState="CompactInline" 
-                             PreviewItemClick="mnuMain_PreviewItemClick">
+                             PreviewItemClick="mnuMain_PreviewItemClick" Background="White">
             <dxwui:HamburgerMenu.BottomBarItems>
                 <dxwui:HamburgerMenuBottomBarNavigationButton Content="Settings" 
                                                               GlyphWidth="16" 
@@ -39,9 +39,9 @@
 
 
             <dxwui:HamburgerMenu.Content>
-                <Grid>
-
-                    <dx:DXTabControl Grid.Row="1" x:Name="tabMain">
+                <Grid Background="White">
+                    <dx:DXTabControl Grid.Row="1" x:Name="tabMain"  Background="White" Padding="4,8,4,4">
+                        
                     </dx:DXTabControl>
                 </Grid>
             </dxwui:HamburgerMenu.Content>

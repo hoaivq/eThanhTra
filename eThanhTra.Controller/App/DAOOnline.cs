@@ -15,6 +15,11 @@ namespace eThanhTra.Controller.App
 {
     public class DAOOnline : IDAONetwork
     {
+        public async Task<MsgResult<object>> DeleteObject(DeleteDto deleteDto)
+        {
+            return await MyApp.Common.PostWebApiAsync<MsgResult<object>>(deleteDto, "DAO", "DeleteObject");
+        }
+
         public async Task<MsgResult<ObservableCollection<object>>> GetListObject(CallSPDto callSPDto)
         {
             return await MyApp.Common.PostWebApiAsync<MsgResult<ObservableCollection<object>>>(callSPDto, "DAO", "GetListObject");

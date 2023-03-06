@@ -28,5 +28,6 @@ namespace Common.Core
 
         void WaitCursor();
         void ArrowCursor();
+
     }
 }

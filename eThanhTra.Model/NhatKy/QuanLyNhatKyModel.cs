@@ -14,9 +14,7 @@ namespace eThanhTra.Model.NhatKy
 {
     public class QuanLyNhatKyModel : BaseModel
     {
-
         private ObservableCollection<CheckBoxDto> _ListTrangThai;
-
         public ObservableCollection<CheckBoxDto> ListTrangThai
         {
             get
@@ -85,7 +83,5 @@ namespace eThanhTra.Model.NhatKy
             get { return _TenNNT; }
             set { _TenNNT = value; OnPropertyChanged(); }
         }
-
-
     }
 }

@@ -88,8 +88,10 @@
                         <dxe:TextEditSettings TextWrapping="WrapWithOverflow"/>
                     </dxg:GridColumn.EditSettings>
                 </dxg:GridColumn>
-                <dxg:GridColumn Header="Mã CQT" FieldName="MaCQT" Width="100" GroupIndex="1"/>
-                <dxg:GridColumn Header="Tên CQT" FieldName="TenCQT" Width="300"/>
+
+                <dxg:GridColumn Header="Cơ quan Thuế" FieldName="MaTenCQT" Width="100" GroupIndex="1"/>
+                <!--<dxg:GridColumn Header="Mã CQT" FieldName="MaCQT" Width="100" GroupIndex="1"/>
+                <dxg:GridColumn Header="Tên CQT" FieldName="TenCQT" Width="300"/>-->
                 <dxg:GridColumn Header="Trạng thái" FieldName="TrangThaiText" Width="100"/>
                 <dxg:GridColumn Header="Mã Trưởng đoàn" FieldName="UserNameTDTT" Width="100"/>
                 <dxg:GridColumn Header="Trưởng đoàn" FieldName="TenTruongDoan" Width="150"/>

@@ -29,8 +29,6 @@ namespace eThanhTra.Resource
             DependencyProperty.Register("IsSaveView", typeof(bool), typeof(TSDWindow), new PropertyMetadata(true));
 
 
-
-
         public UserControl OwnerUC { get; set; }
         public bool IsFirstLoad { get; set; } = true;
         public bool IsReload { get; set; } = false;
@@ -137,12 +135,19 @@ namespace eThanhTra.Resource
             ShowMsg(ex.Message, true);
         }
 
-        public Task<MsgResult<T>> ShowWait<T>(string MethodName, Func<Task<MsgResult<T>>> MyFunction)
+
+        public Func<Task<MsgResult<object>>> CastFunc<T>(Func<Task<MsgResult<T>>> p) where T : class
+        {
+            Func<Task<MsgResult<object>>> f = () => p() as Task<MsgResult<object>>;
+            return f;
+        }
+
+        public async Task<MsgResult<T>> ShowWait<T>(string MethodName, Func<Task<MsgResult<T>>> MyFunction)
         {
             try
             {
                 WaitCursor();
-                return MyFunction.Invoke();
+                return await MyFunction.Invoke();
             }
             catch (Exception ex)
             {
@@ -153,20 +158,22 @@ namespace eThanhTra.Resource
             {
                 ArrowCursor();
             }
-            //MsgResult<T> msgResult = new MsgResult<T>();
-            //TSDWaitWindow objF = new TSDWaitWindow();
 
-            //objF.Owner = this;
-            //await Task.Run(new Action(() =>
+            // MsgResult<T> msgResult = new MsgResult<T>();
+            // TSDWaitWindow objF = new TSDWaitWindow();
+
+            // objF.Owner = this;
+
+            // await Task.Run(new Action(() =>
             //{
             //    System.Windows.Application.Current.Dispatcher.BeginInvoke(new Action(() =>
-            //    {
-            //        try
-            //        {
-            //            objF.ShowDialog();
-            //        }
-            //        catch { }
-            //    }));
+            //       {
+            //           try
+            //           {
+            //               objF.ShowDialog();
+            //           }
+            //           catch { }
+            //       }));
 
             //    Task<MsgResult<T>> ketQua = MyFunction.Invoke();
 
@@ -198,35 +205,14 @@ namespace eThanhTra.Resource
 
             //}), TaskScheduler.FromCurrentSynchronizationContext());
 
-            //return msgResult;
+            // return msgResult;
         }
-
-
-
-        public Task<T> ShowWait<T>(string MethodName, Func<Task<T>> MyFunction)
+        public async Task<T> ShowWait<T>(string MethodName, Func<Task<T>> MyFunction)
         {
             try
             {
                 WaitCursor();
-                return MyFunction.Invoke();
-            }
-            catch (Exception ex)
-            {
-                MyApp.Log.GhiLog(MethodName, ex);
-                throw ex;
-            }
-            finally
-            {
-                ArrowCursor();
-            }
-        }
-
-        public Task ShowWait(string MethodName, Func<Task> MyFunction)
-        {
-            try
-            {
-                WaitCursor();
-                return MyFunction.Invoke();
+                return await MyFunction.Invoke();
             }
             catch (Exception ex)
             {
@@ -238,6 +224,7 @@ namespace eThanhTra.Resource
                 ArrowCursor();
             }
 
+            //T msgResult = default(T);
             //TSDWaitWindow objF = new TSDWaitWindow();
 
             //objF.Owner = this;
@@ -252,8 +239,16 @@ namespace eThanhTra.Resource
             //        catch { }
             //    }));
 
-            //    Task ketQua = MyFunction.Invoke();
-            //    if (ketQua.Exception != null) { throw ketQua.Exception; }
+            //    Task<T> ketQua = MyFunction.Invoke();
+
+            //    if (ketQua.Exception != null)
+            //    {
+            //        throw ketQua.Exception;
+            //    }
+            //    else
+            //    {
+            //        msgResult = ketQua.Result;
+            //    }
             //})).ContinueWith(new Action<Task>(task =>
             //{
             //    objF.Close();
@@ -273,7 +268,65 @@ namespace eThanhTra.Resource
             //    }
 
             //}), TaskScheduler.FromCurrentSynchronizationContext());
+
+            //return msgResult;
         }
+        public async Task ShowWait(string MethodName, Func<Task> MyFunction)
+        {
+            try
+            {
+                WaitCursor();
+                await MyFunction.Invoke();
+            }
+            catch (Exception ex)
+            {
+                MyApp.Log.GhiLog(MethodName, ex);
+                throw ex;
+            }
+            finally
+            {
+                ArrowCursor();
+            }
+
+            //return Task.Run(MyFunction);
+            // //TSDWaitWindow objF = new TSDWaitWindow();
+
+            // //objF.Owner = this;
+            // Task.Run(new Action(async () =>
+            //{
+            //         //System.Windows.Application.Current.Dispatcher.BeginInvoke(new Action(() =>
+            //         //{
+            //         //    try
+            //         //    {
+            //         //        objF.ShowDialog();
+            //         //    }
+            //         //    catch { }
+            //         //}));
+
+            //         await MyFunction.Invoke();
+            //         //if (ketQua.Exception != null) { throw ketQua.Exception; }
+            //     })).ContinueWith(new Action<Task>(task =>
+            //     {
+            //         //objF.Close();
+
+            //         if (task.Exception != null)
+            //         {
+            //             string ErrMsg = string.Empty;
+            //             List<Exception> exceptions = task.Exception.GetExceptions(ref ErrMsg);
+            //             MyApp.Log.GhiLog("ShowWait." + MethodName, exceptions);
+
+            //             StringBuilder stringBuilder = new StringBuilder();
+            //             foreach (Exception item in exceptions)
+            //             {
+            //                 stringBuilder.AppendLine(item.Message + " : " + item.InnerException?.Message);
+            //             }
+            //             throw new Exception(stringBuilder.ToString());
+            //         }
+
+            //     }), TaskScheduler.FromCurrentSynchronizationContext());
+
+        }
+
 
 
         public bool ShowQuestion(string Question)
@@ -309,6 +362,20 @@ namespace eThanhTra.Resource
                 objF.ShowDialog();
             }
             catch { }
+        }
+
+
+        public void ShowWaitBox()
+        {
+            TSDWaitWindow objF = new TSDWaitWindow();
+            System.Windows.Application.Current.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                try
+                {
+                    objF.ShowDialog();
+                }
+                catch { }
+            }));
         }
     }
 }

@@ -19,23 +19,19 @@ namespace eThanhTra.Resource
     /// <summary>
     /// Interaction logic for TSDWaitWindow.xaml
     /// </summary>
-    public partial class TSDWaitWindow : Window
+    public partial class TSDWaitWindow2 : Window
     {
         private BackgroundWorker bgwMain = new BackgroundWorker();
-        public Func<Task<MsgResult<object>>> MyFunction;
-        public MsgResult<object> MsgResult;
+        public Func<Task<MsgResult<T>>> MyFunction;
+        public MsgResult<T> msgResult;
 
-        public TSDWaitWindow()
+        public TSDWaitWindow2()
         {
             InitializeComponent();
             bgwMain.DoWork += BgwMain_DoWork;
             bgwMain.RunWorkerCompleted += BgwMain_RunWorkerCompleted;
-        }
 
-        //public void Run<T>(Func<Task<MsgResult<T>>> _MyFunction)
-        //{
-        //    bgwMain.RunWorkerAsync(_MyFunction);
-        //}
+        }
 
         private async void BgwMain_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -44,7 +40,7 @@ namespace eThanhTra.Resource
                 this.Owner.Cursor = Cursors.Wait;
                 this.Owner.Opacity = 0.5;
             }
-            MsgResult = await MyFunction.Invoke();
+            msgResult = await MyFunction.Invoke();
         }
 
         private void BgwMain_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

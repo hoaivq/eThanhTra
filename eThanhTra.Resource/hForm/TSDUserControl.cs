@@ -127,12 +127,12 @@ namespace eThanhTra.Resource
         }
 
 
-        public Task<MsgResult<T>> ShowWait<T>(string MethodName, Func<Task<MsgResult<T>>> MyFunction)
+        public async Task<MsgResult<T>> ShowWait<T>(string MethodName, Func<Task<MsgResult<T>>> MyFunction)
         {
             try
             {
                 WaitCursor();
-                return MyFunction.Invoke();
+                return await MyFunction.Invoke();
             }
             catch (Exception ex)
             {
@@ -191,13 +191,29 @@ namespace eThanhTra.Resource
 
             //return msgResult;
         }
-
-        public Task ShowWait(string MethodName, Func<Task> MyFunction)
+        public async Task<T> ShowWait<T>(string MethodName, Func<Task<T>> MyFunction)
         {
             try
             {
                 WaitCursor();
-                return MyFunction.Invoke();
+                return await MyFunction.Invoke();
+            }
+            catch (Exception ex)
+            {
+                MyApp.Log.GhiLog(MethodName, ex);
+                throw ex;
+            }
+            finally
+            {
+                ArrowCursor();
+            }
+        }
+        public async Task ShowWait(string MethodName, Func<Task> MyFunction)
+        {
+            try
+            {
+                WaitCursor();
+                await MyFunction.Invoke();
             }
             catch (Exception ex)
             {
@@ -267,22 +283,7 @@ namespace eThanhTra.Resource
             catch { }
         }
 
-        public Task<T> ShowWait<T>(string MethodName, Func<Task<T>> MyFunction)
-        {
-            try
-            {
-                WaitCursor();
-                return MyFunction.Invoke();
-            }
-            catch (Exception ex)
-            {
-                MyApp.Log.GhiLog(MethodName, ex);
-                throw ex;
-            }
-            finally
-            {
-                ArrowCursor();
-            }
-        }
+
+
     }
 }

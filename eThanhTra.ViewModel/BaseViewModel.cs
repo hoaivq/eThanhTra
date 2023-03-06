@@ -32,7 +32,7 @@ namespace eThanhTra.ViewModel
                 try
                 {
                     _View.IsFirstLoad = true;
-                    await View.ShowWait("LoadView", () => LoadView(p));
+                    await _View.ShowWait("LoadView", async () => await LoadView(p));
                     _View.IsFirstLoad = false;
                 }
                 catch (Exception ex)
@@ -47,7 +47,7 @@ namespace eThanhTra.ViewModel
 
                 try
                 {
-                    await _View.ShowWait("LoadView", () => LoadView(p));
+                    await _View.ShowWait("LoadView", async () => await LoadView(p));
                 }
                 catch (Exception ex)
                 {
@@ -64,9 +64,10 @@ namespace eThanhTra.ViewModel
                         _View.ShowMsg("Trường dữ liệu nhập chưa chính xác, vui lòng kiểm tra lại!");
                         return;
                     }
-                    await _View.ShowWait("SaveView", () => SaveView(p));
-                    _View.ShowFlashMsg();
+
                     _View.IsReload = true;
+                    await _View.ShowWait("SaveView", async () => await SaveView(p));
+                    _View.ShowFlashMsg();
                     _View.IsDataChanged = false;
                 }
                 catch (Exception ex)
@@ -80,7 +81,7 @@ namespace eThanhTra.ViewModel
             {
                 try
                 {
-                    bool IsReload = await _View.ShowWait("AddNewView", () => AddNewView(p));
+                    bool IsReload = await _View.ShowWait("AddNewView", async () => await AddNewView(p));
                     if (IsReload)
                     {
                         await LoadView();
@@ -89,6 +90,30 @@ namespace eThanhTra.ViewModel
                 catch (Exception ex)
                 {
                     _View.ShowMsg(ex, "AddNewCommand");
+                }
+            });
+
+            EditRowCommand = new RelayCommand<object>((p) => { return true; }, async (p) =>
+            {
+                try
+                {
+                    await _View.ShowWait("EditRow", async () => await EditRow(p));
+                }
+                catch (Exception ex)
+                {
+                    _View.ShowMsg(ex, "EditRowCommand");
+                }
+            });
+
+            DeleteRowCommand = new RelayCommand<object>((p) => { return true; }, async (p) =>
+            {
+                try
+                {
+                    await _View.ShowWait("DeleteRow", async () => await DeleteRow(p));
+                }
+                catch (Exception ex)
+                {
+                    _View.ShowMsg(ex, "DeleteRowCommand");
                 }
             });
         }

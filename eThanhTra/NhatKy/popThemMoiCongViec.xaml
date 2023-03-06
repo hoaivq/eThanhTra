@@ -1,0 +1,29 @@
+﻿<rs:TSDPopUp  xmlns:rs="clr-namespace:eThanhTra.Resource;assembly=eThanhTra.Resource"
+              x:Class="eThanhTra.NhatKy.popThemMoiCongViec"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:eThanhTra.NhatKy" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+              mc:Ignorable="d"
+        Title="Thêm mới công việc" 
+        Height="400" 
+        Width="600">
+    <Grid Margin="8,8,8,4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <rs:hTextEdit Grid.Row="0" _CaptionText="Tên công việc:" Text="{Binding _Model.ObjCongViec.TenCongViec, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsValidEmpty="True"></rs:hTextEdit>
+        <rs:hDateEdit Grid.Row="1" _CaptionText="Ngày bắt đầu:" EditValue="{Binding _Model.ObjCongViec.NgayBatDau, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></rs:hDateEdit>
+        <rs:hTextEdit Grid.Row="2" _CaptionText="Ghi chú:" TextWrapping="Wrap" Text="{Binding _Model.ObjCongViec.GhiChu, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Top" AcceptsReturn="True"></rs:hTextEdit>
+        
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0">
+            <dx:SimpleButton Style="{StaticResource SaveButton}" Margin="4,0,0,0"/>
+            <dx:SimpleButton Style="{StaticResource CloseButton}" Margin="4,0,0,0"/>
+        </StackPanel>
+    </Grid>
+</rs:TSDPopUp>

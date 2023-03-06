@@ -16,6 +16,14 @@ namespace eThanhTra.Controller.App
 {
     public class DAOOffline : IDAONetwork
     {
+        public async Task<MsgResult<object>> DeleteObject(DeleteDto deleteDto)
+        {
+            using (DAOController controller = new DAOController())
+            {
+                return await controller.DeleteObject(deleteDto);
+            }
+        }
+
         public async Task<MsgResult<ObservableCollection<object>>> GetListObject(CallSPDto callSPDto)
         {
             using (DAOController controller = new DAOController())

@@ -19,6 +19,8 @@ namespace eThanhTra.Network.System
 
         Task<MsgResult<object>> SaveObject(object Object);
 
+        Task<MsgResult<object>> DeleteObject(DeleteDto deleteDto);
+
     }
 
     public interface IDAONetwork : IDAOApiNetwork

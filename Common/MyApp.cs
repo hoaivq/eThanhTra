@@ -76,12 +76,31 @@ namespace Common
         public SqlParam[] Params { get; set; }
     }
 
+    public class DeleteDto
+    {
+        public static DeleteDto Create(string _TableName, long _Id)
+        {
+            return new DeleteDto(_TableName, _Id);
+        }
+        public DeleteDto()
+        {
+
+        }
+        public DeleteDto(string _TableName, long _Id)
+        {
+            TableName = _TableName;
+            Id = _Id;
+        }
+        public string TableName { get; set; }
+        public long Id { get; set; }
+    }
+
     public class SqlParam
     {
         public SqlParam(string _Name, object _Value, SqlDbType? _Type = null, int? _Size = null)
         {
             Name = _Name;
-            Value = _Value;
+            Value = (_Value == null) ? DBNull.Value : _Value;
             Type = _Type;
             Size = _Size;
         }

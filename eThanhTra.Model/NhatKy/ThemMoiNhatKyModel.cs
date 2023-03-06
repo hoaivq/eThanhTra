@@ -12,6 +12,31 @@ namespace eThanhTra.Model.NhatKy
 {
     public class ThemMoiNhatKyModel : BaseModel
     {
+        //private long? _IdCongViec;
+
+        //public long? IdCongViec
+        //{
+        //    get { return _IdCongViec; }
+        //    set { _IdCongViec = value; OnPropertyChanged(); }
+        //}
+
+        private bool _IsEnableCongBo;
+
+        public bool IsEnableCongBo
+        {
+            get { return _IsEnableCongBo; }
+            set { _IsEnableCongBo = value; OnPropertyChanged(); }
+        }
+
+        private DataRowView _RowCongViec;
+
+        public DataRowView RowCongViec
+        {
+            get { return _RowCongViec; }
+            set { _RowCongViec = value; OnPropertyChanged(); }
+        }
+
+
         private DataTable _ListCQT = null;
         public DataTable ListCQT
         {
@@ -57,9 +82,52 @@ namespace eThanhTra.Model.NhatKy
             set
             {
                 _ObjThanhTra = value;
+                IsEnabledEdit = (value != null && value.Id.HasValue);
+
+                IsEnableCongBo = (ObjThanhTra != null && ListThanhVien != null && ListThanhVien.Rows.Count > 0 && ListCongViec != null && ListCongViec.Rows.Count > 0);
                 OnPropertyChanged();
             }
         }
 
+
+        private DataTable _ListThanhVien;
+        public DataTable ListThanhVien
+        {
+            get { return _ListThanhVien; }
+            set
+            {
+                _ListThanhVien = value;
+                IsEnableCongBo = (ObjThanhTra != null && ListThanhVien != null && ListThanhVien.Rows.Count > 0 && ListCongViec != null && ListCongViec.Rows.Count > 0);
+                OnPropertyChanged();
+            }
+        }
+
+
+        private DataTable _ListCongViec;
+        public DataTable ListCongViec
+        {
+            get { return _ListCongViec; }
+            set
+            {
+                _ListCongViec = value;
+                IsEnableCongBo = (ObjThanhTra != null && ListThanhVien != null && ListThanhVien.Rows.Count > 0 && ListCongViec != null && ListCongViec.Rows.Count > 0);
+                OnPropertyChanged();
+            }
+        }
+
+
+        private DataTable _ListThanhVienCongViec;
+        public DataTable ListThanhVienCongViec
+        {
+            get { return _ListThanhVienCongViec; }
+            set { _ListThanhVienCongViec = value; OnPropertyChanged(); }
+        }
+
+        private bool _IsEnabledEdit = true;
+        public bool IsEnabledEdit
+        {
+            get { return _IsEnabledEdit; }
+            set { _IsEnabledEdit = value; OnPropertyChanged(); }
+        }
     }
 }

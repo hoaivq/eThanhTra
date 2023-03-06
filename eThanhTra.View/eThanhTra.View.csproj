@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NhatKy\IChonThanhVien.cs" />
+    <Compile Include="NhatKy\IThemMoiCongViec.cs" />
+    <Compile Include="NhatKy\IUserChon.cs" />
     <Compile Include="System\ILogin.cs" />
     <Compile Include="System\IMain.cs" />
     <Compile Include="NhatKy\IQuanLyNhatKy.cs" />

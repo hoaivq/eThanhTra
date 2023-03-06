@@ -1,4 +1,5 @@
-﻿using Common.Core;
+﻿using Common;
+using Common.Core;
 using DevExpress.Xpf.Editors;
 using eThanhTra.Resource.PropertiesExtensions;
 using System;
@@ -90,6 +91,11 @@ namespace eThanhTra.Resource
                 {
                     e.IsValid = false;
                     sb.AppendLine("Trường dữ liệu không được để trống");
+                }
+                else if (e.Value.ToLong().Value <= 0)
+                {
+                    e.IsValid = false;
+                    sb.AppendLine("Trường dữ liệu phải > 0");
                 }
             }
 

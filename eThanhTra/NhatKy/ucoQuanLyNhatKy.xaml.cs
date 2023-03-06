@@ -37,6 +37,7 @@ namespace eThanhTra
         {
             try
             {
+                WaitCursor();
                 popThemMoiNhatKy objF = new popThemMoiNhatKy();
                 ((ThemMoiNhatKyViewModel)objF.DataContext)._Model.ObjThanhTra = dThanhTraDto;
                 objF.ShowPopUp();

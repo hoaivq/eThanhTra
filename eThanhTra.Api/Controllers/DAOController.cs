@@ -119,6 +119,58 @@ namespace eThanhTra.Api.Controllers
                         await db.SaveChangesAsync();
                         Object = output.Cast<DThanhTraDto>();
                     }
+                    else if (ObjectType.Equals("DThanhTraThanhVienDto"))
+                    {
+                        DThanhTraThanhVienDto input = (Request == null) ? Object as DThanhTraThanhVienDto : JsonConvert.DeserializeObject<DThanhTraThanhVienDto>(Object.ToString());
+                        DThanhTraThanhVien output = input.Cast<DThanhTraThanhVien>();
+                        if (input.Id.HasValue())
+                        {
+                            output = db.DThanhTraThanhViens.FirstOrDefault(c => c.Id == output.Id);
+                            output.GetDataFrom<DThanhTraThanhVien, DThanhTraThanhVienDto>(input);
+                        }
+                        else
+                        {
+                            db.DThanhTraThanhViens.Add(output);
+                        }
+                        await db.SaveChangesAsync();
+                        Object = output.Cast<DThanhTraThanhVienDto>();
+                    }
+                    else if (ObjectType.Equals("DThanhTraCongViecDto"))
+                    {
+                        DThanhTraCongViecDto input = (Request == null) ? Object as DThanhTraCongViecDto : JsonConvert.DeserializeObject<DThanhTraCongViecDto>(Object.ToString());
+                        DThanhTraCongViec output = input.Cast<DThanhTraCongViec>();
+                        if (input.Id.HasValue())
+                        {
+                            output = db.DThanhTraCongViecs.FirstOrDefault(c => c.Id == output.Id);
+                            output.GetDataFrom<DThanhTraCongViec, DThanhTraCongViecDto>(input);
+                        }
+                        else
+                        {
+                            db.DThanhTraCongViecs.Add(output);
+                        }
+                        await db.SaveChangesAsync();
+                        Object = output.Cast<DThanhTraCongViecDto>();
+                    }
+                    else if (ObjectType.Equals("DThanhTraThanhVienCongViecDto"))
+                    {
+                        DThanhTraThanhVienCongViecDto input = (Request == null) ? Object as DThanhTraThanhVienCongViecDto : JsonConvert.DeserializeObject<DThanhTraThanhVienCongViecDto>(Object.ToString());
+                        DThanhTraThanhVienCongViec output = db.DThanhTraThanhVienCongViecs.FirstOrDefault(c => c.IdThanhTra == input.IdThanhTra && c.IdThanhTraThanhVien == input.IdThanhTraThanhVien && c.IdThanhTraCongViec == input.IdThanhTraCongViec);
+
+                        if (output == null)
+                        {
+                            output = input.Cast<DThanhTraThanhVienCongViec>();
+                            db.DThanhTraThanhVienCongViecs.Add(output);
+                        }
+                        else
+                        {
+                            output.GetDataFrom<DThanhTraThanhVienCongViec, DThanhTraThanhVienCongViecDto>(input);
+                        }
+
+                        await db.SaveChangesAsync();
+                        Object = output.Cast<DThanhTraThanhVienCongViecDto>();
+                    }
+
+
 
                     return new MsgResult<object>(true, Object);
                 }
@@ -145,6 +197,21 @@ namespace eThanhTra.Api.Controllers
                     rs.Message = rs.Message + Environment.NewLine + sbErr.ToString();
                 }
                 return rs;
+            }
+        }
+
+
+        [HttpPost]
+        public async Task<MsgResult<object>> DeleteObject([FromBody] DeleteDto deleteDto)
+        {
+            try
+            {
+                await MyApp.Dao.ExecSQLAsync("DELETE FROM " + deleteDto.TableName + " WHERE Id = @Id", new SqlParameter[] { new SqlParameter("Id", deleteDto.Id) });
+                return new MsgResult<object>(true, null);
+            }
+            catch (Exception ex)
+            {
+                return new MsgResult<object>("DeleteObject", ex);
             }
         }
     }

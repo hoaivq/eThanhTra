@@ -62,6 +62,7 @@ namespace Common
 
         public static T ToObject<T>(this DataRow dr)
         {
+            if (dr == null) { return default(T); }
             Type temp = typeof(T);
             T obj = Activator.CreateInstance<T>();
             foreach (DataColumn column in dr.Table.Columns)
@@ -106,6 +107,89 @@ namespace Common
             return obj;
         }
 
+        public static T ToObject<T>(this DataRowView dr)
+        {
+            if (dr == null) { return default(T); }
+            Type temp = typeof(T);
+            T obj = Activator.CreateInstance<T>();
+            foreach (DataColumn column in dr.DataView.Table.Columns)
+            {
+                foreach (PropertyInfo pro in temp.GetProperties())
+                {
+                    if (pro.Name == column.ColumnName)
+                    {
+                        try
+                        {
+                            if (dr.Row[column.ColumnName] == DBNull.Value)
+                            {
+                                pro.SetValue(obj, null, null);
+                            }
+                            else
+                            {
+                                if (pro.PropertyType == typeof(int) || pro.PropertyType == typeof(int?))
+                                {
+                                    pro.SetValue(obj, dr.Row[column.ColumnName].ToInt(), null);
+                                }
+                                else if (pro.PropertyType == typeof(long) || pro.PropertyType == typeof(long?))
+                                {
+                                    pro.SetValue(obj, dr.Row[column.ColumnName].ToLong(), null);
+                                }
+                                else if (pro.PropertyType == typeof(DateTime) || pro.PropertyType == typeof(DateTime?))
+                                {
+                                    pro.SetValue(obj, dr.Row[column.ColumnName].ToDateTime(), null);
+                                }
+                                else
+                                {
+                                    pro.SetValue(obj, dr.Row[column.ColumnName], null);
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            throw new Exception(pro.Name + ": " + ex.Message);
+                        }
+                    }
+                }
+            }
+            return obj;
+        }
+
+        public static DataRow ToDataRow<T>(this T obj)
+        {
+            var dataTable = new DataTable();
+            var dataRow = dataTable.NewRow();
+
+            // Get the properties of the object using reflection
+            var properties = typeof(T).GetProperties();
+
+            foreach (var property in properties)
+            {
+                var columnType = Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType;
+                var dataColumn = new DataColumn(property.Name, columnType);
+                dataColumn.AllowDBNull = true;
+
+                // Add a new column to the DataTable
+                dataTable.Columns.Add(dataColumn);
+
+                // Get the value of the property for the object
+
+                if (property.PropertyType.IsGenericType && property.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>))
+                {
+                    var value = property.GetValue(obj, null);
+                    if (value != null)
+                    {
+                        dataRow[property.Name] = value;
+                    }
+                }
+                else
+                {
+                    dataRow[property.Name] = property.GetValue(obj, null);
+                }
+            }
+
+            return dataRow;
+        }
+
         public static string GetHeader(this HttpRequestMessage httpRequestMessage, string headerName)
         {
             try
@@ -147,7 +231,7 @@ namespace Common
 
         public static bool HasValue(this long? val)
         {
-            if(val.HasValue == false) { return false; }
+            if (val.HasValue == false) { return false; }
             if (val.Value == 0 || val.Value == -1) { return false; }
             return true;
         }
@@ -223,11 +307,15 @@ namespace Common
             }
             else if (type == typeof(int))
             {
-                return "int";
+                return "int?";
+            }
+            else if (type == typeof(Int64))
+            {
+                return "long?";
             }
             else if (type == typeof(DateTime))
             {
-                return "DateTime";
+                return "DateTime?";
             }
             else if (type == typeof(bool))
             {
@@ -263,6 +351,19 @@ namespace Common
                 Destination.GetType().GetProperty(p.Name)?.SetValue(Destination, p.GetValue(Source));
             }
             return Destination;
+        }
+
+        public static DataRowView ToDataRowView(this DataTable myTable, int RowIndex)
+        {
+            return myTable.DefaultView[RowIndex];
+        }
+
+
+        public static DataRowView GetDataRowViewById(this DataTable myTable, long? Id)
+        {
+            DataRow dr = myTable.AsEnumerable().FirstOrDefault(c => c["Id"].ToLong() == Id);
+            if(dr == null) { return null; }
+            return myTable.DefaultView[myTable.Rows.IndexOf(dr)];
         }
     }
 }

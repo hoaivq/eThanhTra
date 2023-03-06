@@ -291,6 +291,9 @@ namespace Common.Class
                 }
             }
         }
+
+        
+
         public int ExecSQL(string TSQL, string DBConnStr, SqlParameter[] myParamArr = null)
         {
             try
@@ -318,6 +321,15 @@ namespace Common.Class
             }
         }
 
+        public async Task<int> ExecSQLAsync(string TSQL, SqlParameter[] myParamArr = null, SqlConnection myConn = null, SqlTransaction myTrans = null)
+        {
+            return await Task.FromResult(ExecSQL(TSQL, myParamArr, myConn, myTrans));
+        }
+
+        public async Task<int> ExecSQLAsync(string TSQL, string DBConnStr, SqlParameter[] myParamArr = null)
+        {
+            return await Task.FromResult(ExecSQL(TSQL, DBConnStr, myParamArr));
+        }
 
         public int ExecSQLGetId(string TSQL, SqlParameter[] myParamArr = null, SqlConnection myConn = null)
         {

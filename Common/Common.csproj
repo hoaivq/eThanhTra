@@ -53,6 +53,7 @@
     <Compile Include="Class\AppExtensions.cs" />
     <Compile Include="Class\AppLog.cs" />
     <Compile Include="Core\AppViewModel.cs" />
+    <Compile Include="Core\Enums.cs" />
     <Compile Include="Core\TypeInferringDataTableConverter.cs" />
     <Compile Include="Core\RelayCommand.cs" />
     <Compile Include="MyApp.cs" />

@@ -51,11 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NhatKy\ChonThanhVienViewModel.cs" />
     <Compile Include="NhatKy\BaoCaoCongViecViewModel.cs" />
     <Compile Include="NhatKy\GiaHanThanhTraViewModel.cs" />
     <Compile Include="NhatKy\KhoKhanVuongMacViewModel.cs" />
     <Compile Include="BaseViewModel.cs" />
+    <Compile Include="NhatKy\ThemMoiCongViecViewModel.cs" />
+    <Compile Include="NhatKy\UserChonViewModel.cs" />
     <Compile Include="System\LoginViewModel.cs" />
     <Compile Include="System\MainViewModel.cs" />
     <Compile Include="NhatKy\QuanLyNhatKyViewModel.cs" />
