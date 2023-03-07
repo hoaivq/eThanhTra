@@ -83,10 +83,6 @@
       <Project>{50744fe9-2e5c-4b1d-8b85-8909cbd6bde5}</Project>
       <Name>Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\eThanhTra.Common\eThanhTra.Common.csproj">
-      <Project>{d6d68749-1c28-4dcc-aae1-0873e15c59d4}</Project>
-      <Name>eThanhTra.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\eThanhTra.Dto\eThanhTra.Dto.csproj">
       <Project>{03E62E5A-80DE-40B3-BD32-07F98BF6D645}</Project>
       <Name>eThanhTra.Dto</Name>

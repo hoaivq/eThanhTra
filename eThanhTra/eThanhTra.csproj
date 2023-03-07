@@ -143,9 +143,6 @@
     <Compile Include="NhatKy\ucoCuocThanhTraDetail.xaml.cs">
       <DependentUpon>ucoCuocThanhTraDetail.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NhatKy\ucoDanhSachThanhVien.xaml.cs">
-      <DependentUpon>ucoDanhSachThanhVien.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Core\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -200,10 +197,6 @@
     </Compile>
     <Compile Include="Extensions.cs" />
     <Page Include="NhatKy\ucoCuocThanhTraDetail.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="NhatKy\ucoDanhSachThanhVien.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
