@@ -28,10 +28,23 @@
                           VerticalAlignment="Bottom" 
                           Height="50" Margin="0,0,4,0" 
                           EditValueChangedCommand="{Binding LoadCommand}"/>
-            <TextBlock DockPanel.Dock="Left" Text="~" VerticalAlignment="Bottom" Margin="2,0,2,8"/>
-            <rs:hDateEdit EditValue="{Binding _Model.NgayCongBoDen, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Left" Width="100" VerticalAlignment="Bottom" Height="30" Margin="4,0,8,0" EditValueChangedCommand="{Binding LoadCommand}"/>
+            <TextBlock DockPanel.Dock="Left" 
+                       Text="~" 
+                       VerticalAlignment="Bottom" 
+                       Margin="2,0,2,8"/>
+            <rs:hDateEdit EditValue="{Binding _Model.NgayCongBoDen, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                          DockPanel.Dock="Left" 
+                          Width="100" 
+                          VerticalAlignment="Bottom" 
+                          Height="30" 
+                          Margin="4,0,8,0" 
+                          EditValueChangedCommand="{Binding LoadCommand}"/>
             
-            <rs:hListBoxEdit DockPanel.Dock="Left" _CaptionText="Trạng thái" VerticalAlignment="Bottom" Height="50" Padding="4,4,0,0">
+            <rs:hListBoxEdit DockPanel.Dock="Left" 
+                             _CaptionText="Trạng thái" 
+                             VerticalAlignment="Bottom" 
+                             Height="50" 
+                             Padding="4,4,0,0">
                 <dxe:ListBoxEdit.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal"/>
@@ -39,16 +52,31 @@
                 </dxe:ListBoxEdit.ItemsPanel>
                 
                 <dxe:ListBoxEdit.StyleSettings >
-                    <dxe:CheckedListBoxEditStyleSettings ShowSelectAllItem="True" SelectAllItemText="Tất cả trạng thái" />
+                    <dxe:CheckedListBoxEditStyleSettings ShowSelectAllItem="True" 
+                                                         SelectAllItemText="Tất cả trạng thái" />
                 </dxe:ListBoxEdit.StyleSettings>
                 <dxe:ListBoxEdit.Items>
-                    <dxe:ListBoxEditItem Content="Chờ công bố" IsSelected="{Binding _Model.IsChoCongBo, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="4,0,4,0"/>
-                    <dxe:ListBoxEditItem Content="Đang tiến hành" IsSelected="{Binding _Model.IsDangTienHanh, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="4,0,4,0"/>
-                    <dxe:ListBoxEditItem Content="Đã kết thúc"  IsSelected="{Binding _Model.IsDaKetThuc, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="4,0,8,0"/>
+                    <dxe:ListBoxEditItem Content="Chờ công bố" 
+                                         IsSelected="{Binding _Model.IsChoCongBo, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                                         Margin="4,0,4,0"/>
+                    <dxe:ListBoxEditItem Content="Đang tiến hành" 
+                                         IsSelected="{Binding _Model.IsDangTienHanh, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                                         Margin="4,0,4,0"/>
+                    <dxe:ListBoxEditItem Content="Đã kết thúc"  
+                                         IsSelected="{Binding _Model.IsDaKetThuc, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                                         Margin="4,0,8,0"/>
                 </dxe:ListBoxEdit.Items>
             </rs:hListBoxEdit>
 
-            <rs:hListBoxEdit DockPanel.Dock="Left" _CaptionText="Trạng thái" ItemsSource="{Binding _Model.ListTrangThai}" DisplayMember="Ma" ValueMember="Ten"  VerticalAlignment="Bottom" Height="50" Padding="4,2,4,0" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+            <rs:hListBoxEdit DockPanel.Dock="Left" 
+                             _CaptionText="Trạng thái" 
+                             ItemsSource="{Binding _Model.ListTrangThai}" 
+                             DisplayMember="Ma" 
+                             ValueMember="Ten"  
+                             VerticalAlignment="Bottom" 
+                             Height="50" 
+                             Padding="4,2,4,0" 
+                             ScrollViewer.VerticalScrollBarVisibility="Disabled">
                 
                 <dxe:ListBoxEdit.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -58,19 +86,35 @@
                 
                 <rs:hListBoxEdit.ItemTemplate>
                     <DataTemplate>
-                        <dxe:CheckEdit Content="{Binding Ten}" IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="4,0,4,0">
+                        <dxe:CheckEdit Content="{Binding Ten}" 
+                                       IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                       Margin="4,0,4,0">
                             <dxemvvm:Interaction.Behaviors>
-                                <dxemvvm:EventToCommand EventName="EditValueChanged" Command="{Binding DataContext.LoadCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDUserControl}}" />
+                                <dxemvvm:EventToCommand EventName="EditValueChanged" 
+                                                        Command="{Binding DataContext.LoadCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDUserControl}}" />
                             </dxemvvm:Interaction.Behaviors>
                         </dxe:CheckEdit>
                     </DataTemplate>
                 </rs:hListBoxEdit.ItemTemplate>
             </rs:hListBoxEdit>
 
-            <rs:hTextEdit Text="{Binding _Model.MST, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Left" Margin="8,0,0,0" _CaptionText="MST:" Height="50" VerticalAlignment="Bottom" Width="100"></rs:hTextEdit>
-            
-            <dx:SimpleButton DockPanel.Dock="Right" Style="{StaticResource SearchButton}" HorizontalAlignment="Right" />
-            <rs:hTextEdit Text="{Binding _Model.TenNNT, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Left" Margin="8,0,8,0" _CaptionText="Tên NNT:" Height="50" VerticalAlignment="Bottom"></rs:hTextEdit>
+            <rs:hTextEdit Text="{Binding _Model.MST, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                          DockPanel.Dock="Left" 
+                          Margin="8,0,0,0" 
+                          _CaptionText="MST:" 
+                          Height="50" 
+                          VerticalAlignment="Bottom" 
+                          Width="100"/>
+
+            <dx:SimpleButton DockPanel.Dock="Right" 
+                             Style="{StaticResource SearchButton}" 
+                             HorizontalAlignment="Right" />
+            <rs:hTextEdit Text="{Binding _Model.TenNNT, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                          DockPanel.Dock="Left" 
+                          Margin="8,0,8,0" 
+                          _CaptionText="Tên NNT:" 
+                          Height="50" 
+                          VerticalAlignment="Bottom"/>
         </DockPanel>
 
 
@@ -113,13 +157,29 @@
                     </dxg:GridColumn.EditSettings>
                 </dxg:GridColumn>
 
-                <dxg:GridColumn Header="Cơ quan Thuế" FieldName="MaTenCQT" Width="100" GroupIndex="1"/>
-                <!--<dxg:GridColumn Header="Mã CQT" FieldName="MaCQT" Width="100" GroupIndex="1"/>
-                <dxg:GridColumn Header="Tên CQT" FieldName="TenCQT" Width="300"/>-->
-                <dxg:GridColumn Header="Trạng thái" FieldName="TrangThaiText" Width="100"/>
-                <dxg:GridColumn Header="Mã Trưởng đoàn" FieldName="UserNameTDTT" Width="100"/>
-                <dxg:GridColumn Header="Trưởng đoàn" FieldName="TenTruongDoan" Width="150"/>
-                <dxg:GridColumn Header="Ngày công bố" FieldName="NgayCongBo" Width="100">
+                <dxg:GridColumn Header="Cơ quan Thuế" 
+                                FieldName="MaTenCQT" 
+                                Width="100" 
+                                GroupIndex="1"/>
+                <dxg:GridColumn Header="Mã CQT" 
+                                FieldName="MaCQT" 
+                                Width="100" 
+                                GroupIndex="1"/>
+                <dxg:GridColumn Header="Tên CQT" 
+                                FieldName="TenCQT" 
+                                Width="300"/>
+                <dxg:GridColumn Header="Trạng thái" 
+                                FieldName="TrangThaiText" 
+                                Width="100"/>
+                <dxg:GridColumn Header="Mã Trưởng đoàn" 
+                                FieldName="UserNameTDTT" 
+                                Width="100"/>
+                <dxg:GridColumn Header="Trưởng đoàn" 
+                                FieldName="TenTruongDoan" 
+                                Width="150"/>
+                <dxg:GridColumn Header="Ngày công bố" 
+                                FieldName="NgayCongBo" 
+                                Width="100">
                     <dxg:GridColumn.EditSettings>
                         <dxe:TextEditSettings DisplayFormat="dd/MM/yyyy"/>
                     </dxg:GridColumn.EditSettings>
@@ -138,7 +198,8 @@
             </dxg:GridControl.Columns>
         </dxg:GridControl>
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal" 
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal" 
                     HorizontalAlignment="Right" 
                     Margin="0,4,0,0">
             <dx:SimpleButton Style="{StaticResource AddNewButton}"/>
