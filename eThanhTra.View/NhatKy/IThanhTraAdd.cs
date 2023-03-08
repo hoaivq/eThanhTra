@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace eThanhTra.View.NhatKy
 {
-    public interface IThemMoiNhatKy : IView
+    public interface IThanhTraAdd : IView
     {
         Task<string> ShowUserChon(long IdThanhTra);
         Task<long?> ShowAddNewCongViec(long IdThanhTra, DataRowView RowCongViec);

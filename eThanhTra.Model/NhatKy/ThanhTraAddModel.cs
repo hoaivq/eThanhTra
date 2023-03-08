@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace eThanhTra.Model.NhatKy
 {
-    public class ThemMoiNhatKyModel : BaseModel
+    public class ThanhTraAddModel : BaseModel
     {
         //private long? _IdCongViec;
 
@@ -61,10 +61,10 @@ namespace eThanhTra.Model.NhatKy
         {
             get
             {
-                if (_ListUser == null)
-                {
-                    _ListUser = AppViewModel.DanhMucChung.Tables[1];
-                }
+                //if (_ListUser == null)
+                //{
+                //    _ListUser = AppViewModel.DanhMucChung.Tables[1];
+                //}
                 return _ListUser;
             }
             set

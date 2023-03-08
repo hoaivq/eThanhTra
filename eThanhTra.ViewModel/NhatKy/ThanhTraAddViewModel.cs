@@ -17,7 +17,7 @@ using static Common.Core.Enums;
 
 namespace eThanhTra.ViewModel.NhatKy
 {
-    public class ThemMoiNhatKyViewModel : BaseViewModel<IThemMoiNhatKy, ThemMoiNhatKyModel>
+    public class ThanhTraAddViewModel : BaseViewModel<IThanhTraAdd, ThanhTraAddModel>
     {
         public ICommand LoadThanhVienCongViecCommand { get; set; }
         public ICommand AddNewThanhVienCommand { get; set; }
@@ -25,7 +25,7 @@ namespace eThanhTra.ViewModel.NhatKy
         public ICommand UpdateThanhVienCongViecCommand { get; set; }
         public ICommand CongBoCommand { get; set; }
 
-        public ThemMoiNhatKyViewModel(IThemMoiNhatKy View) : base(View)
+        public ThanhTraAddViewModel(IThanhTraAdd View) : base(View)
         {
             LoadThanhVienCongViecCommand = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
@@ -91,10 +91,28 @@ namespace eThanhTra.ViewModel.NhatKy
 
         public override async Task LoadView(object p = null)
         {
+            await LoadListUser();
             await LoadThongTinChung();
             await LoadThanhVien();
             await LoadCongViec();
             await LoadThanhVienCongViec();
+        }
+
+        private async Task LoadListUser()
+        {
+            long? IdThanhTra = _Model.ObjThanhTra?.Id;
+            msgResult = await MyObject.ObjApp.GetTable(CallSPDto.Create("PGetListUser",
+                  new SqlParam("MaCQT", AppViewModel.MyUser.MaCQT, SqlDbType.VarChar, 5),
+                  new SqlParam("IdThanhTra", IdThanhTra, SqlDbType.BigInt),
+                  new SqlParam("VaiTro", 1, SqlDbType.Int)
+                  ));
+
+            if (msgResult.Success == false)
+            {
+                throw new Exception(msgResult.Message);
+            }
+
+            _Model.ListUser = msgResult.Value;
         }
 
         private async Task LoadThongTinChung()
@@ -196,6 +214,7 @@ namespace eThanhTra.ViewModel.NhatKy
                 };
 
                 await MyObject.ObjApp.SaveObject(dThanhTraThanhVienDto);
+                await LoadListUser();
                 await LoadThanhVien();
                 await LoadThanhVienCongViec();
             }
@@ -266,6 +285,7 @@ namespace eThanhTra.ViewModel.NhatKy
                 }
 
                 dr.Delete();
+                await LoadListUser();
                 await LoadThanhVienCongViec();
             }
         }

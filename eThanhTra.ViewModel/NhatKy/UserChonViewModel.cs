@@ -37,7 +37,9 @@ namespace eThanhTra.ViewModel.NhatKy
         {
             msgResult = await MyObject.ObjApp.GetTable(CallSPDto.Create("PGetListUser",
                   new SqlParam("MaCQT", AppViewModel.MyUser.MaCQT, SqlDbType.VarChar, 5),
-                  new SqlParam("IdThanhTra", _Model.IdThanhTra, SqlDbType.BigInt)));
+                  new SqlParam("IdThanhTra", _Model.IdThanhTra, SqlDbType.BigInt),
+                  new SqlParam("VaiTro", 2, SqlDbType.Int)
+                  ));
 
             if (msgResult.Success == false)
             {

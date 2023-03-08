@@ -18,14 +18,14 @@ using System.Windows.Shapes;
 namespace eThanhTra.NhatKy
 {
     /// <summary>
-    /// Interaction logic for popThemMoiCongViec.xaml
+    /// Interaction logic for popThanhTraCongViecAdd.xaml
     /// </summary>
-    public partial class popThemMoiCongViec : TSDPopUp, IThemMoiCongViec
+    public partial class popThanhTraCongViecAdd : TSDPopUp, IThanhTraCongViecAdd
     {
-        public popThemMoiCongViec()
+        public popThanhTraCongViecAdd()
         {
             InitializeComponent();
-            this.DataContext = new ThemMoiCongViecViewModel(this);
+            this.DataContext = new ThanhTraCongViecAddViewModel(this);
         }
     }
 }

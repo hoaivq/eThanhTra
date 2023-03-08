@@ -18,9 +18,9 @@ using System.Windows.Input;
 
 namespace eThanhTra.ViewModel.NhatKy
 {
-    public class QuanLyNhatKyViewModel : BaseViewModel<IQuanLyNhatKy, QuanLyNhatKyModel>
+    public class ThanhTraViewModel : BaseViewModel<IThanhTra, ThanhTraModel>
     {
-        public QuanLyNhatKyViewModel(IQuanLyNhatKy View) : base(View)
+        public ThanhTraViewModel(IThanhTra View) : base(View)
         {
         }
 

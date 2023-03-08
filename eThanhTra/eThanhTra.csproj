@@ -137,8 +137,11 @@
     <Compile Include="NhatKy\popTamDungThanhTra.xaml.cs">
       <DependentUpon>popTamDungThanhTra.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NhatKy\popThemMoiNhatKy.xaml.cs">
-      <DependentUpon>popThemMoiNhatKy.xaml</DependentUpon>
+    <Compile Include="NhatKy\popThanhTraAdd.xaml.cs">
+      <DependentUpon>popThanhTraAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NhatKy\popThanhTraCongViecAdd.xaml.cs">
+      <DependentUpon>popThanhTraCongViecAdd.xaml</DependentUpon>
     </Compile>
     <Compile Include="NhatKy\ucoCuocThanhTraDetail.xaml.cs">
       <DependentUpon>ucoCuocThanhTraDetail.xaml</DependentUpon>
@@ -153,11 +156,14 @@
     <Compile Include="NhatKy\popUserChon.xaml.cs">
       <DependentUpon>popUserChon.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NhatKy\popThanhTraDetail.xaml.cs">
+      <DependentUpon>popThanhTraDetail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ucoHome.xaml.cs">
       <DependentUpon>ucoHome.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NhatKy\ucoQuanLyNhatKy.xaml.cs">
-      <DependentUpon>ucoQuanLyNhatKy.xaml</DependentUpon>
+    <Compile Include="NhatKy\ucoThanhTra.xaml.cs">
+      <DependentUpon>ucoThanhTra.xaml</DependentUpon>
     </Compile>
     <Page Include="Core\popUserAdd.xaml">
       <SubType>Designer</SubType>
@@ -183,11 +189,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="NhatKy\popThemMoiCongViec.xaml">
+    <Page Include="NhatKy\popThanhTraCongViecAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NhatKy\popThemMoiNhatKy.xaml">
+    <Page Include="NhatKy\popThanhTraAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -212,11 +218,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="NhatKy\popThanhTraDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ucoHome.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NhatKy\ucoQuanLyNhatKy.xaml">
+    <Page Include="NhatKy\ucoThanhTra.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace eThanhTra.ViewModel.NhatKy
 {
-    public class ThemMoiCongViecViewModel : BaseViewModel<IThemMoiCongViec, ThemMoiCongViecModel>
+    public class ThanhTraCongViecAddViewModel : BaseViewModel<IThanhTraCongViecAdd, ThanhTraCongViecAddModel>
     {
-        public ThemMoiCongViecViewModel(IThemMoiCongViec View) : base(View)
+        public ThanhTraCongViecAddViewModel(IThanhTraCongViecAdd View) : base(View)
         {
         }
 

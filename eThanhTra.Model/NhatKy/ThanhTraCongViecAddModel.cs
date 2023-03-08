@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace eThanhTra.Model.NhatKy
 {
-    public class ThemMoiCongViecModel : BaseModel
+    public class ThanhTraCongViecAddModel : BaseModel
     {
         private DThanhTraCongViecDto _ObjCongViec;
         public DThanhTraCongViecDto ObjCongViec
