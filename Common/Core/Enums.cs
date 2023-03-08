@@ -14,5 +14,18 @@ namespace Common.Core
             DangTienHanh = 1,
             DaKetThuc = 2
         }
+
+        public enum EUserType
+        {
+            QTHT = 0,
+            LanhDao = 1,
+            CanBo = 2
+        }
+
+        public enum EVaiTro
+        {
+            TruongDoan = 1,
+            ThanhVien = 2
+        }
     }
 }

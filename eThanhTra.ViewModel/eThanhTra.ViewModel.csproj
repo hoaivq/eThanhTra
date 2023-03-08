@@ -55,13 +55,14 @@
     <Compile Include="NhatKy\GiaHanThanhTraViewModel.cs" />
     <Compile Include="NhatKy\KhoKhanVuongMacViewModel.cs" />
     <Compile Include="BaseViewModel.cs" />
-    <Compile Include="NhatKy\ThemMoiCongViecViewModel.cs" />
+    <Compile Include="NhatKy\ThanhTraDetailViewModel.cs" />
+    <Compile Include="NhatKy\ThanhTraCongViecAddViewModel.cs" />
     <Compile Include="NhatKy\UserChonViewModel.cs" />
     <Compile Include="System\LoginViewModel.cs" />
     <Compile Include="System\MainViewModel.cs" />
-    <Compile Include="NhatKy\QuanLyNhatKyViewModel.cs" />
+    <Compile Include="NhatKy\ThanhTraViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="NhatKy\ThemMoiNhatKyViewModel.cs" />
+    <Compile Include="NhatKy\ThanhTraAddViewModel.cs" />
     <Compile Include="System\UserAddViewModel.cs" />
     <Compile Include="System\UserViewModel.cs" />
   </ItemGroup>

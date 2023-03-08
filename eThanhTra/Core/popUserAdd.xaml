@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:eThanhTra.Core" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
               mc:Ignorable="d"
-        Title="Thêm mới tài khoản" Height="500" Width="600"  >
+        Title="Thêm mới tài khoản" Height="600" Width="600"  >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -36,6 +36,10 @@
                           _CaptionText="Tài khoàn:" 
                           DockPanel.Dock="Top"  
                           Height="50"/>
+            <rs:hPasswordBoxEdit Text="{Binding _Model.User.Password}" 
+                          _CaptionText="Mật khẩu:" 
+                          DockPanel.Dock="Top"  
+                          Height="50"/>
             <rs:hTextEdit Text="{Binding _Model.User.HoVaTen}"  
                           _CaptionText="Họ và tên:" 
                           DockPanel.Dock="Top"   
@@ -57,10 +61,8 @@
         <StackPanel Grid.Row="1" 
                     Orientation="Horizontal" 
                     HorizontalAlignment="Right" >
-            <dx:SimpleButton Style="{StaticResource SaveButton}" 
-                             Command="{Binding SaveCommand}"/>
-            <dx:SimpleButton Style="{StaticResource CloseButton}" 
-                             Command="{Binding CloseCommand}" 
+            <dx:SimpleButton Style="{StaticResource SaveButton}" />
+            <dx:SimpleButton Style="{StaticResource CloseButton}"
                              Margin="4,0,0,0"/>
         </StackPanel>
     </Grid>

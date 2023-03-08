@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace eThanhTra.Model.NhatKy
 {
-    public class QuanLyNhatKyModel : BaseModel
+    public class ThanhTraModel : BaseModel
     {
         private ObservableCollection<CheckBoxDto> _ListTrangThai;
         public ObservableCollection<CheckBoxDto> ListTrangThai

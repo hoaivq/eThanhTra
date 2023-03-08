@@ -44,7 +44,7 @@
                                                  Glyph="{dx:DXImage Image=Grid_16x16.png}" 
                                                  GlyphHeight="16" 
                                                  SelectOnClick="False" 
-                                                 Name="QuanLyNhatKy"/>
+                                                 Name="ThanhTra"/>
             <dxwui:HamburgerMenuHyperlinkButton Content="Hỗ trợ" 
                                                 NavigateUri="https://ebh.vn/"/>
 

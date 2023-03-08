@@ -16,6 +16,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using static Common.Core.Enums;
 
 namespace eThanhTra.Api.Controllers
 {
@@ -106,7 +107,6 @@ namespace eThanhTra.Api.Controllers
                     //nếu kiểu dữ liệu là DThanhTraDto 
                     if (ObjectType.Equals("DThanhTraDto"))
                     {
-
                         DThanhTraDto input = (Request == null) ? Object as DThanhTraDto : JsonConvert.DeserializeObject<DThanhTraDto>(Object.ToString());
                         DThanhTra output = input.Cast<DThanhTra>();
                         if (input.Id.HasValue())
@@ -119,17 +119,34 @@ namespace eThanhTra.Api.Controllers
                             output.TrangThai = 0;
                             db.DThanhTras.Add(output);
                         }
+
                         await db.SaveChangesAsync();
+                        DThanhTraThanhVien dThanhTraThanhVien = db.DThanhTraThanhViens.FirstOrDefault(c => c.IdThanhTra == output.Id && c.VaiTro == (int)EVaiTro.TruongDoan);
+                        if (dThanhTraThanhVien == null)
+                        {
+                            dThanhTraThanhVien = new DThanhTraThanhVien();
+                            dThanhTraThanhVien.IdThanhTra = output.Id;
+                            dThanhTraThanhVien.UserName = output.UserNameTDTT;
+                            dThanhTraThanhVien.VaiTro = (int)EVaiTro.TruongDoan;
+                            dThanhTraThanhVien.IsEnable = true;
+                            db.DThanhTraThanhViens.Add(dThanhTraThanhVien);
+                        }
+                        else
+                        {
+                            dThanhTraThanhVien.UserName = output.UserNameTDTT;
+                        }
+                        await db.SaveChangesAsync();
+
                         Object = output.Cast<DThanhTraDto>();
                     }
                     //Nếu kiểu dữ kiểu là SUserDto
-                    if (ObjectType.Equals("SUserDTo"))
+                    if (ObjectType.Equals("SUserDto"))
                     {
 
                         SUserDto input = (Request == null) ? Object as SUserDto : JsonConvert.DeserializeObject<SUserDto>(Object.ToString());
                         SUser output = input.Cast<SUser>();
 
-                        output = db.SUsers.FirstOrDefault(c => c.UserName == output.UserName);
+                        //output = db.SUsers.FirstOrDefault(c => c.UserName == output.UserName);
                         output.GetDataFrom<SUser, SUserDto>(input);
 
                         //output.TrangThai = 0;

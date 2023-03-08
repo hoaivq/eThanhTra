@@ -23,34 +23,33 @@ using System.Windows.Shapes;
 namespace eThanhTra.NhatKy
 {
     /// <summary>
-    /// Interaction logic for frmThemMoiNhatKy.xaml
+    /// Interaction logic for frmThanhTraAdd.xaml
     /// </summary>
-    public partial class popThemMoiNhatKy : TSDPopUp, IThemMoiNhatKy
+    public partial class popThanhTraAdd : TSDPopUp, IThanhTraAdd
     {
-        public popThemMoiNhatKy()
+        public popThanhTraAdd()
         {
 
             InitializeComponent();
-            this.DataContext = new ThemMoiNhatKyViewModel(this);
+            this.DataContext = new ThanhTraAddViewModel(this);
         }
 
         public async Task<long?> ShowAddNewCongViec(long IdThanhTra, DataRowView RowCongViec)
         {
             try
             {
-
-                popThemMoiCongViec objF = new popThemMoiCongViec();
-                ((ThemMoiCongViecViewModel)objF.DataContext)._Model.IdThanhTra = IdThanhTra;
-                ((ThemMoiCongViecViewModel)objF.DataContext)._Model.ObjCongViec = RowCongViec.ToObject<DThanhTraCongViecDto>();
+                popThanhTraCongViecAdd objF = new popThanhTraCongViecAdd();
+                ((ThanhTraCongViecAddViewModel)objF.DataContext)._Model.IdThanhTra = IdThanhTra;
+                ((ThanhTraCongViecAddViewModel)objF.DataContext)._Model.ObjCongViec = RowCongViec.ToObject<DThanhTraCongViecDto>();
                 objF.ShowPopUp(this);
                 await Task.CompletedTask;
 
-                if(((ThemMoiCongViecViewModel)objF.DataContext)._Model.ObjCongViec == null)
+                if(((ThanhTraCongViecAddViewModel)objF.DataContext)._Model.ObjCongViec == null)
                 {
                     return null;
                 }
 
-                return ((ThemMoiCongViecViewModel)objF.DataContext)._Model.ObjCongViec.Id;
+                return ((ThanhTraCongViecAddViewModel)objF.DataContext)._Model.ObjCongViec.Id;
             }
             catch (Exception ex)
             {

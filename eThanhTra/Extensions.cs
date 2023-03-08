@@ -31,9 +31,9 @@ namespace eThanhTra
                 {
                     Content = new ucoUser();
                 }
-                else if (hasItem.Name == "QuanLyNhatKy")
+                else if (hasItem.Name == "ThanhTra")
                 {
-                    Content = new ucoQuanLyNhatKy();
+                    Content = new ucoThanhTra();
                 }
 
                 if (Content != null)
