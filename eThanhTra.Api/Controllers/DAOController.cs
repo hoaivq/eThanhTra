@@ -153,7 +153,7 @@ namespace eThanhTra.Api.Controllers
                         db.SUsers.Add(output);
 
                         await db.SaveChangesAsync();
-                        Object = output.Cast<DThanhTraDto>();
+                        Object = output.Cast<SUserDto>();
                     }
                     else if (ObjectType.Equals("DThanhTraThanhVienDto"))
                     {
