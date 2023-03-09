@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NhatKy\IChonThanhVien.cs" />
+    <Compile Include="NhatKy\IGiaHanTT.cs" />
     <Compile Include="NhatKy\IThanhTraDetail.cs" />
     <Compile Include="NhatKy\IThanhTraCongViecAdd.cs" />
     <Compile Include="NhatKy\IUserChon.cs" />
