@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DThanhTra.cs" />
+    <Compile Include="GiaHanTTDto.cs" />
     <Compile Include="SUserDto.cs" />
     <Compile Include="BaseDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

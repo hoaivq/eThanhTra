@@ -9,6 +9,14 @@ namespace eThanhTra.Model.NhatKy
 {
     public class GiaHanThanhTraModel : BaseModel
     {
+		private GiaHanTTDto GiaHanTT;
 
-    }
+		public GiaHanTTDto MyProperty
+		{
+			get { return GiaHanTT; }
+			set { GiaHanTT = value; }
+		}
+
+
+	}
 }

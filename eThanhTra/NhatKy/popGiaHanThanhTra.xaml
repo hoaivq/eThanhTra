@@ -9,55 +9,28 @@
              mc:Ignorable="d" 
              d:DesignHeight="430" d:DesignWidth="600"
               Title="Gia hạn thanh tra">
-    <Grid>
-        <StackPanel Orientation="Vertical">
+    <Grid Margin="8,8,8,4">
 
-            <rs:hTextEdit  Margin="10 20 10 0"
-                           _CaptionText="Quyết định gia hạn thanh tra" 
-                           Height="50"/>
-            <rs:hTextEdit Margin="10 10"
-                           _CaptionText="Lý do gia hạn" 
-                          Height="50"/>
-            <rs:hTextEdit Margin="10 5"
-                          _CaptionText="Số ngày gia hạn" 
-                          Height="50"/>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="150"/>
-                    <ColumnDefinition Width="150"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <rs:hTextEdit Grid.Row="0" _CaptionText="Quyết định gia hạn thanh tra"/>
+        
+        <rs:hTextEdit Grid.Row="1" _CaptionText="Số ngày gia hạn" />
 
-                <TextBlock Grid.Row="0"
-                           Margin="10,0,10,0"
-                    Text="Thời gian gia hạn"/>
-                <rs:hDateEdit Grid.Row="1"
-                              Grid.Column="0"
-                              Margin="10 0 10 0 "
-                    _CaptionText="Từ" Height="50" />
-                <rs:hDateEdit Grid.Row="1"
-                              Grid.Column="1"
-                    _CaptionText="Đến" Height="50" />
-            </Grid>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <rs:hDateEdit Grid.Row="1" Grid.Column="0"  _CaptionText="Từ" />
+            <rs:hDateEdit _CaptionText="Đến" />
+        </StackPanel>
 
-            <rs:hTextEdit Margin="10,5"
-                _CaptionText="Người duyệt" Height="50"/>
-            <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Right"
-                        Margin="0 40 0 0">
-                <dx:SimpleButton Content="File đính kèm"
-                                 Margin="0 0 5 0"/>
-                <dx:SimpleButton Content="Ghi"
-                                 Style="{StaticResource SaveButton}"
-                                 Margin="0 0 5 0"/>
-                <dx:SimpleButton Content="Thoát"
-                                 Margin="0 0 10 0"
-                                 Style="{StaticResource CloseButton}"/>
-            </StackPanel>
-            
+        <rs:hTextEdit Grid.Row="3" _CaptionText="Lý do gia hạn" />
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right"  Margin="0,4,0,0">
+            <dx:SimpleButton  Style="{StaticResource SaveButton}" Margin="0 0 4 0"/>
+            <dx:SimpleButton Style="{StaticResource CloseButton}"/>
         </StackPanel>
     </Grid>
 </rs:TSDPopUp>

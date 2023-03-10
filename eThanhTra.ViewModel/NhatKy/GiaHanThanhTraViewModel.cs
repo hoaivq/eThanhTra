@@ -15,5 +15,10 @@ namespace eThanhTra.ViewModel.NhatKy
         {
 
         }
+
+        public override Task LoadView(object p = null)
+        {
+            
+        }
     }
 }
