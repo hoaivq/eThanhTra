@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0" 
                    LastChildFill="True" 
-                   Margin="20,20,20,20">
+                   Margin="8 8 8 4">
             <rs:hComboBoxEdit EditValue="{Binding _Model.User.MaCQT, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
                               ItemsSource="{Binding _Model.ListCQT}" 
                               _CaptionText="Cơ quan thuế:" 
@@ -33,7 +33,7 @@
                               Height="50"
                               DockPanel.Dock="Top"/>
             <rs:hTextEdit Text="{Binding _Model.User.UserName}" 
-                          _CaptionText="Tài khoàn:" 
+                          _CaptionText="Tài khoản:" 
                           DockPanel.Dock="Top"  
                           Height="50"/>
             <rs:hPasswordBoxEdit Text="{Binding _Model.User.Password}" 
@@ -57,13 +57,15 @@
                           _CaptionText="Ghi chú:" 
                           DockPanel.Dock="Bottom"/>
 
-        </DockPanel>
+        </DockPanel >
         <StackPanel Grid.Row="1" 
                     Orientation="Horizontal" 
-                    HorizontalAlignment="Right" >
-            <dx:SimpleButton Style="{StaticResource SaveButton}" />
+                    HorizontalAlignment="Right" 
+                    >
+            <dx:SimpleButton Style="{StaticResource SaveButton}"
+                             Margin ="0 0 8 0"/>
             <dx:SimpleButton Style="{StaticResource CloseButton}"
-                             Margin="4,0,0,0"/>
+                             Margin="0 0 8 0"/>
         </StackPanel>
     </Grid>
 </rs:TSDPopUp>
