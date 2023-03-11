@@ -39,7 +39,5 @@ namespace eThanhTra.Dto
             get { return _ketThucGH; }
             set { _ketThucGH = value; OnPropertyChanged(); }
         }
-
-
     }
 }
