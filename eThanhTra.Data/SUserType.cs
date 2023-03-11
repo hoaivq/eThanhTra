@@ -14,7 +14,16 @@ namespace eThanhTra.Data
     
     public partial class SUserType
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public SUserType()
+        {
+            this.SUsers = new HashSet<SUser>();
+        }
+    
         public int ma { get; set; }
         public string ten { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SUser> SUsers { get; set; }
     }
 }

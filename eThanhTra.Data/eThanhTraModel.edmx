@@ -5,6 +5,17 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="eThanhTraModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DGiaHanTT">
+          <Key>
+            <PropertyRef Name="GiaHanTT_ID" />
+          </Key>
+          <Property Name="GiaHanTT_ID" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ThanhTraID" Type="bigint" Nullable="false" />
+          <Property Name="SoNgay" Type="int" />
+          <Property Name="BatDauGH" Type="datetime" />
+          <Property Name="KetThucGH" Type="datetime" />
+          <Property Name="LyDoGH" Type="nvarchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="DThanhTra">
           <Key>
             <PropertyRef Name="Id" />
@@ -203,6 +214,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ThanhTraGianHan">
+          <End Role="DThanhTra" Type="Self.DThanhTra" Multiplicity="1" />
+          <End Role="DGiaHanTT" Type="Self.DGiaHanTT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DThanhTra">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DGiaHanTT">
+              <PropertyRef Name="ThanhTraID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTypeId">
+          <End Role="SUserType" Type="Self.SUserType" Multiplicity="1" />
+          <End Role="SUser" Type="Self.SUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUserType">
+              <PropertyRef Name="ma" />
+            </Principal>
+            <Dependent Role="SUser">
+              <PropertyRef Name="UserType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="PGetCQTByMaCQT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MaCQT" Type="varchar" Mode="In" />
         </Function>
@@ -210,6 +245,7 @@
           <Parameter Name="MaCQT" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="eThanhTraModelStoreContainer">
+          <EntitySet Name="DGiaHanTT" EntityType="Self.DGiaHanTT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DThanhTra" EntityType="Self.DThanhTra" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DThanhTraCongViec" EntityType="Self.DThanhTraCongViec" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DThanhTraQuyetDinh" EntityType="Self.DThanhTraQuyetDinh" Schema="dbo" store:Type="Tables" />
@@ -242,6 +278,14 @@
             <End Role="DThanhTraThanhVien" EntitySet="DThanhTraThanhVien" />
             <End Role="DThanhTraThanhVienCongViec" EntitySet="DThanhTraThanhVienCongViec" />
           </AssociationSet>
+          <AssociationSet Name="FK_ThanhTraGianHan" Association="Self.FK_ThanhTraGianHan">
+            <End Role="DThanhTra" EntitySet="DThanhTra" />
+            <End Role="DGiaHanTT" EntitySet="DGiaHanTT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTypeId" Association="Self.FK_UserTypeId">
+            <End Role="SUserType" EntitySet="SUserType" />
+            <End Role="SUser" EntitySet="SUser" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -269,6 +313,7 @@
           <Property Name="MaCQT" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IsEnable" Type="Boolean" Nullable="false" />
           <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SUserType" Relationship="eThanhTraModel.FK_UserTypeId" FromRole="SUser" ToRole="SUserType" />
         </EntityType>
         <EntityType Name="SUserCQT">
           <Key>
@@ -318,6 +363,15 @@
             <End Role="DThanhTraThanhVien" EntitySet="DThanhTraThanhViens" />
             <End Role="DThanhTraThanhVienCongViec" EntitySet="DThanhTraThanhVienCongViecs" />
           </AssociationSet>
+          <AssociationSet Name="FK_UserTypeId" Association="eThanhTraModel.FK_UserTypeId">
+            <End Role="SUserType" EntitySet="SUserTypes" />
+            <End Role="SUser" EntitySet="SUsers" />
+          </AssociationSet>
+          <EntitySet Name="DGiaHanTTs" EntityType="eThanhTraModel.DGiaHanTT" />
+          <AssociationSet Name="FK_ThanhTraGianHan" Association="eThanhTraModel.FK_ThanhTraGianHan">
+            <End Role="DThanhTra" EntitySet="DThanhTras" />
+            <End Role="DGiaHanTT" EntitySet="DGiaHanTTs" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="PGetUserByMaCQT_Result">
           <Property Type="String" Name="UserName" Nullable="false" MaxLength="100" />
@@ -355,6 +409,7 @@
           <NavigationProperty Name="DThanhTraCongViecs" Relationship="eThanhTraModel.FK_DThanhTraCongViec_DThanhTra" FromRole="DThanhTra" ToRole="DThanhTraCongViec" />
           <NavigationProperty Name="DThanhTraThanhViens" Relationship="eThanhTraModel.FK_DThanhTraThanhVien_DThanhTra" FromRole="DThanhTra" ToRole="DThanhTraThanhVien" />
           <NavigationProperty Name="DThanhTraThanhVienCongViecs" Relationship="eThanhTraModel.FK_DThanhTraThanhVienCongViec_DThanhTra" FromRole="DThanhTra" ToRole="DThanhTraThanhVienCongViec" />
+          <NavigationProperty Name="DGiaHanTTs" Relationship="eThanhTraModel.FK_ThanhTraGianHan" FromRole="DThanhTra" ToRole="DGiaHanTT" />
         </EntityType>
         <EntityType Name="DThanhTraCongViec">
           <Key>
@@ -441,6 +496,7 @@
           </Key>
           <Property Name="ma" Type="Int32" Nullable="false" />
           <Property Name="ten" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SUsers" Relationship="eThanhTraModel.FK_UserTypeId" FromRole="SUserType" ToRole="SUser" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -509,6 +565,42 @@
             </Principal>
             <Dependent Role="DThanhTraThanhVienCongViec">
               <PropertyRef Name="IdThanhVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTypeId">
+          <End Type="eThanhTraModel.SUserType" Role="SUserType" Multiplicity="1" />
+          <End Type="eThanhTraModel.SUser" Role="SUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUserType">
+              <PropertyRef Name="ma" />
+            </Principal>
+            <Dependent Role="SUser">
+              <PropertyRef Name="UserType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DGiaHanTT">
+          <Key>
+            <PropertyRef Name="GiaHanTT_ID" />
+          </Key>
+          <Property Name="GiaHanTT_ID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ThanhTraID" Type="Int64" Nullable="false" />
+          <Property Name="SoNgay" Type="Int32" />
+          <Property Name="BatDauGH" Type="DateTime" Precision="3" />
+          <Property Name="KetThucGH" Type="DateTime" Precision="3" />
+          <Property Name="LyDoGH" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DThanhTra" Relationship="eThanhTraModel.FK_ThanhTraGianHan" FromRole="DGiaHanTT" ToRole="DThanhTra" />
+        </EntityType>
+        <Association Name="FK_ThanhTraGianHan">
+          <End Type="eThanhTraModel.DThanhTra" Role="DThanhTra" Multiplicity="1" />
+          <End Type="eThanhTraModel.DGiaHanTT" Role="DGiaHanTT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DThanhTra">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DGiaHanTT">
+              <PropertyRef Name="ThanhTraID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -690,6 +782,18 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DGiaHanTTs">
+            <EntityTypeMapping TypeName="eThanhTraModel.DGiaHanTT">
+              <MappingFragment StoreEntitySet="DGiaHanTT">
+                <ScalarProperty Name="LyDoGH" ColumnName="LyDoGH" />
+                <ScalarProperty Name="KetThucGH" ColumnName="KetThucGH" />
+                <ScalarProperty Name="BatDauGH" ColumnName="BatDauGH" />
+                <ScalarProperty Name="SoNgay" ColumnName="SoNgay" />
+                <ScalarProperty Name="ThanhTraID" ColumnName="ThanhTraID" />
+                <ScalarProperty Name="GiaHanTT_ID" ColumnName="GiaHanTT_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -6,9 +6,18 @@ using System.Threading.Tasks;
 
 namespace eThanhTra.Dto
 {
-    public class GiaHanTTDto: BaseDto
+    public class DGiaHanTTDto: BaseDto
     {
-		private string _giaHanTT_ID;
+        private long? _IdThanhTra;
+
+        public long? IdThanhTra
+        {
+            get { return _IdThanhTra; }
+            set { _IdThanhTra = value; OnPropertyChanged(); }
+        }
+
+
+        private string _giaHanTT_ID;
 
 		public string GiaHanTT_ID
 		{
@@ -24,17 +33,42 @@ namespace eThanhTra.Dto
             set { _lyDoGH = value; OnPropertyChanged(); }
         }
 
-        private DateTime _batDauGH;
+        private int? _soNgay;
 
-        public DateTime BatDauGH
+        public int? SoNgay
         {
-            get { return _batDauGH ; }
-            set { _batDauGH = value; OnPropertyChanged(); }
+            get { return _soNgay; }
+            set
+            {
+                _soNgay = value;
+                if (SoNgay.HasValue && BatDauGH.HasValue)
+                {
+                    KetThucGH = BatDauGH.Value.AddDays(SoNgay.Value);
+                }
+                OnPropertyChanged();
+            }
         }
 
-        private DateTime _ketThucGH;
+        private DateTime? _batDauGH;
 
-        public DateTime KetThucGH
+        public DateTime? BatDauGH
+        {
+            get { return _batDauGH ; }
+            set 
+            {
+                _batDauGH = value;
+                if(SoNgay.HasValue && BatDauGH.HasValue)
+                {
+                    KetThucGH = BatDauGH.Value.AddDays(SoNgay.Value);
+                }
+                OnPropertyChanged();
+            }
+        }
+
+
+        private DateTime? _ketThucGH;
+
+        public DateTime? KetThucGH
         {
             get { return _ketThucGH; }
             set { _ketThucGH = value; OnPropertyChanged(); }

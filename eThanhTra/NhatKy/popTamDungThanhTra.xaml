@@ -6,17 +6,23 @@
              xmlns:local="clr-namespace:eThanhTra.NhatKy" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
               Title="Tạm dừng thanh tra"
               mc:Ignorable="d" 
-             d:DesignHeight="370" d:DesignWidth="600">
+             d:DesignHeight="400" d:DesignWidth="600">
     <Grid>
-        <StackPanel Orientation="Vertical">
+        <Grid Margin="8 8 8 4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-            <rs:hTextEdit  Margin="10 20 10 0"
-                _CaptionText="Quyết định tạm dừng thanh tra" Height="50"/>
-            <rs:hTextEdit Margin="10 10"
-                _CaptionText="Lý do tạm dừng" Height="50"/>
-            <Grid>
+            <rs:hTextEdit  Grid.Row="0"
+                _CaptionText="Quyết định tạm dừng thanh tra" Height="50"
+                           Margin="8 8 4 0"/>
+            
+            <Grid Grid.Row="1" Margin=" 8 8 4 0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="50"/>
                     <ColumnDefinition Width="150"/>
                     <ColumnDefinition Width="150"/>
                 </Grid.ColumnDefinitions>
@@ -26,41 +32,36 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0"
-                           Margin="10,0,10,0"
                     Text="Thời gian tạm dừng"/>
-                <rs:hDateEdit Grid.Row="1"
+                <rs:hTextEdit Margin="0 0 4 0" Grid.Row="1"
                               Grid.Column="0"
-                              Margin="10 0 5 0 "
-                              _CaptionText="Từ" 
-                              Height="50" />
-                <rs:hDateEdit Grid.Row="1"
+                              _CaptionText="Số ngày"/>
+                <rs:hDateEdit Margin="0 0 4 0" Grid.Row="1"
                               Grid.Column="1"
-                              _CaptionText="Đến" 
-                              Height="50"
-                              Margin="5 0 5 0"/>
-                <rs:hTextEdit Grid.Row="1"
+                              _CaptionText="Từ" />
+                <rs:hDateEdit Grid.Row="1"
                               Grid.Column="2"
-                              _CaptionText="Số ngày"
-                              Height="50" 
-                              Margin="5 0 5 0"/>
+                              _CaptionText="Đến" />
+                
             </Grid>
+            <!--<rs:hTextEdit Grid.Row="3"
+                _CaptionText="Người duyệt" Height="50"/>-->
+            <rs:hTextEdit Grid.Row="2"
+                _CaptionText="Lý do tạm dừng"
+                          Margin="8 8 4 0"/>
 
-            <rs:hTextEdit Margin="10,5"
-                _CaptionText="Người duyệt" Height="50"/>
-            <StackPanel Orientation="Horizontal"
+            <StackPanel Grid.Row="3"
+                Orientation="Horizontal"
                         HorizontalAlignment="Right"
-                        Margin="0 40 0 0">
-                <dx:SimpleButton Content="File đính kèm"
-                          Margin ="0 0 5 0" 
-                          />
+                        Margin="0 10 0 0">
                 <dx:SimpleButton Content="Ghi"
-                          Margin ="0 0 5 0"
+                          Margin ="0 0 4 0"
                                  Style="{StaticResource SaveButton}"/>
                 <dx:SimpleButton Content="Thoát"
-                          Margin ="0 0 10 0" 
+                          Margin ="0 0 4 0" 
                                  Style="{StaticResource CloseButton}"/>
             </StackPanel>
 
-        </StackPanel>
+        </Grid>
     </Grid>
 </rs:TSDPopUp>

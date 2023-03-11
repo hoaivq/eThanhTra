@@ -20,6 +20,7 @@ namespace eThanhTra.Data
             this.DThanhTraCongViecs = new HashSet<DThanhTraCongViec>();
             this.DThanhTraThanhViens = new HashSet<DThanhTraThanhVien>();
             this.DThanhTraThanhVienCongViecs = new HashSet<DThanhTraThanhVienCongViec>();
+            this.DGiaHanTTs = new HashSet<DGiaHanTT>();
         }
     
         public long Id { get; set; }
@@ -41,5 +42,7 @@ namespace eThanhTra.Data
         public virtual ICollection<DThanhTraThanhVien> DThanhTraThanhViens { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DThanhTraThanhVienCongViec> DThanhTraThanhVienCongViecs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DGiaHanTT> DGiaHanTTs { get; set; }
     }
 }
