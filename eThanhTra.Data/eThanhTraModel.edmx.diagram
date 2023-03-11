@@ -11,10 +11,17 @@
         <EntityTypeShape EntityType="eThanhTraModel.DThanhTra" Width="1.5" PointX="0.75" PointY="4.75" />
         <EntityTypeShape EntityType="eThanhTraModel.DThanhTraCongViec" Width="1.5" PointX="2.75" PointY="4.75" />
         <EntityTypeShape EntityType="eThanhTraModel.DThanhTraThanhVien" Width="1.5" PointX="4.75" PointY="4.75" />
-        <EntityTypeShape EntityType="eThanhTraModel.DThanhTraThanhVienCongViec" Width="1.5" PointX="6.75" PointY="3.75" />
-        <EntityTypeShape EntityType="eThanhTraModel.DThanhTraThanhVienCongViecChiTiet" Width="1.5" PointX="6.75" PointY="6.75" />
+        <EntityTypeShape EntityType="eThanhTraModel.DThanhTraThanhVienCongViec" Width="3.375" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="eThanhTraModel.DThanhTraThanhVienCongViecChiTiet" Width="3.375" PointX="6.75" PointY="6.75" />
         <EntityTypeShape EntityType="eThanhTraModel.DThanhTraQuyetDinh" Width="1.5" PointX="3.375" PointY="8.75" />
         <EntityTypeShape EntityType="eThanhTraModel.SLichLamViec" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="eThanhTraModel.SUserType" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="eThanhTraModel.sysdiagram" Width="1.5" PointX="0.75" PointY="9.75" />
+        <AssociationConnector Association="eThanhTraModel.FK_DThanhTraCongViec_DThanhTra" />
+        <AssociationConnector Association="eThanhTraModel.FK_DThanhTraThanhVien_DThanhTra" />
+        <AssociationConnector Association="eThanhTraModel.FK_DThanhTraThanhVienCongViec_DThanhTra" />
+        <AssociationConnector Association="eThanhTraModel.FK_DThanhTraThanhVienCongViec_DThanhTraCongViec" />
+        <AssociationConnector Association="eThanhTraModel.FK_DThanhTraThanhVienCongViec_DThanhTraThanhVien" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

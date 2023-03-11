@@ -69,6 +69,15 @@
     <Compile Include="DThanhTraThanhVienCongViecChiTiet.cs">
       <DependentUpon>eThanhTraModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="PGetCQTByMaCQT_Result.cs">
+      <DependentUpon>eThanhTraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PGetUserByMaCQT_Result.cs">
+      <DependentUpon>eThanhTraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SCQT.cs">
+      <DependentUpon>eThanhTraModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SLichLamViec.cs">
       <DependentUpon>eThanhTraModel.tt</DependentUpon>
     </Compile>
@@ -88,20 +97,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>eThanhTraModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="PGetCQTByMaCQT_Result.cs">
-      <DependentUpon>eThanhTraModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PGetUserByMaCQT_Result.cs">
-      <DependentUpon>eThanhTraModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SCQT.cs">
-      <DependentUpon>eThanhTraModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SUser.cs">
       <DependentUpon>eThanhTraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SUserCQT.cs">
+      <DependentUpon>eThanhTraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SUserType.cs">
+      <DependentUpon>eThanhTraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
       <DependentUpon>eThanhTraModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>

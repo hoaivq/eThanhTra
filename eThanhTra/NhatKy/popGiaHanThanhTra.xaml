@@ -13,22 +13,27 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
-        <rs:hTextEdit Grid.Row="0" _CaptionText="Quyết định gia hạn thanh tra"/>
         
-        <rs:hTextEdit Grid.Row="1" _CaptionText="Số ngày gia hạn" />
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal">
-            <rs:hDateEdit Grid.Row="1" Grid.Column="0"  _CaptionText="Từ" />
-            <rs:hDateEdit _CaptionText="Đến" />
-        </StackPanel>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <rs:hTextEdit Margin="0,0,4,0" Grid.Row="0" _CaptionText="Số quyết định gia hạn:"/>
+            <rs:hSpinEdit Margin="0,0,4,0" Grid.Column="1" _CaptionText="Số ngày gia hạn" />
+            <rs:hDateEdit Margin="0,0,4,0" Grid.Column="2"  _CaptionText="Từ ngày" />
+            <rs:hDateEdit Grid.Column="3" _CaptionText="Đến ngày" />
+        </Grid>
 
-        <rs:hTextEdit Grid.Row="3" _CaptionText="Lý do gia hạn" />
-        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right"  Margin="0,4,0,0">
+
+        <rs:hTextEdit Grid.Row="1" _CaptionText="Lý do gia hạn" />
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right"  Margin="0,4,0,0">
             <dx:SimpleButton  Style="{StaticResource SaveButton}" Margin="0 0 4 0"/>
             <dx:SimpleButton Style="{StaticResource CloseButton}"/>
         </StackPanel>

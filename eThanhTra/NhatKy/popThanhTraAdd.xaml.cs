@@ -74,5 +74,10 @@ namespace eThanhTra.NhatKy
                 return string.Empty;
             }
         }
+
+        private void ComboBoxEdit_SelectedIndexChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

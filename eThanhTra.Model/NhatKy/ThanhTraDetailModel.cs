@@ -11,8 +11,18 @@ namespace eThanhTra.Model.NhatKy
 {
     public class ThanhTraDetailModel : BaseModel
     {
-        private DThanhTraThanhVienDto _ObjThanhTraThanhVien;
+        private DataTable _ListThanhVien;
+        public DataTable ListThanhVien
+        {
+            get { return _ListThanhVien; }
+            set
+            {
+                _ListThanhVien = value;
+                OnPropertyChanged();
+            }
+        }
 
+        private DThanhTraThanhVienDto _ObjThanhTraThanhVien;
         public DThanhTraThanhVienDto ObjThanhTraThanhVien
         {
             get { return _ObjThanhTraThanhVien; }
@@ -53,20 +63,14 @@ namespace eThanhTra.Model.NhatKy
         }
 
         private DataRowView _RowChiTietCongViec;
-
         public DataRowView RowChiTietCongViec
         {
             get { return _RowChiTietCongViec; }
             set { _RowChiTietCongViec = value; OnPropertyChanged(); }
         }
 
-        private DataTable _ListCongViecByThanhVien;
 
-        public DataTable ListCongViecByThanhVien
-        {
-            get { return _ListCongViecByThanhVien; }
-            set { _ListCongViecByThanhVien = value; OnPropertyChanged(); }
-        }
+        
 
 
     }

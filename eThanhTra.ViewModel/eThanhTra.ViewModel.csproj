@@ -55,6 +55,7 @@
     <Compile Include="NhatKy\GiaHanThanhTraViewModel.cs" />
     <Compile Include="NhatKy\KhoKhanVuongMacViewModel.cs" />
     <Compile Include="BaseViewModel.cs" />
+    <Compile Include="NhatKy\ThanhTraDetailAddViewModel.cs" />
     <Compile Include="NhatKy\ThanhTraDetailViewModel.cs" />
     <Compile Include="NhatKy\ThanhTraCongViecAddViewModel.cs" />
     <Compile Include="NhatKy\UserChonViewModel.cs" />

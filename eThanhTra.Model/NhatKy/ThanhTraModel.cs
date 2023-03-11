@@ -22,9 +22,9 @@ namespace eThanhTra.Model.NhatKy
                 if (_ListTrangThai == null)
                 {
                     _ListTrangThai = new ObservableCollection<CheckBoxDto>();
-                    _ListTrangThai.Add(new CheckBoxDto() { Ma = "ChoCongBo", Ten = "Chờ công bố", IsChecked = true });
+                    _ListTrangThai.Add(new CheckBoxDto() { Ma = "ChoCongBo", Ten = "Chờ công bố", IsChecked = AppViewModel.MyUser.UserType.Equals(1) });
                     _ListTrangThai.Add(new CheckBoxDto() { Ma = "DangTienHanh", Ten = "Đang tiến hành", IsChecked = true });
-                    _ListTrangThai.Add(new CheckBoxDto() { Ma = "DaKetThuc", Ten = "Đã kết thúc", IsChecked = true });
+                    _ListTrangThai.Add(new CheckBoxDto() { Ma = "DaKetThuc", Ten = "Đã kết thúc", IsChecked = AppViewModel.MyUser.UserType.Equals(1) });
                 }
                 return _ListTrangThai;
             }

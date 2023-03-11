@@ -1,8 +1,10 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:PropertiesExtensions="clr-namespace:eThanhTra.Resource.PropertiesExtensions"
-                    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
-                    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+                    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+                    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"   
+                    xmlns:dxemvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm" 
+                    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
                     xmlns:rs="clr-namespace:eThanhTra.Resource"
                     x:Class="eThanhTra.Resource.eThanhTraResource"
                     x:ClassModifier="public"
@@ -10,6 +12,7 @@
 
     <rs:STTConverter x:Key="STTConverter"/>
     <rs:WindowSizeConverter x:Key="WindowSizeConverter"/>
+    <rs:CheckDBNullConverter x:Key="CheckDBNullConverter"/>
     
     <BitmapImage x:Key="ImgLoading" UriSource="pack://application:,,,/eThanhTra.Resource;Component/Images/Loading.gif"/>
     
@@ -24,25 +27,33 @@
     <Style TargetType="{x:Type ListViewItem}">
         <Setter Property="BorderBrush" Value="Silver"/>
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Margin" Value="0,0,0,4"/>
+        <Setter Property="Margin" Value="-1,-1,-1,4"/>
         <Setter Property="Padding" Value="4,4,4,4"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Background" Value="White"/>
+        <!--<Setter Property="Cursor" Value="Hand"/>-->
     </Style>
 
     <Style TargetType="{x:Type ListBoxItem}">
         <Setter Property="BorderBrush" Value="Silver"/>
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Margin" Value="0,0,0,4"/>
+        <Setter Property="Margin" Value="-1,-1,-1,4"/>
         <Setter Property="Padding" Value="4,4,4,4"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Background" Value="White"/>
+        <!--<Setter Property="Cursor" Value="Hand"/>-->
     </Style>
 
+    <Style TargetType="{x:Type TextBox}" x:Key="TextBlockStyle">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+    </Style>
+    
     <Style TargetType="{x:Type dx:DXTabItem}">
         <Setter Property="HeaderTemplate">
             <Setter.Value>
@@ -105,7 +116,26 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
+    <Style x:Key="SimpleButtonRed" TargetType="{x:Type dx:SimpleButton}">
+        <Setter Property="Cursor" Value="Hand"/>
+        <!--<Setter Property="CornerRadius" Value="5"/>-->
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="#a15757" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontSize" Value="15" />
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#ba6161"/>
+                <!--<Setter Property="Cursor" Value="Hand"/>-->
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Cursor" Value="Wait" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
     <Style TargetType="{x:Type dx:SimpleButton}" 
            x:Key="SaveButton" 
            BasedOn="{StaticResource BaseSimpleButton}">
@@ -148,4 +178,30 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+
+
+    <Style TargetType="{x:Type dx:SimpleButton}" x:Key="TransparentButton" >
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="#6a73de"/>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#ccebe8"/>
+                <!--<Setter Property="Cursor" Value="Hand"/>-->
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Cursor" Value="Wait" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type dxg:GridControl}">
+        <Setter Property="AutoExpandAllGroups" Value="True"/>
+        <!--<Setter Property="ClipboardCopyMode" Value="ExcludeHeader"/>
+        <Setter Property="SelectionMode" Value="Cell"/>-->
+    </Style>
+    <!--<Style TargetType="{x:Type dxg:GridColumn}">
+        <Setter Property="ReadOnly" Value="True" />
+    </Style>-->
 </ResourceDictionary>

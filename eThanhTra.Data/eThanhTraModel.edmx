@@ -65,8 +65,8 @@
           </Key>
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdThanhTra" Type="bigint" />
-          <Property Name="IdThanhTraThanhVien" Type="bigint" />
-          <Property Name="IdThanhTraCongViec" Type="bigint" />
+          <Property Name="IdThanhVien" Type="bigint" />
+          <Property Name="IdCongViec" Type="bigint" />
           <Property Name="IsEnable" Type="bit" />
         </EntityType>
         <EntityType Name="DThanhTraThanhVienCongViecChiTiet">
@@ -75,10 +75,11 @@
           </Key>
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdThanhTra" Type="bigint" />
-          <Property Name="IdThanhTraThanhVien" Type="bigint" />
-          <Property Name="IdThanhTraCongViec" Type="bigint" />
-          <Property Name="IdThanhTraThanhVienCongViec" Type="bigint" />
+          <Property Name="IdThanhVien" Type="bigint" />
+          <Property Name="IdCongViec" Type="bigint" />
+          <Property Name="IdThanhVienCongViec" Type="bigint" />
           <Property Name="NgayNhap" Type="datetime" />
+          <Property Name="NgayNhatKy" Type="date" />
           <Property Name="NoiDung" Type="nvarchar(max)" />
           <Property Name="GhiChu" Type="nvarchar(max)" />
         </EntityType>
@@ -125,6 +126,83 @@
           <Property Name="MaCQT" Type="varchar" MaxLength="5" />
           <Property Name="NgayHieuLuc" Type="datetime" />
         </EntityType>
+        <EntityType Name="SUserType">
+          <Key>
+            <PropertyRef Name="ma" />
+          </Key>
+          <Property Name="ma" Type="int" Nullable="false" />
+          <Property Name="ten" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_DThanhTraCongViec_DThanhTra">
+          <End Role="DThanhTra" Type="Self.DThanhTra" Multiplicity="0..1" />
+          <End Role="DThanhTraCongViec" Type="Self.DThanhTraCongViec" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DThanhTra">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DThanhTraCongViec">
+              <PropertyRef Name="IdThanhTra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DThanhTraThanhVien_DThanhTra">
+          <End Role="DThanhTra" Type="Self.DThanhTra" Multiplicity="0..1" />
+          <End Role="DThanhTraThanhVien" Type="Self.DThanhTraThanhVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DThanhTra">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DThanhTraThanhVien">
+              <PropertyRef Name="IdThanhTra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DThanhTraThanhVienCongViec_DThanhTra">
+          <End Role="DThanhTra" Type="Self.DThanhTra" Multiplicity="0..1" />
+          <End Role="DThanhTraThanhVienCongViec" Type="Self.DThanhTraThanhVienCongViec" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DThanhTra">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DThanhTraThanhVienCongViec">
+              <PropertyRef Name="IdThanhTra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DThanhTraThanhVienCongViec_DThanhTraCongViec">
+          <End Role="DThanhTraCongViec" Type="Self.DThanhTraCongViec" Multiplicity="0..1" />
+          <End Role="DThanhTraThanhVienCongViec" Type="Self.DThanhTraThanhVienCongViec" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DThanhTraCongViec">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DThanhTraThanhVienCongViec">
+              <PropertyRef Name="IdCongViec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DThanhTraThanhVienCongViec_DThanhTraThanhVien">
+          <End Role="DThanhTraThanhVien" Type="Self.DThanhTraThanhVien" Multiplicity="0..1" />
+          <End Role="DThanhTraThanhVienCongViec" Type="Self.DThanhTraThanhVienCongViec" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DThanhTraThanhVien">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DThanhTraThanhVienCongViec">
+              <PropertyRef Name="IdThanhVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="PGetCQTByMaCQT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MaCQT" Type="varchar" Mode="In" />
         </Function>
@@ -142,6 +220,28 @@
           <EntitySet Name="SLichLamViec" EntityType="Self.SLichLamViec" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SUser" EntityType="Self.SUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SUserCQT" EntityType="Self.SUserCQT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SUserType" EntityType="Self.SUserType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DThanhTraCongViec_DThanhTra" Association="Self.FK_DThanhTraCongViec_DThanhTra">
+            <End Role="DThanhTra" EntitySet="DThanhTra" />
+            <End Role="DThanhTraCongViec" EntitySet="DThanhTraCongViec" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DThanhTraThanhVien_DThanhTra" Association="Self.FK_DThanhTraThanhVien_DThanhTra">
+            <End Role="DThanhTra" EntitySet="DThanhTra" />
+            <End Role="DThanhTraThanhVien" EntitySet="DThanhTraThanhVien" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DThanhTraThanhVienCongViec_DThanhTra" Association="Self.FK_DThanhTraThanhVienCongViec_DThanhTra">
+            <End Role="DThanhTra" EntitySet="DThanhTra" />
+            <End Role="DThanhTraThanhVienCongViec" EntitySet="DThanhTraThanhVienCongViec" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DThanhTraThanhVienCongViec_DThanhTraCongViec" Association="Self.FK_DThanhTraThanhVienCongViec_DThanhTraCongViec">
+            <End Role="DThanhTraCongViec" EntitySet="DThanhTraCongViec" />
+            <End Role="DThanhTraThanhVienCongViec" EntitySet="DThanhTraThanhVienCongViec" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DThanhTraThanhVienCongViec_DThanhTraThanhVien" Association="Self.FK_DThanhTraThanhVienCongViec_DThanhTraThanhVien">
+            <End Role="DThanhTraThanhVien" EntitySet="DThanhTraThanhVien" />
+            <End Role="DThanhTraThanhVienCongViec" EntitySet="DThanhTraThanhVienCongViec" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -196,6 +296,28 @@
           <EntitySet Name="DThanhTraThanhVienCongViecChiTiets" EntityType="eThanhTraModel.DThanhTraThanhVienCongViecChiTiet" />
           <EntitySet Name="DThanhTraQuyetDinhs" EntityType="eThanhTraModel.DThanhTraQuyetDinh" />
           <EntitySet Name="SLichLamViecs" EntityType="eThanhTraModel.SLichLamViec" />
+          <EntitySet Name="SUserTypes" EntityType="eThanhTraModel.SUserType" />
+          <EntitySet Name="sysdiagrams" EntityType="eThanhTraModel.sysdiagram" />
+          <AssociationSet Name="FK_DThanhTraCongViec_DThanhTra" Association="eThanhTraModel.FK_DThanhTraCongViec_DThanhTra">
+            <End Role="DThanhTra" EntitySet="DThanhTras" />
+            <End Role="DThanhTraCongViec" EntitySet="DThanhTraCongViecs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DThanhTraThanhVien_DThanhTra" Association="eThanhTraModel.FK_DThanhTraThanhVien_DThanhTra">
+            <End Role="DThanhTra" EntitySet="DThanhTras" />
+            <End Role="DThanhTraThanhVien" EntitySet="DThanhTraThanhViens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DThanhTraThanhVienCongViec_DThanhTra" Association="eThanhTraModel.FK_DThanhTraThanhVienCongViec_DThanhTra">
+            <End Role="DThanhTra" EntitySet="DThanhTras" />
+            <End Role="DThanhTraThanhVienCongViec" EntitySet="DThanhTraThanhVienCongViecs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DThanhTraThanhVienCongViec_DThanhTraCongViec" Association="eThanhTraModel.FK_DThanhTraThanhVienCongViec_DThanhTraCongViec">
+            <End Role="DThanhTraCongViec" EntitySet="DThanhTraCongViecs" />
+            <End Role="DThanhTraThanhVienCongViec" EntitySet="DThanhTraThanhVienCongViecs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DThanhTraThanhVienCongViec_DThanhTraThanhVien" Association="eThanhTraModel.FK_DThanhTraThanhVienCongViec_DThanhTraThanhVien">
+            <End Role="DThanhTraThanhVien" EntitySet="DThanhTraThanhViens" />
+            <End Role="DThanhTraThanhVienCongViec" EntitySet="DThanhTraThanhVienCongViecs" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="PGetUserByMaCQT_Result">
           <Property Type="String" Name="UserName" Nullable="false" MaxLength="100" />
@@ -230,6 +352,9 @@
           <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="TrangThai" Type="Int32" />
           <Property Name="NgayNhap" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DThanhTraCongViecs" Relationship="eThanhTraModel.FK_DThanhTraCongViec_DThanhTra" FromRole="DThanhTra" ToRole="DThanhTraCongViec" />
+          <NavigationProperty Name="DThanhTraThanhViens" Relationship="eThanhTraModel.FK_DThanhTraThanhVien_DThanhTra" FromRole="DThanhTra" ToRole="DThanhTraThanhVien" />
+          <NavigationProperty Name="DThanhTraThanhVienCongViecs" Relationship="eThanhTraModel.FK_DThanhTraThanhVienCongViec_DThanhTra" FromRole="DThanhTra" ToRole="DThanhTraThanhVienCongViec" />
         </EntityType>
         <EntityType Name="DThanhTraCongViec">
           <Key>
@@ -241,6 +366,8 @@
           <Property Name="NgayBatDau" Type="DateTime" Precision="3" />
           <Property Name="NgayKetThuc" Type="DateTime" Precision="3" />
           <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DThanhTra" Relationship="eThanhTraModel.FK_DThanhTraCongViec_DThanhTra" FromRole="DThanhTraCongViec" ToRole="DThanhTra" />
+          <NavigationProperty Name="DThanhTraThanhVienCongViecs" Relationship="eThanhTraModel.FK_DThanhTraThanhVienCongViec_DThanhTraCongViec" FromRole="DThanhTraCongViec" ToRole="DThanhTraThanhVienCongViec" />
         </EntityType>
         <EntityType Name="DThanhTraThanhVien">
           <Key>
@@ -253,6 +380,8 @@
           <Property Name="VaiTro" Type="Int32" />
           <Property Name="IsEnable" Type="Boolean" />
           <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DThanhTra" Relationship="eThanhTraModel.FK_DThanhTraThanhVien_DThanhTra" FromRole="DThanhTraThanhVien" ToRole="DThanhTra" />
+          <NavigationProperty Name="DThanhTraThanhVienCongViecs" Relationship="eThanhTraModel.FK_DThanhTraThanhVienCongViec_DThanhTraThanhVien" FromRole="DThanhTraThanhVien" ToRole="DThanhTraThanhVienCongViec" />
         </EntityType>
         <EntityType Name="DThanhTraThanhVienCongViec">
           <Key>
@@ -260,9 +389,12 @@
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdThanhTra" Type="Int64" />
-          <Property Name="IdThanhTraThanhVien" Type="Int64" />
-          <Property Name="IdThanhTraCongViec" Type="Int64" />
+          <Property Name="IdThanhVien" Type="Int64" />
+          <Property Name="IdCongViec" Type="Int64" />
           <Property Name="IsEnable" Type="Boolean" />
+          <NavigationProperty Name="DThanhTra" Relationship="eThanhTraModel.FK_DThanhTraThanhVienCongViec_DThanhTra" FromRole="DThanhTraThanhVienCongViec" ToRole="DThanhTra" />
+          <NavigationProperty Name="DThanhTraCongViec" Relationship="eThanhTraModel.FK_DThanhTraThanhVienCongViec_DThanhTraCongViec" FromRole="DThanhTraThanhVienCongViec" ToRole="DThanhTraCongViec" />
+          <NavigationProperty Name="DThanhTraThanhVien" Relationship="eThanhTraModel.FK_DThanhTraThanhVienCongViec_DThanhTraThanhVien" FromRole="DThanhTraThanhVienCongViec" ToRole="DThanhTraThanhVien" />
         </EntityType>
         <EntityType Name="DThanhTraThanhVienCongViecChiTiet">
           <Key>
@@ -270,12 +402,13 @@
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdThanhTra" Type="Int64" />
-          <Property Name="IdThanhTraThanhVien" Type="Int64" />
-          <Property Name="IdThanhTraCongViec" Type="Int64" />
-          <Property Name="IdThanhTraThanhVienCongViec" Type="Int64" />
+          <Property Name="IdThanhVien" Type="Int64" />
+          <Property Name="IdCongViec" Type="Int64" />
+          <Property Name="IdThanhVienCongViec" Type="Int64" />
           <Property Name="NgayNhap" Type="DateTime" Precision="3" />
           <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayNhatKy" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="DThanhTraQuyetDinh">
           <Key>
@@ -302,6 +435,83 @@
           <Property Name="Loai" Type="Int32" Nullable="false" />
           <Property Name="NoiDung" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="SUserType">
+          <Key>
+            <PropertyRef Name="ma" />
+          </Key>
+          <Property Name="ma" Type="Int32" Nullable="false" />
+          <Property Name="ten" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_DThanhTraCongViec_DThanhTra">
+          <End Type="eThanhTraModel.DThanhTra" Role="DThanhTra" Multiplicity="0..1" />
+          <End Type="eThanhTraModel.DThanhTraCongViec" Role="DThanhTraCongViec" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DThanhTra">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DThanhTraCongViec">
+              <PropertyRef Name="IdThanhTra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DThanhTraThanhVien_DThanhTra">
+          <End Type="eThanhTraModel.DThanhTra" Role="DThanhTra" Multiplicity="0..1" />
+          <End Type="eThanhTraModel.DThanhTraThanhVien" Role="DThanhTraThanhVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DThanhTra">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DThanhTraThanhVien">
+              <PropertyRef Name="IdThanhTra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DThanhTraThanhVienCongViec_DThanhTra">
+          <End Type="eThanhTraModel.DThanhTra" Role="DThanhTra" Multiplicity="0..1" />
+          <End Type="eThanhTraModel.DThanhTraThanhVienCongViec" Role="DThanhTraThanhVienCongViec" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DThanhTra">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DThanhTraThanhVienCongViec">
+              <PropertyRef Name="IdThanhTra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DThanhTraThanhVienCongViec_DThanhTraCongViec">
+          <End Type="eThanhTraModel.DThanhTraCongViec" Role="DThanhTraCongViec" Multiplicity="0..1" />
+          <End Type="eThanhTraModel.DThanhTraThanhVienCongViec" Role="DThanhTraThanhVienCongViec" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DThanhTraCongViec">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DThanhTraThanhVienCongViec">
+              <PropertyRef Name="IdCongViec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DThanhTraThanhVienCongViec_DThanhTraThanhVien">
+          <End Type="eThanhTraModel.DThanhTraThanhVien" Role="DThanhTraThanhVien" Multiplicity="0..1" />
+          <End Type="eThanhTraModel.DThanhTraThanhVienCongViec" Role="DThanhTraThanhVienCongViec" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DThanhTraThanhVien">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DThanhTraThanhVienCongViec">
+              <PropertyRef Name="IdThanhVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -414,9 +624,9 @@
           <EntitySetMapping Name="DThanhTraThanhVienCongViecs">
             <EntityTypeMapping TypeName="eThanhTraModel.DThanhTraThanhVienCongViec">
               <MappingFragment StoreEntitySet="DThanhTraThanhVienCongViec">
+                <ScalarProperty Name="IdCongViec" ColumnName="IdCongViec" />
+                <ScalarProperty Name="IdThanhVien" ColumnName="IdThanhVien" />
                 <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
-                <ScalarProperty Name="IdThanhTraCongViec" ColumnName="IdThanhTraCongViec" />
-                <ScalarProperty Name="IdThanhTraThanhVien" ColumnName="IdThanhTraThanhVien" />
                 <ScalarProperty Name="IdThanhTra" ColumnName="IdThanhTra" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -425,12 +635,13 @@
           <EntitySetMapping Name="DThanhTraThanhVienCongViecChiTiets">
             <EntityTypeMapping TypeName="eThanhTraModel.DThanhTraThanhVienCongViecChiTiet">
               <MappingFragment StoreEntitySet="DThanhTraThanhVienCongViecChiTiet">
+                <ScalarProperty Name="NgayNhatKy" ColumnName="NgayNhatKy" />
+                <ScalarProperty Name="IdThanhVienCongViec" ColumnName="IdThanhVienCongViec" />
+                <ScalarProperty Name="IdCongViec" ColumnName="IdCongViec" />
+                <ScalarProperty Name="IdThanhVien" ColumnName="IdThanhVien" />
                 <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
                 <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
                 <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
-                <ScalarProperty Name="IdThanhTraThanhVienCongViec" ColumnName="IdThanhTraThanhVienCongViec" />
-                <ScalarProperty Name="IdThanhTraCongViec" ColumnName="IdThanhTraCongViec" />
-                <ScalarProperty Name="IdThanhTraThanhVien" ColumnName="IdThanhTraThanhVien" />
                 <ScalarProperty Name="IdThanhTra" ColumnName="IdThanhTra" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -460,6 +671,25 @@
                 <ScalarProperty Name="Thang" ColumnName="Thang" />
                 <ScalarProperty Name="Nam" ColumnName="Nam" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SUserTypes">
+            <EntityTypeMapping TypeName="eThanhTraModel.SUserType">
+              <MappingFragment StoreEntitySet="SUserType">
+                <ScalarProperty Name="ten" ColumnName="ten" />
+                <ScalarProperty Name="ma" ColumnName="ma" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="eThanhTraModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

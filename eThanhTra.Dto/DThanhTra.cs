@@ -69,6 +69,29 @@ namespace eThanhTra.Dto
         private DateTime? _NgayNhap;
         public DateTime? NgayNhap { get { return _NgayNhap; } set { _NgayNhap = value; OnPropertyChanged(); } }
 
+        private string _TrangThaiText;
+
+        public string TrangThaiText
+        {
+            get { return _TrangThaiText; }
+            set { _TrangThaiText = value; OnPropertyChanged(); }
+        }
+
+        private string _Mode;
+
+        public string Mode
+        {
+            get { return _Mode; }
+            set { _Mode = value; OnPropertyChanged(); }
+        }
+
+        private string _MaTenCQT;
+        public string MaTenCQT
+        {
+            get { return _MaTenCQT; }
+            set { _MaTenCQT = value; OnPropertyChanged(); }
+        }
+
     }
 
     public class DThanhTraThanhVienDto : BaseDto
@@ -126,14 +149,61 @@ namespace eThanhTra.Dto
         private long? _IdThanhTra;
         public long? IdThanhTra { get { return _IdThanhTra; } set { _IdThanhTra = value; OnPropertyChanged(); } }
 
-        private long? _IdThanhTraThanhVien;
-        public long? IdThanhTraThanhVien { get { return _IdThanhTraThanhVien; } set { _IdThanhTraThanhVien = value; OnPropertyChanged(); } }
+        private long? _IdThanhVien;
+        public long? IdThanhVien { get { return _IdThanhVien; } set { _IdThanhVien = value; OnPropertyChanged(); } }
 
-        private long? _IdThanhTraCongViec;
-        public long? IdThanhTraCongViec { get { return _IdThanhTraCongViec; } set { _IdThanhTraCongViec = value; OnPropertyChanged(); } }
+        private long? _IdCongViec;
+        public long? IdCongViec { get { return _IdCongViec; } set { _IdCongViec = value; OnPropertyChanged(); } }
 
         private bool? _IsEnable;
         public bool? IsEnable { get { return _IsEnable; } set { _IsEnable = value; OnPropertyChanged(); } }
+
+    }
+
+    public class DThanhTraThanhVienCongViecChiTietDto : BaseDto
+    {
+        private long? _Id;
+        public long? Id { get { return _Id; } set { _Id = value; OnPropertyChanged(); } }
+
+        private long? _IdThanhTra;
+        public long? IdThanhTra { get { return _IdThanhTra; } set { _IdThanhTra = value; OnPropertyChanged(); } }
+
+        private long? _IdThanhVien;
+        public long? IdThanhVien { get { return _IdThanhVien; } set { _IdThanhVien = value; OnPropertyChanged(); } }
+
+        private long? _IdCongViec;
+        public long? IdCongViec { get { return _IdCongViec; } set { _IdCongViec = value; OnPropertyChanged(); } }
+
+        private long? _IdThanhVienCongViec;
+        public long? IdThanhVienCongViec { get { return _IdThanhVienCongViec; } set { _IdThanhVienCongViec = value; OnPropertyChanged(); } }
+
+        private DateTime? _NgayNhap;
+        public DateTime? NgayNhap { get { return _NgayNhap; } set { _NgayNhap = value; OnPropertyChanged(); } }
+
+        private DateTime? _NgayNhatKy;
+        public DateTime? NgayNhatKy { get { return _NgayNhatKy; } set { _NgayNhatKy = value; OnPropertyChanged(); } }
+
+        private string _NoiDung;
+        public string NoiDung { get { return _NoiDung; } set { _NoiDung = value; OnPropertyChanged(); } }
+
+        private string _GhiChu;
+        public string GhiChu { get { return _GhiChu; } set { _GhiChu = value; OnPropertyChanged(); } }
+
+        //private string _Mode;
+        //public string Mode
+        //{
+        //    get { return _Mode; }
+        //    set { _Mode = value; OnPropertyChanged(); }
+        //}
+
+        private string _TenCongViec;
+
+        public string TenCongViec
+        {
+            get { return _TenCongViec; }
+            set { _TenCongViec = value; OnPropertyChanged(); }
+        }
+
 
     }
 }

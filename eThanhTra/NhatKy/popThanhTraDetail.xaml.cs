@@ -1,8 +1,11 @@
-﻿using eThanhTra.Resource;
+﻿using Common;
+using eThanhTra.Dto;
+using eThanhTra.Resource;
 using eThanhTra.View.NhatKy;
 using eThanhTra.ViewModel.NhatKy;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +30,17 @@ namespace eThanhTra.NhatKy
         {
             InitializeComponent();
             this.DataContext = new ThanhTraDetailViewModel(this);
+        }
+
+        public async Task<bool> ShowChiTiet(DThanhTraThanhVienCongViecChiTietDto dChiTietDto, long IdThanhTra, long? IdThanhVien, DateTime NgayNhatKy)
+        {
+            popThanhTraDetailAdd objF = new popThanhTraDetailAdd();
+            ((ThanhTraDetailAddViewModel)objF.DataContext)._Model.IdThanhTra = IdThanhTra;
+            ((ThanhTraDetailAddViewModel)objF.DataContext)._Model.IdThanhVien = IdThanhVien;
+            ((ThanhTraDetailAddViewModel)objF.DataContext)._Model.NgayNhatKy = NgayNhatKy;
+            objF.ShowPopUp(this);
+            await Task.CompletedTask;
+            return objF.IsReload;
         }
     }
 }

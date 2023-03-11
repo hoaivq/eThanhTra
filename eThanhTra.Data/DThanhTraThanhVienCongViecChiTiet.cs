@@ -16,11 +16,12 @@ namespace eThanhTra.Data
     {
         public long Id { get; set; }
         public Nullable<long> IdThanhTra { get; set; }
-        public Nullable<long> IdThanhTraThanhVien { get; set; }
-        public Nullable<long> IdThanhTraCongViec { get; set; }
-        public Nullable<long> IdThanhTraThanhVienCongViec { get; set; }
+        public Nullable<long> IdThanhVien { get; set; }
+        public Nullable<long> IdCongViec { get; set; }
+        public Nullable<long> IdThanhVienCongViec { get; set; }
         public Nullable<System.DateTime> NgayNhap { get; set; }
         public string NoiDung { get; set; }
         public string GhiChu { get; set; }
+        public Nullable<System.DateTime> NgayNhatKy { get; set; }
     }
 }

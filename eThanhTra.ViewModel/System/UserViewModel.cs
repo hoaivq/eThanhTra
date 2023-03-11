@@ -35,7 +35,7 @@ namespace eThanhTra.ViewModel.System
                 }
             });
 
-            //AddNewCommand = new RelayCommand<object>((p) => { return true; }, async (p) =>
+            //AddEditCommand = new RelayCommand<object>((p) => { return true; }, async (p) =>
             //{
             //    try
             //    {
@@ -63,7 +63,7 @@ namespace eThanhTra.ViewModel.System
             //string GenClass =  _Model.ListUser.GenClass();
         }
 
-        public override async Task<bool> AddNewView(object p = null)
+        public override async Task<bool> AddEditView(object p = null)
         {
             SUserDto sUserDto = ((DataRowView)p)?.Row.ToObject<SUserDto>();
             return await _View.ShowDetail(sUserDto);

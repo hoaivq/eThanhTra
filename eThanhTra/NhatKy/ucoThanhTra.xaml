@@ -40,33 +40,7 @@
                           Margin="4,0,8,0" 
                           EditValueChangedCommand="{Binding LoadCommand}"/>
             
-            <rs:hListBoxEdit DockPanel.Dock="Left" 
-                             _CaptionText="Trạng thái" 
-                             VerticalAlignment="Bottom" 
-                             Height="50" 
-                             Padding="4,4,0,0">
-                <dxe:ListBoxEdit.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </dxe:ListBoxEdit.ItemsPanel>
-                
-                <dxe:ListBoxEdit.StyleSettings >
-                    <dxe:CheckedListBoxEditStyleSettings ShowSelectAllItem="True" 
-                                                         SelectAllItemText="Tất cả trạng thái" />
-                </dxe:ListBoxEdit.StyleSettings>
-                <dxe:ListBoxEdit.Items>
-                    <dxe:ListBoxEditItem Content="Chờ công bố" 
-                                         IsSelected="{Binding _Model.IsChoCongBo, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
-                                         Margin="4,0,4,0"/>
-                    <dxe:ListBoxEditItem Content="Đang tiến hành" 
-                                         IsSelected="{Binding _Model.IsDangTienHanh, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
-                                         Margin="4,0,4,0"/>
-                    <dxe:ListBoxEditItem Content="Đã kết thúc"  
-                                         IsSelected="{Binding _Model.IsDaKetThuc, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
-                                         Margin="4,0,8,0"/>
-                </dxe:ListBoxEdit.Items>
-            </rs:hListBoxEdit>
+
 
             <rs:hListBoxEdit DockPanel.Dock="Left" 
                              _CaptionText="Trạng thái" 
@@ -127,14 +101,13 @@
             <dxemvvm:Interaction.Behaviors>
                 <dxemvvm:EventToCommand EventName="MouseDoubleClick" 
                                         CommandParameter="{Binding ElementName=grdData, Path=CurrentItem}"
-                                        Command="{Binding DataContext.AddNewCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDUserControl}}" />
+                                        Command="{Binding DataContext.AddEditCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDUserControl}}" />
             </dxemvvm:Interaction.Behaviors>
 
             <dxg:GridControl.Columns>
                 <dxg:GridColumn  Header="STT" 
                                  FieldName="STT"  
                                  Width="50" 
-                                 Fixed="Left" 
                                  VisibleIndex="0">
                     <dxg:GridColumn.CellTemplate>
                         <DataTemplate>
@@ -146,12 +119,12 @@
                 <dxg:GridColumn Header="MST" 
                                 FieldName="MST" 
                                 Width="120" 
-                                Fixed="Left" 
+                                
                                 VisibleIndex="1"/>
                 <dxg:GridColumn Header="Tên NNT" 
                                 FieldName="TenNNT" 
-                                Width="400" 
-                                Fixed="Left" VisibleIndex="2">
+                                Width="*" 
+                                VisibleIndex="2">
                     <dxg:GridColumn.EditSettings>
                         <dxe:TextEditSettings TextWrapping="WrapWithOverflow"/>
                     </dxg:GridColumn.EditSettings>
@@ -194,6 +167,17 @@
                     <dxg:GridColumn.EditSettings>
                         <dxe:TextEditSettings DisplayFormat="dd/MM/yyyy"/>
                     </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+
+                <dxg:GridColumn Width="40">
+                    <dxg:GridColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <dx:SimpleButton Command="{Binding DataContext.EditQuyetDinhCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDUserControl}}"  CommandParameter="{Binding RowData.Row}"  Glyph="{dx:DXImage Image=Edit_16x16.png}" />
+                                <dx:SimpleButton Command="{Binding DataContext.DeleteRowCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDUserControl}}"  CommandParameter="{Binding RowData.Row}"  Glyph="{dx:DXImage Image=Delete_16x16.png}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </dxg:GridColumn.CellTemplate>
                 </dxg:GridColumn>
             </dxg:GridControl.Columns>
         </dxg:GridControl>
