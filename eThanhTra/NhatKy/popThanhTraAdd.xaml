@@ -17,9 +17,9 @@
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
 
-        <DockPanel Grid.Row="0"  LastChildFill="True" Margin="16,16,16,16">
+        <DockPanel Grid.Row="0"  LastChildFill="True" Margin="16,16,16,16" IsEnabled="{Binding _Model.IsEditMode}">
             <GroupBox DockPanel.Dock="Top" Header="Thông tin chung" Padding="0,0,0,0">
-                <Grid >
+                <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="20"/>
                         <RowDefinition Height="30"/>
@@ -51,7 +51,7 @@
                     <Grid  Grid.Row="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="750"/>
+                            <ColumnDefinition Width="1000"/>
                         </Grid.ColumnDefinitions>
 
                         <rs:hTextEdit Text="{Binding _Model.ObjThanhTra.MST}" Grid.Column="0" _CaptionText="Mã số thuế:"  IsValidEmpty="True" Margin="0,0,4,0"/>
@@ -62,6 +62,7 @@
                     <Grid Grid.Row="3">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="250"></ColumnDefinition>
                             <ColumnDefinition Width="250"></ColumnDefinition>
                             <ColumnDefinition Width="250"></ColumnDefinition>
                             <ColumnDefinition Width="250"></ColumnDefinition>
@@ -98,7 +99,8 @@
                         <!--<rs:hComboBoxEdit Grid.Column="0"  IsValidEmpty="True" EditValue="{Binding _Model.ObjThanhTra.UserNameTDTT, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" _CaptionText="Trưởng đoàn:"  ItemsSource="{Binding _Model.ListUser}" DisplayMember="HoVaTen" ValueMember="UserName"  Margin="0,0,4,0"/>-->
                         <rs:hDateEdit Grid.Column="1"  IsValidEmpty="True" EditValue="{Binding _Model.ObjThanhTra.NgayCongBo, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" _CaptionText="Ngày công bố:" Margin="0,0,4,0"/>
                         <rs:hSpinEdit Grid.Column="2"  IsValidEmpty="True" Value="{Binding _Model.ObjThanhTra.ThoiGian, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  _CaptionText="Thời gian tiến hành:"  Margin="0,0,4,0"/>
-                        <rs:hDateEdit Grid.Column="3"  IsValidEmpty="True" EditValue="{Binding _Model.ObjThanhTra.HanKetThuc, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" _CaptionText="Hạn kết thúc:" />
+                        <rs:hDateEdit Grid.Column="3"  IsValidEmpty="True" EditValue="{Binding _Model.ObjThanhTra.HanKetThuc, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" _CaptionText="Hạn kết thúc:" Margin="0,0,4,0"/>
+                        <rs:hComboBoxEdit Grid.Column="4" _CaptionText="Trạng thái:" EditValue="{Binding _Model.ObjThanhTra.TrangThai, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DisplayMember="Ten" ValueMember="Ma" ItemsSource="{Binding _Model.ListTrangThai, Mode=TwoWay}"/>
                     </Grid>
 
                     <StackPanel Margin="0,8,0,0" Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" >
@@ -179,7 +181,7 @@
                                     <dxg:TableView AllowEditing="False"/>
                                 </dxg:GridControl.View>
                                 <dxemvvm:Interaction.Behaviors>
-                                    <dxemvvm:EventToCommand EventName="SelectionChanged" CommandParameter="{Binding ElementName=grdListCongViec, Path=SelectedItem}" Command="{Binding DataContext.LoadThanhVienCongViecCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDPopUp}}" />
+                                    <dxemvvm:EventToCommand EventName="MouseDown" CommandParameter="{Binding ElementName=grdListCongViec, Path=SelectedItem}" Command="{Binding DataContext.LoadThanhVienCongViecCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDPopUp}}" />
                                 </dxemvvm:Interaction.Behaviors>
 
                                 <dxg:GridControl.Columns>
@@ -202,7 +204,7 @@
                                         <dxg:GridColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <dx:SimpleButton Command="{Binding DataContext.EditRowCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDPopUp}}"  CommandParameter="{Binding RowData.Row}"  Glyph="{dx:DXImage Image=Edit_16x16.png}" />
+                                                    <dx:SimpleButton Command="{Binding DataContext.AddEditCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDPopUp}}"  CommandParameter="{Binding RowData.Row}"  Glyph="{dx:DXImage Image=Edit_16x16.png}" />
                                                     <dx:SimpleButton Command="{Binding DataContext.DeleteRowCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDPopUp}}"  CommandParameter="{Binding RowData.Row}"  Glyph="{dx:DXImage Image=Delete_16x16.png}" />
                                                 </StackPanel>
                                             </DataTemplate>
@@ -232,7 +234,6 @@
         </DockPanel>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" >
-            <dx:SimpleButton Style="{StaticResource BaseSimpleButton}" Content="Công bố" Command="{Binding CongBoCommand}" IsEnabled="{Binding _Model.IsEnableCongBo, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
             <dx:SimpleButton Style="{StaticResource CloseButton}" Margin="4,0,0,0"/>
         </StackPanel>
     </Grid>

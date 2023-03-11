@@ -116,7 +116,6 @@ namespace eThanhTra.Api.Controllers
                         }
                         else
                         {
-                            output.TrangThai = 0;
                             db.DThanhTras.Add(output);
                         }
 
@@ -190,7 +189,7 @@ namespace eThanhTra.Api.Controllers
                     else if (ObjectType.Equals("DThanhTraThanhVienCongViecDto"))
                     {
                         DThanhTraThanhVienCongViecDto input = (Request == null) ? Object as DThanhTraThanhVienCongViecDto : JsonConvert.DeserializeObject<DThanhTraThanhVienCongViecDto>(Object.ToString());
-                        DThanhTraThanhVienCongViec output = db.DThanhTraThanhVienCongViecs.FirstOrDefault(c => c.IdThanhTra == input.IdThanhTra && c.IdThanhTraThanhVien == input.IdThanhTraThanhVien && c.IdThanhTraCongViec == input.IdThanhTraCongViec);
+                        DThanhTraThanhVienCongViec output = db.DThanhTraThanhVienCongViecs.FirstOrDefault(c => c.IdThanhTra == input.IdThanhTra && c.IdThanhVien == input.IdThanhVien && c.IdCongViec == input.IdCongViec);
 
                         if (output == null)
                         {
@@ -204,6 +203,23 @@ namespace eThanhTra.Api.Controllers
 
                         await db.SaveChangesAsync();
                         Object = output.Cast<DThanhTraThanhVienCongViecDto>();
+                    }
+                    else if (ObjectType.Equals("DThanhTraThanhVienCongViecChiTietDto"))
+                    {
+                        DThanhTraThanhVienCongViecChiTietDto input = (Request == null) ? Object as DThanhTraThanhVienCongViecChiTietDto : JsonConvert.DeserializeObject<DThanhTraThanhVienCongViecChiTietDto>(Object.ToString());
+                        DThanhTraThanhVienCongViecChiTiet output = input.Cast<DThanhTraThanhVienCongViecChiTiet>();
+                        if (input.Id.HasValue())
+                        {
+                            output = db.DThanhTraThanhVienCongViecChiTiets.FirstOrDefault(c => c.Id == output.Id);
+                            output.GetDataFrom<DThanhTraThanhVienCongViecChiTiet, DThanhTraThanhVienCongViecChiTietDto>(input);
+                        }
+                        else
+                        {
+                            output.NgayNhap = DateTime.Now;
+                            db.DThanhTraThanhVienCongViecChiTiets.Add(output);
+                        }
+                        await db.SaveChangesAsync();
+                        Object = output.Cast<DThanhTraThanhVienCongViecChiTietDto>();
                     }
 
 

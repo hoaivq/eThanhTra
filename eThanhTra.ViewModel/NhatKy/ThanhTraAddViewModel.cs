@@ -91,6 +91,7 @@ namespace eThanhTra.ViewModel.NhatKy
 
         public override async Task LoadView(object p = null)
         {
+            await LoadDanhMuc();
             await LoadListUser();
             await LoadThongTinChung();
             await LoadThanhVien();
@@ -98,6 +99,11 @@ namespace eThanhTra.ViewModel.NhatKy
             await LoadThanhVienCongViec();
         }
 
+        private async Task LoadDanhMuc()
+        {
+            _Model.ListTrangThai = AppViewModel.ListTrangThai;
+            await Task.CompletedTask;
+        }
         private async Task LoadListUser()
         {
             long? IdThanhTra = _Model.ObjThanhTra?.Id;
@@ -121,16 +127,20 @@ namespace eThanhTra.ViewModel.NhatKy
             {
                 _Model.ObjThanhTra = new DThanhTraDto();
                 _Model.ObjThanhTra.MaCQT = AppViewModel.MyUser.MaCQT;
+                _Model.ObjThanhTra.UserNameTDTT = AppViewModel.MyUser.UserName;
                 _Model.ObjThanhTra.NgayCongBo = DateTime.Now;
                 _Model.ObjThanhTra.ThoiGian = 10;
+                _Model.ObjThanhTra.TrangThai = 0;
             }
+            _Model.IsEditMode = _Model.ObjThanhTra.Mode.Equals("Edit");
             await Task.CompletedTask;
         }
 
         private async Task LoadThanhVien()
         {
             msgResult = await MyObject.ObjApp.GetTable(CallSPDto.Create("PGetListThanhVien",
-                   new SqlParam("IdThanhTra", _Model.ObjThanhTra.Id, SqlDbType.BigInt)
+                   new SqlParam("IdThanhTra", _Model.ObjThanhTra.Id, SqlDbType.BigInt),
+                   new SqlParam("VaiTro", 2, SqlDbType.Int)
             ));
 
             if (msgResult.Success == false)
@@ -195,6 +205,7 @@ namespace eThanhTra.ViewModel.NhatKy
                 throw new Exception(msgResult.Message);
             }
             _Model.ObjThanhTra = msgResult.Value;
+            _View.IsCloseOnSave = false;
         }
 
 

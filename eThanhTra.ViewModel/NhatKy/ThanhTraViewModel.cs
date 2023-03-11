@@ -20,14 +20,29 @@ namespace eThanhTra.ViewModel.NhatKy
 {
     public class ThanhTraViewModel : BaseViewModel<IThanhTra, ThanhTraModel>
     {
+        public ICommand EditQuyetDinhCommand { get; set; }
         public ThanhTraViewModel(IThanhTra View) : base(View)
         {
+            EditQuyetDinhCommand = new RelayCommand<object>((p) => { return true; }, async (p) =>
+            {
+                try
+                {
+                    await _View.ShowWait("EditQuyetDinh", async () => await EditQuyetDinh(p));
+                }
+                catch (Exception ex)
+                {
+                    _View.ShowMsg(ex, "EditQuyetDinhCommand");
+                }
+            });
         }
 
+        
         public override async Task LoadView(object p = null)
         {
             msgResult = await MyObject.ObjApp.GetTable(CallSPDto.Create("PGetListThanhTra",
                    new SqlParam("MaCQT", AppViewModel.MyUser.MaCQT, SqlDbType.VarChar, 5),
+                   new SqlParam("UserName", AppViewModel.MyUser.UserName, SqlDbType.VarChar, 50),
+                   new SqlParam("UserType", AppViewModel.MyUser.UserType, SqlDbType.Int),
                    new SqlParam("TrangThai", _Model.TrangThai, SqlDbType.VarChar, 50),
                    new SqlParam("MST", _Model.MST, SqlDbType.NVarChar, 50),
                    new SqlParam("TenNNT", _Model.TenNNT, SqlDbType.NVarChar, 500),
@@ -44,10 +59,27 @@ namespace eThanhTra.ViewModel.NhatKy
             _Model.ListThanhTra = msgResult.Value;
         }
 
-        public override async Task<bool> AddNewView(object p = null)
+        public override async Task<bool> AddEditView(object p = null)
         {
             DThanhTraDto dThanhTraDto = ((DataRowView)p)?.Row.ToObject<DThanhTraDto>();
             return await _View.ShowDetail(dThanhTraDto);
+        }
+
+        public override async Task DeleteRow(object p = null)
+        {
+            DataRow dr = ((DataRowView)p).Row;
+            MsgResult<object> msgResult = await MyObject.ObjApp.DeleteObject(DeleteDto.Create("DThanhTra", dr["Id"].ToLong().Value));
+            if (msgResult.Success == false)
+            {
+                throw new Exception(msgResult.Message);
+            }
+
+            dr.Delete();
+        }
+        private async Task<bool> EditQuyetDinh(object p = null)
+        {
+            DThanhTraDto dThanhTraDto = ((DataRowView)p)?.Row.ToObject<DThanhTraDto>();
+            return await _View.ShowDetail(dThanhTraDto, true);
         }
     }
 }

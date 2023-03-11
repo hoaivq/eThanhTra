@@ -9,8 +9,8 @@
         private string _UserName;
         public string UserName { get { return _UserName; } set { _UserName = value; OnPropertyChanged(); } }
 
-        private long _UserType;
-        public long UserType { get { return _UserType; } set { _UserType = value; OnPropertyChanged(); } }
+        private int _UserType;
+        public int UserType { get { return _UserType; } set { _UserType = value; OnPropertyChanged(); } }
 
         private string _HoVaTen;
         public string HoVaTen { get { return _HoVaTen; } set { _HoVaTen = value; OnPropertyChanged(); } }

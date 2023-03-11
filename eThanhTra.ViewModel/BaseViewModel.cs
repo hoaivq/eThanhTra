@@ -69,6 +69,11 @@ namespace eThanhTra.ViewModel
                     await _View.ShowWait("SaveView", async () => await SaveView(p));
                     _View.ShowFlashMsg();
                     _View.IsDataChanged = false;
+
+                    if (_View.IsCloseOnSave)
+                    {
+                        await _View.CloseView();
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -77,19 +82,19 @@ namespace eThanhTra.ViewModel
             });
 
 
-            AddNewCommand = new RelayCommand<object>((p) => { return true; }, async (p) =>
+            AddEditCommand = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
                 try
                 {
-                    bool IsReload = await _View.ShowWait("AddNewView", async () => await AddNewView(p));
+                    bool IsReload = await _View.ShowWait("AddEditView", async () => await AddEditView(p));
                     if (IsReload)
                     {
-                        await LoadView();
+                        await ReloadView();
                     }
                 }
                 catch (Exception ex)
                 {
-                    _View.ShowMsg(ex, "AddNewCommand");
+                    _View.ShowMsg(ex, "AddEditCommand");
                 }
             });
 

@@ -343,6 +343,17 @@ namespace Common
             return Destination;
         }
 
+        public static void GetDataFrom<TSource>(this DataRow dr, TSource Source)
+        {
+            Type temp = typeof(TSource);
+            //T obj = Activator.CreateInstance<T>();
+
+            foreach (DataColumn col in dr.Table.Columns)
+            {
+                dr[col.ColumnName] = Source.GetType().GetProperty(col.ColumnName)?.GetValue(Source);
+            }
+        }
+
         public static T Cast<T>(this object Source) where T : new()
         {
             T Destination = new T();
@@ -362,8 +373,18 @@ namespace Common
         public static DataRowView GetDataRowViewById(this DataTable myTable, long? Id)
         {
             DataRow dr = myTable.AsEnumerable().FirstOrDefault(c => c["Id"].ToLong() == Id);
-            if(dr == null) { return null; }
+            if (dr == null) { return null; }
             return myTable.DefaultView[myTable.Rows.IndexOf(dr)];
+        }
+
+        public static void AddRow(this DataTable dt, params object[] ValueArr) 
+        {
+            DataRow dr = dt.Rows.Add();
+
+            for (int i = 0; i < ValueArr.Length; i++)
+            {
+                dr[i] = ValueArr[i];
+            }
         }
     }
 }
