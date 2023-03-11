@@ -136,7 +136,7 @@ namespace eThanhTra.Resource
             StringBuilder sb = new StringBuilder();
             if (IsValidEmpty)
             {
-                if (string.IsNullOrWhiteSpace((string)e.Value))
+                if (string.IsNullOrWhiteSpace(e.Value?.ToString()))
                 {
                     e.IsValid = false;
                     sb.AppendLine("Trường dữ liệu không được để trống");

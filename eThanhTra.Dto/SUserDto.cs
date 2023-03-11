@@ -12,6 +12,9 @@
         private int _UserType;
         public int UserType { get { return _UserType; } set { _UserType = value; OnPropertyChanged(); } }
 
+        private string _Password;
+        public string Password { get { return _Password; } set { _Password = value; OnPropertyChanged(); } }
+
         private string _HoVaTen;
         public string HoVaTen { get { return _HoVaTen; } set { _HoVaTen = value; OnPropertyChanged(); } }
 

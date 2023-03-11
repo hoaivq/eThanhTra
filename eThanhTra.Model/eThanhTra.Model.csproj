@@ -66,6 +66,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NhatKy\GiaHanThanhTraModel.cs" />
     <Compile Include="NhatKy\ThanhTraDetailAddModel.cs" />
     <Compile Include="NhatKy\ThanhTraDetailModel.cs" />
     <Compile Include="NhatKy\ThanhTraModel.cs" />

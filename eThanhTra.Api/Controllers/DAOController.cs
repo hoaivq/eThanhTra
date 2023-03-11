@@ -139,20 +139,20 @@ namespace eThanhTra.Api.Controllers
                         Object = output.Cast<DThanhTraDto>();
                     }
                     //Nếu kiểu dữ kiểu là SUserDto
-                    if (ObjectType.Equals("SUserDTo"))
+                    if (ObjectType.Equals("SUserDto"))
                     {
 
                         SUserDto input = (Request == null) ? Object as SUserDto : JsonConvert.DeserializeObject<SUserDto>(Object.ToString());
                         SUser output = input.Cast<SUser>();
 
-                        output = db.SUsers.FirstOrDefault(c => c.UserName == output.UserName);
+                        //output = db.SUsers.FirstOrDefault(c => c.UserName == output.UserName);
                         output.GetDataFrom<SUser, SUserDto>(input);
 
                         //output.TrangThai = 0;
                         db.SUsers.Add(output);
 
                         await db.SaveChangesAsync();
-                        Object = output.Cast<DThanhTraDto>();
+                        Object = output.Cast<SUserDto>();
                     }
                     else if (ObjectType.Equals("DThanhTraThanhVienDto"))
                     {

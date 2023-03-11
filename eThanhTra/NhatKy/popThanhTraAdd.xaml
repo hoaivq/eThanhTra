@@ -27,8 +27,14 @@
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="48"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Text="Cơ quan thuế:" Grid.Row="0"/>
-                    <dxg:LookUpEdit Grid.Row="1" ItemsSource="{Binding _Model.ListCQT}" DisplayMember="Ten" ValueMember="Ma" EditValue="{Binding _Model.ObjThanhTra.MaCQT, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" AutoPopulateColumns="False">
+                    <TextBlock Text="Cơ quan thuế:" 
+                               Grid.Row="0"/>
+                    <dxg:LookUpEdit Grid.Row="1" 
+                                    ItemsSource="{Binding _Model.ListCQT}" 
+                                    DisplayMember="Ten" 
+                                    ValueMember="Ma" 
+                                    EditValue="{Binding _Model.ObjThanhTra.MaCQT, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                                    AutoPopulateColumns="False">
                         <dxg:LookUpEdit.StyleSettings>
                             <dxg:SearchLookUpEditStyleSettings />
                         </dxg:LookUpEdit.StyleSettings>
@@ -36,8 +42,12 @@
                             <ControlTemplate>
                                 <dxg:GridControl Name="PART_GridControl" >
                                     <dxg:GridControl.Columns>
-                                        <dxg:GridColumn FieldName="Ma" Header="Mã CQT" Width="100"/>
-                                        <dxg:GridColumn FieldName="Ten" Header="Tên CQT" Width="*"/>
+                                        <dxg:GridColumn FieldName="Ma" 
+                                                        Header="Mã CQT" 
+                                                        Width="100"/>
+                                        <dxg:GridColumn FieldName="Ten" 
+                                                        Header="Tên CQT" 
+                                                        Width="*"/>
                                     </dxg:GridControl.Columns>
                                     <dxg:GridControl.View>
                                         <dxg:TableView AutoWidth="False"/>
@@ -54,8 +64,15 @@
                             <ColumnDefinition Width="1000"/>
                         </Grid.ColumnDefinitions>
 
-                        <rs:hTextEdit Text="{Binding _Model.ObjThanhTra.MST}" Grid.Column="0" _CaptionText="Mã số thuế:"  IsValidEmpty="True" Margin="0,0,4,0"/>
-                        <rs:hTextEdit  Text="{Binding _Model.ObjThanhTra.TenNNT}" Grid.Column="1" _CaptionText="Tên NNT:" IsValidEmpty="True" />
+                        <rs:hTextEdit Text="{Binding _Model.ObjThanhTra.MST}" 
+                                      Grid.Column="0" 
+                                      _CaptionText="Mã số thuế:"  
+                                      IsValidEmpty="True" 
+                                      Margin="0,0,4,0"/>
+                        <rs:hTextEdit  Text="{Binding _Model.ObjThanhTra.TenNNT}" 
+                                       Grid.Column="1" 
+                                       _CaptionText="Tên NNT:" 
+                                       IsValidEmpty="True" />
 
                     </Grid>
 
@@ -73,18 +90,32 @@
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <TextBlock Text="Trưởng đoàn:" Grid.Row="0"/>
-                            <dxg:LookUpEdit Grid.Row="1" EditValue="{Binding _Model.ObjThanhTra.UserNameTDTT, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  ItemsSource="{Binding _Model.ListUser}" DisplayMember="HoVaTen" ValueMember="UserName"  Margin="0,0,4,0" AutoPopulateColumns="False">
+                            <TextBlock Text="Trưởng đoàn:" 
+                                       Grid.Row="0"/>
+                            <dxg:LookUpEdit Grid.Row="1" 
+                                            EditValue="{Binding _Model.ObjThanhTra.UserNameTDTT, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  
+                                            ItemsSource="{Binding _Model.ListUser}" 
+                                            DisplayMember="HoVaTen" 
+                                            ValueMember="UserName"  
+                                            Margin="0,0,4,0" 
+                                            AutoPopulateColumns="False">
                                 <dxg:LookUpEdit.StyleSettings>
                                     <dxg:SearchLookUpEditStyleSettings />
                                 </dxg:LookUpEdit.StyleSettings>
                                 <dxg:LookUpEdit.PopupContentTemplate>
                                     <ControlTemplate>
-                                        <dxg:GridControl Name="PART_GridControl" AutoExpandAllGroups="True" >
+                                        <dxg:GridControl Name="PART_GridControl" 
+                                                         AutoExpandAllGroups="True" >
                                             <dxg:GridControl.Columns>
-                                                <dxg:GridColumn FieldName="MaTenCQT" Header="Cơ quan thuế" GroupIndex="0"/>
-                                                <dxg:GridColumn FieldName="UserName" Header="Tài khoản" Width="100"/>
-                                                <dxg:GridColumn FieldName="HoVaTen" Header="Tên cán bộ" Width="*"/>
+                                                <dxg:GridColumn FieldName="MaTenCQT" 
+                                                                Header="Cơ quan thuế" 
+                                                                GroupIndex="0"/>
+                                                <dxg:GridColumn FieldName="UserName" 
+                                                                Header="Tài khoản" 
+                                                                Width="100"/>
+                                                <dxg:GridColumn FieldName="HoVaTen" 
+                                                                Header="Tên cán bộ" 
+                                                                Width="*"/>
                                             </dxg:GridControl.Columns>
                                             <dxg:GridControl.View>
                                                 <dxg:TableView AutoWidth="False"/>
@@ -99,11 +130,12 @@
                         <!--<rs:hComboBoxEdit Grid.Column="0"  IsValidEmpty="True" EditValue="{Binding _Model.ObjThanhTra.UserNameTDTT, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" _CaptionText="Trưởng đoàn:"  ItemsSource="{Binding _Model.ListUser}" DisplayMember="HoVaTen" ValueMember="UserName"  Margin="0,0,4,0"/>-->
                         <rs:hDateEdit Grid.Column="1"  IsValidEmpty="True" EditValue="{Binding _Model.ObjThanhTra.NgayCongBo, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" _CaptionText="Ngày công bố:" Margin="0,0,4,0"/>
                         <rs:hSpinEdit Grid.Column="2"  IsValidEmpty="True" Value="{Binding _Model.ObjThanhTra.ThoiGian, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  _CaptionText="Thời gian tiến hành:"  Margin="0,0,4,0"/>
-                        <rs:hDateEdit Grid.Column="3"  IsValidEmpty="True" EditValue="{Binding _Model.ObjThanhTra.HanKetThuc, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" _CaptionText="Hạn kết thúc:" Margin="0,0,4,0"/>
-                        <rs:hComboBoxEdit Grid.Column="4" _CaptionText="Trạng thái:" EditValue="{Binding _Model.ObjThanhTra.TrangThai, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DisplayMember="Ten" ValueMember="Ma" ItemsSource="{Binding _Model.ListTrangThai, Mode=TwoWay}"/>
+                        <rs:hDateEdit Grid.Column="3"  IsValidEmpty="True" EditValue="{Binding _Model.ObjThanhTra.HanKetThuc, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" _CaptionText="Hạn kết thúc:" />
                     </Grid>
 
-                    <StackPanel Margin="0,8,0,0" Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" >
+                    <StackPanel Margin="0,8,0,0" Grid.Row="4" 
+                                Orientation="Horizontal" 
+                                HorizontalAlignment="Right" >
                         <dx:SimpleButton Style="{StaticResource SaveButton}" />
                     </StackPanel>
                 </Grid>
@@ -111,51 +143,87 @@
 
 
 
-            <Grid DockPanel.Dock="Bottom" IsEnabled="{Binding _Model.IsEnabledEdit, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+            <Grid DockPanel.Dock="Bottom" 
+                  IsEnabled="{Binding _Model.IsEnabledEdit, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
                 <DockPanel Grid.Row="0">
-                    <DockPanel DockPanel.Dock="Top" LastChildFill="False" Margin="0,8,0,0" Height="35">
-                        <TextBlock DockPanel.Dock="Left" Text="Danh sách thành viên đoàn" VerticalAlignment="Center"/>
-                        <dx:SimpleButton Style="{StaticResource BaseSimpleButton}" Content="Thêm mới thành viên" DockPanel.Dock="Right" Width="180" Command="{Binding AddNewThanhVienCommand}"/>
+                    <DockPanel DockPanel.Dock="Top" 
+                               LastChildFill="False" 
+                               Margin="0,8,0,0" 
+                               Height="35">
+                        <TextBlock DockPanel.Dock="Left" 
+                                   Text="Danh sách thành viên đoàn" 
+                                   VerticalAlignment="Center"/>
+                        <dx:SimpleButton Style="{StaticResource BaseSimpleButton}" 
+                                         Content="Thêm mới thành viên" 
+                                         DockPanel.Dock="Right" 
+                                         Width="180" 
+                                         Command="{Binding AddNewThanhVienCommand}"/>
                     </DockPanel>
 
-                    <dxg:GridControl x:Name="grdData" DockPanel.Dock="Top" ItemsSource="{Binding _Model.ListThanhVien, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" AutoExpandAllGroups="True">
+                    <dxg:GridControl x:Name="grdData" 
+                                     DockPanel.Dock="Top" 
+                                     ItemsSource="{Binding _Model.ListThanhVien, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                                     AutoExpandAllGroups="True">
                         <dxg:GridControl.View>
                             <dxg:TableView AllowEditing="False"/>
                         </dxg:GridControl.View>
                         <dxemvvm:Interaction.Behaviors>
-                            <dxemvvm:EventToCommand EventName="MouseDoubleClick" CommandParameter="{Binding ElementName=grdData, Path=CurrentItem}" Command="{Binding DataContext.ShowChiTietCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDUserControl}}" />
+                            <dxemvvm:EventToCommand EventName="MouseDoubleClick" 
+                                                    CommandParameter="{Binding ElementName=grdData, Path=CurrentItem}" 
+                                                    Command="{Binding DataContext.ShowChiTietCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDUserControl}}" />
                         </dxemvvm:Interaction.Behaviors>
 
                         <dxg:GridControl.Columns>
-                            <dxg:GridColumn  Header="STT" FieldName="STT"  Width="40" VisibleIndex="0">
+                            <dxg:GridColumn  Header="STT" 
+                                             FieldName="STT"  
+                                             Width="40" 
+                                             VisibleIndex="0">
                                 <dxg:GridColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding RowData.RowHandle.Value, Converter={StaticResource STTConverter}}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="{Binding RowData.RowHandle.Value, Converter={StaticResource STTConverter}}" 
+                                                   VerticalAlignment="Center" 
+                                                   HorizontalAlignment="Center"/>
                                     </DataTemplate>
                                 </dxg:GridColumn.CellTemplate>
                             </dxg:GridColumn>
 
-                            <dxg:GridColumn Header="Tài khoản" FieldName="UserName" Width="150"  VisibleIndex="1"/>
-                            <dxg:GridColumn Header="Họ và tên" FieldName="HoVaTen" Width="*" VisibleIndex="2">
+                            <dxg:GridColumn Header="Tài khoản" 
+                                            FieldName="UserName" 
+                                            Width="150"  
+                                            VisibleIndex="1"/>
+                            <dxg:GridColumn Header="Họ và tên" 
+                                            FieldName="HoVaTen" 
+                                            Width="*" 
+                                            VisibleIndex="2">
                                 <dxg:GridColumn.EditSettings>
                                     <dxe:TextEditSettings TextWrapping="WrapWithOverflow"/>
                                 </dxg:GridColumn.EditSettings>
                             </dxg:GridColumn>
                             <!--<dxg:GridColumn Header="Mã CQT" FieldName="MaCQT" Width="100" GroupIndex="1"/>-->
-                            <dxg:GridColumn Header="Tên CQT" FieldName="MaTenCQT" Width="200" />
-                            <dxg:GridColumn Header="Email" FieldName="Email" Width="120"/>
-                            <dxg:GridColumn Header="Số điện thoại" FieldName="SoDienThoai" Width="100"/>
-                            <dxg:GridColumn Header="Chức vụ" FieldName="UserTypeText" Width="100"/>
+                            <dxg:GridColumn Header="Tên CQT" 
+                                            FieldName="MaTenCQT" 
+                                            Width="200" />
+                            <dxg:GridColumn Header="Email" 
+                                            FieldName="Email" 
+                                            Width="120"/>
+                            <dxg:GridColumn Header="Số điện thoại" 
+                                            FieldName="SoDienThoai" 
+                                            Width="100"/>
+                            <dxg:GridColumn Header="Chức vụ" 
+                                            FieldName="UserTypeText" 
+                                            Width="100"/>
                             <dxg:GridColumn Width="20">
                                 <dxg:GridColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <dx:SimpleButton Command="{Binding DataContext.DeleteRowCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDPopUp}}"  CommandParameter="{Binding RowData.Row}"  Glyph="{dx:DXImage Image=Delete_16x16.png}" />
+                                            <dx:SimpleButton Command="{Binding DataContext.DeleteRowCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDPopUp}}"  
+                                                             CommandParameter="{Binding RowData.Row}"  
+                                                             Glyph="{dx:DXImage Image=Delete_16x16.png}" />
                                         </StackPanel>
                                     </DataTemplate>
                                 </dxg:GridColumn.CellTemplate>
@@ -172,39 +240,64 @@
                         </Grid.ColumnDefinitions>
 
                         <DockPanel Grid.Column="0">
-                            <DockPanel DockPanel.Dock="Top" LastChildFill="False" Margin="0,8,0,0" Height="35">
-                                <TextBlock DockPanel.Dock="Left" Text="Danh sách công việc" VerticalAlignment="Center"/>
-                                <dx:SimpleButton Style="{StaticResource BaseSimpleButton}" Content="Thêm mới công việc" DockPanel.Dock="Right" Width="180" Command="{Binding AddNewCongViecCommand}" />
+                            <DockPanel DockPanel.Dock="Top" 
+                                       LastChildFill="False" 
+                                       Margin="0,8,0,0" Height="35">
+                                <TextBlock DockPanel.Dock="Left" 
+                                           Text="Danh sách công việc" 
+                                           VerticalAlignment="Center"/>
+                                <dx:SimpleButton Style="{StaticResource BaseSimpleButton}" 
+                                                 Content="Thêm mới công việc" 
+                                                 DockPanel.Dock="Right" 
+                                                 Width="180" 
+                                                 Command="{Binding AddNewCongViecCommand}" />
                             </DockPanel>
-                            <dxg:GridControl x:Name="grdListCongViec" DockPanel.Dock="Bottom" SelectedItem="{Binding _Model.RowCongViec, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding _Model.ListCongViec, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" AutoExpandAllGroups="True" >
+                            <dxg:GridControl x:Name="grdListCongViec"
+                                             DockPanel.Dock="Bottom"
+                                             SelectedItem="{Binding _Model.RowCongViec, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                                             ItemsSource="{Binding _Model.ListCongViec, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                                             AutoExpandAllGroups="True" >
                                 <dxg:GridControl.View>
                                     <dxg:TableView AllowEditing="False"/>
                                 </dxg:GridControl.View>
                                 <dxemvvm:Interaction.Behaviors>
-                                    <dxemvvm:EventToCommand EventName="MouseDown" CommandParameter="{Binding ElementName=grdListCongViec, Path=SelectedItem}" Command="{Binding DataContext.LoadThanhVienCongViecCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDPopUp}}" />
+                                    <dxemvvm:EventToCommand EventName="SelectionChanged" CommandParameter="{Binding ElementName=grdListCongViec, Path=SelectedItem}" Command="{Binding DataContext.LoadThanhVienCongViecCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDPopUp}}" />
                                 </dxemvvm:Interaction.Behaviors>
 
                                 <dxg:GridControl.Columns>
-                                    <dxg:GridColumn  Header="STT" FieldName="STT"  Width="40"  VisibleIndex="0">
+                                    <dxg:GridColumn  Header="STT" 
+                                                     FieldName="STT" 
+                                                     Width="40"  
+                                                     VisibleIndex="0">
                                         <dxg:GridColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding RowData.RowHandle.Value, Converter={StaticResource STTConverter}}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                                <TextBlock Text="{Binding RowData.RowHandle.Value, Converter={StaticResource STTConverter}}" 
+                                                           VerticalAlignment="Center" 
+                                                           HorizontalAlignment="Center"/>
                                             </DataTemplate>
                                         </dxg:GridColumn.CellTemplate>
                                     </dxg:GridColumn>
 
-                                    <dxg:GridColumn Header="Tên công việc" FieldName="TenCongViec" Width="200"  VisibleIndex="1"/>
-                                    <dxg:GridColumn Header="Ngày bắt đầu" FieldName="NgayBatDau" Width="100" VisibleIndex="2">
+                                    <dxg:GridColumn Header="Tên công việc" 
+                                                    FieldName="TenCongViec" 
+                                                    Width="200"  
+                                                    VisibleIndex="1"/>
+                                    <dxg:GridColumn Header="Ngày bắt đầu"
+                                                    FieldName="NgayBatDau" 
+                                                    Width="100"
+                                                    VisibleIndex="2">
                                         <dxg:GridColumn.EditSettings>
                                             <dxe:TextEditSettings DisplayFormat="dd/MM/yyyy"/>
                                         </dxg:GridColumn.EditSettings>
                                     </dxg:GridColumn>
-                                    <dxg:GridColumn Header="Ghi chú" FieldName="GhiChu" Width="*" VisibleIndex="3"/>
+                                    <dxg:GridColumn Header="Ghi chú"
+                                                    FieldName="GhiChu" 
+                                                    Width="*" VisibleIndex="3"/>
                                     <dxg:GridColumn Width="40">
                                         <dxg:GridColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <dx:SimpleButton Command="{Binding DataContext.AddEditCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDPopUp}}"  CommandParameter="{Binding RowData.Row}"  Glyph="{dx:DXImage Image=Edit_16x16.png}" />
+                                                    <dx:SimpleButton Command="{Binding DataContext.EditRowCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDPopUp}}"  CommandParameter="{Binding RowData.Row}"  Glyph="{dx:DXImage Image=Edit_16x16.png}" />
                                                     <dx:SimpleButton Command="{Binding DataContext.DeleteRowCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDPopUp}}"  CommandParameter="{Binding RowData.Row}"  Glyph="{dx:DXImage Image=Delete_16x16.png}" />
                                                 </StackPanel>
                                             </DataTemplate>
@@ -216,14 +309,26 @@
 
                         <DockPanel  Grid.Column="1" >
 
-                            <DockPanel DockPanel.Dock="Top" LastChildFill="False" Margin="8,8,0,0" Height="35">
-                                <TextBlock DockPanel.Dock="Left" Text="Danh sách thành viên đảm nhận công việc" VerticalAlignment="Center"/>
+                            <DockPanel DockPanel.Dock="Top" 
+                                       LastChildFill="False"
+                                       Margin="8,8,0,0" 
+                                       Height="35">
+                                <TextBlock DockPanel.Dock="Left"
+                                           Text="Danh sách thành viên đảm nhận công việc"
+                                           VerticalAlignment="Center"/>
                             </DockPanel>
                             
-                            <dxe:ListBoxEdit  DockPanel.Dock="Bottom"  ItemsSource="{Binding _Model.ListThanhVienCongViec}" DisplayMember="HoVaTen" ValueMember="UserName"  ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="4,0,0,0">
+                            <dxe:ListBoxEdit  DockPanel.Dock="Bottom" 
+                                              ItemsSource="{Binding _Model.ListThanhVienCongViec}"
+                                              DisplayMember="HoVaTen" ValueMember="UserName"  
+                                              ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                              Margin="4,0,0,0">
                                 <dxe:ListBoxEdit.ItemTemplate>
                                     <DataTemplate>
-                                        <CheckBox CommandParameter="{Binding}" Command="{Binding DataContext.UpdateThanhVienCongViecCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDPopUp}}" Content="{Binding HoVaTen}" IsChecked="{Binding IsEnable, Mode=TwoWay}" />
+                                        <CheckBox CommandParameter="{Binding}"
+                                                  Command="{Binding DataContext.UpdateThanhVienCongViecCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDPopUp}}"
+                                                  Content="{Binding HoVaTen}" 
+                                                  IsChecked="{Binding IsEnable, Mode=TwoWay}" />
                                     </DataTemplate>
                                 </dxe:ListBoxEdit.ItemTemplate>
                             </dxe:ListBoxEdit>
@@ -234,6 +339,7 @@
         </DockPanel>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" >
+            <dx:SimpleButton Style="{StaticResource BaseSimpleButton}" Content="Công bố" Command="{Binding CongBoCommand}" IsEnabled="{Binding _Model.IsEnableCongBo, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
             <dx:SimpleButton Style="{StaticResource CloseButton}" Margin="4,0,0,0"/>
         </StackPanel>
     </Grid>
