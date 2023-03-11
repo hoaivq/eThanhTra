@@ -12,16 +12,7 @@ namespace eThanhTra.Model.NhatKy
 {
     public class ThanhTraAddModel : BaseModel
     {
-        //private long? _IdCongViec;
-
-        //public long? IdCongViec
-        //{
-        //    get { return _IdCongViec; }
-        //    set { _IdCongViec = value; OnPropertyChanged(); }
-        //}
-
         private bool _IsEnableCongBo;
-
         public bool IsEnableCongBo
         {
             get { return _IsEnableCongBo; }
@@ -55,16 +46,26 @@ namespace eThanhTra.Model.NhatKy
             }
         }
 
+        private DataTable _ListTrangThai;
+        public DataTable ListTrangThai
+        {
+            get
+            {
+                if (_ListTrangThai == null)
+                {
+                    _ListTrangThai = AppViewModel.ListTrangThai;
+                }
+                return _ListTrangThai;
+            }
+            set { _ListTrangThai = value; OnPropertyChanged(); }
+        }
+
 
         private DataTable _ListUser = null;
         public DataTable ListUser
         {
             get
             {
-                //if (_ListUser == null)
-                //{
-                //    _ListUser = AppViewModel.DanhMucChung.Tables[1];
-                //}
                 return _ListUser;
             }
             set
@@ -129,5 +130,8 @@ namespace eThanhTra.Model.NhatKy
             get { return _IsEnabledEdit; }
             set { _IsEnabledEdit = value; OnPropertyChanged(); }
         }
+
+        
+
     }
 }

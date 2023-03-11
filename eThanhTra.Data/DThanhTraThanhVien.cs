@@ -14,6 +14,12 @@ namespace eThanhTra.Data
     
     public partial class DThanhTraThanhVien
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public DThanhTraThanhVien()
+        {
+            this.DThanhTraThanhVienCongViecs = new HashSet<DThanhTraThanhVienCongViec>();
+        }
+    
         public long Id { get; set; }
         public Nullable<long> IdThanhTra { get; set; }
         public string UserName { get; set; }
@@ -21,5 +27,9 @@ namespace eThanhTra.Data
         public Nullable<int> VaiTro { get; set; }
         public Nullable<bool> IsEnable { get; set; }
         public string GhiChu { get; set; }
+    
+        public virtual DThanhTra DThanhTra { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DThanhTraThanhVienCongViec> DThanhTraThanhVienCongViecs { get; set; }
     }
 }

@@ -32,16 +32,16 @@ namespace eThanhTra
         {
             InitializeComponent();
             this.DataContext = new ThanhTraViewModel(this);
-            
+
         }
 
-        public async Task<bool> ShowDetail(DThanhTraDto dThanhTraDto)
+        public async Task<bool> ShowDetail(DThanhTraDto dThanhTraDto, bool IsEditQuyetDinh = false)
         {
             try
             {
                 WaitCursor();
 
-                if (dThanhTraDto.TrangThai == (int)ETrangThai.ChoCongBo)
+                if (dThanhTraDto == null || dThanhTraDto.TrangThai == (int)ETrangThai.ChoCongBo || IsEditQuyetDinh)
                 {
                     popThanhTraAdd objF = new popThanhTraAdd();
                     ((ThanhTraAddViewModel)objF.DataContext)._Model.ObjThanhTra = dThanhTraDto;

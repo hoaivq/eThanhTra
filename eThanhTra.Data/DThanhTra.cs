@@ -14,6 +14,14 @@ namespace eThanhTra.Data
     
     public partial class DThanhTra
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public DThanhTra()
+        {
+            this.DThanhTraCongViecs = new HashSet<DThanhTraCongViec>();
+            this.DThanhTraThanhViens = new HashSet<DThanhTraThanhVien>();
+            this.DThanhTraThanhVienCongViecs = new HashSet<DThanhTraThanhVienCongViec>();
+        }
+    
         public long Id { get; set; }
         public string MST { get; set; }
         public string TenNNT { get; set; }
@@ -26,5 +34,12 @@ namespace eThanhTra.Data
         public string GhiChu { get; set; }
         public Nullable<int> TrangThai { get; set; }
         public Nullable<System.DateTime> NgayNhap { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DThanhTraCongViec> DThanhTraCongViecs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DThanhTraThanhVien> DThanhTraThanhViens { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DThanhTraThanhVienCongViec> DThanhTraThanhVienCongViecs { get; set; }
     }
 }

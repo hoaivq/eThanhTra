@@ -28,7 +28,7 @@ namespace Common.Core
         public ICommand LoadCommand { get; set; }
         public ICommand CloseCommand { get; set; }
         public ICommand SaveCommand { get; set; }
-        public ICommand AddNewCommand { get; set; }
+        public ICommand AddEditCommand { get; set; }
 
         public ICommand EditRowCommand { get; set; }
         public ICommand DeleteRowCommand { get; set; }
@@ -38,12 +38,16 @@ namespace Common.Core
             await Task.CompletedTask;
         }
 
+        public virtual async Task ReloadView(object p = null)
+        {
+            await LoadView(p);
+        }
         public virtual async Task SaveView(object p = null)
         {
             await Task.CompletedTask;
         }
 
-        public virtual async Task<bool> AddNewView(object p = null)
+        public virtual async Task<bool> AddEditView(object p = null)
         {
             return await Task.FromResult(false);
         }

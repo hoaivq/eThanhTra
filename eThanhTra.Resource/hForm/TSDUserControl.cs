@@ -38,6 +38,7 @@ namespace eThanhTra.Resource
             }
         }
 
+        public bool IsCloseOnSave { get; set; } = true;
         public TSDUserControl(Window _Owner)
         {
             Owner = _Owner;

@@ -17,5 +17,14 @@ namespace Common.Core
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
+
+        private bool _IsEditMode;
+
+        public bool IsEditMode
+        {
+            get { return _IsEditMode; }
+            set { _IsEditMode = value; OnPropertyChanged(); }
+        }
+
     }
 }

@@ -14,7 +14,7 @@ namespace Common.Core
         bool IsReload { get; set; }
         bool IsDataChanged { get; set; }
         bool IsValid { get; }
-
+        bool IsCloseOnSave { get; set; }
         Task CloseView();
 
         void ShowMsg(string Message, bool IsError = false);

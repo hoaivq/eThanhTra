@@ -10,4 +10,8 @@ namespace eThanhTra.View.NhatKy
     public interface IThanhTraCongViecAdd : IView
     {
     }
+
+    public interface IThanhTraDetailAdd : IView
+    {
+    }
 }

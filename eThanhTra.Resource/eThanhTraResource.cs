@@ -55,7 +55,7 @@ namespace eThanhTra.Resource
         private void AddNewButton_Click(object sender, RoutedEventArgs e)
         {
             FrameworkElement c = ((FrameworkElement)sender).GetRootOwner();
-            ((Common.Core.CoreViewModel)c.DataContext).AddNewCommand.Execute(null);
+            ((Common.Core.CoreViewModel)c.DataContext).AddEditCommand.Execute(null);
         }
     }
 

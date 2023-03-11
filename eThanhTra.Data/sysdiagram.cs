@@ -12,16 +12,12 @@ namespace eThanhTra.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class DThanhTraThanhVienCongViec
+    public partial class sysdiagram
     {
-        public long Id { get; set; }
-        public Nullable<long> IdThanhTra { get; set; }
-        public Nullable<long> IdThanhVien { get; set; }
-        public Nullable<long> IdCongViec { get; set; }
-        public Nullable<bool> IsEnable { get; set; }
-    
-        public virtual DThanhTra DThanhTra { get; set; }
-        public virtual DThanhTraCongViec DThanhTraCongViec { get; set; }
-        public virtual DThanhTraThanhVien DThanhTraThanhVien { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

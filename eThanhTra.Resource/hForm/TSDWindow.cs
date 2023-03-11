@@ -41,8 +41,7 @@ namespace eThanhTra.Resource
             }
         }
 
-
-
+        public bool IsCloseOnSave { get; set; } = true;
 
         public TSDWindow()
         {
