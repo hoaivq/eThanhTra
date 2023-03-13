@@ -9,6 +9,7 @@ namespace Common.Core
 {
     public interface IView
     {
+        //Biến trạng thái
         bool IsSaveView { get; set; }
         bool IsFirstLoad { get; set; }
         bool IsReload { get; set; }
