@@ -38,6 +38,7 @@ namespace eThanhTra.NhatKy
             lstLichTrinh.ScrollIntoView(lstLichTrinh.SelectedItem);
         }
 
+        
         public async Task<bool> ShowChiTiet(DThanhTraThanhVienCongViecChiTietDto dChiTietDto, long IdThanhTra, long? IdThanhVien, DateTime NgayNhatKy)
         {
             popThanhTraDetailAdd objF = new popThanhTraDetailAdd();
@@ -48,6 +49,16 @@ namespace eThanhTra.NhatKy
             objF.ShowPopUp(this);
             await Task.CompletedTask;
             return objF.IsReload;
+        }
+
+
+        public async Task<bool> OpenGiaHanView(long IdThanhTra)
+        {
+            popGiaHanThanhTra objGiaHan = new popGiaHanThanhTra();
+            ((GiaHanThanhTraViewModel)objGiaHan.DataContext)._Model.IdThanhTra = IdThanhTra;
+            objGiaHan.ShowPopUp(this);
+            await Task.CompletedTask;
+            return objGiaHan.IsReload;
         }
     }
 }

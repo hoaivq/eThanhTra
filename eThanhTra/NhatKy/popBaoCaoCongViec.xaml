@@ -6,33 +6,37 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
               xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
              xmlns:local="clr-namespace:eThanhTra"
-             
              mc:Ignorable="d" 
-             d:DesignHeight="610" d:DesignWidth="600"
+             d:DesignHeight="435" d:DesignWidth="600"
               Title="Báo cáo tiến độ và kết quả hoàn thành nhiệm vụ"
               ScrollViewer.CanContentScroll="True">
-    <Grid  VerticalAlignment="Top">
+    <Grid  VerticalAlignment="Top"
+           Margin="8 8 8 4">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0"
-                    Orientation="Vertical"
-                    Margin="0 30 10 0">
+       
 
-            <rs:hTextEdit  Margin="10 20 10 10"
+            <rs:hTextEdit  Grid.Row ="0" 
                 _CaptionText="Hạng mục công việc" Height="50"/>
-            <rs:hTextEdit Margin="10 10"
+            <rs:hTextEdit Grid.Row="1"
                 _CaptionText="Nội dung công việc" Height="50" />
-            <rs:hTextEdit  Margin="10 10 "
+            <rs:hTextEdit  Grid.Row ="2"
                 _CaptionText="Cán bộ thực hiện" Height="50"/>
-            <rs:hTextEdit Margin="10 10"
+            <rs:hTextEdit Grid.Row="3"
                 _CaptionText="Cán bộ lãnh đạo giám sát" Height="50" />
             
-            <Grid>
+            <Grid Grid.Row="4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="150"/>
-                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="60"/>
                     <ColumnDefinition Width="150"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -41,45 +45,35 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0"
-                           Margin="10,0,10,0"
                     Text="Thời gian tiến hành"/>
                 <rs:hDateEdit Grid.Row="1"
                               Grid.Column="0"
-                              Margin="10 0 10 0 "
-                    _CaptionText="Từ" Height="50" />
+                    _CaptionText="Từ" Height="50" 
+                              Margin="0 0 4 0"/>
                 <rs:hDateEdit Grid.Row="1"
-                              Grid.Column="1"
-                    _CaptionText="Đến" Height="50" />
-                <rs:hTextEdit  Grid.Row="1" Grid.Column="2"
-                    Margin="10 0 10 0"
-                _CaptionText="Số ngày" Height="50"/>
+                              Grid.Column="2"
+                    _CaptionText="Đến" Height="50" 
+                              Margin="0 0 4 0"/>
+                <rs:hTextEdit  Grid.Row="1" Grid.Column="1"
+                _CaptionText="Số ngày" Height="50"
+                               Margin="0 0 4 0"/>
             </Grid>
 
-            <rs:hTextEdit Margin="10,10"
+            <rs:hTextEdit Grid.Row="5"
                 _CaptionText="Kết quả công việc" Height="50"/>
 
-            <rs:hTextEdit Margin="10,10"
+            <rs:hTextEdit Grid.Row="6"
                 _CaptionText="Đánh giá tiến độ" Height="50"/>
 
 
-
-            
-                <StackPanel Grid.Row="1"
-                            Margin="0 20 0 0"
-                            Orientation="Horizontal"
-                            HorizontalAlignment="Right"
-                        >
-                    <dx:SimpleButton Content="File đính kèm"
-                          Margin ="5 0 0 0" 
-                          />
-                    <dx:SimpleButton Content="Ghi"
-                          Margin ="5 0 0 0" 
-                                     Style="{StaticResource SaveButton}"/>
-                    <dx:SimpleButton Content="Thoát"
-                                 Style="{StaticResource CloseButton}"
-                          Margin ="5 0 10 0" />
-                </StackPanel>
-            </StackPanel>
-
+        <StackPanel Grid.Row="7"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="0 8 0 0">
+            <dx:SimpleButton Content="Ghi"
+                             Style="{StaticResource SaveButton}"/>
+            <dx:SimpleButton Content="Thoát"
+                             Style="{StaticResource CloseButton}"/>
+        </StackPanel>
     </Grid>
 </rs:TSDPopUp>

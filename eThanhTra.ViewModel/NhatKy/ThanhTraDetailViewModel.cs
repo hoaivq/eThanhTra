@@ -20,6 +20,7 @@ namespace eThanhTra.ViewModel.NhatKy
         public ICommand ChonNgayCommand { get; set; }
         public ICommand EditNhatKyCommand { get; set; }
         public ICommand SaveNhatKyCommand { get; set; }
+        public ICommand AddGiaHanCommand {  get; set; }
         public ThanhTraDetailViewModel(IThanhTraDetail View) : base(View)
         {
             ChonNgayCommand = new RelayCommand<object>((p) => { return true; }, async (p) =>
@@ -31,6 +32,19 @@ namespace eThanhTra.ViewModel.NhatKy
                 catch (Exception ex)
                 {
                     _View.ShowMsg(ex, "ChonNgayCommand");
+                }
+            });
+
+            AddGiaHanCommand = new RelayCommand<object>((p) => { return true; }, async (p) =>
+            {
+                try
+                {
+                    await _View.ShowWait("AddGiaHanView", async () => await AddGiaHanView((long)_Model.ObjThanhTra.Id));
+                }
+                catch (Exception ex)
+                {
+
+                    _View.ShowMsg(ex, "AddGiaHanCommand");
                 }
             });
 
@@ -57,6 +71,11 @@ namespace eThanhTra.ViewModel.NhatKy
             //        _View.ShowMsg(ex, "SaveNhatKyCommand");
             //    }
             //});
+        }
+
+        private async Task<bool> AddGiaHanView(long IdThanhTra)
+        {
+            return await _View.OpenGiaHanView(IdThanhTra);
         }
 
         //private async Task EditNhatKy(object p = null)

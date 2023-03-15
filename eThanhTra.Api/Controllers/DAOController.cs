@@ -222,6 +222,16 @@ namespace eThanhTra.Api.Controllers
                         Object = output.Cast<DThanhTraThanhVienCongViecChiTietDto>();
                     }
 
+                    else if (ObjectType.Equals("DGiaHanTTDto"))
+                    {
+                        DGiaHanTTDto input = (Request == null) ? Object as DGiaHanTTDto : JsonConvert.DeserializeObject<DGiaHanTTDto>(Object.ToString());
+                        DGiaHanTT output = input.Cast<DGiaHanTT>();
+                        output.GetDataFrom<DGiaHanTT, DGiaHanTTDto>(input);
+                        db.DGiaHanTTs.Add(output);
+                        await db.SaveChangesAsync();
+                        Object = output.Cast<DGiaHanTTDto>();
+                    }
+
 
 
                     return new MsgResult<object>(true, Object);

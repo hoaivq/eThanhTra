@@ -285,6 +285,9 @@
 
         <DockPanel Grid.Column="1" Grid.Row="2" Margin="4,4,0,0" LastChildFill="False">
             <dx:SimpleButton Style="{StaticResource AddNewButton}" Content="Nhập nhật ký" DockPanel.Dock="Left"/>
+            <dx:SimpleButton Margin = "4 0 4 0" Style="{StaticResource CustomButton}" Command="{Binding AddGiaHanCommand}" Content="Gia hạn" DockPanel.Dock="Left"/>
+            <dx:SimpleButton Margin = " 0 0 4 0" Style="{StaticResource CustomButton}" Content="Tạm dừng" DockPanel.Dock="Left"/>
+            <dx:SimpleButton Margin = "0 0 4 0" Style="{StaticResource CustomButton}" Content="Khó khăn" DockPanel.Dock="Left"/>
             <dx:SimpleButton Style="{StaticResource CloseButton}" DockPanel.Dock="Right"/>
         </DockPanel>
     </Grid>

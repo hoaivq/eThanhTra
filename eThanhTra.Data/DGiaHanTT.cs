@@ -12,18 +12,15 @@ namespace eThanhTra.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class SUser
+    public partial class DGiaHanTT
     {
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public int UserType { get; set; }
-        public string HoVaTen { get; set; }
-        public string Email { get; set; }
-        public string SoDienThoai { get; set; }
-        public string MaCQT { get; set; }
-        public bool IsEnable { get; set; }
-        public string GhiChu { get; set; }
+        public string GiaHanTT_ID { get; set; }
+        public long ThanhTraID { get; set; }
+        public Nullable<int> SoNgay { get; set; }
+        public Nullable<System.DateTime> BatDauGH { get; set; }
+        public Nullable<System.DateTime> KetThucGH { get; set; }
+        public string LyDoGH { get; set; }
     
-        public virtual SUserType SUserType { get; set; }
+        public virtual DThanhTra DThanhTra { get; set; }
     }
 }

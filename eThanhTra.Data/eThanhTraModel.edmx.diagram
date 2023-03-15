@@ -22,6 +22,9 @@
         <AssociationConnector Association="eThanhTraModel.FK_DThanhTraThanhVienCongViec_DThanhTra" />
         <AssociationConnector Association="eThanhTraModel.FK_DThanhTraThanhVienCongViec_DThanhTraCongViec" />
         <AssociationConnector Association="eThanhTraModel.FK_DThanhTraThanhVienCongViec_DThanhTraThanhVien" />
+        <AssociationConnector Association="eThanhTraModel.FK_UserTypeId" />
+        <EntityTypeShape EntityType="eThanhTraModel.DGiaHanTT" Width="1.5" PointX="3" PointY="12.625" />
+        <AssociationConnector Association="eThanhTraModel.FK_ThanhTraGianHan" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

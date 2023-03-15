@@ -7,43 +7,37 @@
              xmlns:local="clr-namespace:eThanhTra"
              mc:Ignorable="d" 
               xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
-             d:DesignHeight="360" d:DesignWidth="600"
+             d:DesignHeight="365" d:DesignWidth="600"
               Title="Khó khăn vướng mắc">
-    <Grid>
-        <StackPanel Orientation="Vertical">
+    <Grid Margin="8 8 8 4">
 
-            <rs:hTextEdit  Margin="10 20 10 0"
-                _CaptionText="Nội dung khó khăn vướng mắc" Height="50"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+            <rs:hTextEdit Grid.Row="0"
+                _CaptionText="Nội dung khó khăn vướng mắc"
                            AcceptsReturn="True"
                            TextWrapping="Wrap"/>
-            <rs:hTextEdit Margin="10 10"
-                _CaptionText="Ngyên nhân" Height="50"
+            <rs:hTextEdit Grid.Row="1"
+                _CaptionText="Ngyên nhân" 
                            AcceptsReturn="True"
                            TextWrapping="Wrap"/>
-            <rs:hTextEdit Margin="10 5"
-                _CaptionText="Hướng giải quyết" 
-                           AcceptsReturn="True"
-                           TextWrapping="Wrap"
-                          Height="50"/>
             
-
-            <rs:hTextEdit Margin="10,5"
-                _CaptionText="Chỉ đạo" Height="50"
-                           AcceptsReturn="True"
-                           TextWrapping="Wrap"/>
             
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Right"
-                        Margin="0 40 10 0">
+                        Grid.Row="2">
                 
                 <dx:SimpleButton Content="Ghi"
-                          Margin ="10 0 0 0" 
+                          Margin ="0 8 4 0" 
                                  Style="{StaticResource SaveButton}"/>
                 <dx:SimpleButton Content="Thoát"
-                          Margin ="10 0 0 0" 
+                          Margin ="0 8 0 0" 
                                  Style="{StaticResource CloseButton}"/>
             </StackPanel>
 
-        </StackPanel>
     </Grid>
 </rs:TSDPopUp>

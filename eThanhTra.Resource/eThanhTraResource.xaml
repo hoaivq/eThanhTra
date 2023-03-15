@@ -145,6 +145,13 @@
                      Handler="SaveButton_Click"/>
     </Style>
 
+    <Style TargetType="{x:Type dx:SimpleButton}" 
+           x:Key="CustomButton" 
+           BasedOn="{StaticResource BaseSimpleButton}">
+        <Setter Property="Content" 
+                Value="Custom"/>
+    </Style>
+
     <Style TargetType="{x:Type dx:SimpleButton}"
            x:Key="SearchButton" 
            BasedOn="{StaticResource BaseSimpleButton}">
