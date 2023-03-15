@@ -48,6 +48,9 @@
     <Reference Include="DevExpress.Data.v21.1, Version=21.1.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpress.Data.21.1.11\lib\net452\DevExpress.Data.v21.1.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.Images.v21.1, Version=21.1.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="DevExpress.Mvvm.v21.1, Version=21.1.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpress.Mvvm.21.1.11\lib\net452\DevExpress.Mvvm.v21.1.dll</HintPath>
     </Reference>
@@ -168,6 +171,9 @@
     <Compile Include="NhatKy\ucoThanhTra.xaml.cs">
       <DependentUpon>ucoThanhTra.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ucoTitle.xaml.cs">
+      <DependentUpon>ucoTitle.xaml</DependentUpon>
+    </Compile>
     <Page Include="Core\popUserAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
@@ -234,6 +240,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="NhatKy\ucoThanhTra.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ucoTitle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -318,6 +328,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ThanhTra.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BG_Login.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\LogoThanhTra.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

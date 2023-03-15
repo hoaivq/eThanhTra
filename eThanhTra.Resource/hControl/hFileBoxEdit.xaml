@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="eThanhTra.Resource.hFileBoxEdit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:eThanhTra.Resource" 
+          xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+          mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded" Background="White">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock DockPanel.Dock="Top" Grid.Row="0"
+                    Visibility="{Binding _CaptionVisibility, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"  
+                    Text="{Binding _CaptionText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"/>
+
+
+        <Border BorderThickness="1" BorderBrush="Silver" Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <dx:SimpleButton BorderThickness="0,0,0,1" Padding="6" Grid.Column="0"  Height="36" VerticalAlignment="Top" Background="#b6d1fc"  Command="{Binding AddFileCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}" Glyph="{dx:DXImage Image=Action_FileAttachment_Attach_32x32.png}" />
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="1">
+                    <ItemsControl x:Name="lstFile" Padding="0,4,0,0"  BorderThickness="1,0,0,0" BorderBrush="Silver" ItemsSource="{Binding ListFile,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}" >
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal" VerticalAlignment="Top"  FlowDirection="LeftToRight"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Silver" BorderThickness="1" Margin="4,0,0,4" Padding="0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="20"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <dx:SimpleButton Command="{Binding ViewFileCommand, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl}}" CommandParameter="{Binding}" Grid.Column="0" FontSize="12" FontWeight="Normal" Foreground="DarkBlue" Content="{Binding FileName}" VerticalAlignment="Center" Padding="4,4,8,4" Background="Transparent" BorderThickness="0"/>
+                                        <!--<dx:SimpleButton Grid.Column="0" FontSize="12" FontWeight="Normal" Foreground="DarkBlue"  VerticalAlignment="Center" Padding="4,4,8,4" Background="Transparent" BorderThickness="0">
+                                            <dx:SimpleButton.Template>
+                                                <ControlTemplate>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="100"/>
+                                                            <ColumnDefinition Width="100"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="30"/>
+                                                            <RowDefinition Height="20"/>
+                                                        </Grid.RowDefinitions>
+                                                        <TextBlock Text="{Binding FileName}" Grid.Row="0" Grid.ColumnSpan="2"/>
+                                                        <TextBlock Text="{Binding FileSize}" Grid.Row="1" Grid.Column="0"/>
+                                                        <TextBlock Text="{Binding CreatedDate, StringFormat=dd/MM/yyyy HH:mm:ss}" Grid.Row="1" Grid.Column="2"/>
+                                                    </Grid>
+                                                </ControlTemplate>
+                                            </dx:SimpleButton.Template>
+                                        </dx:SimpleButton>-->
+                                        <dx:SimpleButton Grid.Column="1" Background="Transparent" BorderThickness="0"  Command="{Binding DeleteFileCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}" CommandParameter="{Binding}"  Glyph="{dx:DXImage Image=Delete_16x16.png}" />
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+    </Grid>
+
+</UserControl>

@@ -12,5 +12,6 @@ namespace eThanhTra.View.NhatKy
     {
         Task<bool> OpenGiaHanView(long idThanhTra);
         Task<bool> ShowChiTiet(DThanhTraThanhVienCongViecChiTietDto dChiTietDto, long IdThanhTra, long? IdThanhVien,DateTime NgayNhatKy);
+        void ScrollView();
     }
 }

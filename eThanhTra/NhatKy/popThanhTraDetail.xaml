@@ -117,9 +117,11 @@
             <dxg:GridControl.View>
                 <dxg:TableView AllowEditing="False" />
             </dxg:GridControl.View>
-            <!--<dxemvvm:Interaction.Behaviors>
-                <dxemvvm:EventToCommand EventName="MouseDown" CommandParameter="{Binding ElementName=grdData, Path=SelectedItem}" Command="{Binding DataContext.LoadThanhVienCongViecCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDPopUp}}" />
-            </dxemvvm:Interaction.Behaviors>-->
+            <dxemvvm:Interaction.Behaviors>
+                <dxemvvm:EventToCommand EventName="MouseDoubleClick" 
+                                        CommandParameter="{Binding ElementName=grdData, Path=CurrentItem}"
+                                        Command="{Binding DataContext.AddEditCommand, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=rs:TSDPopUp}}" />
+            </dxemvvm:Interaction.Behaviors>
 
             <dxg:GridControl.Columns>
                 <dxg:GridColumn  Header="STT" FieldName="STT"  Width="40"  VisibleIndex="0">

@@ -21,6 +21,13 @@ namespace eThanhTra.Network.System
 
         Task<MsgResult<object>> DeleteObject(DeleteDto deleteDto);
 
+        Task<MsgResult<ObservableCollection<DFileDto>>> GetListFile(CallSPDto callSPDto);
+
+        Task<MsgResult<ObservableCollection<DFileDto>>> SaveFile(ObservableCollection<DFileDto> ListFile);
+
+        Task<MsgResult<int>> DeleteFile(long Id);
+
+        Task<MsgResult<string>> ViewFile(long Id);
     }
 
     public interface IDAONetwork : IDAOApiNetwork

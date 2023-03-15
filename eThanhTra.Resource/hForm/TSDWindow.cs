@@ -64,6 +64,7 @@ namespace eThanhTra.Resource
             this.Loaded += TSDWindow_Loaded;
             this.Closed += TSDWindow_Closed;
             this.Closing += TSDWindow_Closing;
+            this.MaxHeight = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height;
             this.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
         }
 

@@ -27,5 +27,12 @@ namespace Common.Core
             TruongDoan = 1,
             ThanhVien = 2
         }
+
+        public enum EFileMode
+        {
+            View = 0,
+            Add = 1,
+            Delete = 2,
+        }
     }
 }

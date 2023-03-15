@@ -30,6 +30,11 @@ namespace eThanhTra
             this.DataContext = new LoginViewModel(this);
         }
 
+        protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
+        {
+            
+            base.OnRenderSizeChanged(sizeInfo);
+        }
         public void ShowMainWindow()
         {
             try

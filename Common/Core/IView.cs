@@ -26,6 +26,7 @@ namespace Common.Core
         Task ShowWait(string MethodName, Func<Task> MyFunction);
         Task<T> ShowWait<T>(string MethodName, Func<Task<T>> MyFunction);
 
+        
 
         void WaitCursor();
         void ArrowCursor();

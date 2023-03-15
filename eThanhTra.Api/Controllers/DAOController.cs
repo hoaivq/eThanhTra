@@ -276,5 +276,123 @@ namespace eThanhTra.Api.Controllers
                 return new MsgResult<object>("DeleteObject", ex);
             }
         }
+
+
+
+        [HttpPost]
+        public async Task<MsgResult<ObservableCollection<DFileDto>>> GetListFile([FromBody] CallSPDto callSPDto)
+        {
+            string JSON = string.Empty;
+            try
+            {
+                JSON = JsonConvert.SerializeObject(callSPDto);
+                using (DataTable dt = await MyApp.Dao.GetTableSPAsync(callSPDto.SPName, callSPDto.GetSqlParameter()))
+                {
+                    return new MsgResult<ObservableCollection<DFileDto>>(true, dt.ToListObject<DFileDto>());
+                }
+            }
+            catch (Exception ex)
+            {
+                return new MsgResult<ObservableCollection<DFileDto>>("GetListFile", ex, JSON);
+            }
+            finally
+            {
+                MyApp.Log.GhiLog("GetListFile", JSON);
+            }
+        }
+
+
+        [HttpPost]
+        public async Task<MsgResult<ObservableCollection<DFileDto>>> SaveFile([FromBody] ObservableCollection<DFileDto> ListFile)
+        {
+            try
+            {
+                using (SqlConnection myConn = new SqlConnection(MyApp.Setting.DBConnStr))
+                {
+
+                    foreach (DFileDto dto in ListFile)
+                    {
+                        if (dto.FileMode == (int)EFileMode.Delete)
+                        {
+                            if (dto.Id.HasValue)
+                            {
+                                MyApp.Dao.ExecSQL("DELETE FROM DFileData WHERE IdFile = @Id; DELETE FROM DFile WHERE Id = @Id", new SqlParameter[] {
+                                    new SqlParameter("Id", dto.Id.Value)
+                                });
+                            }
+                            ListFile.Remove(dto);
+                        }
+                        else if (dto.FileMode == (int)EFileMode.Add)
+                        {
+
+                            long IdFile = MyApp.Dao.ExecSQLGetId("INSERT INTO DFile(IdCha, TableName, FileName, FileType, FileSize, CreatedDate) VALUES(@IdCha, @TableName, @FileName, @FileType, @FileSize, GETDATE())", new SqlParameter[]
+                             {
+                                    new SqlParameter("IdCha",       dto.IdCha),
+                                    new SqlParameter("TableName",   dto.TableName),
+                                    new SqlParameter("FileName",    dto.FileName),
+                                    new SqlParameter("FileType",    dto.FileType),
+                                    new SqlParameter("FileSize",    dto.FileSize),
+                             }, myConn);
+
+                            MyApp.Dao.ExecSQL("INSERT INTO DFileData(IdFile, FileData) VALUES(@IdFile, @FileData)", new SqlParameter[]
+                                {
+                                new SqlParameter("IdFile", IdFile),
+                                new SqlParameter("FileData", SqlDbType.VarBinary){ Value = Convert.FromBase64String( dto.FileData) },
+                                }
+                                , myConn);
+
+                            dto.Id = IdFile;
+                            dto.CreatedDate = DateTime.Now;
+                            dto.FileMode = (int)EFileMode.View;
+                            dto.FileData = null;
+                        }
+                    }
+                    await Task.CompletedTask;
+                    return new MsgResult<ObservableCollection<DFileDto>>(true, ListFile);
+                }
+            }
+            catch (Exception ex)
+            {
+                return new MsgResult<ObservableCollection<DFileDto>>("SaveFile", ex);
+            }
+        }
+
+
+
+        [HttpPost]
+        public async Task<MsgResult<int>> DeleteFile([FromBody] long Id)
+        {
+            try
+            {
+                int ketQua = await MyApp.Dao.ExecSQLAsync("DELETE FROM DFileData WHERE IdFile = @Id; DELETE FROM DFile WHERE Id = @Id", new SqlParameter[] { new SqlParameter("Id", Id) });
+                return new MsgResult<int>(true, ketQua);
+            }
+            catch (Exception ex)
+            {
+                return new MsgResult<int>("DeleteFile", ex);
+            }
+        }
+
+
+        [HttpPost]
+        public async Task<MsgResult<string>> ViewFile([FromBody] long Id)
+        {
+            try
+            {
+                using (DataTable dt = await MyApp.Dao.GetTableAsync("SELECT * FROM DFileData WHERE IdFile = @Id", new SqlParameter[] { new SqlParameter("Id", Id) }))
+                {
+                    if (dt.Rows.Count == 0)
+                    {
+                        return new MsgResult<string>(false, string.Empty);
+                    }
+
+                    return new MsgResult<string>(true, Convert.ToBase64String((byte[])dt.Rows[0]["FileData"]));
+                }
+            }
+            catch (Exception ex)
+            {
+                return new MsgResult<string>("ViewFile", ex);
+            }
+        }
     }
 }

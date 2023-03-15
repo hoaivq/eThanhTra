@@ -10,9 +10,15 @@
         mc:Ignorable="d"
         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
         xmlns:dxwui="http://schemas.devexpress.com/winfx/2008/xaml/windowsui" 
-        Title="NHẬT KÝ ĐOÀN THANH TRA" Height="800" Width="1000" WindowState="Maximized" WindowStartupLocation="CenterScreen" Padding="0,0,0,0" Margin="0,0,0,0">
+        Title="NHẬT KÝ ĐOÀN THANH TRA" Height="800" Width="1000" WindowState="Maximized" WindowStartupLocation="CenterScreen" WindowStyle="None" Padding="0" >
     <Grid>
-        <dxwui:HamburgerMenu x:Name="mnuMain"  
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <local:ucoTitle Title="NHẬT KÝ ĐOÀN THANH TRA" Grid.Row="0"/>
+
+        <dxwui:HamburgerMenu x:Name="mnuMain"  Grid.Row="1" PaneBackground="#0174c6"
                              AvailableViewStates="Overlay" 
                              IsInitiallyCompact="True" 
                              ViewState="CompactInline" 
@@ -50,7 +56,7 @@
 
 
             <dxwui:HamburgerMenu.Content>
-                <Grid Background="White">
+                <Grid Background="White" Margin="0,4,0,0">
                     <dx:DXTabControl Grid.Row="1" x:Name="tabMain"  Background="White" Padding="4,8,4,4">
                         
                     </dx:DXTabControl>

@@ -76,6 +76,9 @@
     <Compile Include="hControl\hComboBoxEdit.xaml.cs">
       <DependentUpon>hComboBoxEdit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="hControl\hFileBoxEdit.xaml.cs">
+      <DependentUpon>hFileBoxEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="hControl\hSpinEdit.xaml.cs">
       <DependentUpon>hSpinEdit.xaml</DependentUpon>
     </Compile>
@@ -112,6 +115,10 @@
     </Page>
     <Compile Include="Extensions.cs" />
     <Page Include="hControl\hComboBoxEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="hControl\hFileBoxEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -180,9 +187,21 @@
       <Project>{50744fe9-2e5c-4b1d-8b85-8909cbd6bde5}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\eThanhTra.Controller\eThanhTra.Controller.csproj">
+      <Project>{A049813A-2135-4DB6-BB5B-F20DDB961A9D}</Project>
+      <Name>eThanhTra.Controller</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eThanhTra.Dto\eThanhTra.Dto.csproj">
+      <Project>{03E62E5A-80DE-40B3-BD32-07F98BF6D645}</Project>
+      <Name>eThanhTra.Dto</Name>
+    </ProjectReference>
     <ProjectReference Include="..\eThanhTra.Model\eThanhTra.Model.csproj">
       <Project>{63b1cf8d-2d87-436d-ac4d-0fdea8475029}</Project>
       <Name>eThanhTra.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eThanhTra.Network\eThanhTra.Network.csproj">
+      <Project>{09FC7017-526F-423E-A459-D483C08824C5}</Project>
+      <Name>eThanhTra.Network</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
