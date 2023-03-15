@@ -11,6 +11,7 @@ namespace Common.Class
 {
     public class AppSetting
     {
+        public bool IsOnline { get { return true; } }
         public string AppPath
         {
             get
@@ -71,7 +72,5 @@ namespace Common.Class
         {
             get { return ConfigurationManager.AppSettings["TimeOut"].ToInt().Value; }
         }
-
-        public bool IsOnline { get { return false; } }
     }
 }

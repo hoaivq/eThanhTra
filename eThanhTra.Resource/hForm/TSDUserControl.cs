@@ -57,6 +57,7 @@ namespace eThanhTra.Resource
             {
                 GlobalResource.MainWindow.Cursor = Cursors.Wait;
             }
+            
         }
 
         private void TSDUserControl_Loaded(object sender, System.Windows.RoutedEventArgs e)

@@ -154,6 +154,7 @@ namespace eThanhTra.ViewModel.NhatKy
                     _Model.RowLichTrinh = _Model.LichTrinh.DefaultView[0];
                 }
             }
+            _View.ScrollView();
 
             msgResult = await MyObject.ObjApp.GetTable(CallSPDto.Create("PGetListChiTietCongViec",
                 new SqlParam("IdThanhTra", _Model.ObjThanhTra.Id, SqlDbType.BigInt),

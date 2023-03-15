@@ -15,7 +15,7 @@ namespace eThanhTra.Resource
         {
             this.ResizeMode = System.Windows.ResizeMode.NoResize;
             this.ShowInTaskbar = false;
-            
+
         }
 
         protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)

@@ -16,11 +16,27 @@ namespace eThanhTra.Controller.App
 {
     public class DAOOffline : IDAONetwork
     {
+        public async Task<MsgResult<int>> DeleteFile(long Id)
+        {
+            using (DAOController controller = new DAOController())
+            {
+                return await controller.DeleteFile(Id);
+            }
+        }
+
         public async Task<MsgResult<object>> DeleteObject(DeleteDto deleteDto)
         {
             using (DAOController controller = new DAOController())
             {
                 return await controller.DeleteObject(deleteDto);
+            }
+        }
+
+        public async Task<MsgResult<ObservableCollection<DFileDto>>> GetListFile(CallSPDto callSPDto)
+        {
+            using (DAOController controller = new DAOController())
+            {
+                return await controller.GetListFile(callSPDto);
             }
         }
 
@@ -40,6 +56,14 @@ namespace eThanhTra.Controller.App
             }
         }
 
+        public async Task<MsgResult<ObservableCollection<DFileDto>>> SaveFile(ObservableCollection<DFileDto> ListFile)
+        {
+            using (DAOController controller = new DAOController())
+            {
+                return await controller.SaveFile(ListFile);
+            }
+        }
+
         public async Task<MsgResult<object>> SaveObject(object Object)
         {
             using (DAOController controller = new DAOController())
@@ -52,6 +76,14 @@ namespace eThanhTra.Controller.App
         {
             MsgResult<object> msgResult = await SaveObject((object)Object);
             return new MsgResult<T>() { Success = msgResult.Success, Message = msgResult.Message, Value = (T)msgResult.Value };
+        }
+
+        public async Task<MsgResult<string>> ViewFile(long Id)
+        {
+            using (DAOController controller = new DAOController())
+            {
+                return await controller.ViewFile(Id);
+            }
         }
     }
 }

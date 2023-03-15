@@ -13,7 +13,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
 
@@ -41,9 +42,9 @@
 
         <rs:hTextEdit Grid.Row="1" IsValidEmpty="True" _CaptionText="Nội dung:" Text="{Binding _Model.ObjChiTiet.NoiDung}" VerticalContentAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap"/>
         <rs:hTextEdit Grid.Row="2" _CaptionText="Ghi chú:" Text="{Binding _Model.ObjChiTiet.GhiChu}" VerticalContentAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap"/>
-       
+        <rs:hFileBoxEdit _CaptionText="Đính kèm file:" IdCha="{Binding _Model.ObjChiTiet.Id}" TableName="DThanhTraThanhVienCongViecChiTiet" Grid.Row="3"/>
 
-        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0">
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0">
             <dx:SimpleButton Style="{StaticResource SaveButton}" Margin="4,0,0,0"/>
             <dx:SimpleButton Style="{StaticResource CloseButton}" Margin="4,0,0,0"/>
         </StackPanel>

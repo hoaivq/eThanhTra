@@ -32,9 +32,16 @@ namespace eThanhTra.NhatKy
             this.DataContext = new ThanhTraDetailViewModel(this);
         }
 
+        public void ScrollView()
+        {
+            lstLichTrinh.UpdateLayout();
+            lstLichTrinh.ScrollIntoView(lstLichTrinh.SelectedItem);
+        }
+
         public async Task<bool> ShowChiTiet(DThanhTraThanhVienCongViecChiTietDto dChiTietDto, long IdThanhTra, long? IdThanhVien, DateTime NgayNhatKy)
         {
             popThanhTraDetailAdd objF = new popThanhTraDetailAdd();
+            ((ThanhTraDetailAddViewModel)objF.DataContext)._Model.ObjChiTiet = dChiTietDto;
             ((ThanhTraDetailAddViewModel)objF.DataContext)._Model.IdThanhTra = IdThanhTra;
             ((ThanhTraDetailAddViewModel)objF.DataContext)._Model.IdThanhVien = IdThanhVien;
             ((ThanhTraDetailAddViewModel)objF.DataContext)._Model.NgayNhatKy = NgayNhatKy;

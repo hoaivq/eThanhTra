@@ -11,5 +11,6 @@ namespace eThanhTra.View.NhatKy
     public interface IThanhTraDetail : IView
     {
         Task<bool> ShowChiTiet(DThanhTraThanhVienCongViecChiTietDto dChiTietDto, long IdThanhTra, long? IdThanhVien,DateTime NgayNhatKy);
+        void ScrollView();
     }
 }
