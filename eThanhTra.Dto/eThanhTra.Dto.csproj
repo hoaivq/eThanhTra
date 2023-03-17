@@ -45,6 +45,7 @@
     <Compile Include="DThanhTra.cs" />
     <Compile Include="DThanhTraTamDungDto.cs" />
     <Compile Include="GiaHanTTDto.cs" />
+    <Compile Include="KhoKhanVuongMacDto.cs" />
     <Compile Include="SUserDto.cs" />
     <Compile Include="BaseDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

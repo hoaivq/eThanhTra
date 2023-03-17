@@ -18,9 +18,9 @@ namespace eThanhTra.Model.NhatKy
 			set { _IdThanhTra = value; OnPropertyChanged(); }
 		}
 
-		private KhoKhanVuongMacModel _objKhoKhanVuongMac;
+		private DThanhTraKKVMDto _objKhoKhanVuongMac;
 
-		public KhoKhanVuongMacModel ObjKhoKhanVuongMac
+		public DThanhTraKKVMDto ObjKhoKhanVuongMac
 		{
 			get { return _objKhoKhanVuongMac; }
 			set { _objKhoKhanVuongMac = value; OnPropertyChanged(); }

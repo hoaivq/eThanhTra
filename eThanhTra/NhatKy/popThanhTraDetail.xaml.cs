@@ -69,5 +69,14 @@ namespace eThanhTra.NhatKy
             await Task.CompletedTask;
             return objTamDung.IsReload; 
         }
+
+        public async Task<bool> OpenKhoKhanView(long IdThanhTra)
+        {
+            popKhoKhanVuongMac objKhoKhan = new popKhoKhanVuongMac();
+            ((KhoKhanVuongMacViewModel)objKhoKhan.DataContext)._Model.IdThanhTra = IdThanhTra;
+            objKhoKhan.ShowPopUp(this);
+            await Task.CompletedTask;
+            return objKhoKhan.IsReload;
+        }
     }
 }

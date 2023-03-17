@@ -14,17 +14,19 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="150"/>
             <RowDefinition Height="150"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-            <rs:hTextEdit Grid.Row="0"
-                _CaptionText="Nội dung khó khăn vướng mắc"
-                           AcceptsReturn="True"
-                           TextWrapping="Wrap"/>
-            <rs:hTextEdit Grid.Row="1"
-                _CaptionText="Ngyên nhân" 
-                           AcceptsReturn="True"
-                           TextWrapping="Wrap"/>
+        <rs:hTextEdit Grid.Row="0" EditValue="{Binding _Model.ObjKhoKhanVuongMac.NoiDung, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                      IsValidEmpty="True"
+                      _CaptionText="Nội dung khó khăn vướng mắc"
+                      AcceptsReturn="True"
+                      TextWrapping="Wrap"/>
+        <rs:hTextEdit Grid.Row="1" EditValue="{Binding _Model.ObjKhoKhanVuongMac.NguyenNhan, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                      IsValidEmpty="True"
+                      _CaptionText="Ngyên nhân" 
+                       AcceptsReturn="True"
+                       TextWrapping="Wrap"/>
             
             
             <StackPanel Orientation="Horizontal"

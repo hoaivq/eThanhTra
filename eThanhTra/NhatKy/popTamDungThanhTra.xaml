@@ -3,65 +3,55 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:eThanhTra.NhatKy" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:local="clr-namespace:eThanhTra.NhatKy" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:ethanhtra="clr-namespace:eThanhTra"
               Title="Tạm dừng thanh tra"
               mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="600">
-    <Grid>
-        <Grid Margin="8 8 8 4">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="200"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+             d:Height="400" d:DesignWidth="600" Style="{StaticResource TSDWindow}">
 
-            <rs:hTextEdit  Grid.Row="0" IsValidEmpty="True" EditValue="{Binding _Model.ObjTamDung.QuyetDinhTD, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                _CaptionText="Quyết định tạm dừng thanh tra" Height="50"
-                           Margin="8 8 4 0"/>
-            
-            <Grid Grid.Row="1" Margin=" 8 8 4 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50"/>
-                    <ColumnDefinition Width="150"/>
-                    <ColumnDefinition Width="150"/>
-                </Grid.ColumnDefinitions>
+    <DockPanel LastChildFill="True">
+        <ethanhtra:ucoTitle DockPanel.Dock="Top" Height="40"></ethanhtra:ucoTitle>
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 0 4" Height="40">
+            <dx:SimpleButton Margin ="0 0 4 0" Style="{StaticResource SaveButton}"/>
+            <dx:SimpleButton  Margin ="0 0 4 0"  Style="{StaticResource CloseButton}"/>
+        </StackPanel>
+
+        <Grid DockPanel.Dock="Top" Margin="4">
+            <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0"
-                    Text="Thời gian tạm dừng"/>
-                <rs:hSpinEdit Margin="0 0 4 0" Grid.Row="1" Value="{Binding _Model.ObjTamDung.SoNgayTD, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                <rs:hTextEdit  Grid.Row="0" IsValidEmpty="True" EditValue="{Binding _Model.ObjTamDung.QuyetDinhTD, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                _CaptionText="Quyết định tạm dừng thanh tra" Height="50"/>
+
+                <Grid Grid.Row="1" Margin="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="150"/>
+                    </Grid.ColumnDefinitions>
+
+                    <rs:hSpinEdit Margin="0 0 4 0" Grid.Row="1" Value="{Binding _Model.ObjTamDung.SoNgayTD, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                               Grid.Column="0" IsValidEmpty="True"
                               _CaptionText="Số ngày"/>
-                <rs:hDateEdit Margin="0 0 4 0" Grid.Row="1" IsValidEmpty="True" EditValue="{Binding _Model.ObjTamDung.BatDauTD, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                    <rs:hDateEdit Margin="0 0 4 0" Grid.Row="1" IsValidEmpty="True" EditValue="{Binding _Model.ObjTamDung.BatDauTD, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                               Grid.Column="1"
                               _CaptionText="Từ" />
-                <rs:hDateEdit Grid.Row="1" EditValue="{Binding _Model.ObjTamDung.KetThucTD, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                    <rs:hDateEdit Grid.Row="1" EditValue="{Binding _Model.ObjTamDung.KetThucTD, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                               Grid.Column="2"
                               _CaptionText="Đến" />
-                
-            </Grid>
-            <!--<rs:hTextEdit Grid.Row="3"
+
+                </Grid>
+                <!--<rs:hTextEdit Grid.Row="3"
                 _CaptionText="Người duyệt" Height="50"/>-->
-            <rs:hTextEdit Grid.Row="2" EditValue="{Binding _Model.ObjTamDung.LyDoTamDung, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                <rs:hTextEdit Grid.Row="2" EditValue="{Binding _Model.ObjTamDung.LyDoTamDung, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                 _CaptionText="Lý do tạm dừng"
-                          Margin="8 8 4 0"/>
+                          Margin="0"/>
 
-            <StackPanel Grid.Row="3"
-                Orientation="Horizontal"
-                        HorizontalAlignment="Right"
-                        Margin="0 10 0 0">
-                <dx:SimpleButton Content="Ghi"
-                          Margin ="0 0 4 0"
-                                 Style="{StaticResource SaveButton}"/>
-                <dx:SimpleButton Content="Thoát"
-                          Margin ="0 0 4 0" 
-                                 Style="{StaticResource CloseButton}"/>
-            </StackPanel>
-
+            </Grid>
         </Grid>
-    </Grid>
+    </DockPanel>
+
 </rs:TSDPopUp>
