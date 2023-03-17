@@ -17,12 +17,12 @@ namespace eThanhTra.Dto
         }
 
 
-        private string _giaHanTT_ID;
+        private string _SoQuyetDinh  ;
 
-		public string GiaHanTT_ID
+		public string SoQuyetDinh
 		{
-			get { return _giaHanTT_ID; }
-			set { _giaHanTT_ID = value; OnPropertyChanged(); }
+			get { return _SoQuyetDinh; }
+			set { _SoQuyetDinh = value; OnPropertyChanged(); }
 		}
 
         private string _lyDoGH;

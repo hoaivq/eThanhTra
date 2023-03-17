@@ -11,7 +11,7 @@ namespace Common.Class
 {
     public class AppSetting
     {
-        public bool IsOnline { get { return true; } }
+        public bool IsOnline { get { return false; } }
         public string AppPath
         {
             get

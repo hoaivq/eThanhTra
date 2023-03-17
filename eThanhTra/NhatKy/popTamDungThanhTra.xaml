@@ -16,7 +16,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <rs:hTextEdit  Grid.Row="0"
+            <rs:hTextEdit  Grid.Row="0" IsValidEmpty="True" EditValue="{Binding _Model.ObjTamDung.QuyetDinhTD, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                 _CaptionText="Quyết định tạm dừng thanh tra" Height="50"
                            Margin="8 8 4 0"/>
             
@@ -33,20 +33,20 @@
 
                 <TextBlock Grid.Row="0"
                     Text="Thời gian tạm dừng"/>
-                <rs:hTextEdit Margin="0 0 4 0" Grid.Row="1"
-                              Grid.Column="0"
+                <rs:hSpinEdit Margin="0 0 4 0" Grid.Row="1" Value="{Binding _Model.ObjTamDung.SoNgayTD, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                              Grid.Column="0" IsValidEmpty="True"
                               _CaptionText="Số ngày"/>
-                <rs:hDateEdit Margin="0 0 4 0" Grid.Row="1"
+                <rs:hDateEdit Margin="0 0 4 0" Grid.Row="1" IsValidEmpty="True" EditValue="{Binding _Model.ObjTamDung.BatDauTD, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                               Grid.Column="1"
                               _CaptionText="Từ" />
-                <rs:hDateEdit Grid.Row="1"
+                <rs:hDateEdit Grid.Row="1" EditValue="{Binding _Model.ObjTamDung.KetThucTD, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                               Grid.Column="2"
                               _CaptionText="Đến" />
                 
             </Grid>
             <!--<rs:hTextEdit Grid.Row="3"
                 _CaptionText="Người duyệt" Height="50"/>-->
-            <rs:hTextEdit Grid.Row="2"
+            <rs:hTextEdit Grid.Row="2" EditValue="{Binding _Model.ObjTamDung.LyDoTamDung, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                 _CaptionText="Lý do tạm dừng"
                           Margin="8 8 4 0"/>
 

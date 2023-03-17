@@ -1,4 +1,6 @@
 ﻿using eThanhTra.Resource;
+using eThanhTra.View.NhatKy;
+using eThanhTra.ViewModel.NhatKy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,11 +21,12 @@ namespace eThanhTra.NhatKy
     /// <summary>
     /// Interaction logic for popTamDungThanhTra.xaml
     /// </summary>
-    public partial class popTamDungThanhTra : TSDPopUp
+    public partial class popTamDungThanhTra : TSDPopUp , ITamDungTT
     {
         public popTamDungThanhTra()
         {
             InitializeComponent();
+            this.DataContext = new TamDungThanhTraViewModel(this);  
         }
     }
 }

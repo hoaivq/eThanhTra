@@ -225,14 +225,30 @@ namespace eThanhTra.Api.Controllers
                     else if (ObjectType.Equals("DGiaHanTTDto"))
                     {
                         DGiaHanTTDto input = (Request == null) ? Object as DGiaHanTTDto : JsonConvert.DeserializeObject<DGiaHanTTDto>(Object.ToString());
-                        DGiaHanTT output = input.Cast<DGiaHanTT>();
-                        output.GetDataFrom<DGiaHanTT, DGiaHanTTDto>(input);
-                        db.DGiaHanTTs.Add(output);
+                        DThanhTraGiaHan output = input.Cast<DThanhTraGiaHan>();
+                        output.GetDataFrom<DThanhTraGiaHan, DGiaHanTTDto>(input);
+                        if (output.IDThanhTra == 0)
+                        {
+                            output.IDThanhTra = (long)input.IdThanhTra;
+                        }
+                        db.DThanhTraGiaHans.Add(output);
                         await db.SaveChangesAsync();
                         Object = output.Cast<DGiaHanTTDto>();
                     }
 
-
+                    else if (ObjectType.Equals("DThanhTraTamDungDto"))
+                    {
+                        DThanhTraTamDungDto input = (Request == null) ? Object as DThanhTraTamDungDto : JsonConvert.DeserializeObject<DThanhTraTamDungDto>(Object.ToString());
+                        DThanhTraTamDung output = input.Cast<DThanhTraTamDung>();
+                        output.GetDataFrom<DThanhTraTamDung, DThanhTraTamDungDto>(input);
+                        if (output.IDThanhTra == 0)
+                        {
+                            output.IDThanhTra = (long)input.IDThanhTra;
+                        }
+                        db.DThanhTraTamDungs.Add(output);
+                        await db.SaveChangesAsync();
+                        Object = output.Cast<DThanhTraTamDungDto>();
+                    }
 
                     return new MsgResult<object>(true, Object);
                 }

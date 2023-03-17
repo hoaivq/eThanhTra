@@ -20,7 +20,8 @@ namespace eThanhTra.Data
             this.DThanhTraCongViecs = new HashSet<DThanhTraCongViec>();
             this.DThanhTraThanhViens = new HashSet<DThanhTraThanhVien>();
             this.DThanhTraThanhVienCongViecs = new HashSet<DThanhTraThanhVienCongViec>();
-            this.DGiaHanTTs = new HashSet<DGiaHanTT>();
+            this.DThanhTraGiaHans = new HashSet<DThanhTraGiaHan>();
+            this.DThanhTraTamDungs = new HashSet<DThanhTraTamDung>();
         }
     
         public long Id { get; set; }
@@ -35,6 +36,7 @@ namespace eThanhTra.Data
         public string GhiChu { get; set; }
         public Nullable<int> TrangThai { get; set; }
         public Nullable<System.DateTime> NgayNhap { get; set; }
+        public string CreatedUser { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DThanhTraCongViec> DThanhTraCongViecs { get; set; }
@@ -43,6 +45,8 @@ namespace eThanhTra.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DThanhTraThanhVienCongViec> DThanhTraThanhVienCongViecs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DGiaHanTT> DGiaHanTTs { get; set; }
+        public virtual ICollection<DThanhTraGiaHan> DThanhTraGiaHans { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DThanhTraTamDung> DThanhTraTamDungs { get; set; }
     }
 }

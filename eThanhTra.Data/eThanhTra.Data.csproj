@@ -51,16 +51,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DGiaHanTT.cs">
-      <DependentUpon>eThanhTraModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DThanhTra.cs">
       <DependentUpon>eThanhTraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DThanhTraCongViec.cs">
       <DependentUpon>eThanhTraModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DThanhTraGiaHan.cs">
+      <DependentUpon>eThanhTraModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DThanhTraQuyetDinh.cs">
+      <DependentUpon>eThanhTraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DThanhTraTamDung.cs">
       <DependentUpon>eThanhTraModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DThanhTraThanhVien.cs">

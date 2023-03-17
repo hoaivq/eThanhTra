@@ -12,14 +12,15 @@ namespace eThanhTra.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class DGiaHanTT
+    public partial class DThanhTraTamDung
     {
-        public string GiaHanTT_ID { get; set; }
-        public long ThanhTraID { get; set; }
-        public Nullable<int> SoNgay { get; set; }
-        public Nullable<System.DateTime> BatDauGH { get; set; }
-        public Nullable<System.DateTime> KetThucGH { get; set; }
-        public string LyDoGH { get; set; }
+        public int Id { get; set; }
+        public string QuyetDinhTD { get; set; }
+        public Nullable<long> IDThanhTra { get; set; }
+        public int SoNgayTD { get; set; }
+        public System.DateTime BatDauTD { get; set; }
+        public System.DateTime KetThucTD { get; set; }
+        public string LyDoTamDung { get; set; }
     
         public virtual DThanhTra DThanhTra { get; set; }
     }

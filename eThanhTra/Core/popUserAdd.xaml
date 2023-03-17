@@ -6,11 +6,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:eThanhTra.Core" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
               mc:Ignorable="d"
-        Title="Thêm mới tài khoản" Height="600" Width="600"  >
+        Title="Thêm mới tài khoản" Height="620" Width="600"  >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0" 
                    LastChildFill="True" 
@@ -60,10 +60,11 @@
         </DockPanel >
         <StackPanel Grid.Row="1" 
                     Orientation="Horizontal" 
-                    HorizontalAlignment="Right" 
+                    HorizontalAlignment="Right"
+                    Margin=" 0 8 0 8"
                     >
             <dx:SimpleButton Style="{StaticResource SaveButton}"
-                             Margin ="0 0 8 0"/>
+                             Margin ="0 0 4 0"/>
             <dx:SimpleButton Style="{StaticResource CloseButton}"
                              Margin="0 0 8 0"/>
         </StackPanel>

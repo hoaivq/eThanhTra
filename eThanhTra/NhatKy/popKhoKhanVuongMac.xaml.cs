@@ -1,4 +1,6 @@
 ﻿using eThanhTra.Resource;
+using eThanhTra.View.NhatKy;
+using eThanhTra.ViewModel.NhatKy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,11 +21,12 @@ namespace eThanhTra.NhatKy
     /// <summary>
     /// Interaction logic for popKhoKhanVuowngMac.xaml
     /// </summary>
-    public partial class popKhoKhanVuongMac : TSDPopUp
+    public partial class popKhoKhanVuongMac : TSDPopUp , IKhoKhanVuongMac
     {
         public popKhoKhanVuongMac()
         {
             InitializeComponent();
+            this.DataContext = new KhoKhanVuongMacViewModel(this);
         }
     }
 }

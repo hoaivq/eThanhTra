@@ -23,8 +23,10 @@
         <AssociationConnector Association="eThanhTraModel.FK_DThanhTraThanhVienCongViec_DThanhTraCongViec" />
         <AssociationConnector Association="eThanhTraModel.FK_DThanhTraThanhVienCongViec_DThanhTraThanhVien" />
         <AssociationConnector Association="eThanhTraModel.FK_UserTypeId" />
-        <EntityTypeShape EntityType="eThanhTraModel.DGiaHanTT" Width="1.5" PointX="3" PointY="12.625" />
-        <AssociationConnector Association="eThanhTraModel.FK_ThanhTraGianHan" />
+        <EntityTypeShape EntityType="eThanhTraModel.DThanhTraGiaHan" Width="1.5" PointX="3" PointY="12.625" />
+        <AssociationConnector Association="eThanhTraModel.FK__DThanhTra__IDTha__17F790F9" />
+        <EntityTypeShape EntityType="eThanhTraModel.DThanhTraTamDung" Width="1.5" PointX="3" PointY="16.75" />
+        <AssociationConnector Association="eThanhTraModel.FK__DThanhTra__IDTha__1DB06A4F" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

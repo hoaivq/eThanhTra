@@ -71,7 +71,7 @@
                     HorizontalAlignment="Right"
                     Margin="0 8 0 0">
             <dx:SimpleButton Content="Ghi"
-                             Style="{StaticResource SaveButton}"/>
+                             Style="{StaticResource SaveButton}" Margin="0 0 4 0"/>
             <dx:SimpleButton Content="Thoát"
                              Style="{StaticResource CloseButton}"/>
         </StackPanel>

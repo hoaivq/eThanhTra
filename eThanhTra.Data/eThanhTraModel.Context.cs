@@ -39,7 +39,8 @@ namespace eThanhTra.Data
         public virtual DbSet<SLichLamViec> SLichLamViecs { get; set; }
         public virtual DbSet<SUserType> SUserTypes { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<DGiaHanTT> DGiaHanTTs { get; set; }
+        public virtual DbSet<DThanhTraGiaHan> DThanhTraGiaHans { get; set; }
+        public virtual DbSet<DThanhTraTamDung> DThanhTraTamDungs { get; set; }
     
         public virtual ObjectResult<PGetUserByMaCQT_Result> PGetUserByMaCQT(string maCQT)
         {

@@ -39,7 +39,7 @@
                                                  Glyph="{dx:DXImage  Image=Home_16x16.png}" 
                                                  GlyphHeight="16" 
                                                  SelectOnClick="False" Name="Home"/>
-            
+
             <dxwui:HamburgerMenuNavigationButton Content="Quản lý tài khoản" GlyphWidth="16" 
                                                  Glyph="{dx:DXImage Image=UserGroup_16x16.png}" 
                                                  GlyphHeight="16" 
@@ -57,9 +57,11 @@
 
             <dxwui:HamburgerMenu.Content>
                 <Grid Background="White" Margin="0,4,0,0">
-                    <dx:DXTabControl Grid.Row="1" x:Name="tabMain"  Background="White" Padding="4,8,4,4">
-                        
-                    </dx:DXTabControl>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="621*"/>
+                        <ColumnDefinition Width="179*"/>
+                    </Grid.ColumnDefinitions>
+                    <dx:DXTabControl x:Name="tabMain"  Background="White" Padding="4,8,4,4" Grid.ColumnSpan="2"/>
                 </Grid>
             </dxwui:HamburgerMenu.Content>
         </dxwui:HamburgerMenu>

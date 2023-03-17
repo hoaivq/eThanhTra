@@ -60,5 +60,14 @@ namespace eThanhTra.NhatKy
             await Task.CompletedTask;
             return objGiaHan.IsReload;
         }
+
+        public async Task<bool> OpenTamDungView(long IdThanhTra)
+        {
+            popTamDungThanhTra objTamDung = new popTamDungThanhTra();
+            ((TamDungThanhTraViewModel)objTamDung.DataContext)._Model.IdThanhTra = IdThanhTra;
+            objTamDung.ShowPopUp(this);
+            await Task.CompletedTask;
+            return objTamDung.IsReload; 
+        }
     }
 }
