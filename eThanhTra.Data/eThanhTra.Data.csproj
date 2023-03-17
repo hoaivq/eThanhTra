@@ -60,6 +60,9 @@
     <Compile Include="DThanhTraGiaHan.cs">
       <DependentUpon>eThanhTraModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DThanhTraKKVM.cs">
+      <DependentUpon>eThanhTraModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DThanhTraQuyetDinh.cs">
       <DependentUpon>eThanhTraModel.tt</DependentUpon>
     </Compile>

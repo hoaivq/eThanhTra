@@ -2,6 +2,7 @@
 using Common.Core;
 using eThanhTra.Data;
 using eThanhTra.Dto;
+using eThanhTra.Model.NhatKy;
 using eThanhTra.Network.System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -248,6 +249,20 @@ namespace eThanhTra.Api.Controllers
                         db.DThanhTraTamDungs.Add(output);
                         await db.SaveChangesAsync();
                         Object = output.Cast<DThanhTraTamDungDto>();
+                    }
+
+                    else if (ObjectType.Equals("DThanhTraKKVMDto"))
+                    {
+                        DThanhTraKKVMDto input = (Request == null) ? Object as DThanhTraKKVMDto : JsonConvert.DeserializeObject<DThanhTraKKVMDto>(Object.ToString());
+                        DThanhTraKKVM output = input.Cast<DThanhTraKKVM>();
+                        output.GetDataFrom<DThanhTraKKVM, DThanhTraKKVMDto>(input);
+                        if (output.IdThanhTra == 0)
+                        {
+                            output.IdThanhTra = (long)input.IdThanhTra;
+                        }
+                        db.DThanhTraKKVMs.Add(output);
+                        await db.SaveChangesAsync();
+                        Object = output.Cast<DThanhTraKKVMDto>();
                     }
 
                     return new MsgResult<object>(true, Object);

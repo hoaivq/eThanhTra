@@ -5,39 +5,35 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:eThanhTra"
-             mc:Ignorable="d" 
+             mc:Ignorable="d" WindowStartupLocation="CenterScreen" WindowState="Normal"
               xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
-             d:DesignHeight="365" d:DesignWidth="600"
-              Title="Khó khăn vướng mắc">
-    <Grid Margin="8 8 8 4">
+             d:DesignHeight="400" d:DesignWidth="600"
+              Title="Khó khăn vướng mắc" Style="{StaticResource TSDWindow}">
+    
+    <DockPanel LastChildFill="True">
+        <local:ucoTitle DockPanel.Dock="Top" Title="Khó khăn vướng mắc"  Height="40"/>
+        <StackPanel  Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right" Margin="0 4 0 0" Height="40">
+            <dx:SimpleButton Margin ="0 0 4 0" Style="{StaticResource SaveButton}"/>
+            <dx:SimpleButton Margin ="0 0 0 0" Style="{StaticResource CloseButton}"/>
+        </StackPanel>
+        <Grid DockPanel.Dock="Top" Margin="4">
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="150"/>
-            <RowDefinition Height="150"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="150"/>
+            </Grid.RowDefinitions>
 
-            <rs:hTextEdit Grid.Row="0"
-                _CaptionText="Nội dung khó khăn vướng mắc"
-                           AcceptsReturn="True"
-                           TextWrapping="Wrap"/>
-            <rs:hTextEdit Grid.Row="1"
-                _CaptionText="Ngyên nhân" 
-                           AcceptsReturn="True"
-                           TextWrapping="Wrap"/>
-            
-            
-            <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Right"
-                        Grid.Row="2">
-                
-                <dx:SimpleButton Content="Ghi"
-                          Margin ="0 8 4 0" 
-                                 Style="{StaticResource SaveButton}"/>
-                <dx:SimpleButton Content="Thoát"
-                          Margin ="0 8 0 0" 
-                                 Style="{StaticResource CloseButton}"/>
-            </StackPanel>
-
-    </Grid>
+            <rs:hTextEdit Grid.Row="0" EditValue="{Binding _Model.ObjKhoKhanVuongMac.NoiDung, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                      IsValidEmpty="True"
+                      _CaptionText="Nội dung khó khăn vướng mắc"
+                      AcceptsReturn="True"
+                      TextWrapping="Wrap"/>
+            <rs:hTextEdit Grid.Row="1" EditValue="{Binding _Model.ObjKhoKhanVuongMac.NguyenNhan, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                      IsValidEmpty="True"
+                      _CaptionText="Ngyên nhân" 
+                       AcceptsReturn="True"
+                       TextWrapping="Wrap"/>
+        </Grid>
+        
+    </DockPanel> 
 </rs:TSDPopUp>

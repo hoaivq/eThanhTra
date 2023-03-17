@@ -7,35 +7,40 @@
              xmlns:local="clr-namespace:eThanhTra"
               xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:viewmodel="clr-namespace:eThanhTra.ViewModel;assembly=eThanhTra.ViewModel"
               mc:Ignorable="d" 
-             d:DesignHeight="430" d:DesignWidth="600"
-              Title="Gia hạn thanh tra">
-    <Grid Margin="8,8,8,4">
+             d:DesignHeight="430" d:DesignWidth="600" Style="{StaticResource TSDWindow}"
+              WindowStartupLocation="CenterScreen" WindowState="Normal">
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="40"></RowDefinition>
-        </Grid.RowDefinitions>
-        
+    <DockPanel LastChildFill="True">
+        <local:ucoTitle DockPanel.Dock="Top" Height="40" Title="Gia hạn thanh tra"/>
 
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="100"></ColumnDefinition>
-                <ColumnDefinition Width="100"></ColumnDefinition>
-                <ColumnDefinition Width="100"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <rs:hTextEdit Margin="0,0,4,0" Grid.Row="0" EditValue="{Binding _Model.ObjGiaHan.SoQuyetDinh, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" _CaptionText="Số quyết định gia hạn:" IsValidEmpty="True"/>
-            <rs:hSpinEdit Margin="0,0,4,0" Grid.Column="1" Value="{Binding _Model.ObjGiaHan.SoNgay, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" _CaptionText="Số ngày gia hạn" IsValidEmpty="True" />
-            <rs:hDateEdit Margin="0,0,4,0" Grid.Column="2" EditValue="{Binding _Model.ObjGiaHan.BatDauGH, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  _CaptionText="Từ ngày" IsValidEmpty="True"/>
-            <rs:hDateEdit Grid.Column="3" EditValue="{Binding _Model.ObjGiaHan.KetThucGH, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" _CaptionText="Đến ngày" />
+        <Grid DockPanel.Dock="Top" Margin="4">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+            </Grid.RowDefinitions>
+
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="100"></ColumnDefinition>
+                    <ColumnDefinition Width="100"></ColumnDefinition>
+                    <ColumnDefinition Width="100"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <rs:hTextEdit Margin="0,0,4,0" Grid.Row="0" EditValue="{Binding _Model.ObjGiaHan.SoQuyetDinh, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" _CaptionText="Số quyết định gia hạn:" IsValidEmpty="True"/>
+                <rs:hSpinEdit Margin="0,0,4,0" Grid.Column="1" Value="{Binding _Model.ObjGiaHan.SoNgay, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" _CaptionText="Số ngày gia hạn" IsValidEmpty="True" />
+                <rs:hDateEdit Margin="0,0,4,0" Grid.Column="2" EditValue="{Binding _Model.ObjGiaHan.BatDauGH, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  _CaptionText="Từ ngày" IsValidEmpty="True"/>
+                <rs:hDateEdit Grid.Column="3" EditValue="{Binding _Model.ObjGiaHan.KetThucGH, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" _CaptionText="Đến ngày" />
+            </Grid>
+
+
+            <rs:hTextEdit Grid.Row="1" EditValue="{Binding _Model.ObjGiaHan.LyDoGH, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" _CaptionText="Lý do gia hạn" />
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right"  Margin="0,4,0,0">
+                <dx:SimpleButton  Style="{StaticResource SaveButton}" Margin="0 0 4 0"/>
+                <dx:SimpleButton Style="{StaticResource CloseButton}"/>
+            </StackPanel>
         </Grid>
-
-
-        <rs:hTextEdit Grid.Row="1" EditValue="{Binding _Model.ObjGiaHan.LyDoGH, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" _CaptionText="Lý do gia hạn" />
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right"  Margin="0,4,0,0">
-            <dx:SimpleButton  Style="{StaticResource SaveButton}" Margin="0 0 4 0"/>
-            <dx:SimpleButton Style="{StaticResource CloseButton}"/>
-        </StackPanel>
-    </Grid>
+    </DockPanel>
 </rs:TSDPopUp>

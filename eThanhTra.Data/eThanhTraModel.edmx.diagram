@@ -27,6 +27,8 @@
         <AssociationConnector Association="eThanhTraModel.FK__DThanhTra__IDTha__17F790F9" />
         <EntityTypeShape EntityType="eThanhTraModel.DThanhTraTamDung" Width="1.5" PointX="3" PointY="16.75" />
         <AssociationConnector Association="eThanhTraModel.FK__DThanhTra__IDTha__1DB06A4F" />
+        <EntityTypeShape EntityType="eThanhTraModel.DThanhTraKKVM" Width="1.5" PointX="3" PointY="20.125" />
+        <AssociationConnector Association="eThanhTraModel.FK__DThanhTra__IdTha__208CD6FA" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
