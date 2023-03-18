@@ -19,8 +19,8 @@
         <Grid DockPanel.Dock="Top" Margin="4">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="150"/>
-                <RowDefinition Height="150"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
             <rs:hTextEdit Grid.Row="0" EditValue="{Binding _Model.ObjKhoKhanVuongMac.NoiDung, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
